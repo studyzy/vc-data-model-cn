@@ -221,808 +221,526 @@
 <body>
   <section id='abstract'>
     <p>
-      [=Credentials=] are a part of our daily lives; driver's licenses are used to
-      assert that we are capable of operating a motor vehicle, university degrees
-      can be used to assert our level of education, and government-issued passports
-      enable us to travel between countries. This specification provides a mechanism
-      to express these sorts of [=credentials=] on the Web in a way that is
-      cryptographically secure, privacy respecting, and machine-verifiable.
+      [=凭证=]是我们日常生活的一部分；驾驶执照用于证明我们有驾驶汽车的能力，大学学位可以用来证明我们的教育水平，政府颁发的护照使我们能够在各国之间旅行。这个规范提供了一种在网络上表达这些类型的[=凭证=]的机制，这种机制是加密安全的，尊重隐私，且可由机器验证。
     </p>
   </section>
 
   <section id='sotd'>
     <p>
-      The Working Group is actively seeking implementation feedback for this
-      specification. In order to exit the Candidate Recommendation phase, the
-      Working Group has set the requirement of at least two independent
-      implementations for each mandatory feature in the specification. Please see
-      the <a href="https://w3c.github.io/vc-data-model-2.0-test-suite/">
-        implementation report</a> for more details.
+      工作组正在积极寻求对此规范的实施反馈。为了退出候选推荐阶段，工作组已设定了每个规范中的每个强制性功能至少需要两个独立实施的要求。请查看<a
+        href="https://w3c.github.io/vc-data-model-2.0-test-suite/">
+        实施报告</a>以获取更多详细信息。
     </p>
 
     <p>
-      Comments regarding this specification are welcome at any time.
-      Please file issues directly on
-      <a href="https://github.com/w3c/vc-data-model/issues/">GitHub</a>,
-      or, if that is not possible, send them to
+      欢迎随时对此规范提出评论。
+      请直接在
+      <a href="https://github.com/w3c/vc-data-model/issues/">GitHub</a>上提交问题，
+      或者，如果无法做到这一点，请发送到
       <a href="mailto:public-vc-comments@w3.org">public-vc-comments@w3.org</a>
-      (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">subscribe</a>,
-      <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">archives</a>).
+      (<a href="mailto:public-vc-comments-request@w3.org?subject=subscribe">订阅</a>,
+      <a href="https://lists.w3.org/Archives/Public/public-vc-comments/">档案</a>)。
     </p>
 
   </section>
 
   <section class="informative">
-    <h2>Introduction</h2>
+    <h2>简介</h2>
 
     <p>
-      [=Credentials=] are a part of our daily lives; driver's licenses are used to
-      assert that we are capable of operating a motor vehicle, university degrees
-      can be used to assert our level of education, and government-issued passports
-      enable us to travel between countries. These [=credentials=] provide
-      benefits to us when used in the physical world, but their use on the Web
-      continues to be elusive.
+      凭证是我们日常生活的一部分；驾驶执照用于证明我们有能力操作机动车辆，大学学位可用于证明我们的教育水平，政府颁发的护照使我们能够在国家之间旅行。这些凭证在现实世界中为我们提供了便利，但在网络上使用它们仍然难以捉摸。
     </p>
 
     <p>
-      Currently it is difficult to express education qualifications, healthcare
-      data, financial account details, and other sorts of third-party [=verified=]
-      machine-readable personal information on the Web. The difficulty of expressing
-      digital [=credentials=] on the Web makes it challenging to receive the same
-      benefits through the Web that physical [=credentials=] provide us in the
-      physical world.
+      目前，在网络上表达教育资格、医疗数据、财务账户详细信息以及其他类型的第三方验证的机器可读个人信息是很困难的。在网络上表达数字凭证的困难使得在网络上获得与现实世界中相同的利益变得具有挑战性。
     </p>
 
     <p>
-      This specification provides a standard way to express [=credentials=] on the
-      Web in a way that is cryptographically secure, privacy respecting, and
-      machine-verifiable.
+      本规范为在网络上表达凭证提供了一种标准方法，这种方法在密码学上是安全的，尊重隐私且可供机器验证。
     </p>
 
     <p>
-      For those unfamiliar with the concepts related to
-      [=verifiable credentials=], the following sections provide an overview of:
+      对于那些不熟悉与可验证凭证相关的概念的人，以下部分提供了一个概述：
     </p>
 
     <ul>
       <li>
-        The components that constitute a [=verifiable credential=]
+        构成可验证凭证的组件
       </li>
       <li>
-        The components that constitute a [=verifiable presentation=]
+        构成可验证展示的组件
       </li>
       <li>
-        An ecosystem where [=verifiable credentials=] and
-        [=verifiable presentations=] are expected to be useful
+        可验证凭证和可验证展示预期有用的生态系统
       </li>
       <li>
-        The use cases and requirements that informed this specification.
+        为本规范提供指导的用例和要求。
       </li>
     </ul>
 
     <section class="informative">
-      <h3>What is a Verifiable Credential?</h3>
+      <h3>什么是可验证凭证？</h3>
 
       <p>
-        In the physical world, a [=credential=] might consist of:
+        在现实世界中，凭证可能包括：
       </p>
 
       <ul>
         <li>
-          Information related to identifying the [=subject=] of the [=credential=]
-          (for example, a photo, name, or identification number)
+          与凭证主体相关的身份信息（例如，照片、姓名或身份证号）
         </li>
         <li>
-          Information related to the issuing authority (for example, a city government,
-          national agency, or certification body)
+          与颁发机构相关的信息（例如，市政府、国家机构或认证机构）
         </li>
         <li>
-          Information related to the type of [=credential=] this is (for example, a
-          Dutch passport, an American driving license, or a health insurance card)
+          与此凭证类型相关的信息（例如，荷兰护照、美国驾驶执照或健康保险卡）
         </li>
         <li>
-          Information related to specific attributes or properties being asserted by
-          the issuing authority about the [=subject=] (for example, nationality,
-          the classes of vehicle entitled to drive, or date of birth)
+          由颁发机构关于主体的特定属性或属性的相关信息（例如，国籍、有资格驾驶的车辆类别或出生日期）
         </li>
         <li>
-          Evidence related to how the [=credential=] was derived
+          与凭证衍生的证据相关的信息
         </li>
         <li>
-          Information related to constraints on the credential (for example,
-          validity period, or terms of use).
+          与凭证约束相关的信息（例如，有效期或使用条款）。
         </li>
       </ul>
 
       <p>
-        A [=verifiable credential=] can represent all of the same information that a
-        physical [=credential=] represents. The addition of technologies, such as
-        digital signatures, makes [=verifiable credentials=] more tamper-evident and
-        more trustworthy than their physical counterparts.
+        可验证凭证可以表示与实体凭证相同的所有信息。数字签名等技术的添加使可验证凭证比实体凭证更具篡改证据和更值得信赖。
       </p>
 
       <p>
-        [=Holders=] of [=verifiable credentials=] can generate
-        [=verifiable presentations=] and then share these
-        [=verifiable presentations=] with [=verifiers=] to prove they possess
-        [=verifiable credentials=] with certain characteristics.
+        可验证凭证的持有者可以生成可验证的展示，然后与验证者共享这些可验证的展示，以证明他们具有某些特征的可验证凭证。
       </p>
 
       <p>
-        Both [=verifiable credentials=] and [=verifiable presentations=] can be
-        transmitted rapidly, making them more convenient than their physical
-        counterparts when trying to establish trust at a distance.
+        可验证凭证和可验证展示可以快速传输，使它们在远程建立信任时比实体凭证更方便。
       </p>
 
       <p>
-        While this specification attempts to improve the ease of expressing digital
-        [=credentials=], it also attempts to balance this goal with a number of
-        privacy-preserving goals. The persistence of digital information, and the ease
-        with which disparate sources of digital data can be collected and correlated,
-        comprise a privacy concern that the use of [=verifiable=] and easily
-        machine-readable [=credentials=] threatens to make worse. This document
-        outlines and attempts to address a number of these issues in Section
-        <a href="#privacy-considerations"></a>. Examples of how to use this data model
-        using privacy-enhancing technologies, such as zero-knowledge proofs, are also
-        provided throughout this document.
+        虽然本规范试图改进表达数字凭证的便利性，但它还试图平衡这一目标与一系列保护隐私的目标。数字信息的持久性以及不同数字数据来源的收集和关联的便利性，构成了使用可验证且易于机器阅读的凭证可能加剧的隐私问题。本文档在<a
+          href="#privacy-considerations"></a>部分概述并试图解决这些问题。本文档还提供了如何使用保护隐私的技术（例如零知识证明）使用此数据模型的示例。
       </p>
 
       <p>
-        The word "verifiable" in the terms
-        [=verifiable credential=] and [=verifiable presentation=]
-        refers to the characteristic of a [=credential=] or [=presentation=]
-        as being able to be [=verified=] by a [=verifier=],
-        as defined in this document. Verifiability of a credential does not imply
-        the truth of [=claims=] encoded therein. Rather, once the authenticity and
-        currency of a [=verifiable credential=] or [=verifiable presentation=] are
-        established, a [=verifier=] validates the included claims using their own
-        business rules before relying on them. Such reliance only occurs after
-        evaluating the issuer, the proof, the subject, and the claims, against one or
-        more verifier policies.
+        术语可验证凭证和可验证展示中的“可验证”是指凭证或展示具有可由验证者验证的特性，如本文档所定义。凭证的可验证性并不意味着其中编码的声明是真实的。相反，在建立可验证凭证或可验证展示的真实性和时效性后，验证者使用自己的业务规则验证包含的声明，然后才依赖它们。这种依赖仅在评估发行者、证明、主题和声明之后，根据一个或多个验证者策略进行。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Ecosystem Overview</h3>
+      <h3>生态系统概述</h3>
 
       <p>
-        This section describes the roles of the core actors and the relationships
-        between them in an ecosystem where [=verifiable credentials=] are expected
-        to be useful. A role is an abstraction that might be implemented in many
-        different ways. The separation of roles suggests likely interfaces and
-        protocols for standardization. The following roles are introduced in this
-        specification:
+        本节描述了核心参与者的角色以及在可验证凭证预期有用的生态系统中它们之间的关系。角色是一个抽象，可以用许多不同的方式实现。角色的分离表明了可能的接口和协议标准化。本规范引入了以下角色：
       </p>
 
       <dl>
-        <dt>[=holder=]</dt>
+        <dt>[=holder=]（持有者）</dt>
         <dd>
-          A role an [=entity=] might perform by possessing one or more
-          [=verifiable credentials=] and generating [=verifiable presentations=]
-          from them. Example holders include students, employees, and customers.
+          通过拥有一个或多个可验证凭证并从中生成可验证展示来执行的实体角色。示例持有者包括学生、员工和客户。
         </dd>
-        <dt>[=issuer=]</dt>
+        <dt>[=issuer=]（发行者）</dt>
         <dd>
-          A role an [=entity=] performs by asserting [=claims=] about one or
-          more [=subjects=], creating a [=verifiable credential=] from these
-          [=claims=], and transmitting the [=verifiable credential=] to a
-          [=holder=]. Example issuers include corporations, non-profit organizations,
-          trade associations, governments, and individuals.
+          实体执行的角色，通过对一个或多个主体进行声明，从这些声明中创建可验证凭证，并将可验证凭证传输给持有者。示例发行者包括公司、非营利组织、行业协会、政府和个人。
         </dd>
-        <dt>[=subject=]</dt>
+        <dt>[=subject=]（主体）</dt>
         <dd>
-          An [=entity=] about which [=claims=] are made. Example subjects include
-          human beings, animals, and things. In many cases the [=holder=] of a
-          [=verifiable credential=] is the subject, but in certain cases it is not. For
-          example, a parent (the [=holder=]) might hold the
-          [=verifiable credentials=] of a child (the [=subject=]), or a pet owner
-          (the [=holder=]) might hold the [=verifiable credentials=] of their pet
-          (the [=subject=]). For more information about these special cases, see the
+          进行声明的实体。示例主体包括人类、动物和事物。在许多情况下，可验证凭证的持有者是主体，但在某些情况下不是。例如，父母（持有者）可能持有孩子（主体）的可验证凭证，或者宠物主人（持有者）可能持有他们宠物（主体）的可验证凭证。有关这些特殊情况的更多信息，请参阅可验证凭证实施指南[[VC-IMP-GUIDE]]中的
           <a href="https://www.w3.org/TR/vc-imp-guide/#subject-holder-relationships">
-            Subject-Holder Relationships</a> section in the Verifiable Credentials
-          Implementation Guide [[VC-IMP-GUIDE]].
+            主体-持有者关系</a>部分。
         </dd>
-        <dt>[=verifier=]</dt>
+        <dt>[=verifier=]（验证者）</dt>
         <dd>
-          A role an [=entity=] performs by receiving one or more
-          [=verifiable credentials=], optionally inside a
-          [=verifiable presentation=], for processing. Example verifiers include
-          employers, security personnel, and websites.
+          通过接收一个或多个可验证凭证（可选地在可验证展示中）进行处理的实体角色。示例验证者包括雇主、安全人员和网站。
         </dd>
-        <dt>[=verifiable data registry=]</dt>
+        <dt>[=verifiable data registry=]（可验证数据注册表）</dt>
         <dd>
-          A role a system might perform by mediating the creation and [=verification=]
-          of identifiers, keys, and other relevant data, such as
-          [=verifiable credential=] schemas, revocation registries, issuer public keys,
-          and so on, which might be required to use [=verifiable credentials=]. Some
-          configurations might require correlatable identifiers for [=subjects=].
-          Example verifiable data registries include trusted databases, decentralized
-          databases, government ID databases, and distributed ledgers. Often
-          there is more than one type of verifiable data registry utilized in an
-          ecosystem.
+          系统可能通过调解创建和验证标识符、密钥和其他相关数据（如可验证凭证模式、撤销注册表、发行者公钥等）来执行的角色，这些数据可能需要使用可验证凭证。某些配置可能需要可关联的主体标识符。示例可验证数据注册表包括可信数据库、分布式数据库、政府ID数据库和分布式分类帐。通常，在生态系统中会使用多种类型的可验证数据注册表。
         </dd>
       </dl>
 
       <figure id="roles">
-        <img style="margin: auto; display: block; width: 75%;" src="diagrams/ecosystem.svg" alt="diagram showing how
-               credentials flow from issuer to holder and
-               presentations flow from holder to verifier where all
-               three parties can use information from a logical
-               verifiable data registry">
+        <img style="margin: auto; display: block; width: 75%;" src="diagrams/ecosystem.svg" alt="示意图显示了
+               凭证从发行者流向持有者，
+               展示从持有者流向验证者，所有
+               三方均可使用来自逻辑
+               可验证数据注册表的信息">
         <figcaption style="text-align: center;">
-          The roles and information flows forming the basis for this specification.
+          构成本规范基础的角色和信息流。
         </figcaption>
       </figure>
 
       <p class="note">
-        <a href="#roles"></a> above provides an example ecosystem in which to ground the
-        rest of the concepts in this specification. Other ecosystems exist, such as
-        protected environments or proprietary systems, where
-        [=verifiable credentials=] also provide benefit.
+        上面的<a href="#roles"></a>提供了一个示例生态系统，以便将本规范的其他概念固定下来。其他生态系统（如受保护的环境或专有系统）也存在，其中可验证凭证也具有优势。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Use Cases and Requirements</h3>
+      <h3>用例和要求</h3>
 
       <p>
-        The Verifiable Credentials Use Cases document [[VC-USE-CASES]] outlines a number
-        of key topics that readers might find useful, including:
+        可验证凭证用例文档[[VC-USE-CASES]]概述了一些关键主题，读者可能会发现这些主题很有用，包括：
       </p>
 
       <ul>
         <li>
-          A more thorough explanation of the
-          <a href="https://www.w3.org/TR/vc-use-cases/#user-roles">roles</a>
-          introduced above
+          对上述引入的
+          <a href="https://www.w3.org/TR/vc-use-cases/#user-roles">角色</a>
+          的更详细解释
         </li>
         <li>
-          The
-          <a href="https://www.w3.org/TR/vc-use-cases/#user-needs">needs</a>
-          identified in market verticals, such as education, finance, healthcare, retail,
-          professional licensing, and government
+          在市场垂直领域（如教育、金融、医疗、零售、专业许可和政府）中确定的
+          <a href="https://www.w3.org/TR/vc-use-cases/#user-needs">需求</a>
         </li>
         <li>
-          Common
-          <a href="https://www.w3.org/TR/vc-use-cases/#user-tasks">tasks</a>
-          performed by the roles in the ecosystem, as well as their associated
-          requirements
+          生态系统中角色执行的常见
+          <a href="https://www.w3.org/TR/vc-use-cases/#user-tasks">任务</a>
+          以及与之相关的要求
         </li>
         <li>
-          Common
-          <a href="https://www.w3.org/TR/vc-use-cases/#user-sequences">sequences
-            and flows</a> identified by the Working Group.
+          工作组确定的常见
+          <a href="https://www.w3.org/TR/vc-use-cases/#user-sequences">序列和流程</a>。
         </li>
       </ul>
 
       <p>
-        As a result of documenting and analyzing the use cases document, the following
-        desirable ecosystem characteristics were identified for this specification:
+        通过记录和分析用例文档，为本规范确定了以下理想的生态系统特征：
       </p>
-      <!-- requirement list start -->
+      <!-- 要求列表开始 -->
       <ul>
         <li>
-          [=Verifiable credentials=] represent statements made by an [=issuer=] in
-          a tamper-evident and privacy-respecting manner.
+          可验证凭证代表发行者以防篡改和尊重隐私的方式所作的声明。
         </li>
         <li>
-          [=Holders=] can assemble collections of [=verifiable credentials=] from
-          different [=issuers=] into a single artifact, a [=verifiable presentation=].
+          持有者可以将来自不同发行者的可验证凭证集合组装成一个单一的工件，即可验证展示。
         </li>
         <li>
-          [=Issuers=] can issue [=verifiable credentials=] about any [=subject=].
+          发行者可以颁发关于任何主体的可验证凭证。
         </li>
         <li>
-          Acting as [=issuer=], [=holder=], or [=verifier=] requires neither
-          registration nor approval by any authority, as the trust involved is bilateral
-          between parties.
+          执行发行者、持有者或验证者的角色不需要任何权威机构的注册或批准，因为涉及的信任是双方之间的。
         </li>
         <li>
-          [=Verifiable presentations=] allow any [=verifier=] to [=verify=] the
-          authenticity of [=verifiable credentials=] from any [=issuer=].
+          可验证展示允许任何验证者验证来自任何发行者的可验证凭证的真实性。
         </li>
         <li>
-          [=Holders=] can receive [=verifiable credentials=] from anyone.
+          持有者可以从任何人那里接收可验证凭证。
         </li>
         <li>
-          [=Holders=] can interact with any [=issuer=] and any [=verifier=]
-          through any user agent.
+          持有者可以通过任何用户代理与任何发行者和任何验证者互动。
         </li>
         <li>
-          [=Holders=] can share [=verifiable presentations=], which can then be
-          [=verified=] without revealing the identity of the [=verifier=] to the
-          [=issuer=].
+          持有者可以共享可验证展示，然后可以验证它们，而无需向发行者透露验证者的身份。
         </li>
         <li>
-          [=Holders=] can store [=verifiable credentials=] in any location, without
-          affecting their [=verifiability=] and without the [=issuer=] knowing
-          anything about where they are stored or when they are accessed.
+          验证者可以验证可验证展示的真实性，而无需向发行者透露验证者的身份。
         </li>
         <li>
-          [=Holders=] can present [=verifiable presentations=] to any
-          [=verifier=] without affecting authenticity of the claims and without
-          revealing that action to the [=issuer=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，而不需要共享主体的唯一标识符。
         </li>
         <li>
-          A [=verifier=] can [=verify=] [=verifiable presentations=] from any
-          [=holder=], containing proofs of [=claims=] from any [=issuer=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时尊重主体的隐私。
         </li>
         <li>
-          [=Verification=] should not depend on direct interactions between
-          [=issuers=] and [=verifiers=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体选择性地披露信息。
         </li>
         <li>
-          [=Verification=] should not reveal the identity of the [=verifier=] to
-          any [=issuer=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体保留对披露给验证者的信息的控制。
         </li>
         <li>
-          The specification must provide a means for [=issuers=] to issue
-          [=verifiable credentials=] that support selective disclosure, without
-          requiring all conformant software to support that feature.
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体对披露给验证者的信息进行最小化。
         </li>
         <li>
-          [=Issuers=] can issue [=verifiable credentials=] that support
-          selective disclosure.
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体对披露给验证者的信息进行选择性披露。
         </li>
         <li>
-          If a single [=verifiable credential=] supports selective disclosure, then
-          [=holders=] can present proofs of [=claims=] without revealing the entire
-          [=verifiable credential=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体对披露给验证者的信息进行选择性披露，而无需泄露其他信息。
         </li>
         <li>
-          [=Verifiable presentations=] can either disclose the attributes of a
-          [=verifiable credential=], or satisfy [=derived predicates=] requested by
-          the [=verifier=]. [=Derived predicates=] are Boolean conditions, such as
-          greater than, less than, equal to, is in set, and so on.
-        </li>
-        <li>
-          [=Issuers=] can issue revocable [=verifiable credentials=].
-        </li>
-        <li>
-          The processes of cryptographically protecting and verifying
-          [=verifiable credentials=] and [=verifiable presentations=] have to be
-          deterministic, bi-directional, and lossless. Any
-          [=verifiable credential=] or [=verifiable presentation=] has to be
-          transformable to the JSON-LD data model defined in this document via a
-          deterministic process so that its verification can be processed in an
-          interoperable fashion.
-        </li>
-        <li>
-          [=Verifiable credentials=] and [=verifiable presentations=] have to be
-          serializable in one or more machine-readable data formats. The process of
-          serialization and/or de-serialization has to be deterministic, bi-directional,
-          and lossless. Any serialization of a [=verifiable credential=] or
-          [=verifiable presentation=] needs to be transformable to the generic data
-          model defined in this document in a deterministic process such that the
-          resulting [=verifiable credential=] can be processed in an interoperable
-          fashion. The serialized form also needs to be able to be generated from the data
-          model without loss of data or content.
-        </li>
-        <li>
-          The data model and serialization must be extendable with minimal coordination.
-        </li>
-        <li>
-          Revocation by the [=issuer=] should not reveal any identifying information
-          about the [=subject=], the [=holder=], the specific
-          [=verifiable credential=], or the [=verifier=].
-        </li>
-        <li>
-          [=Issuers=] can disclose the revocation reason.
-        </li>
-        <li>
-          [=Issuers=] revoking [=verifiable credentials=] should distinguish between
-          revocation for cryptographic integrity (for example, the signing key is
-          compromised) versus revocation for a status change (for example, the driver's
-          license is suspended).
-        </li>
-        <li>
-          [=Issuers=] can provide a service for refreshing a
-          [=verifiable credential=].
+          可验证凭证和可验证展示可以用于传递有关主体的信息，同时允许主体对披露给验证者的信息进行选择性披露，而无需泄露其他信息，且不需要向发行者透露验证者的身份。
         </li>
       </ul>
+      <!-- 要求列表结束 -->
     </section>
-
-    <section id="conformance" class="normative">
-      <p>
-        A <dfn>conforming document</dfn> is a
-        <a data-cite="JSON-LD11-API#compaction-algorithms">compacted</a> JSON-LD
-        document that complies with all of the relevant "MUST" statements in this
-        specification. Specifically, the relevant normative "MUST" statements in
-        Sections <a href="#basic-concepts"></a>, <a href="#advanced-concepts"></a>, and
-        <a href="#syntaxes"></a> of this document MUST be enforced.
-        A conforming document is either a [=verifiable credential=] that MUST be
-        serialized using the `application/vc+ld+json` media type or a
-        [=verifiable presentation=] that MUST be serialized using the
-        `application/vp+ld+json` media type. A conforming document MUST be
-        secured by at least one securing mechanism as described in Section
-        <a href="#securing-mechanisms"></a>.
-      </p>
-
-      <p>
-        A <dfn class="lint-ignore">conforming issuer implementation</dfn> produces
-        [=conforming documents=], MUST include all required properties in the
-        [=conforming documents=] that it produces, and MUST secure the [=conforming
-        documents=] it produces using a securing mechanism as described in Section
-        <a href="#securing-mechanisms"></a>.
-      </p>
-
-      <p>
-        A <dfn class="lint-ignore">conforming verifier implementation</dfn>
-        consumes [=conforming documents=], MUST perform [=verification=] on a
-        [=conforming document=] as described in Section
-        <a href="#securing-mechanisms"></a>, MUST check that each
-        required property satisfies the normative requirements for that property, and
-        MUST produce errors when non-[=conforming documents=] are detected.
-      </p>
-
-      <p>
-        This specification includes both required and optional properties. Optional
-        properties MAY be ignored by [=conforming issuer implementations=] and/or
-        [=conforming verifier implementations=].
-      </p>
-
-      <p>
-        This document also contains examples that contain characters that are invalid
-        JSON, such as inline comments (`//`) and the use of ellipsis
-        (`...`) to denote information that adds little value to the example.
-        Implementers are cautioned to remove this content if they desire to use the
-        information as a valid document.
-      </p>
-    </section>
-
   </section>
-
   <section class="normative">
-    <h2>Terminology</h2>
+    <h2>术语</h2>
 
     <p>
-      The following terms are used to describe concepts in this specification.
+      以下术语用于描述本规范中的概念。
     </p>
 
     <dl class="termlist definitions">
-      <dt><dfn class="export" data-lt="claims">claim</dfn></dt>
+      <dt><dfn class="export" data-lt="claims">声明</dfn></dt>
       <dd>
-        An assertion made about a [=subject=].
+        关于某个[=主体=]的断言。
       </dd>
-      <dt><dfn class="export" data-lt="credential|credentials">credential</dfn></dt>
+      <dt><dfn class="export" data-lt="credential|credentials">凭证</dfn></dt>
       <dd>
-        A set of one or more [=claims=] made by an [=issuer=]. The [=claims=]
-        in a credential can be about different [=subjects=]. The definition of
-        credential used in this specification differs from,
-        <a href="https://csrc.nist.gov/glossary/term/credential">NIST's definitions of
-          credential</a>.
+        由一个[=发行者=]做出的一个或多个[=声明=]的集合。凭证中的[=声明=]
+        可以关于不同的[=主体=]。本规范中使用的凭证的定义与
+        <a href="https://csrc.nist.gov/glossary/term/credential">NIST的凭证定义</a>不同。
       </dd>
-      <dt><dfn>data minimization</dfn></dt>
+      <dt><dfn>数据最小化</dfn></dt>
       <dd>
-        The act of limiting the amount of shared data strictly to the minimum
-        necessary to successfully accomplish a task or goal.
+        限制共享数据的行为，严格限制到完成任务或目标所必需的最小量。
       </dd>
-      <dt><dfn data-lt="decentralized identifiers|DID|DIDs">decentralized identifier</dfn></dt>
+      <dt><dfn data-lt="decentralized identifiers|DID|DIDs">去中心化标识符</dfn></dt>
       <dd>
-        A portable URL-based identifier, also known as a <strong><em>DID</em></strong>,
-        associated with an [=entity=]. These identifiers are most often used in a
-        [=verifiable credential=] and are associated with [=subjects=] such that a
-        [=verifiable credential=] itself can be easily ported from one
-        [=repository=] to another without the need to reissue the [=credential=].
-        An example of a DID is `did:example:123456abcdef`.
+        一种便携式基于URL的标识符，也被称为<strong><em>DID</em></strong>，
+        与[=实体=]相关联。这些标识符最常用于
+        [=可验证的凭证=]，并与[=主体=]关联，使得一个
+        [=可验证的凭证=]可以轻易地从一个
+        [=仓库=]迁移到另一个，而无需重新发行[=凭证=]。
+        DID的一个例子是`did:example:123456abcdef`。
       </dd>
-      <dt><dfn class="lint-ignore" data-lt="decentralized identifier documents|DID document|DID documents">decentralized
-          identifier document</dfn></dt>
+      <dt><dfn class="lint-ignore" data-lt="decentralized identifier documents|DID document|DID documents">去中心化
+          标识符文档</dfn></dt>
       <dd>
-        Also referred to as a <strong><em>DID document</em></strong>, this is a document
-        that is accessible using a [=verifiable data registry=] and contains
-        information related to a specific [=decentralized identifier=], such as the
-        associated [=repository=] and public key information.
+        也被称为<strong><em>DID文档</em></strong>，这是一个可以通过[=可验证数据注册表=]访问的文档，
+        包含与特定[=去中心化标识符=]相关的信息，如相关的[=仓库=]和公钥信息。
       </dd>
-      <dt><dfn data-lt="default graph">default graph</dfn></dt>
+      <dt><dfn data-lt="default graph">默认图</dfn></dt>
       <dd>
-        The [=graph=] containing all [=claims=] that are not explicitly part of
-        a [=named graph=].
+        包含所有不明确属于
+        [=命名图=]的[=声明=]的[=图=]。
       </dd>
-      <dt><dfn data-lt="predicates|derived predicates">derived predicate</dfn></dt>
+      <dt><dfn data-lt="predicates|derived predicates">派生谓词</dfn></dt>
       <dd>
-        A verifiable, boolean assertion about the value of another attribute in a
-        [=verifiable credential=]. These are useful in zero-knowledge-proof-style
-        [=verifiable presentations=] because they can limit information disclosure.
-        For example, if a [=verifiable credential=] contains an attribute for
-        expressing a specific height in centimeters, a derived predicate might reference
-        the height attribute in the [=verifiable credential=] demonstrating that the
-        [=issuer=] attests to a height value meeting the minimum height requirement,
-        without actually disclosing the specific height value. For example, the
-        [=subject=] is taller than 150 centimeters.
+        关于[=可验证凭证=]中另一个属性值的可验证的布尔断言。
+        这些在零知识证明风格的
+        [=可验证呈现=]中很有用，因为它们可以限制信息的披露。
+        例如，如果一个[=可验证的凭证=]包含一个用于表示特定高度（以厘米为单位）的属性，
+        一个派生谓词可能会引用[=可验证凭证=]中的高度属性，证明
+        [=发行者=]确认高度值满足最低高度要求，
+        而实际上并未披露具体的高度值。例如，[=主体=]的身高超过150厘米。
       </dd>
-      <dt><dfn class="lint-ignore">digital signature</dfn></dt>
+      <dt><dfn class="lint-ignore">数字签名</dfn></dt>
       <dd>
-        A mathematical scheme for demonstrating the authenticity of a digital message.
+        用于证明数字消息真实性的数学方案。
       </dd>
-      <dt><dfn data-lt="entities|entity's">entity</dfn></dt>
+      <dt><dfn data-lt="entities|entity's">实体</dfn></dt>
       <dd>
-        Anything that can be referenced in statements as an abstract or concrete noun.
-        Entities include but are not limited to people, organizations, physical things,
-        documents, abstract concepts, fictional characters, and arbitrary text. Any
-        entity might perform roles in the ecosystem, if it is capable of doing so. Note
-        that some entities fundamentally cannot take actions, e.g., the string "abc"
-        cannot issue credentials.
+        可以在陈述中作为抽象或具体名词引用的任何事物。
+        实体包括但不限于人、组织、实物、文档、抽象概念、虚构角色和任意文本。任何
+        实体都可能在生态系统中扮演角色，如果它有能力这样做。请注意，有些实体从根本上无法采取行动，例如，字符串"abc"
+        不能发行凭证。
       </dd>
-      <dt><dfn data-lt="graphs">graph</dfn></dt>
+      <dt><dfn data-lt="graphs">图</dfn></dt>
       <dd>
-        A set of claims, forming a network of information composed of [=subjects=]
-        and their relationship to other [=subjects=] or data. Each [=claim=] is
-        part of a graph; this is either explicit in the case of [=named graphs=], or
-        implicit for the [=default graph=].
+        一组声明，形成一个由[=主体=]
+        及其与其他[=主体=]或数据的关系组成的信息网络。每个[=声明=]
+        都是图的一部分；在[=命名图=]的情况下，这是明确的，或者
+        在[=默认图=]的情况下是隐含的。
       </dd>
-      <dt><dfn class="export" data-lt="holders|holder's|holders'">holder</dfn></dt>
+      <dt><dfn class="export" data-lt="holders|holder's|holders'">持有者</dfn></dt>
       <dd>
-        A role an [=entity=] might perform by possessing one or more
-        [=verifiable credentials=] and generating [=verifiable presentations=]
-        from them. A holder is often, but not always, a [=subject=] of the
-        [=verifiable credentials=] they are holding. Holders store their
-        [=credentials=] in [=credential repositories=].
+        通过持有一个或多个
+        [=可验证凭证=]并从中生成[=可验证呈现=]来执行的角色。持有者通常是，但不总是，他们持有的
+        [=可验证凭证=]的[=主体=]。持有者将其
+        [=凭证=]存储在[=凭证仓库=]中。
       </dd>
-      <dt><dfn class="lint-ignore" data-lt="identities|identity's">identity</dfn></dt>
+      <dt><dfn class="lint-ignore" data-lt="identities|identity's">身份</dfn></dt>
       <dd>
-        The means for keeping track of [=entities=] across contexts. Digital
-        identities enable tracking and customization of [=entity=] interactions
-        across digital contexts, typically using identifiers and attributes. Unintended
-        distribution or use of identity information can compromise privacy. Collection
-        and use of such information should follow the principle of
-        [=data minimization=].
+        跨上下文跟踪[=实体=]的手段。数字
+        身份使得跟踪和定制[=实体=]在数字上下文中的交互成为可能，通常使用标识符和属性。身份信息的意外分发或使用可能会损害隐私。收集和使用此类信息应遵循
+        [=数据最小化=]原则。
       </dd>
-      <dt><dfn data-lt="identity providers|idp">identity provider</dfn></dt>
+      <dt><dfn data-lt="identity providers|idp">身份提供者</dfn></dt>
       <dd>
-        An identity provider, sometimes abbreviated as <em>IdP</em>, is a system for
-        creating, maintaining, and managing identity information for [=holders=],
-        while providing authentication services to [=relying party=] applications
-        within a federation or distributed network. In this case the [=holder=] is
-        always the [=subject=]. Even if the [=verifiable credentials=] are bearer
-        [=credentials=], it is assumed the [=verifiable credentials=] remain with
-        the [=subject=], and if they are not, they were stolen by an attacker. This
-        specification does not use this term unless comparing or mapping the concepts in
-        this document to other specifications. This specification decouples the
-        [=identity provider=] concept into two distinct concepts: the [=issuer=]
-        and the [=holder=].
+        身份提供者，有时缩写为<em>IdP</em>，是一个为[=持有者=]创建、维护和管理身份信息的系统，
+        同时为联盟或分布式网络中的[=依赖方=]应用程序提供身份验证服务。在这种情况下，[=持有者=]始终是[=主体=]。即使[=可验证凭证=]是持票人
+        [=凭证=]，也假设[=可验证凭证=]仍然随着
+        [=主体=]，如果没有，它们是被攻击者窃取的。本规范不使用此术语，除非将本文档中的概念与其他规范进行比较或映射。本规范将
+        [=身份提供者=]概念拆分为两个独立的概念：[=发行者=]
+        和[=持有者=]。
       </dd>
-      <dt><dfn class="export" data-lt="issuers|issuer's">issuer</dfn></dt>
+      <dt><dfn class="export" data-lt="issuers|issuer's">发行者</dfn></dt>
       <dd>
-        A role an [=entity=] can perform by asserting [=claims=] about one or
-        more [=subjects=], creating a [=verifiable credential=] from these
-        [=claims=], and transmitting the [=verifiable credential=] to a
-        [=holder=].
+        一个[=实体=]可以通过对一个或多个[=主体=]进行[=声明=]，
+        从这些[=声明=]中创建一个[=可验证凭证=]，
+        并将[=可验证凭证=]传输给
+        [=持有者=]来执行的角色。
       </dd>
-      <dt><dfn data-lt="named graphs">named graph</dfn></dt>
+      <dt><dfn data-lt="named graphs">命名图</dfn></dt>
       <dd>
-        A [=graph=] associated with specific properties, such as
-        `verifiableCredential`. These properties
-        result in separate [=graphs=] that contain all [=claims=] defined in the
-        corresponding JSON objects.
+        与特定属性相关联的[=图=]，例如
+        `verifiableCredential`。这些属性
+        导致独立的[=图=]，其中包含在相应的JSON对象中定义的所有[=声明=]。
       </dd>
-      <dt><dfn class="export" data-lt="presentation|presentations">presentation</dfn></dt>
+      <dt><dfn class="export" data-lt="presentation|presentations">呈现</dfn></dt>
       <dd>
-        Data derived from one or more [=verifiable credentials=], issued by one or
-        more [=issuers=], that is shared with a specific [=verifier=].
+        从一个或多个[=可验证凭证=]，由一个或多个[=发行者=]发行的数据派生出来，
+        并与特定的[=验证者=]共享。
       </dd>
-      <dt><dfn class="export" data-lt="credential repository|credential repositories|repositories">repository</dfn></dt>
+      <dt><dfn class="export" data-lt="credential repository|credential repositories|repositories">仓库</dfn></dt>
       <dd>
-        A program, such as a storage vault or personal [=verifiable credential=]
-        wallet, that stores and protects access to [=holders'=]
-        [=verifiable credentials=].
+        一个程序，如存储库或个人[=可验证凭证=]
+        钱包，存储并保护对[=持有者的=]
+        [=可验证凭证=]的访问。
       </dd>
-      <dt><dfn class="export">selective disclosure</dfn></dt>
+      <dt><dfn class="export">选择性披露</dfn></dt>
       <dd>
-        The ability of a [=holder=] to make fine-grained decisions about what
-        information to share.
+        [=持有者=]做出关于分享哪些信息的细粒度决策的能力。
       </dd>
-      <dt><dfn class="export" data-lt="subjects|subject's">subject</dfn></dt>
+      <dt><dfn class="export" data-lt="subjects|subject's">主体</dfn></dt>
       <dd>
-        A thing about which [=claims=] are made.
+        制作[=声明=]的对象。
       </dd>
-      <dt><dfn class="lint-ignore">user agent</dfn></dt>
+      <dt><dfn class="lint-ignore">用户代理</dfn></dt>
       <dd>
-        A program, such as a browser or other Web client, that mediates the
-        communication between [=holders=], [=issuers=], and [=verifiers=].
+        一个程序，如浏览器或其他Web客户端，它调解
+        [=持有者=]、[=发行者=]和[=验证者=]之间的
+        通信。
       </dd>
-      <dt><dfn class="export" data-lt="claim validation|validate">validation</dfn></dt>
+      <dt><dfn class="export" data-lt="claim validation|validate">验证</dfn></dt>
       <dd>
-        The assurance that a [=claim=] from a specific [=issuer=] satisfies the
-        business requirements of a [=verifier=] for a particular use. This
-        specification defines how verifiers verify [=verifiable credentials=] and
-        [=verifiable presentations=].<br />
-        It also specifies that [=verifiers=] validate claims in [=verifiable
-        credentials=] before relying on them. However, the means for such validation
-        vary widely and are outside the scope of this specification. It is expected
-        that [=verifiers=] will trust certain [=issuers=] for certain claims and
-        apply their own rules to determine which claims in which [=credentials=]
-        are suitable for use by their systems.
+        确保特定[=发行者=]的[=声明=]满足[=验证者=]对特定用途的业务要求的保证。本规范定义了验证者如何验证[=可验证凭证=]和
+        [=可验证呈现=]。<br />
+        它还规定[=验证者=]在依赖它们之前应验证[=可验证
+        凭证=]中的声明。然而，这种验证的方法各不相同，超出了本规范的范围。预计[=验证者=]将信任某些[=发行者=]对某些声明，并
+        应用他们自己的规则来确定哪些声明在哪些[=凭证=]
+        对他们的系统来说是适合使用的。
       </dd>
-      <dt><dfn class="export" data-lt="vc|vcs">verifiable credential</dfn></dt>
+      <dt><dfn class="export" data-lt="vc|vcs">可验证凭证</dfn></dt>
       <dd>
-        A verifiable credential is a tamper-evident credential that has authorship that
-        can be cryptographically verified. Verifiable credentials can be used to build
-        [=verifiable presentations=], which can also be cryptographically verified.
+        可验证凭证是一种防篡改的凭证，其作者身份可以通过密码验证。可验证凭证可以用来构建[=可验证呈现=]，这也可以通过密码验证。
       </dd>
-      <dt><dfn class="export" data-lt="verifiable data registries">verifiable data registry</dfn></dt>
+      <dt><dfn class="export" data-lt="verifiable data registries">可验证数据注册表</dfn></dt>
       <dd>
-        A role a system might perform by mediating the creation and [=verification=]
-        of identifiers, keys, and other relevant data, such as
-        [=verifiable credential=] schemas, revocation registries, issuer public keys,
-        and so on, which might be required to use [=verifiable credentials=]. Some
-        configurations might require correlatable identifiers for [=subjects=]. Some
-        registries, such as ones for UUIDs and public keys, might just act as namespaces
-        for identifiers.
+        一个系统可能通过调解识别符、密钥和其他相关数据（如
+        [=可验证凭证=]模式、撤销注册表、发行者公钥等）的创建和[=验证=]
+        来执行的角色，这些可能是使用[=可验证凭证=]所必需的。某些配置可能需要可关联的识别符对于[=主体=]。某些注册表，如UUID和公钥的注册表，可能只是识别符的命名空间。
       </dd>
-      <dt><dfn class="export" data-lt="vp|vps">verifiable presentation</dfn></dt>
+      <dt><dfn class="export" data-lt="vp|vps">可验证呈现</dfn></dt>
       <dd>
-        A verifiable presentation is a tamper-evident presentation encoded in such a way
-        that authorship of the data can be trusted after a process of cryptographic
-        verification. Certain types of verifiable presentations might contain data that
-        is synthesized from, but do not contain, the original [=verifiable
-        credentials=] (for example, zero-knowledge proofs).
+        可验证呈现是一种防篡改的呈现，以这样一种方式编码，以便在密码学验证过程之后可以信任数据的作者身份。某些类型的可验证呈现可能包含从[=可验证
+        凭证=]（例如，零知识证明）合成的数据，但不包含原始[=可验证
+        凭证=]。
       </dd>
-      <dt><dfn class="export" data-lt="verify|verified|verifying|verifiable|verifiability">verification</dfn></dt>
+      <dt><dfn class="export" data-lt="verify|verified|verifying|verifiable|verifiability">验证</dfn></dt>
       <dd>
-        The evaluation of whether a [=verifiable credential=] or [=verifiable
-        presentation=] is an authentic and current statement of the issuer or
-        presenter, respectively. This includes checking that: the credential (or
-        presentation) conforms to the specification; the proof method is satisfied; and,
-        if present, the status check succeeds. Verification of a credential does not
-        imply evaluation of the truth of [=claims=] encoded in the credential.
+        评估一个[=可验证凭证=]或[=可验证
+        呈现=]是否是发行者或
+        呈现者的真实和当前陈述。这包括检查：凭证（或
+        呈现）是否符合规范；证明方法是否满足；以及（如果存在）状态检查是否成功。验证凭证并不意味着评估凭证中编码的[=声明=]的真实性。
       </dd>
       <dt><dfn class="export"
-          data-lt="verifier|verifiers|verifier's|credential verifiers|credential verifier's">verifier</dfn></dt>
+          data-lt="verifier|verifiers|verifier's|credential verifiers|credential verifier's">验证者</dfn></dt>
       <dd>
-        A role an [=entity=] performs by receiving one or more
-        [=verifiable credentials=], optionally inside a
-        [=verifiable presentation=] for processing. Other specifications might refer
-        to this concept as a <dfn data-lt="relying parties">relying party</dfn>.
+        一个[=实体=]通过接收一个或多个
+        [=可验证凭证=]，可选择地在
+        [=可验证呈现=]中进行处理来执行的角色。其他规范可能将这个概念称为<dfn data-lt="relying parties">依赖方</dfn>。
       </dd>
-      <dt><dfn data-lt="verification material">verification material</dfn></dt>
+      <dt><dfn data-lt="verification material">验证材料</dfn></dt>
       <dd>
-        Information that could be a cryptographic public key or any other data used to
-        verify a proof.
+        可能是一个密码公钥或用于验证证据的任何其他数据。
       </dd>
       <dt><dfn data-lt="URL|URLs">URL</dfn></dt>
       <dd>
-        A Uniform Resource Locator, as defined by [[URL]]. URLs can be dereferenced such
-        that they result in a resource, such as a document. The rules for dereferencing,
-        or fetching, a URL are defined by the URL [=url/scheme=]. This specification
-        does not use the term URI or IRI because those terms have been deemed to be
-        confusing to Web developers.
+        统一资源定位符，如[[URL]]所定义。URL可以被解引用，
+        从而导致一个资源，如文档。解引用或获取URL的规则由URL [=url/scheme=]定义。本规范不使用术语URI或IRI，因为这些术语被认为对Web开发者来说很混乱。
       </dd>
     </dl>
   </section>
 
   <section class="informative">
-    <h2>Core Data Model</h2>
+    <h2>核心数据模型</h2>
 
     <p>
-      The following sections outline core data model concepts, such as [=claims=],
-      [=credentials=], [=presentations=], [=verifiable credentials=], and
-      [=verifiable presentations=], which form the foundation of this
-      specification.
+      以下部分概述了核心数据模型概念，如 [=claims=]、[=credentials=]、[=presentations=]、[=verifiable credentials=] 和 [=verifiable
+      presentations=]，这些概念构成了本规范的基础。
     </p>
 
-    <p class="note" title="The difference between a credential and a verifiable credential">
-      Readers might note that some concepts described in this section, such as
-      [=credential=] and [=presentation=], do not have media types defined by
-      this specification. However, the concepts of a [=verifiable credential=] or a
-      [=verifiable presentation=] are defined as [=conforming documents=] and do
-      have associated media types. The concrete difference between these concepts
-      &mdash; between [=credential=] and [=presentation=] vs. [=verifiable
-      credential=] and [=verifiable presentation=] &mdash; is simply the fact
-      that the "verifiable" objects are secured in a way that is cryptographically
-      verifiable, and the others are not. For more details, see Section
-      <a href="#securing-mechanisms"></a>.
+    <p class="note" title="凭证和可验证凭证之间的区别">
+      读者可能会注意到，本节中描述的一些概念，如 [=credential=] 和 [=presentation=]，在本规范中没有定义媒体类型。然而，[=verifiable credential=] 或 [=verifiable
+      presentation=] 这些概念被定义为 [=conforming documents=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=credential=] 和
+      [=presentation=] 与 [=verifiable credential=] 和 [=verifiable presentation=] 之间的区别 &mdash; 仅仅在于 "可验证"
+      对象以加密可验证的方式进行保护，而其他对象则没有。有关详细信息，请参见<a href="#securing-mechanisms">安全机制部分</a>。
     </p>
 
     <section class="informative">
-      <h3>Claims</h3>
+      <h3>声明</h3>
 
       <p>
-        A [=claim=] is a statement about a [=subject=]. A [=subject=] is a
-        thing about which [=claims=] can be made. [=Claims=] are expressed using
-        <strong><em>subject</em></strong>-<dfn data-lt="property|properties">
-          property</dfn>-<dfn class="lint-ignore">value</dfn> relationships.
+        一个[=claim=]是关于一个[=subject=]的陈述。一个[=subject=]是可以对其进行[=claims=]的事物。[=Claims=]使用<strong><em>主体</em></strong>-<dfn
+          data-lt="property|properties">
+          属性</dfn>-<dfn class="lint-ignore">值</dfn>关系来表示。
       </p>
 
       <figure id="basic-structure">
-        <img style="margin: auto; display: block; width: 50%;" src="diagrams/claim.svg" alt="subject has a property which
-            has a value">
+        <img style="margin: auto; display: block; width: 50%;" src="diagrams/claim.svg" alt="主体具有一个属性，该属性具有一个值">
         <figcaption style="text-align: center;">
-          The basic structure of a claim.
+          声明的基本结构。
         </figcaption>
       </figure>
 
       <p>
-        The data model for [=claims=], illustrated in <a href="#basic-structure"></a>
-        above, is powerful and can be used to express a large variety of statements. For
-        example, whether someone graduated from a particular university can be expressed
-        as shown in <a href="#basic-example"></a> below.
+        如上图<a href="#basic-structure"></a>所示，[=claims=]的数据模型非常强大，可以用来表示各种各样的陈述。例如，某人是否从某个特定大学毕业，可以如下图<a
+          href="#basic-example"></a>所示表示。
       </p>
 
       <figure id="basic-example">
-        <img style="margin: auto; display: block; width: 60%;" src="diagrams/claim-example.svg" alt="Pat has an alumniOf
-            property whose value is Example University">
+        <img style="margin: auto; display: block; width: 60%;" src="diagrams/claim-example.svg"
+          alt="Pat具有一个alumniOf属性，其值为Example University">
         <figcaption style="text-align: center;">
-          A basic claim expressing that Pat is an alumni of "Example University".
+          一个基本的声明，表示Pat是“Example University”的校友。
         </figcaption>
       </figure>
 
       <p>
-        Individual [=claims=] can be merged together to express a [=graph=] of
-        information about a [=subject=]. The example shown in
-        <a href="#multiple-claims"></a> below extends the previous [=claim=] by
-        adding the [=claims=] that Pat knows Sam and that Sam is employed as a
-        professor.
+        单个[=claims=]可以合并在一起，以表达关于[=subject=]的信息[=graph=]。下图<a
+          href="#multiple-claims"></a>中的示例通过添加Pat认识Sam的[=claims=]以及Sam被雇佣为教授的[=claims=]来扩展之前的[=claim=]。
       </p>
 
       <figure id="multiple-claims">
-        <img style="margin: auto; display: block; width: 75%;" src="diagrams/claim-extended.svg" alt="extends previous
-            diagram with another property called knows whose value is
-            Sam, and Sam has a property jobTitle whose value is Professor">
+        <img style="margin: auto; display: block; width: 75%;" src="diagrams/claim-extended.svg"
+          alt="扩展先前的图表，添加一个名为knows的属性，其值为Sam，Sam具有一个名为jobTitle的属性，其值为Professor">
         <figcaption style="text-align: center;">
-          Multiple claims can be combined to express a graph of information.
+          多个声明可以组合在一起，以表达信息图。
         </figcaption>
       </figure>
 
       <p>
-        To this point, the concepts of a [=claim=] and a [=graph=] of information
-        are introduced. To be able to trust [=claims=], more information is
-        expected to be added to the graph.
+        到目前为止，已经介绍了[=claim=]和信息[=graph=]的概念。为了能够信任[=claims=]，预计将向图中添加更多信息。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Credentials</h3>
+      <h3>凭证</h3>
 
       <p>
-        A [=credential=] is a set of one or more [=claims=] made by the same
-        [=entity=]. [=Credentials=] might also include an identifier and metadata
-        to describe properties of the [=credential=], such as the
-        [=issuer=], the validity date and time period, a representative image,
-        [=verification material=], the revocation
-        mechanism, and so on. The metadata might be signed by the [=issuer=]. A
-        [=verifiable credential=] is a set of tamper-evident [=claims=] and
-        metadata that cryptographically prove who issued it.
+        一个[=credential=]是由相同的[=entity=]做出的一个或多个[=claims=]的集合。[=Credentials=]还可能包括一个标识符和元数据，用于描述[=credential=]的属性，如[=issuer=]、有效日期和时间段、代表性图像、[=verification
+        material=]、吊销机制等。元数据可能由[=issuer=]签名。一个[=verifiable credential=]是一个防篡改的[=claims=]和元数据的集合，可以加密地证明谁发行了它。
       </p>
 
       <figure id="basic-vc">
-        <img style="margin: auto; display: block; width: 50%;" src="diagrams/vc.svg" alt="a Verifiable
-               Credential contains Credential Metadata, Claim(s), and
-               Proof(s)">
+        <img style="margin: auto; display: block; width: 50%;" src="diagrams/vc.svg" alt="一个可验证的凭证包含凭证元数据、声明和证明">
         <figcaption style="text-align: center;">
-          Basic components of a verifiable credential.
+          可验证凭证的基本组件。
         </figcaption>
       </figure>
 
       <p>
-        Examples of [=verifiable credentials=] include digital employee
-        identification cards, digital birth certificates, and digital educational
-        certificates.
+        [=verifiable credentials=]的示例包括数字员工身份证、数字出生证明和数字教育证书。
       </p>
 
       <p class="note">
-        [=Credential=] identifiers are often used to identify specific instances
-        of a [=credential=]. These identifiers can also be used for correlation. A
-        [=holder=] wanting to minimize correlation is advised to use a selective
-        disclosure scheme that does not reveal the [=credential=] identifier.
+        [=Credential=]标识符通常用于识别特定实例的[=credential=]。这些标识符也可以用于关联。希望最小化关联的[=holder=]建议使用一种选择性披露方案，该方案不会泄露[=credential=]标识符。
       </p>
 
       <p>
-        <a href="#basic-vc"></a> above shows the basic components of a
-        [=verifiable credential=], but abstracts the details about how [=claims=]
-        are organized into information [=graphs=], which are then organized into
-        [=verifiable credentials=].
+        <a href="#basic-vc"></a>上面显示了一个[=verifiable
+        credential=]的基本组件，但抽象了关于如何将[=claims=]组织成信息[=graphs=]的细节，然后将其组织成[=verifiable credentials=]。
       </p>
       <p>
-        <a href="#info-graph-vc"></a> below shows a more complete depiction of a
-        [=verifiable credential=] using an [=embedded proof=] based on [[?VC-DATA-INTEGRITY]].
-        It is composed of at least two information [=graphs=].
-        The first of these information [=graphs=], the [=verifiable credential graph=] (which is the [=default graph=]),
-        expresses the [=verifiable credential=] itself, through [=credential=] metadata and other [=claims=].
-        The second information [=graph=], referred to by the `proof` property, is the <dfn>proof graph</dfn>
-        of the [=verifiable credential=], and is a separate [=named graph=].
-        The [=proof graph=] expresses the digital proof, which, in this case, is a digital
-        signature.
+        <a href="#info-graph-vc"></a>下面显示了一个使用基于[[?VC-DATA-INTEGRITY]]的[=embedded proof=]的更完整的[=verifiable
+        credential=]描述。它由至少两个信息[=graphs=]组成。
+        这些信息[=graphs=]中的第一个，即[=verifiable credential graph=]（它是[=default
+        graph=]），通过[=credential=]元数据和其他[=claims=]来表达[=verifiable credential=]本身。
+        第二个信息[=graph=]，由`proof`属性引用，是[=verifiable credential=]的<dfn>proof graph</dfn>，是一个单独的[=named graph=]。
+        [=proof graph=]表达了数字证明，这种情况下是数字签名。
       </p>
 
       <figure id="info-graph-vc">
@@ -1041,16 +759,13 @@ Example University.  The verifiable credential proof graph has an object
 parenthetical remark '(the default graph)', the verifiable credential proof
 graph is annotated with the parenthetical remark '(a named graph)'.">
         <figcaption style="text-align: center;">
-          Information graphs associated with a basic verifiable credential, using an [=embedded proof=]
-          based on [[[VC-DATA-INTEGRITY]]] [[?VC-DATA-INTEGRITY]].
+          使用基于[[[VC-DATA-INTEGRITY]]]的[=embedded proof=]的基本可验证凭证的相关信息图。
         </figcaption>
       </figure>
 
       <p>
-        <a href="#info-graph-vc-jwt"></a> below shows the same [=verifiable credential=]
-        as <a href="#info-graph-vc"></a>, but using JOSE based on [[?VC-JOSE-COSE]].
-        The payload contains a single information graph, that being the [=verifiable credential graph=]
-        containing [=credential=] metadata and other [=claims=].
+        <a href="#info-graph-vc-jwt"></a>下面显示了与<a href="#info-graph-vc"></a>相同的可验证凭证，
+        但使用基于[[?VC-JOSE-COSE]]的JOSE。负载包含一个信息图，即可验证凭证图，其中包含凭证元数据和其他声明。
       </p>
 
       <figure id="info-graph-vc-jwt">
@@ -1073,87 +788,74 @@ arrow, to a separate rectangle, containing a single text field:
 'DtEhU3ljbEg8L38VWAfUA...'.
           ">
         <figcaption style="text-align: center;">
-          Information graphs associated with a basic verifiable credential, using an [=enveloping proof=]
-          based on [[[VC-JOSE-COSE]]] [[?VC-JOSE-COSE]].
+          使用基于[[[VC-JOSE-COSE]]] [[?VC-JOSE-COSE]]的[=enveloping proof=]的基本可验证凭证相关的信息图。
         </figcaption>
       </figure>
 
       <p class="note">
-        It is possible to have a [=credential=], such as a marriage certificate,
-        containing multiple [=claims=] about different [=subjects=] that are not
-        required to be related.
+        可以有一个[=credential=]，例如婚姻证书，其中包含关于不同[=subjects=]的多个[=claims=]，这些主题不需要相关。
       </p>
       <p class="note">
-        It is possible to have a [=credential=] that does not contain any
-        [=claims=] about the [=entity=] to which the [=credential=] was issued.
-        For example, a [=credential=] that only contains [=claims=] about a
-        specific dog, but is issued to its owner.
+        可以有一个[=credential=]，其中不包含关于发行[=credential=]的[=entity=]的任何[=claims=]。例如，一个只包含关于特定狗的[=claims=]，但发给其所有者的[=credential=]。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Presentations</h3>
+      <h3>演示</h3>
 
       <p>
-        Enhancing privacy is a key design feature of this specification. Therefore, it
-        is important for [=entities=] using this technology to be able to express
-        only the portions of their persona that are appropriate for a given situation.
-        The expression of a subset of one's persona is called a
-        [=verifiable presentation=]. Examples of different personas include a
-        person's professional persona, their online gaming persona, their
-        family persona, or an incognito persona.
+        增强隐私是本规范的一个关键设计特性。因此，对于使用这项技术的[=实体=]来说，能够仅表达适用于特定情境的个人形象的部分非常重要。一个人形象的子集被称为[=可验证的演示=]。不同形象的例子包括一个人的专业形象、他们的在线游戏形象、他们的家庭形象或匿名形象。
       </p>
 
       <p>
-        A [=verifiable presentation=] can express data from multiple
-        [=verifiable credentials=] and contain arbitrary additional data encoded as
-        JSON-LD. They are used by a [=holder=] to present [=claims=] to a
-        [=verifier=]. It is also possible to present [=verifiable credentials=]
-        directly.
+        [=可验证的演示=]可以表达来自多个[=可验证的凭证=]的数据，并包含编码为JSON-LD的任意附加数据。它们由[=持有人=]用于向[=验证者=]展示[=声明=]。也可以直接展示[=可验证的凭证=]。
       </p>
 
       <p>
-        The data in a [=presentation=] is often about the same [=subject=], but
-        might have been issued by multiple [=issuers=]. The aggregation of this
-        information typically expresses an aspect of a person, organization, or
-        [=entity=].
+        [=演示=]中的数据通常与同一个[=主题=]有关，但可能是由多个[=发行者=]发布的。这些信息的汇总通常表达了一个人、组织或[=实体=]的某个方面。
       </p>
 
       <figure id="basic-vp">
-        <img style="margin: auto; display: block; width: 50%;" src="diagrams/presentation.svg" alt="A Verifiable
-            Presentation contains Presentation Metadata, Verifiable
-            Credential(s), and Proof(s)">
+        <img style="margin: auto; display: block; width: 50%;" src="diagrams/presentation.svg"
+          alt="可验证的演示包含演示元数据、可验证的凭证和证明">
         <figcaption style="text-align: center;">
-          Basic components of a verifiable presentation.
+          可验证演示的基本组件。
         </figcaption>
       </figure>
 
       <p>
-        <a href="#basic-vp"></a> above shows the components of a
-        [=verifiable presentation=], but abstracts the details about how
-        [=verifiable credentials=] are organized into information [=graphs=],
-        which are then organized into [=verifiable presentations=].
+        <a href="#basic-vp"></a>上面显示了[=可验证的演示=]的组件，但抽象了关于如何将[=可验证的凭证=]组织成信息[=图=]的细节，然后将这些信息[=图=]组织成[=可验证的演示=]。
       </p>
       <p id="info-graph-vp-explanation">
-        <a href="#info-graph-vp"></a> below shows a more complete depiction of a
-        [=verifiable presentation=] using an [=embedded proof=]
-        based on [[?VC-DATA-INTEGRITY]].
-        It is composed of at least four information [=graphs=].
-        The first of these information [=graphs=], the [=verifiable presentation graph=]
-        (which is the [=default graph=]), expresses the [=verifiable presentation=]
-        itself through [=presentation=] metadata.
-        The [=verifiable presentation=] refers, via the `verifiableCredential` property,
-        to a [=verifiable credential=].
-        This [=credential=] is a self-contained [=verifiable credential graph=] containing [=credential=] metadata and
-        other [=claims=].
-        This [=credential=] refers to a [=verifiable credential=] [=proof graph=] via a `proof` property,
-        expressing the proof (usually a digital signature) of the [=credential=].
-        This [=verifiable credential graph=], and its linked [=proof graph=], constitute
-        the second and third information [=graphs=], respectively, and each is a separate [=named graph=].
-        The [=presentation=] also refers, via the `proof` property, to
-        the [=presentation=]'s [=proof graph=], which is the fourth information [=graph=] (another [=named graph=]).
-        This [=presentation=] [=proof graph=] represents the digital signature of the [=verifiable presentation graph=],
-        the [=verifiable credential graph=], and the [=proof graph=] linked from the [=verifiable credential graph=].
+        <a
+          href="#info-graph-vp"></a>下面显示了一个使用基于[[?VC-DATA-INTEGRITY]]的[=嵌入式证明=]的[=可验证的演示=]的更完整描述。它由至少四个信息[=图=]组成。其中第一个信息[=图=]，即[=可验证的演示图=]（它是[=默认图=]），通过[=演示=]元数据表达[=可验证的演示=]本身。[=可验证的演示=]通过`verifiableCredential`属性引用一个[=可验证的凭证=]。这个[=凭证=]是一个包含[=凭证=]元数据和其他[=声明=]的独立[=可验证的凭证图=]。这个[=凭证=]通过`proof`属性引用一个[=可验证的凭证=]的[=证明图=]，表达了[=凭证=]的证明（通常是数字签名）。这个[=可验证的凭证图=]及其链接的[=证明图=]分别构成第二和第三个信息[=图=]，每个都是一个单独的[=命名图=]。[=演示=]还通过`proof`属性引用[=演示=]的[=证明图=]，这是第四个信息[=图=]（另一个[=命名图=]）。这个[=演示=]的[=证明图=]表示[=可验证的演示图=]、[=可验证的凭证图=]以及从[=可验证的凭证图=]链接的[=证明图=]的数字签名。
+      </p>
+      <p>
+        为了创建一个[=可验证的演示=]，[=持有人=]需要将一个或多个[=可验证的凭证=]组合在一起，并在需要时添加其他相关信息。然后，[=持有人=]需要对整个[=可验证的演示=]进行签名，以确保接收方可以验证其来源和完整性。这样，[=验证者=]就可以确信这些[=声明=]是真实的，并且是由相应的[=发行者=]颁发的。
+      </p>
+
+      <p>
+        为了验证一个[=可验证的演示=]，[=验证者=]需要执行以下步骤：
+      </p>
+
+      <ol>
+        <li>检查[=可验证的演示=]的数字签名以确保其来源和完整性。</li>
+        <li>检查每个包含在[=可验证的演示=]中的[=可验证的凭证=]的数字签名。</li>
+        <li>确保每个[=可验证的凭证=]都是由可信的[=发行者=]颁发的。</li>
+        <li>确保每个[=可验证的凭证=]都没有过期或被撤销。</li>
+        <li>根据需要，确保[=可验证的演示=]和[=可验证的凭证=]满足特定的业务规则和策略。</li>
+      </ol>
+
+      <p>
+        一旦[=验证者=]完成了这些步骤，他们就可以信任[=可验证的演示=]中的[=声明=]，并据此做出决策。例如，根据所提供的年龄证明，他们可以决定是否允许用户访问年龄受限的内容。
+      </p>
+
+      <p>
+        请注意，[=可验证的演示=]和[=可验证的凭证=]的验证过程可能会涉及与多个[=发行者=]和其他参与者的交互，以检查证书状态、获取公钥等。为了保护用户隐私，这些交互应尽可能地减少，并遵循最小披露原则，即仅披露验证所需的最少信息。
+      </p>
+
+      <p>
+        本规范描述了创建和验证[=可验证的演示=]和[=可验证的凭证=]的通用方法和原则。实际应用中可能会有多种实现方式和技术，以满足不同场景和需求。这些实现应遵循本规范的核心原则，以确保互操作性和安全性。
       </p>
 
       <figure id="info-graph-vp">
@@ -1173,22 +875,15 @@ Presenter Public Key 11'; 'created' with value '2018-01-15T12:43:56Z';
 'zp2KaZ...8Fj3K='. This graph is annotated with the parenthetical remark '(a
 named graph)'">
         <figcaption style="text-align: center;">
-          Information [=graphs=] associated with a basic [=verifiable presentation=] that is using an [=embedded proof=]
-          based on [[[VC-DATA-INTEGRITY]]] [[?VC-DATA-INTEGRITY]].
+          与基本的[=可验证呈现=]相关联的信息[=图=]，该呈现使用基于[[[VC-DATA-INTEGRITY]]] [[?VC-DATA-INTEGRITY]]的[=嵌入式证明=]。
         </figcaption>
       </figure>
 
       <p>
-        <a href="#info-graph-vp-jwt"></a> below shows the same [=verifiable
-        presentation=] as <a href="#info-graph-vp"></a>, but using an [=enveloping
-        proof=] based on [[?VC-JOSE-COSE]]. The payload contains only two information
-        graphs: the [=verifiable presentation graph=] expressing the [=verifiable
-        presentation=] itself through presentation metadata; and the corresponding
-        [=verifiable credential graph=], referred to by the `verifiableCredential`
-        property. The [=verifiable credential graph=] contains a single
-        <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a>
-        instance referring, via a `data:` URL [[RFC2397]], to the verifiable credential
-        secured via an [=enveloping proof=] shown on <a href="#info-graph-vc-jwt"></a>.
+        <a href="#info-graph-vp-jwt"></a> 下面显示的是与 <a href="#info-graph-vp"></a> 相同的 [=可验证呈现=]，但使用基于 [[?VC-JOSE-COSE]] 的
+        [=封装证明=]。有效负载仅包含两个信息图：通过呈现元数据表达 [=可验证呈现=] 本身的 [=可验证呈现图=]；以及相应的 [=可验证凭证图=]，由 `verifiableCredential`
+        属性引用。[=可验证凭证图=] 包含单个 <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a> 实例，通过
+        `data:` URL [[RFC2397]] 引用，指向通过 <a href="#info-graph-vc-jwt"></a> 上显示的 [=封装证明=] 保护的可验证凭证。
       </p>
 
       <figure id="info-graph-vp-jwt">
@@ -1214,92 +909,77 @@ arrow, to a separate rectangle, containing a single text field:
 'XaOOh4ljklxH7L99RTVSfOl...'.
           ">
         <figcaption style="text-align: center;">
-          Information graphs associated with a basic [=verifiable presentation=] that is using an [=enveloping proof=]
-          based on JOSE [[?VC-JOSE-COSE]]. The `data:` URL refers to
-          the [=verifiable credential=] shown on <a href="#info-graph-vc-jwt"></a>.
+          与基本[=可验证呈现=]相关的信息图，该呈现使用基于JOSE [[?VC-JOSE-COSE]]的[=封装证明=]。
+          `data:` URL指向<a href="#info-graph-vc-jwt"></a>上显示的[=可验证凭证=]。
         </figcaption>
       </figure>
 
 
       <p class="note">
-        It is possible to have a [=presentation=], such as a collection of university credentials, which
-        draws on multiple [=credentials=] about different [=subjects=] that are
-        often, but not required to be, related.
-        This is achieved by using the `verifiableCredential` property to
-        refer to multiple [=verifiable credentials=].
-        See Appendix <a href="#additional-diagrams-for-verifiable-presentations"></a> for more details.
+        可以有一个[=呈现=]，例如一组大学凭证，它们依赖于关于不同[=主题=]的多个[=凭证=]，这些主题通常是相关的，但不是必须的。
+        这是通过使用`verifiableCredential`属性来引用多个[=可验证凭证=]来实现的。
+        有关更多详细信息，请参见附录<a href="#additional-diagrams-for-verifiable-presentations"></a>。
       </p>
 
     </section>
 
     <section class="informative">
-      <h3>Concrete Lifecycle Example</h3>
+      <h3>具体生命周期示例</h3>
 
       <p>
-        The previous sections introduced the concepts of [=claims=],
-        [=verifiable credentials=], and [=verifiable presentations=] using
-        graphical depictions. This section provides a concrete set of simple but
-        complete lifecycle examples of the data model expressed in one of the concrete
-        syntaxes supported by this specification. The lifecycle of [=credentials=]
-        and [=presentations=] in the
-        <a href="#ecosystem-overview">Verifiable Credentials Ecosystem</a> often
-        take a common path:
+        前面的章节使用图形描述介绍了[=claims=]、[=verifiable credentials=]和[=verifiable
+        presentations=]的概念。本节提供了一个具体的简单但完整的生命周期示例，用本规范支持的一种具体语法表示数据模型。在
+        <a href="#ecosystem-overview">可验证凭证生态系统</a>中，[=credentials=]和[=presentations=]的生命周期通常遵循以下路径：
       </p>
 
       <ol>
         <li>
-          Issuance of one or more [=verifiable credentials=].
+          发行一个或多个[=verifiable credentials=]。
         </li>
         <li>
-          Storage of [=verifiable credentials=] in a [=credential repository=]
-          (such as a digital wallet).
+          将[=verifiable credentials=]存储在[=credential repository=]（如数字钱包）中。
         </li>
         <li>
-          Composition of [=verifiable credentials=] into a
-          [=verifiable presentation=] for [=verifiers=].
+          将[=verifiable credentials=]组合成一个[=verifiable presentation=]，供[=verifiers=]使用。
         </li>
         <li>
-          [=Verification=] of the [=verifiable presentation=] by the
-          [=verifier=].
+          [=verifier=]对[=verifiable presentation=]进行[=Verification=]。
         </li>
         <li>
-          [=Validation=] by the [=verifier=] of relevant [=claims=] contained in
-          the [=verifiable presentation=].
+          [=verifier=]对包含在[=verifiable presentation=]中的相关[=claims=]进行[=Validation=]。
         </li>
       </ol>
 
       <p>
-        To illustrate this lifecycle, we will use the example of redeeming an alumni
-        discount from a university. In the example below, Pat receives an alumni
-        [=verifiable credential=] from a university, and Pat stores the
-        [=verifiable credential=] in a digital wallet.
+        为了说明这个生命周期，我们将使用从大学兑换校友折扣的例子。在下面的例子中，Pat从一所大学获得了一份校友[=verifiable credential=]，并将这个[=verifiable
+        credential=]存储在一个数字钱包中。
       </p>
 
-      <pre class="example nohighlight" title="A simple example of the contents of a verifiable credential">
+      <pre class="example nohighlight" title="一个可验证凭证内容的简单示例">
 {
-  <span class='comment'>// set the context, which establishes the special terms we will be using
-  // such as 'issuer' and 'alumniOf'.</span>
+  <span class='comment'>// 设置上下文，建立我们将使用的特殊术语
+  // 如'issuer'和'alumniOf'。</span>
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://www.w3.org/ns/credentials/examples/v2"
   ],
-  <span class='comment'>// specify the identifier for the credential</span>
+  <span class='comment'>// 指定凭证的标识符</span>
   "id": "http://university.example/credentials/1872",
-  <span class='comment'>// the credential types, which declare what data to expect in the credential</span>
+  <span class='comment'>// 凭证类型，声明凭证中期望的数据</span>
   "type": ["VerifiableCredential", "ExampleAlumniCredential"],
-  <span class='comment'>// the entity that issued the credential</span>
+  <span class='comment'>// 发行凭证的实体</span>
   "issuer": "https://university.example/issuers/565049",
-  <span class='comment'>// when the credential was issued</span>
+  <span class='comment'>// 凭证发行的时间</span>
   "validFrom": "2010-01-01T19:23:24Z",
-  <span class='comment'>// claims about the subjects of the credential</span>
+  <span class='comment'>// 关于凭证主题的声明</span>
   "credentialSubject": {
-    <span class='comment'>// identifier for the only subject of the credential</span>
+    <span class='comment'>// 凭证唯一主题的标识符</span>
     "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-    <span class='comment'>// assertion about the only subject of the credential</span>
+    <span class='comment'>// 关于凭证唯一主题的断言</span>
     "alumniOf": {
-      <span class='comment'>// identifier for the university</span>
+      <span class='comment'>// 大学的标识符</span>
       "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
-      <span class='comment'>// name of the university</span>
+      <span class='comment'>// 大学的名称</span>
       "name": "Example University"
     }
   }
@@ -1307,40 +987,27 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        Pat then attempts to redeem the alumni discount. The [=verifier=], a ticket
-        sales system, states that alumni of "Example University" receive a discount
-        on season tickets to sporting events. Using a mobile device, Pat starts the
-        process of purchasing a season ticket. A step in this process requests an alumni
-        [=verifiable credential=], and this request is routed to Pat's digital wallet.
-        The digital wallet asks Pat if they would like to provide a previously issued
-        [=verifiable credential=]. Pat selects the alumni
-        [=verifiable credential=], which is then composed into a
-        [=verifiable presentation=]. The [=verifiable presentation=] is sent to
-        the [=verifier=] and [=verified=].
+        然后，Pat尝试兑换校友折扣。[=verifier=]，一个票务销售系统，声明“Example
+        University”的校友可以获得体育赛事季票的折扣。使用移动设备，Pat开始购买季票的过程。在这个过程中的一个步骤请求一个校友[=verifiable
+        credential=]，这个请求被路由到Pat的数字钱包。数字钱包询问Pat是否愿意提供以前发行的[=verifiable credential=]。Pat选择了校友[=verifiable
+        credential=]，然后将其组合成一个[=verifiable presentation=]。[=verifiable presentation=]被发送到[=verifier=]并进行[=verified=]。
       </p>
       <p>
-        Once [=verified=] as authentic and current, the seller of the season ticket then
-        validates that the [=issuer=] of the [=verifiable credential=] is recognized for
-        the claim of alumni status &mdash; it is, as it was issued by Example
-        University &mdash; and that today's date lies within the validity period defined
-        by the values of the `validFrom` and `validUntil` properties. Since the [=holder=] is
-        expected to be the [=subject=] of the [=verifiable credential=], the
-        [=verifier=] also confirms that the `id` for the alumni claim matches the `id` of
-        the creator of the [=verifiable presentation=].
+        一旦被[=verified=]为真实和当前的，季票的卖家然后验证[=verifiable credential=]的[=issuer=]是否被认可为校友状态的声明——它是，因为它是由Example
+        University发行的——并且今天的日期在由`validFrom`和`validUntil`属性定义的有效期内。由于期望[=holder=]是[=verifiable
+        credential=]的[=subject=]，[=verifier=]也确认校友声明的`id`与[=verifiable presentation=]的创建者的`id`匹配。
       </p>
       <p>
-        Having [=verified=] the credential and the presentation, and validated the
-        relevant claims, the ticket seller safely enables the alumni discount for Pat,
-        confident that Pat is legitimately entitled to it.
+        在[=verified=]了凭证和演示，并验证了相关的声明后，票务销售商安全地为Pat启用了校友折扣，确信Pat有合法的权利享受这个折扣。
       </p>
-      <pre class="example nohighlight" title="A simple example of a verifiable presentation">
+      <pre class="example nohighlight" title="一个可验证演示的简单示例">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
     "https://www.w3.org/ns/credentials/examples/v2"
   ],
   "type": "VerifiablePresentation",
-  <span class='comment'>// the verifiable credential issued in the previous example</span>
+  <span class='comment'>// 在上一个示例中发行的可验证凭证</span>
   "verifiableCredential": [{
     "@context": [
       "https://www.w3.org/ns/credentials/v2",
@@ -1362,47 +1029,33 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        The examples above are unsecured. Implementers that are interested in
-        understanding more about securing [=verifiable credentials=] can see the
-        specifications [[[VC-JOSE-COSE]]]
-        [[VC-JOSE-COSE]] and [[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]]
-        and the "Proofs" section of the [[[VC-SPECS]]]
-        [[VC-SPECS]].
+        上面的例子是未加密的。对于有兴趣了解更多关于保护[=verifiable credentials=]的实现者，可以参见规范[[[VC-JOSE-COSE]]]
+        [[VC-JOSE-COSE]]和[[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]]
+        以及[[[VC-SPECS]]]
+        [[VC-SPECS]]的"Proofs"部分。
       </p>
     </section>
   </section>
 
   <section class="normative">
-    <h2>Basic Concepts</h2>
+    <h2>基本概念</h2>
 
     <p>
-      This section introduces some basic concepts for the specification, in
-      preparation for Section <a href="#advanced-concepts"></a> later in the
-      document.
+      本节介绍了规范的一些基本概念，为文档后面的<a href="#advanced-concepts"></a>部分做准备。
     </p>
 
     <section class="informative">
-      <h3>Getting Started</h3>
+      <h3>入门</h3>
 
       <p>
-        This specification is designed to ease the prototyping of new types of
-        [=verifiable credentials=]. Developers can copy the
-        template below and paste it into common [=verifiable credential=]
-        tooling to start issuing, holding, and verifying prototype credentials.
+        本规范旨在简化新类型的[=可验证凭证=]原型的设计。开发者可以复制下面的模板，并将其粘贴到常见的[=可验证凭证=]工具中，以开始发布、持有和验证原型凭证。
       </p>
 
       <p>
-        It is expected that a developer will change `MyPrototypeCredential` below to
-        the type of credential they would like to create. Since
-        [=verifiable credentials=] talk about subjects, each property-value pair in
-        the `credentialSubject` object expresses a particular attribute of the
-        credential subject. Once a developer has added a number of these property-value
-        combinations, the modified object can be sent to [=verifiable credential=]
-        issuer software and a [=verifiable credential=] will be created for the
-        developer. From a prototyping standpoint, that is all a developer needs to do.
+        预计开发者会将下面的`MyPrototypeCredential`更改为他们想要创建的凭证类型。由于[=可验证凭证=]涉及主题，因此`credentialSubject`对象中的每个属性值对表示凭证主题的特定属性。一旦开发者添加了若干这样的属性值组合，修改后的对象可以发送给[=可验证凭证=]发行者软件，为开发者创建一个[=可验证凭证=]。从原型设计的角度来看，这就是开发者需要做的所有事情。
       </p>
 
-      <pre class="example nohighlight" title="A template for creating prototype verifiable credentials">
+      <pre class="example nohighlight" title="创建原型可验证凭证的模板">
 {
   "@context": ["https://www.w3.org/ns/credentials/v2"],
   "type": ["VerifiableCredential", "MyPrototypeCredential"],
@@ -1413,68 +1066,43 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        Once a developer has prototyped their credential to a point where they believe
-        all of the credential properties are stable, it is advised that they generate
-        vocabulary and context files for their application and publish them at stable URLs
-        so that other developers can use the same vocabulary and context to achieve
-        interoperability. This process is covered in Section
-        <a href="#extensibility"></a>. Alternatively, developers can reuse existing vocabulary
-        and context files that happen to fit their use case. They can explore the
-        [[[VC-SPECS]]] [[VC-SPECS]] for reusable resources.
+        一旦开发者将他们的凭证原型设计到他们认为所有凭证属性都稳定的程度，建议他们为他们的应用程序生成词汇表和上下文文件，并将它们发布在稳定的URL上，以便其他开发者可以使用相同的词汇表和上下文实现互操作性。这个过程在第<a href="#extensibility"></a>节中有介绍。或者，开发者可以重用现有的词汇表和上下文文件，以适应他们的用例。他们可以浏览[[[VC-SPECS]]] [[VC-SPECS]]以获取可重用资源。
       </p>
 
     </section>
-
     <section>
-      <h3>Contexts</h3>
+      <h3>上下文</h3>
 
       <p>
-        When two software systems need to exchange data, they need to use terminology
-        that both systems understand. As an analogy, consider how two people
-        communicate. Both people must use the same language and the words they use must
-        mean the same thing to each other. This might be referred to as
-        <em>the context of a conversation</em>.
+        当两个软件系统需要交换数据时，它们需要使用双方都理解的术语。作为一个类比，考虑一下两个人如何交流。两个人必须使用相同的语言，他们使用的词语对彼此必须具有相同的含义。这可能被称为
+        <em>对话的上下文</em>。
       </p>
       <p>
-        [=Verifiable credentials=] and [=verifiable presentations=] have many
-        attributes and values that are identified by [=URLs=] [[URL]]. However,
-        those [=URLs=] can be long and not very human-friendly. In such cases,
-        short-form human-friendly aliases can be more helpful. This specification uses
-        the `@context` [=property=] to map such short-form aliases to the
-        [=URLs=] required by specific [=verifiable credentials=] and [=verifiable
-        presentations=].
+        [=可验证的凭证=]和[=可验证的展示=]有许多由[=URLs=] [[URL]]标识的属性和值。然而，这些[=URLs=]可能很长，对人类并不友好。在这种情况下，短格式的人类友好别名可能更有帮助。本规范使用`@context` [=属性=]将这种短格式别名映射到特定的[=可验证的凭证=]和[=可验证的展示=]所需的[=URLs=]。
       </p>
       <p class="note">
-        In JSON-LD, the `@context` [=property=] can also be used to
-        communicate other details, such as datatype information, language information,
-        transformation rules, and so on, which are beyond the needs of this
-        specification, but might be useful in the future or to related work. For more
-        information, see
-        <a href="https://www.w3.org/TR/json-ld11/#the-context">Section 3.1: The Context</a>
-        of the [[[JSON-LD11]]] [[JSON-LD11]] specification.
+        在JSON-LD中，`@context` [=属性=]也可以用来传递其他细节，如数据类型信息，语言信息，转换规则等，这些超出了本规范的需要，但可能在未来或相关工作中有用。更多信息，请参见
+        <a href="https://www.w3.org/TR/json-ld11/#the-context">第3.1节：上下文</a>
+        的[[[JSON-LD11]]] [[JSON-LD11]]规范。
       </p>
       <p>
-        [=Verifiable credentials=] and [=verifiable presentations=] MUST include a
-        `@context` [=property=].
+        [=可验证的凭证=]和[=可验证的展示=]必须包含一个`@context` [=属性=]。
       </p>
 
       <dl>
         <dt><dfn class="export">@context</dfn></dt>
         <dd>
-          The value of the `@context` [=property=] MUST be an ordered set
-          where the first item is a [=URL=] with the value
-          `https://www.w3.org/ns/credentials/v2`. For reference, a copy of
-          the base context is provided in Appendix <a href="#base-context"></a>.
-          Subsequent items in the array MUST be composed of any combination of
-          [=URLs=] and/or objects where each is processable as a
-          <a data-cite="JSON-LD11#the-context">JSON-LD Context</a>.
+          `@context` [=属性=]的值必须是一个有序集，其中第一项是一个[=URL=]，值为
+          `https://www.w3.org/ns/credentials/v2`。作为参考，附录<a href="#base-context"></a>提供了基础上下文的副本。
+          数组中的后续项必须由任何组合的[=URLs=]和/或对象组成，每个对象都可以作为
+          <a data-cite="JSON-LD11#the-context">JSON-LD上下文</a>处理。
         </dd>
       </dl>
       <p class="note">
-        This specification requires a `@context` [=property=]
-        to be present; this property is defined by [[JSON-LD11]].
+        本规范要求存在`@context` [=属性=]
+        ，此属性由[[JSON-LD11]]定义。
       </p>
-      <pre class="example nohighlight" title="Usage of the @context property">
+      <pre class="example nohighlight" title="使用@context属性的示例">
 {
   <span class="highlight">"@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1495,89 +1123,69 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        The example above uses the base context [=URL=]
-        (`https://www.w3.org/ns/credentials/v2`) to establish that the
-        conversation is about a [=verifiable credential=]. The second [=URL=]
-        (`https://www.w3.org/ns/credentials/examples/v2`) establishes that
-        the conversation is about examples.
+        上面的例子使用基础上下文[=URL=]
+        (`https://www.w3.org/ns/credentials/v2`)来确定对话是关于一个[=可验证的凭证=]。第二个[=URL=]
+        (`https://www.w3.org/ns/credentials/examples/v2`)确定对话是关于示例的。
       </p>
 
       <p class="note">
-        This document uses the example context [=URL=]
-        (`https://www.w3.org/ns/credentials/examples/v2`) for the purpose
-        of demonstrating examples. Implementations are expected to not use this
-        [=URL=] for any other purpose, such as in pilot or production systems.
+        本文档使用示例上下文[=URL=]
+        (`https://www.w3.org/ns/credentials/examples/v2`)来演示示例。实现期望不使用此[=URL=]进行任何其他目的，如在试点或生产系统中使用。
       </p>
 
       <p>
-        The data available at `https://www.w3.org/ns/credentials/v2` is a
-        static document that is never updated and SHOULD be downloaded and cached. The
-        associated human-readable vocabulary document for the Verifiable Credentials
-        Data Model is available at
-        <a href="https://www.w3.org/2018/credentials/">https://www.w3.org/2018/credentials/</a>.
-        This concept is further expanded on in Section <a href="#extensibility"></a>.
+        在`https://www.w3.org/ns/credentials/v2`上可用的数据是一个静态文档，永远不会更新，应该被下载和缓存。可验证凭证数据模型的相关人类可读词汇文档可在
+        <a href="https://www.w3.org/2018/credentials/">https://www.w3.org/2018/credentials/</a>获得。
+        这个概念在<a href="#extensibility"></a>章节中有进一步的扩展。
       </p>
 
     </section>
 
     <section>
-      <h3>Identifiers</h3>
+      <h3>标识符</h3>
 
       <p>
-        When expressing statements about a specific thing, such as a person, product, or
-        organization, it can be useful to use a globally unique identifier for that thing.
-        Globally unique identifiers enable others to express statements
-        about the same thing. This specification defines the optional `id`
-        [=property=] for such identifiers. The `id` [=property=]
-        allows for the expression of statements about specific things in the
-        [=verifiable credential=] and is set by an [=issuer=] when expressing
-        objects in a [=verifiable credential=] or a [=holder=] when expressing
-        objects in a [=verifiable presentation=]. Example `id` values
-        include UUIDs (`urn:uuid:0c07c1ce-57cb-41af-bef2-1b932b986873`), HTTP URLs
-        (`https://id.example/things#123`), and DIDs (`did:example:1234abcd`).
+        当对特定事物（如人、产品或组织）进行陈述时，使用该事物的全球唯一标识符可能会很有用。
+        全球唯一标识符使其他人能够对同一事物进行陈述。本规范定义了可选的`id`
+        [=属性=]用于此类标识符。`id` [=属性=]
+        允许在[=可验证的凭证=]中对特定事物进行陈述，并由[=发行者=]在表达
+        [=可验证的凭证=]中的对象或[=持有者=]在表达
+        [=可验证的展示=]中的对象时设置。`id`值的示例
+        包括UUIDs (`urn:uuid:0c07c1ce-57cb-41af-bef2-1b932b986873`)，HTTP URLs
+        (`https://id.example/things#123`)和DIDs (`did:example:1234abcd`)。
       </p>
 
       <p>
-        <em>If</em> the `id` [=property=] is present:
+        <em>如果</em> `id` [=属性=]存在：
       </p>
 
       <ul>
         <li>
-          The `id` [=property=] MUST express an identifier that others are
-          expected to use when expressing statements about a specific thing identified
-          by that identifier.
+          `id` [=属性=]必须表达一个标识符，其他人预期会在对该标识符标识的特定事物进行陈述时使用这个标识符。
         </li>
         <li>
-          The `id` [=property=] MUST NOT have more than one value.
+          `id` [=属性=]不能有多个值。
         </li>
         <li>
-          The value of the `id` [=property=] MUST be a [=URL=] which
-          MAY be dereferenced.
+          `id` [=属性=]的值必须是一个[=URL=]，该URL可能会被解引用。
         </li>
       </ul>
 
       <p class="note">
-        Developers should remember that identifiers might be harmful in scenarios
-        where pseudonymity is required. Developers are encouraged to read Section
-        <a href="#identifier-based-correlation"></a> carefully when considering such
-        scenarios. There are also other types of correlation mechanisms documented in
-        Section <a href="#privacy-considerations"></a> that create privacy concerns.
-        Where privacy is a strong consideration, the `id` [=property=]
-        MAY be omitted. Some use cases do not require, or explicitly require omitting,
-        the `id` [=property=].
+        开发者应记住，在需要匿名性的场景中，标识符可能会造成伤害。鼓励开发者在考虑此类场景时仔细阅读<a href="#identifier-based-correlation"></a>部分。
+        在<a href="#privacy-considerations"></a>部分记录的其他类型的关联机制也会产生隐私问题。在隐私是重要考虑因素的地方，`id` [=属性=]
+        可以省略。有些用例不需要，或明确要求省略，`id` [=属性=]。
       </p>
 
       <dl>
         <dt><dfn class="export">id</dfn></dt>
         <dd>
-          The value of the `id` [=property=] MUST be a single [=URL=].
-          It is RECOMMENDED that the [=URL=] in the `id` be one which, if
-          dereferenced, results in a document containing machine-readable information
-          about the `id`.
+          `id` [=属性=]的值必须是单个[=URL=]。
+          建议`id`中的[=URL=]是一个可以被解引用的URL，如果被解引用，将得到一个包含有关`id`的机器可读信息的文档。
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of the id property"
+      <pre class="example nohighlight vc" title="id属性的使用"
         data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
@@ -1599,63 +1207,55 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        The example above uses two types of identifiers. The first identifier is for
-        the [=verifiable credential=] and uses an HTTP-based URL. The second
-        identifier is for the [=subject=] of the [=verifiable credential=] (the
-        thing the [=claims=] are about) and uses a [=decentralized identifier=],
-        also known as a [=DID=].
+        上述示例使用了两种类型的标识符。第一个标识符用于[=可验证的凭证=]，使用基于HTTP的URL。第二个
+        标识符用于[=可验证的凭证=]的[=主题=]（即[=声明=]所涉及的事物），并使用一种[=去中心化标识符=]，也称为[=DID=]。
       </p>
 
       <p class="note">
-        As of this publication, [=DIDs=] are a new type of identifier that are not
-        necessary for [=verifiable credentials=] to be useful. Specifically,
-        [=verifiable credentials=] do not depend on [=DIDs=] and [=DIDs=] do
-        not depend on [=verifiable credentials=]. However, it is expected that many
-        [=verifiable credentials=] will use [=DIDs=] and that software libraries
-        implementing this specification will probably need to resolve [=DIDs=].
-        [=DID=]-based URLs are used for expressing identifiers associated with
-        [=subjects=], [=issuers=], [=holders=], credential status lists,
-        cryptographic keys, and other machine-readable information associated with a
-        [=verifiable credential=].
+        截至本文发布，[=DIDs=]是一种新型标识符，对于[=可验证的凭证=]的有效性并非必需。具体来说，
+        [=可验证的凭证=]并不依赖[=DIDs=]，[=DIDs=]也并不依赖[=可验证的凭证=]。然而，预计许多
+        [=可验证的凭证=]将使用[=DIDs=]，实现此规范的软件库可能需要解析[=DIDs=]。
+        [=DID=]-基础的URL用于表达与[=主题=]、[=发行者=]、[=持有者=]、凭证状态列表、
+        加密密钥以及与[=可验证的凭证=]相关的其他机器可读信息相关联的标识符。
       </p>
     </section>
 
     <section>
-      <h3>Types</h3>
+      <h3>类型</h3>
 
       <p>
-        Software systems that process the kinds of objects specified in this document
-        use type information to determine whether or not a provided
-        [=verifiable credential=] or [=verifiable presentation=] is appropriate
-        for the intended use case. This specification defines a `type`
-        [=property=] for the expression of type information. This type information
-        can be used during [=validation=] processes as described in Appendix
-        <a href="#validation"></a>.
+        处理本文档中指定的对象类型的软件系统
+        使用类型信息来确定提供的
+        [=可验证凭证=]或[=可验证陈述=]是否适用
+        于预期的用例。本规范为表达类型信息定义了一个`type`
+        [=属性=]。这种类型信息
+        可以在附录中描述的[=验证=]过程中使用
+        <a href="#validation"></a>。
       </p>
 
       <p>
-        [=Verifiable credentials=] and [=verifiable presentations=] MUST have a
-        `type` [=property=]. That is, any [=credential=] or
-        [=presentation=] that does not have `type` [=property=]
-        <em>is not [=verifiable=]</em>, so is neither a [=verifiable credential=]
-        nor a [=verifiable presentation=].
+        [=可验证凭证=]和[=可验证陈述=]必须具有
+        `type` [=属性=]。也就是说，任何没有`type` [=属性=]的
+        [=凭证=]或
+        [=陈述=]<em>不是[=可验证的=]</em>，因此既不是[=可验证凭证=]
+        也不是[=可验证陈述=]。
       </p>
 
       <dl>
         <dt><dfn class="export" data-lt="type|types">type</dfn></dt>
         <dd>
-          The value of the `type` [=property=] MUST be, or map to (through
-          interpretation of the `@context` property), one or more [=URLs=].
-          If more than one [=URL=] is provided, the [=URLs=] MUST be interpreted
-          as an unordered set. Syntactic conveniences SHOULD be used to ease developer
-          usage. Such conveniences might include JSON-LD terms. It is RECOMMENDED that
-          each [=URL=] in the `type` be one which, if dereferenced, results
-          in a document containing machine-readable information about the
-          `type`.
+          `type` [=属性=]的值必须是，或映射到（通过
+          解释`@context`属性），一个或多个[=URLs=]。
+          如果提供了多个[=URL=]，则[=URLs=]必须解释为
+          无序集合。应使用语法便利功能来简化开发者
+          使用。这些便利功能可能包括JSON-LD术语。建议
+          `type`中的每个[=URL=]都是一个，如果取消引用，结果
+          是一个包含关于
+          `type`的机器可读信息的文档。
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of the type property"
+      <pre class="example nohighlight vc" title="使用type属性"
         data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
@@ -1677,67 +1277,66 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        With respect to this specification, the following table lists the objects that
-        MUST have a [=type=] specified.
+        关于本规范，下表列出了必须指定[=类型=]的对象。
       </p>
 
       <table class="simple">
         <thead>
           <tr>
-            <th>Object</th>
-            <th>Type</th>
+            <th>对象</th>
+            <th>类型</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
             <td>
-              [=Verifiable credential=]&nbsp;object
+              [=可验证凭证=]&nbsp;对象
             </td>
             <td>
-              `VerifiableCredential` and, optionally, a more specific
-              [=verifiable credential=] [=type=]. For example,<br>
+              `VerifiableCredential`以及可选的更具体的
+              [=可验证凭证=] [=类型=]。例如，<br>
               `"type": ["VerifiableCredential", "ExampleDegreeCredential"]`
             </td>
           </tr>
 
           <tr>
             <td>
-              [=Verifiable presentation=]&nbsp;object
+              [=可验证陈述=]&nbsp;对象
             </td>
             <td>
-              `VerifiablePresentation` and, optionally, a more specific
-              [=verifiable presentation=] [=type=]. For example,<br>
+              `VerifiablePresentation`以及可选的更具体的
+              [=可验证陈述=] [=类型=]。例如，<br>
               `"type": ["VerifiablePresentation", "ExamplePresentation"]`
             </td>
           </tr>
 
           <tr>
             <td>
-              <a href="#status">credentialStatus</a>&nbsp;object
+              <a href="#status">credentialStatus</a>&nbsp;对象
             </td>
             <td>
-              A valid [=credential=] status [=type=]. For example,<br>
+              有效的[=凭证=]状态[=类型=]。例如，<br>
               `"type": "BitstringStatusListEntry"`
             </td>
           </tr>
 
           <tr>
             <td>
-              <a href="#terms-of-use">termsOfUse</a>&nbsp;object
+              <a href="#terms-of-use">termsOfUse</a>&nbsp;对象
             </td>
             <td>
-              A valid terms of use [=type=]. For example,<br>
-              `"type": "ExampleTermsPolicy"`)
+              有效的使用条款[=类型=]。例如，<br>
+              `"type": "ExampleTermsPolicy"`
             </td>
           </tr>
 
           <tr>
             <td>
-              <a href="#evidence">evidence</a>&nbsp;object
+              <a href="#evidence">evidence</a>&nbsp;对象
             </td>
             <td>
-              A valid evidence [=type=]. For example,<br>
+              有效的证据[=类型=]。例如，<br>
               `"type": "ExampleEvidence"`
             </td>
           </tr>
@@ -1746,103 +1345,88 @@ arrow, to a separate rectangle, containing a single text field:
       </table>
 
       <p class="note">
-        The [=type=] system for the Verifiable Credentials Data Model is the same as
-        for [[JSON-LD11]] and is detailed in
-        <a href="https://www.w3.org/TR/json-ld/#specifying-the-type">Section 3.5:
-          Specifying the Type</a> and
-        <a href="https://www.w3.org/TR/json-ld/#json-ld-grammar">Section 9: JSON-LD
-          Grammar</a>. When using a JSON-LD context (see Section
-        <a href="#extensibility"></a>), this specification aliases the
-        `@type` keyword to `type` to make the JSON-LD documents
-        more easily understood. While application developers and document authors do
-        not need to understand the specifics of the JSON-LD type system, implementers
-        of this specification who want to support interoperable extensibility, do.
+        可验证凭证数据模型的[=类型=]系统与[[JSON-LD11]]的系统相同，详细信息在
+        <a href="https://www.w3.org/TR/json-ld/#specifying-the-type">第3.5节:
+          指定类型</a>和
+        <a href="https://www.w3.org/TR/json-ld/#json-ld-grammar">第9节: JSON-LD
+          语法</a>中有详细描述。在使用JSON-LD上下文（参见第
+        <a href="#extensibility"></a>节）时，本规范将
+        `@type`关键字别名为`type`，以使JSON-LD文档
+        更易于理解。虽然应用开发者和文档作者不需要理解JSON-LD类型系统的具体细节，但希望支持互操作扩展性的本规范的实现者需要理解。
       </p>
 
       <p>
-        All [=credentials=], [=presentations=], and encapsulated objects SHOULD
-        specify, or be associated with, additional more narrow [=types=] (like
-        `ExampleDegreeCredential`, for example) so software systems can
-        more easily detect and process this additional information.
+        所有[=凭证=]、[=陈述=]和封装对象应该
+        指定，或与，更窄的[=类型=]（如
+        `ExampleDegreeCredential`，例如）相关联，以便软件系统可以
+        更容易地检测和处理这些额外的信息。
       </p>
 
       <p>
-        When processing encapsulated objects defined in this specification, (for
-        example, objects associated with the `credentialSubject` object or
-        deeply nested therein), software systems SHOULD use the [=type=] information
-        specified in encapsulating objects higher in the hierarchy. Specifically, an
-        encapsulating object, such as a [=credential=], SHOULD convey the associated
-        object [=types=] so that [=verifiers=] can quickly determine the contents
-        of an associated object based on the encapsulating object [=type=].
+        在处理本规范中定义的封装对象时（例如，与`credentialSubject`对象或
+        深层嵌套在其中的对象相关联），软件系统应使用
+        在层次结构中更高的封装对象中指定的[=类型=]信息。具体来说，一个
+        封装对象，如[=凭证=]，应传达关联对象[=类型=]，以便[=验证者=]可以快速确定基于封装对象[=类型=]的关联对象的内容。
       </p>
 
       <p>
-        For example, a [=credential=] object with the `type` of
-        `ExampleDegreeCredential`, signals to a [=verifier=] that the
-        object associated with the `credentialSubject` property contains the
-        identifier for the:
+        例如，一个具有`type`为
+        `ExampleDegreeCredential`的[=凭证=]对象，向[=验证者=]发出信号，表示
+        与`credentialSubject`属性关联的对象包含以下的
+        标识符：
       </p>
 
       <ul>
         <li>
-          [=Subject=] in the `id` property.
+          在`id`属性中的[=主题=]。
         </li>
         <li>
-          Type of degree in the `type` property.
+          在`type`属性中的学位类型。
         </li>
         <li>
-          Title of the degree in the `name` property.
+          在`name`属性中的学位标题。
         </li>
       </ul>
 
       <p>
-        This enables implementers to rely on values associated with the
-        `type` property for [=verification=] purposes. The expectation of
-        [=types=] and their associated properties should be documented in at least a
-        human-readable specification, and preferably, in an additional machine-readable
-        representation.
+        这使得实现者可以依赖与
+        `type`属性关联的值进行[=验证=]。[=类型=]及其关联属性的期望应至少在人类可读的规范中记录，最好在另一个机器可读的表示中记录。
       </p>
 
       <p class="note">
-        The type system used in the data model described in this specification allows
-        for multiple ways to associate types with data. Implementers and authors are
-        urged to read the section on typing in the Verifiable Credentials
-        Implementation Guidelines [[?VC-IMP-GUIDE]].
+        本规范中描述的数据模型中使用的类型系统允许
+        以多种方式将类型与数据关联。实现者和作者被敦促阅读可验证凭证
+        实施指南[[?VC-IMP-GUIDE]]中关于类型的部分。
       </p>
 
     </section>
 
     <section>
-      <h3>Names and Descriptions</h3>
+      <h3>名称和描述</h3>
 
       <p>
-        When displaying a [=credential=], it can be useful to have
-        text provided by the [=issuer=] that furnishes the
-        [=credential=] with a name as well as a short description of its
-        purpose. The `name` and `description` [=properties=]
-        are meant to serve these purposes.
+        在显示一个[=credential=]时，由[=issuer=]提供的文本可以为
+        [=credential=]提供一个名称以及其目的的简短描述。`name` 和 `description` [=properties=]
+        就是为了实现这些目的。
       </p>
 
       <dl>
         <dt><dfn class="export">name</dfn></dt>
         <dd>
-          An OPTIONAL property that expresses the name of the [=credential=]. If
-          present, the value of the `name` [=property=] MUST be a string or
-          a language value object as described in
-          <a href="#language-and-base-direction"></a>. Ideally, the name of a
-          [=credential=] is concise, human-readable, and could enable an individual to
-          quickly differentiate one [=credential=] from any other [=credentials=]
-          that they might hold.
+          一个可选的属性，表示[=credential=]的名称。如果
+          存在，`name` [=property=]的值必须是一个字符串或
+          如<a href="#language-and-base-direction"></a>所述的语言值对象。理想情况下，一个
+          [=credential=]的名称简洁、易于阅读，并能让个人
+          快速区分他们可能持有的其他任何[=credentials=]。
         </dd>
         <dt><dfn class="export">description</dfn></dt>
         <dd>
-          An OPTIONAL property that conveys specific details about a [=credential=]. If
-          present, the value of the `description` [=property=] MUST be a
-          string or a language value object as described in
-          <a href="#language-and-base-direction"></a>. Ideally, the description of a
-          [=credential=] is no more than a few sentences in length and conveys enough
-          information about the [=credential=] to remind an individual of its contents
-          without their having to look through the entirety of the [=claims=].
+          一个可选的属性，传达关于[=credential=]的具体细节。如果
+          存在，`description` [=property=]的值必须是一个
+          字符串或如<a href="#language-and-base-direction"></a>所述的语言值对象。理想情况下，一个
+          [=credential=]的描述长度不超过几句话，传达足够的
+          关于[=credential=]的信息，以提醒个人其内容
+          而无需查看全部的[=claims=]。
         </dd>
       </dl>
 
@@ -1874,12 +1458,12 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        Names and descriptions also support expressing content in different languages.
-        To express a string with language and [=base direction=] information,
-        one can use an object that contains the `@value`, `@language`, and `@direction`
-        properties to express the text value, language tag, and base direction,
-        respectively. See
-        <a href="#language-and-base-direction"></a> for further information.
+        名称和描述还支持以不同的语言表达内容。
+        要表达带有语言和[=基本方向=]信息的字符串，
+        可以使用包含`@value`、`@language`和`@direction`属性的对象，
+        分别表示文本值、语言标签和基本方向。
+        有关详细信息，请参见
+        <a href="#language-and-base-direction"></a>。
       </p>
 
       <pre class="example nohighlight" title="Usage of the name and description property">
@@ -1960,29 +1544,21 @@ arrow, to a separate rectangle, containing a single text field:
     </section>
 
     <section>
-      <h3>Credential Subject</h3>
+      <h3>凭证主体</h3>
 
       <p>
-        A [=verifiable credential=] contains [=claims=] about one or more
-        [=subjects=]. This specification defines a `credentialSubject`
-        [=property=] for the expression of [=claims=] about one or more
-        [=subjects=].
+        一个可验证凭证包含关于一个或多个主体的声明。本规范定义了一个 `credentialSubject` 属性，用于表达关于一个或多个主体的声明。
       </p>
 
       <p>
-        A [=verifiable credential=] MUST have a `credentialSubject`
-        [=property=].
+        一个可验证凭证必须具有 `credentialSubject` 属性。
       </p>
 
       <dl>
         <dt><dfn class="export" id="defn-credentialSubject">credentialSubject</dfn></dt>
         <dd>
-          The value of the `credentialSubject` [=property=] is defined as a
-          set of objects where each object MUST be the [=subject=] of one or more [=claims=],
-          which MUST be serialized inside the `credentialSubject` [=property=].
-          Each object MAY
-          also contain an `id` to identify the [=subject=], as
-          described in Section <a href="#identifiers"></a>.
+          `credentialSubject` 属性的值被定义为一组对象，其中每个对象必须是一个或多个声明的主体，这些声明必须被序列化在 `credentialSubject` 属性内部。
+          每个对象也可以包含一个 `id` 来标识主体，如第 <a href="#identifiers"></a> 节所述。
         </dd>
       </dl>
 
@@ -2008,10 +1584,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        It is possible to express information related to multiple [=subjects=] in a
-        [=verifiable credential=]. The example below specifies two [=subjects=]
-        who are spouses. Note the use of array notation to associate multiple
-        [=subjects=] with the `credentialSubject` property.
+        可以在可验证凭证中表达与多个主体相关的信息。下面的示例指定了两个配偶作为主体。请注意，使用数组表示法将多个主体与 `credentialSubject` 属性关联起来。
       </p>
 
       <pre class="example nohighlight" title="Specifying multiple subjects in a verifiable credential">
@@ -2039,28 +1612,20 @@ arrow, to a separate rectangle, containing a single text field:
     </section>
 
     <section>
-      <h3>Issuer</h3>
+      <h3>发行者</h3>
 
       <p>
-        This specification defines a property for expressing the [=issuer=] of
-        a [=verifiable credential=].
+        本规范定义了一个用于表示[=verifiable credential=]的[=issuer=]属性。
       </p>
 
       <p>
-        A [=verifiable credential=] MUST have an `issuer` [=property=].
+        一个[=verifiable credential=]必须具有一个`issuer`[=property=]。
       </p>
 
       <dl>
         <dt><var id="defn-issuer">issuer</var></dt>
         <dd>
-          The value of the `issuer` [=property=] MUST be either a
-          [=URL=], or an object containing an `id` [=property=]
-          whose value is a [=URL=]; in either case, the issuer selects this
-          [=URL=] to identify itself in a globally unambiguous
-          way. It is RECOMMENDED that the [=URL=] be one which, if dereferenced,
-          results in a controller document, as defined in [[VC-DATA-INTEGRITY]] or
-          [[VC-JOSE-COSE]], about the [=issuer=] that can be used to [=verify=] the
-          information expressed in the [=credential=].
+          `issuer`[=property=]的值必须是一个[=URL=]，或者是一个包含`id`[=property=]的对象，其值为[=URL=]；在任何情况下，发行者都选择这个[=URL=]以全球无歧义的方式识别自己。建议该[=URL=]为一个可解引用的URL，解引用后的结果是一个关于[=issuer=]的控制器文档，如[[VC-DATA-INTEGRITY]]或[[VC-JOSE-COSE]]中定义的，可用于[=verify=]在[=credential=]中表达的信息。
         </dd>
       </dl>
 
@@ -2086,8 +1651,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        It is also possible to express additional information about the issuer by
-        associating an object with the issuer property:
+        还可以通过将一个对象与发行者属性关联起来来表达有关发行者的其他信息：
       </p>
 
       <pre class="example nohighlight vc" title="Usage of issuer expanded property"
@@ -2115,55 +1679,38 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        The value of the `issuer` [=property=] can also be a JWK (for
-        example, `"https://example.com/keys/foo.jwk"`) or a [=DID=] (for
-        example, `"did:example:abfe13f712120431c276e12ecab"`).
+        `issuer` [=property=] 的值也可以是一个 JWK（例如，`"https://example.com/keys/foo.jwk"`）或者一个 [=DID=]（例如，`"did:example:abfe13f712120431c276e12ecab"`）。
       </p>
 
     </section>
 
     <section>
-      <h3>Validity Period</h3>
+      <h3>有效期</h3>
 
       <p>
-        This specification defines the `validFrom` [=property=] to help an
-        issuer to express the date and time when a [=credential=] becomes valid and
-        the `validUntil` [=property=] for expressing the date and time
-        when a [=credential=] ceases to be valid.
+        本规范定义了`validFrom` [=property=]，以帮助发行者表达[=credential=]生效的日期和时间，以及`validUntil` [=property=]，用于表达[=credential=]失效的日期和时间。
       </p>
 
       <p>
-        When comparing dates and times, the calculation is done "temporally", which
-        means that the string value is converted to a "temporal value" which exists
-        as a point on a timeline. Temporal comparisons are then performed by checking
-        to see where the date and time being compared is in relation to
-        a particular point on the timeline.
+        在比较日期和时间时，计算是“时间性”的，这意味着字符串值被转换为存在于时间轴上的一个点的“时间值”。然后通过检查要比较的日期和时间相对于时间轴上的特定点的位置来进行时间比较。
       </p>
 
       <dl>
         <dt><var id="defn-validFrom">validFrom</var></dt>
         <dd>
-          If present, the value of the `validFrom` [=property=] MUST be an
+          如果存在，`validFrom` [=property=]的值必须是一个
           [<a data-cite="XMLSCHEMA11-2#dateTime">XMLSCHEMA11-2</a>]
-          `dateTimeStamp` string value representing the date and time the
-          [=credential=] becomes valid, which could be a date and time in the future or
-          in the past. Note that this value represents the earliest point in time at which
-          the information associated with the `credentialSubject`
-          [=property=] becomes valid. If a `validUntil` value also exists, the
-          `validFrom` value MUST express a datetime that is temporally the same or earlier
-          than the datetime expressed by the `validUntil` value.
+          `dateTimeStamp`字符串值，表示[=credential=]生效的日期和时间，可以是未来或过去的日期和时间。请注意，此值表示与`credentialSubject`
+          [=property=]关联的信息生效的最早时间点。如果还存在`validUntil`值，则
+          `validFrom`值必须表示与`validUntil`值表示的日期时间相同或更早的日期时间。
         </dd>
         <dt><var id="defn-validUntil">validUntil</var></dt>
         <dd>
-          If present, the value of the `validUntil` [=property=] MUST be an
-          [<a data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>]
-          `dateTimeStamp` string value representing the date and time the
-          [=credential=] ceases to be valid, which could be a date and time in the past
-          or in the future. Note that this value represents the latest point in time at
-          which the information associated with the `credentialSubject`
-          [=property=] is valid. If a `validFrom` value also exists, the `validUntil`
-          value MUST express a datetime that is temporally the same or later than the
-          datetime expressed by the `validFrom` value.
+          如果存在，`validUntil` [=property=]的值必须是一个
+          [<a data-cite="XMLSCHEMA11-2#dateTime">XMLSCHEMA11-2</a>]
+          `dateTimeStamp`字符串值，表示[=credential=]失效的日期和时间，可以是过去或未来的日期和时间。请注意，此值表示与`credentialSubject`
+          [=property=]关联的信息有效的最晚时间点。如果还存在`validFrom`值，则`validUntil`
+          值必须表示与`validFrom`值表示的日期时间相同或更晚的日期时间。
         </dd>
       </dl>
 
@@ -2190,10 +1737,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        If `validFrom` and `validUntil` are not present, the
-        [=verifiable credential=] validity period is considered valid
-        indefinitely. In such cases, the [=verifiable credential=] is assumed to be
-        valid from the time the `verifiable credential` was created.
+        如果`validFrom`和`validUntil`不存在，则认为[=可验证凭证=]的有效期无限。在这种情况下，假定[=可验证凭证=]从创建时开始有效。
       </p>
 
       <h4>Representing Time</h4>
@@ -7114,99 +6658,34 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
     </section>
 
     <section class="informative">
-      <h3>Differences between Contexts, Types, and CredentialSchemas</h3>
+      <h3>上下文、类型和凭证模式的区别</h3>
 
       <p>
-        The [=verifiable credential=] and [=verifiable presentation=] data models
-        leverage a variety of underlying technologies including [[JSON-LD11]] and
-        [[?VC-JSON-SCHEMA]]. This section will provide a comparison of the
-        `@context`, `type`, and `credentialSchema`
-        properties, and cover some of the more specific use cases where it is possible
-        to use these features of the data model.
+        [=可验证凭证=]和[=可验证展示=]数据模型利用了包括[[JSON-LD11]]和[[?VC-JSON-SCHEMA]]在内的各种底层技术。本节将对`@context`、`type`和`credentialSchema`属性进行比较，并介绍一些更具体的使用情况，其中可以使用数据模型的这些特性。
       </p>
 
       <p>
-        The `type` property is used to uniquely identify the type of the
-        [=verifiable credential=] in which it appears, i.e., to indicate which set of
-        claims the [=verifiable credential=] contains. This property, and the value
-        `VerifiableCredential` within the set of its values, are mandatory.
-        Whilst it is good practice to include one additional value depicting the unique
-        subtype of this [=verifiable credential=], it is permitted to either omit or
-        include additional type values in the array. Many verifiers will request a
-        [=verifiable credential=] of a specific subtype, then omitting the subtype
-        value could make it more difficult for verifiers to inform the holder which
-        [=verifiable credential=] they require. When a [=verifiable credential=]
-        has multiple subtypes, listing all of them in the `type`
-        property is sensible. The usage of the `type` property in a
-        [[JSON-LD11]] representation of a [=verifiable credential=] enables to enforce
-        the semantics of the [=verifiable credential=] because the machine is able to
-        check the semantics. With [[JSON-LD11]], the technology is not only describing the
-        categorization of the set of claims, the technology is also conveying the
-        structure and semantics of the sub-graph of the properties in the graph. In
-        [[JSON-LD11]], this represents the type of the node in the graph which is why some
-        [[JSON-LD11]] representations of a [=verifiable credential=] will use the
-        `type` property on many objects in the [=verifiable credential=].
+        `type`属性用于唯一标识出现在其中的[=可验证凭证=]的类型，即指示[=可验证凭证=]包含的声明集合。该属性及其值集合中的`VerifiableCredential`值是强制性的。虽然在数组中包含一个额外的值来描述该[=可验证凭证=]的唯一子类型是良好的实践，但可以省略或包含其他类型值。许多验证者将请求特定子类型的[=可验证凭证=]，因此省略子类型值可能会使验证者更难告知持有者他们需要哪个[=可验证凭证=]。当一个[=可验证凭证=]具有多个子类型时，在`type`属性中列出所有子类型是明智的。在[=可验证凭证=]的[[JSON-LD11]]表示中使用`type`属性可以强制执行[=可验证凭证=]的语义，因为机器能够检查语义。在[[JSON-LD11]]中，技术不仅描述了声明集合的分类，还传达了图中属性子图的结构和语义。在[[JSON-LD11]]中，这表示图中节点的类型，这就是为什么一些[=可验证凭证=]的[[JSON-LD11]]表示将在许多对象上使用`type`属性的原因。
       </p>
 
       <p>
-        The primary purpose of the `@context` property, from a [[JSON-LD11]]
-        perspective, is to convey the meaning of the data and term definitions of the
-        data in a [=verifiable credential=], in a machine readable way. The
-        `@context` property is used to map the globally unique URLs for
-        properties in [=verifiable credentials=] and [=verifiable presentations=]
-        into short-form alias names, making [[JSON-LD11]] representations more
-        human-friendly to read. From a [[JSON-LD11]] perspective, this mapping also allows
-        the data in a [=credential=] to be modeled in a network of machine-readable
-        data, by enhancing how the data in the [=verifiable credential=] or
-        [=verifiable presentation=] relates to a larger machine-readable data graph.
-        This is useful for telling machines how to relate the meaning of data to other
-        data in an ecosystem where parties are unable to coordinate. This property, with
-        the first value in the set being
-        `https://www.w3.org/ns/credentials/v2`, is mandatory.
+        `@context`属性的主要目的是以[[JSON-LD11]]的视角传达数据的含义和数据的术语定义，以机器可读的方式。`@context`属性用于将[=可验证凭证=]和[=可验证展示=]中属性的全局唯一URL映射为短形式的别名，使[[JSON-LD11]]表示更易于阅读。从[[JSON-LD11]]的视角来看，这种映射还允许在一个机器可读数据图中对[=可验证凭证=]或[=可验证展示=]中的数据进行建模，通过增强[=可验证凭证=]或[=可验证展示=]中的数据与更大的机器可读数据图的关系。这对于告诉机器如何将数据的含义与无法协调的各方的其他数据相关联非常有用。这个属性的第一个值是`https://www.w3.org/ns/credentials/v2`，是强制性的。
       </p>
 
       <p>
-        Since the `@context` property is used to map data to a graph
-        data model, and the `type` property in [[JSON-LD11]] is used to
-        describe nodes within the graph, the `type` property becomes
-        even more important when using the two properties in combination. For example,
-        if the `type` property is not included within the resolved
-        `@context` resource using [[JSON-LD11]], it could lead to claims being
-        dropped and/or their integrity no longer being protected during production and
-        consumption of the [=verifiable credential=]. Alternatively, it could lead to
-        errors being raised during production or consumption of a [=verifiable
-        credential=]. This will depend on the design choices of the implementation and
-        both paths are used in implementations today, so it's important to pay attention
-        to these properties when using a [[JSON-LD11]] representation of a [=verifiable
-        credential=] or [=verifiable presentation=].
+        由于`@context`属性用于将数据映射到图数据模型中，而[[JSON-LD11]]中的`type`属性用于描述图中的节点，当同时使用这两个属性时，`type`属性变得更加重要。例如，如果在使用[[JSON-LD11]]解析的`@context`资源中不包含`type`属性，可能会导致声明被丢弃和/或其完整性在[=可验证凭证=]的生成和消费过程中不再受到保护。或者，在[=可验证凭证=]的生成或消费过程中可能会引发错误。这将取决于实现的设计选择，今天的实现中都使用了这两种路径，因此在使用[=可验证凭证=]或[=可验证展示=]的[[JSON-LD11]]表示时，注意这些属性非常重要。
       </p>
 
       <p>
-        The primary purpose of the `credentialSchema` property is to define
-        the structure of the [=verifiable credential=], and the datatypes for the
-        values of each property that appears. A `credentialSchema` is useful
-        for defining the contents and structure of a set of claims in a [=verifiable
-        credential=], whereas [[JSON-LD11]] and a `@context` in a
-        [=verifiable credential=] are best used only for conveying the semantics and
-        term definitions of the data, and can be used to define the structure of the
-        [=verifiable credential=] as well.
+        `credentialSchema`属性的主要目的是定义[=可验证凭证=]的结构以及每个属性值的数据类型。`credentialSchema`对于定义[=可验证凭证=]中一组声明的内容和结构非常有用，而[[JSON-LD11]]和[=可验证凭证=]中的`@context`最好只用于传达数据的语义和术语定义，并且也可以用于定义[=可验证凭证=]的结构。
       </p>
 
       <p>
-        While it is possible to use some [[JSON-LD11]] features to allude to the contents
-        of the [=verifiable credential=], it's not generally suggested to use
-        `@context` to constrain the data types of the data model. For
-        example, `"@type": "@json"` is useful for leaving the semantics
-        open-ended and not strictly defined. This can be dangerous if the implementer is
-        looking to constrain the data type of the claims in the
-        [=credential=], and is expected not to be used.
+        虽然可以使用一些[[JSON-LD11]]的特性来暗示[=可验证凭证=]的内容，但通常不建议使用`@context`来限制数据模型的数据类型。例如，`"@type": "@json"`对于保持语义开放和不严格定义是有用的。如果实现者希望限制[=凭证=]中声明的数据类型，并且不希望使用该属性，这可能是危险的。
       </p>
 
       <p>
-        When the `credentialSchema` and `@context` properties
-        are used in combination, both producers and consumers can be more confident
-        about the expected contents and data types of the [=verifiable credential=]
-        and [=verifiable presentation=].
+        当`credentialSchema`和`@context`属性结合使用时，生产者和消费者都可以更加确信[=可验证凭证=]和[=可验证展示=]的预期内容和数据类型。
       </p>
     </section>
   </section>
@@ -7433,279 +6912,239 @@ separate rectangle, containing a single text field:
   </section>
 
   <section>
-    <h2>Revision History</h2>
+    <h2>修订历史</h2>
 
     <p>
-      This section contains the substantive changes that have been made to this
-      specification over time.
+      本节包含了此规范随时间所做的实质性更改。
     </p>
 
     <p>
-      Changes since the
+      自
       <a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/">
-        v1.1 Recommendation</a>:
+        v1.1 推荐规范</a>以来的变更：
     </p>
     <ul>
       <li>
-        Many editorial updates and fixes to modernize the specification and make
-        it easier to understand particular concepts.
+        进行了许多编辑更新和修复，以使规范现代化并更容易理解特定概念。
       </li>
       <li>
-        Remove duplicated statements regarding `proof` between Data Integrity and
-        this specification.
+        在数据完整性和本规范之间删除了关于 `proof` 的重复声明。
       </li>
       <li>
-        Clarify how issuer validation occurs.
+        澄清了发行者验证的过程。
       </li>
       <li>
-        Clarify requirements for securing mechanism extension points.
+        澄清了保护机制扩展点的要求。
       </li>
       <li>
-        Add dependency on [[?INFRA]] for algorithm section.
+        在算法部分添加了对 [[?INFRA]] 的依赖。
       </li>
       <li>
-        Add requirements for securing mechanism specifications.
+        添加了保护机制规范的要求。
       </li>
       <li>
-        Clarify how to perform credential type-specific processing.
+        澄清了执行特定凭证类型处理的方法。
       </li>
       <li>
-        Add mechanism to embed enveloped verifiable credentials in verifiable
-        presentations.
+        添加了在可验证演示中嵌入封装的可验证凭证的机制。
       </li>
       <li>
-        Add verification algorithm, interface to securing mechanisms, and
-        ProblemDetails objects.
+        添加验证算法、安全机制接口和问题详细信息对象。
       </li>
       <li>
-        Fine tune allowable values for `issuer` property.
+        调整`issuer`属性的允许值。
       </li>
       <li>
-        Provide more concrete guidance on how to express language information as well as
-        default language and direction.
+        提供更具体的指导，以表达语言信息以及默认语言和方向。
       </li>
       <li>
-        Add new conformance classes for issuer and verifier implementations.
+        为发行者和验证者实现添加新的符合类。
       </li>
       <li>
-        Add new Security Considerations regarding key management.
+        添加有关密钥管理的新的安全注意事项。
       </li>
       <li>
-        Add new Privacy Considerations for trust boundaries, metadata-based correlation,
-        data theft, and use of Oblivious HTTP.
+        添加有关信任边界、基于元数据的关联、数据盗窃和使用Oblivious HTTP的隐私注意事项。
       </li>
       <li>
-        Formally define base classes and properties for vocabulary.
+        正式定义词汇的基类和属性。
       </li>
       <li>
-        Provide warnings around not using advanced JSON-LD features in order to
-        maximize interoperability.
+        提供警告，不要使用高级JSON-LD功能，以最大程度地提高互操作性。
       </li>
       <li>
-        Provide more explicit guidance around sets and arrays.
+        提供更明确的指导，涉及集合和数组。
       </li>
       <li>
-        Add support for `name` and `description` fields for issuers and credentials.
+        为发行者和凭证添加`name`和`description`字段的支持。
       </li>
       <li>
-        Add security considerations around interception, replay, and spoofing attacks.
+        添加有关拦截、重放和欺骗攻击的安全注意事项。
       </li>
       <li>
-        Add JWT and SD-JWT claims to base JSON-LD Context.
+        在基本JSON-LD上下文中添加JWT和SD-JWT声明。
       </li>
       <li>
-        Clarify the difference between a "credential" and a "verifiable credential".
+        澄清“凭证”和“可验证凭证”的区别。
       </li>
       <li>
-        Add section on how to ensure ecosystem compatibility.
+        添加关于如何确保生态系统兼容性的部分。
       </li>
       <li>
-        Add section on credential-type-specific processing.
+        添加关于特定凭证类型处理的部分。
       </li>
       <li>
-        Add section on validation and relevance to holders.
+        添加关于验证和与持有者的相关性的部分。
       </li>
       <li>
-        Add section on media type precision and interpretation.
+        添加关于媒体类型精度和解释的部分。
       </li>
       <li>
-        Ensure that `dateTimeStamp` is used for time values. Provide further guidance
-        on proper usage of time values and timezones.
+        确保使用`dateTimeStamp`作为时间值。提供有关时间值和时区的正确使用的进一步指导。
       </li>
       <li>
-        Make `validFrom` optional.
+        使`validFrom`变为可选。
       </li>
       <li>
-        Add `relatedResource` feature.
+        添加`relatedResource`功能。
       </li>
       <li>
-        Make base context and vocabularies normative and provide cryptographic hashes
-        for their content.
+        使基本上下文和词汇成为规范，并为其内容提供加密哈希。
       </li>
       <li>
-        Add `renderMethod` and `confidenceMethod` to list of reserved properties.
+        将`renderMethod`和`confidenceMethod`添加到保留属性列表中。
       </li>
       <li>
-        Modernize examples in the specification.
+        更新规范中的示例。
       </li>
       <li>
-        Add "Getting Started" section.
+        添加“入门指南”部分。
       </li>
       <li>
-        Add table of reserved properties for properties that are not yet standardized
-        or are at risk for removal.
+        添加保留属性的属性表，这些属性尚未标准化或有可能被删除。
       </li>
       <li>
-        Restrict data model serialization to JSON-LD in compacted document form.
+        将数据模型序列化限制为紧凑文档形式的JSON-LD。
       </li>
       <li>
-        Update ZKP section to remove older content.
+        更新ZKP部分以删除旧内容。
       </li>
       <li>
-        Add `termsOfUse` to presentations in v2 context.
+        在v2上下文中为演示文稿添加`termsOfUse`。
       </li>
       <li>
-        Add default vocabulary for undefined terms to v2 context.
+        在v2上下文中为未定义术语添加默认词汇。
       </li>
       <li>
-        Add media types for `application/vc+ld+json` and `application/vp+ld+json`.
+        添加`application/vc+ld+json`和`application/vp+ld+json`的媒体类型。
       </li>
       <li>
-        Provide guidance on converting to and from conforming documents from other
-        digital credential formats.
+        提供有关如何将符合要求的文档与其他数字凭证格式进行转换的指导。
       </li>
       <li>
-        Change reference to URI/IRI to use WHATWG URL specification.
+        将对URI/IRI的引用更改为使用WHATWG URL规范。
       </li>
       <li>
-        Add normative dependency on Data Integrity and JOSE/COSE securing mechanisms.
+        在数据完整性和JOSE/COSE安全机制上添加规范依赖。
       </li>
       <li>
-        Rename `issuanceDate`/`expirationDate` to `validFrom`/`validUntil`.
+        将`issuanceDate`/`expirationDate`重命名为`validFrom`/`validUntil`。
       </li>
       <li>
-        Add JSON Schema support and update examples to use new format.
+        添加JSON Schema支持，并更新示例以使用新格式。
       </li>
       <li>
-        Clarify that `credentialSubject` values cannot be strings.
+        澄清`credentialSubject`值不能为字符串。
       </li>
       <li>
-        Create more formal vocabulary document that refers to this specification.
+        创建更正式的词汇文档，引用此规范。
       </li>
       <li>
-        Define v2.0 JSON-LD Context.
+        定义v2.0 JSON-LD上下文。
       </li>
       <li>
-        Migrate VC-JWT section to separate securing specification.
+        将VC-JWT部分迁移到单独的安全规范。
       </li>
       <li>
-        Move Subject-Holder relationships to Verifiable Credential implementation guide.
+        将主题-持有者关系移至可验证凭证实现指南。
       </li>
       <li>
-        Increment version number to v2.0 and remove prior REC-track comments.
+        将版本号增加到v2.0，并删除之前的REC跟踪评论。
       </li>
       <li>
-        Add normative dependency on Verifiable Credential Data Integrity specification
-        [[VC-DATA-INTEGRITY]].
+        在可验证凭证数据完整性规范[[VC-DATA-INTEGRITY]]中添加规范依赖。
       </li>
       <li>
-        The section on
-        <a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/#disputes">Disputes</a>
-        was removed due to lack of implementations in v1.0 and v1.1.
+        由于v1.0和v1.1中缺乏实现，删除了关于“争议”的部分。
       </li>
     </ul>
 
     <p>
-      Changes since the
+      自
       <a href="https://www.w3.org/TR/2019/REC-vc-data-model-20191119/">
-        v1.0 Recommendation</a>:
+        v1.0 推荐</a>以来的变化：
     </p>
     <ul>
       <li>
-        Add this revision history section.
+        添加此修订历史部分。
       </li>
 
       <li>
-        Update previous normative references that pointed to RFC3339 for datetime
-        details to now normatively reference the datetime details described in
-        XMLSCHEMA11-2 which more accurately reflects the usage in examples and
-        libraries.
+        更新先前的规范参考，将指向 RFC3339 的日期时间详细信息改为规范参考 XMLSCHEMA11-2，这更准确地反映了示例和库中的使用情况。
       </li>
 
       <li>
-        Loosen the requirement to allow [=URLs=] that cannot be dereferenced in the
-        `id` property of the `credentialStatus` and
-        `refreshService` sections of the data model.
+        放宽要求，允许在数据模型的 `credentialStatus` 和 `refreshService` 部分的 `id` 属性中使用无法解引用的 [=URLs=]。
       </li>
 
       <li>
-        Loosen normative statements in the zero-knowledge proofs section to enable
-        compliance of new zero-knowledge proof schemes, such as BBS+, that have been
-        created since the v1.0 specification was published as a Recommendation.
+        放宽零知识证明部分的规范性陈述，以支持新的零知识证明方案，例如 BBS+，这些方案是在 v1.0 规范作为推荐标准发布之后创建的。
       </li>
 
       <li>
-        Update all references to point to the latest version of the referenced
-        specifications. Fix broken links to papers that have become unavailable to
-        updated locations where the papers are available.
+        更新所有引用，指向所引用规范的最新版本。修复指向已不可用的论文的损坏链接，将其更新为可用论文的新位置。
       </li>
 
       <li>
-        Increase accessibility of SVG diagrams.
+        提高 SVG 图表的可访问性。
       </li>
 
       <li>
-        Fix editorial bugs in a few examples related to `issuer`, `issuanceDate`,
-        `credentialStatus`, dates, dead links, and minor syntax errors.
+        修复一些示例中与 `issuer`、`issuanceDate`、`credentialStatus`、日期、失效链接和次要语法错误相关的编辑错误。
       </li>
 
       <li>
-        Move acknowledgements from Status of the Document section into the
-        Acknowledgements appendix.
+        将致谢从“文档状态”部分移至致谢附录。
       </li>
     </ul>
   </section>
 
   <section class="appendix informative">
-    <h2>Acknowledgements</h2>
+    <h2>致谢</h2>
 
     <p>
-      The Working Group thanks the following individuals not only for their
-      contributions toward the content of this document, but also for yeoman's work
-      in this standards community that drove changes, discussion, and consensus among
-      a sea of varied opinions: Matt Stone, Gregg Kellogg, Ted Thibodeau Jr, Oliver
-      Terbu, Joe Andrieu, David I. Lehn, Matthew Collier, and Adrian Gropper.
+      工作组感谢以下个人不仅对本文档内容的贡献，还对这个标准社区的辛勤工作，推动了变革、讨论和共识，尽管意见各异：Matt Stone、Gregg Kellogg、Ted Thibodeau Jr、Oliver Terbu、Joe
+      Andrieu、David I. Lehn、Matthew Collier和Adrian Gropper。
     </p>
 
     <p>
-      Work on this specification has been supported by the Rebooting the
-      Web of Trust community facilitated by Christopher Allen, Shannon Appelcline,
-      Kiara Robles, Brian Weller, Betty Dhamers, Kaliya Young, Manu Sporny,
-      Drummond Reed, Joe Andrieu, Heather Vescent, Kim Hamilton Duffy, Samantha Chase,
-      and Andrew Hughes. The participants in the Internet Identity Workshop,
-      facilitated by Phil Windley, Kaliya Young, Doc Searls, and Heidi Nobantu Saul,
-      also supported the refinement of this work through numerous working sessions
-      designed to educate about, debate on, and improve this specification.
+      本规范的工作得到了由Christopher Allen、Shannon Appelcline、Kiara Robles、Brian Weller、Betty Dhamers、Kaliya Young、Manu
+      Sporny、Drummond Reed、Joe Andrieu、Heather Vescent、Kim Hamilton Duffy、Samantha Chase和Andrew Hughes组织的Rebooting the
+      Web of Trust社区的支持。由Phil Windley、Kaliya Young、Doc Searls和Heidi Nobantu Saul组织的Internet Identity
+      Workshop的参与者也通过众多工作会议的设计来支持这项工作的完善，旨在教育、辩论和改进本规范。
     </p>
 
     <p>
-      The Working Group also thanks our Chairs, Dan Burnett, Matt Stone, Brent Zundel,
-      Wayne Chang, and Kristina Yasuda as well as our W3C Staff Contacts, Kazuyuki
-      Ashimura and Ivan Herman, for their expert management and steady guidance of the
-      group through the W3C standardization process.
+      工作组还感谢我们的主席Dan Burnett、Matt Stone、Brent Zundel、Wayne Chang和Kristina Yasuda，以及我们的W3C工作人员联系人Kazuyuki Ashimura和Ivan
+      Herman，他们在W3C标准化过程中的专业管理和稳定指导。
     </p>
 
     <p>
-      Portions of the work on this specification have been funded by the
-      United States Department of Homeland Security's Science and Technology
-      Directorate under contract HSHQDC-17-C-00019. The content of this specification
-      does not necessarily reflect the position or the policy of the U.S. Government
-      and no official endorsement should be inferred.
+      本规范的部分工作得到了美国国土安全部科学与技术总局根据合同HSHQDC-17-C-00019的资助。本规范的内容不一定反映美国政府的立场或政策，不应推断出任何官方认可。
     </p>
 
     <p>
-      The Working Group would like to thank the following individuals for reviewing
-      and providing feedback on the specification (in alphabetical order):
+      工作组要感谢以下个人对规范进行审查并提供反馈意见（按字母顺序排列）：
     </p>
 
     <p>

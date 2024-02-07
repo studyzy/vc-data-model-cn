@@ -3213,232 +3213,143 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="normative">
-      <h3>Ecosystem Compatibility</h3>
+      <h3>生态系统兼容性</h3>
 
       <p>
-        There are a number of digital credential formats that do not natively use the
-        data model provided in this document, but are aligned with a number of concepts
-        in this specification. At the time of publication, examples of these digital
-        credential formats include
+        有许多数字凭证格式本身并不使用本文档中提供的数据模型，但与本规范中的许多概念保持一致。在出版时，这些数字凭证格式的例子包括
         <a href="https://www.rfc-editor.org/rfc/rfc7519.html">
-          JSON Web Tokens</a> (JWTs),
+          JSON Web Tokens</a> (JWTs)，
         <a href="https://www.rfc-editor.org/rfc/rfc8392.html">
-          CBOR Web Tokens</a> (CWTs),
+          CBOR Web Tokens</a> (CWTs)，
         <a href="https://www.iso.org/standard/69084.html">ISO-18013-5:2021</a>
-        (mDLs),
+        (mDLs)，
         <a href="https://hyperledger.github.io/anoncreds-spec/">
-          AnonCreds</a>,
+          AnonCreds</a>，
         <a href="https://datatracker.ietf.org/doc/draft-mcnally-envelope/">
-          Gordian Envelopes</a>, and
+          Gordian Envelopes</a>，和
         <a href="https://datatracker.ietf.org/doc/draft-ssmith-acdc/">
-          Authentic Chained Data Containers</a> (ACDCs).
+          Authentic Chained Data Containers</a> (ACDCs)。
       </p>
 
       <p>
-        If conceptually aligned digital credential formats can be transformed into a
-        [=conforming document=] according to the rules provided in this section, they
-        are considered <em>"compatible with the W3C Verifiable Credentials
-          ecosystem"</em>. Specifications that describe how to perform transformations
-        that enable compatibility with the Verifiable Credentials ecosystem:
+        如果概念上对齐的数字凭证格式可以根据本节提供的规则转换为
+        [=符合规范的文档=]，它们被认为是<em>"与W3C可验证凭证生态系统兼容"</em>。描述如何执行转换以实现与可验证凭证生态系统兼容性的规范：
       </p>
 
       <ul>
         <li>
-          MUST identify whether the transformation to this data model is one-way-only or
-          round-trippable.
+          必须确定将此数据模型的转换是单向还是可往返。
         </li>
         <li>
-          MUST preserve the `@context` values when performing round-trippable
-          transformation.
+          在执行可往返转换时，必须保留`@context`值。
         </li>
         <li>
-          MUST result in a [=conforming document=] when transforming to the data
-          model described by this specification.
+          在转换为本规范描述的数据模型时，必须产生一个[=符合规范的文档=]。
         </li>
         <li>
-          MUST specify a registered media type for the input document.
+          必须为输入文档指定一个注册的媒体类型。
         </li>
         <li>
-          SHOULD provide a test suite that demonstrates that the specified transformation
-          algorithm to the data model in this specification results in
-          a [=conforming document=].
+          应提供一个测试套件，证明将指定的转换算法应用于本规范中的数据模型会产生
+          一个[=符合规范的文档=]。
         </li>
         <li>
-          SHOULD ensure that all semantics utilized in the transformed
-          [=conforming document=] follow best practices for Linked Data. See
-          Section <a href="#getting-started"></a>, Section
-          <a href="#extensibility"></a>, and Linked Data Best Practices [[?LD-BP]]
-          for additional guidance.
+          应确保转换后的[=符合规范的文档=]中使用的所有语义都遵循链接数据的最佳实践。请参阅
+          第<a href="#getting-started"></a>节，第
+          <a href="#extensibility"></a>节，以及链接数据最佳实践[[?LD-BP]]
+          以获取更多指导。
         </li>
       </ul>
 
-      <p class="note" title="What constitutes a verifiable credential?">
-        Readers are advised that a digital credential is only considered compatible with
-        the W3C Verifiable Credentials ecosystem if it is a [=conforming document=]
-        and it utilizes at least one securing mechanism, as described by their
-        respective requirements in this specification. While some communities might call
-        some digital credential formats that are not [=conforming documents=]
-        "verifiable credentials", doing so does NOT make that digital credential
-        compliant to this specification.
+      <p class="note" title="什么构成了一个可验证的凭证？">
+        建议读者注意，只有当数字凭证是一个[=符合规范的文档=]并且至少使用了一种安全机制（如本规范中各自的要求所述）时，才被认为与W3C可验证凭证生态系统兼容。虽然一些社区可能会称一些不是[=符合规范的文档=]的数字凭证格式为“可验证凭证”，但这样做并不能使该数字凭证符合本规范。
       </p>
 
     </section>
 
     <section>
-      <h3>Verifiable Credential Graphs</h3>
+      <h3>可验证凭证图</h3>
 
       <p>
-        When expressing [=verifiable credentials=] (for example in a
-        [=presentation=]), it is important to ensure that data in one [=verifiable
-        credential=] is not mistaken to be the same data in another [=verifiable
-        credential=]. For example, if one has two [=verifiable credentials=], each
-        containing an object of the following form: `{"type": "Person", "name": "Jane
-        Doe"}`, it is not possible to tell if one object is describing the same person
-        as the other object. In other words, merging data between two [=verifiable
-        credentials=] without confirming that they are discussing the same entities
-        and/or properties, can lead to a corrupted data set.
+        在表达[=可验证凭证=]（例如在[=展示=]中）时，确保一个[=可验证凭证=]中的数据不会被误认为是另一个[=可验证凭证=]中的相同数据是很重要的。例如，如果有两个[=可验证凭证=]，每个都包含以下形式的对象：`{"type": "Person", "name": "Jane
+        Doe"}`，就无法判断一个对象是否在描述与另一个对象相同的人。换句话说，在确认两个[=可验证凭证=]讨论的是相同实体和/或属性之前，合并两个[=可验证凭证=]之间的数据可能会导致数据集损坏。
       </p>
 
       <p>
-        To ensure that data from different [=verifiable credentials=] are not
-        accidentally co-mingled, the concept of a <dfn class="export">verifiable
-          credential graph</dfn> is used to encapsulate each [=verifiable credential=].
-        For simple [=verifiable credentials=], i.e., when the JSON-LD document
-        contains a single credential with, possibly, associated proofs, this graph is
-        the [=default graph=]. For [=presentations=], each value associated with
-        the `verifiableCredential` property of the [=presentation=] is a separate
-        [=named graph=] of type <dfn class="export">VerifiableCredentialGraph</dfn>
-        which contains a single [=verifiable credential=] or an
-        <a href="#enveloped-verifiable-credentials">enveloped verifiable credential</a>.
+        为了确保来自不同[=可验证凭证=]的数据不会意外地混合在一起，使用<dfn class="export">可验证凭证图</dfn>的概念来封装每个[=可验证凭证=]。对于简单的[=可验证凭证=]，即JSON-LD文档包含一个可能带有关联证明的单一凭证时，此图是[=默认图=]。对于[=展示=]，与[=展示=]的`verifiableCredential`属性关联的每个值都是一个单独的[=命名图=]，类型为<dfn class="export">VerifiableCredentialGraph</dfn>，其中包含一个[=可验证凭证=]或一个
+        <a href="#enveloped-verifiable-credentials">封装的可验证凭证</a>。
       </p>
       <p>
-        Using these [=graphs=] has a concrete effect when performing JSON-LD
-        processing, which properly separates graph node identifiers in one graph from
-        those in another graph. Implementers that limit their inputs to
-        application-specific JSON-LD documents will also need to keep this in mind if
-        they merge data from one [=verifiable credential=] with data from another,
-        such as when the `credentialSubject.id` is the same in both [=verifiable
-        credentials=], but the object might contain objects of the "Jane Doe" form
-        described in the previous paragraph. It is important to not merge objects that
-        seem to have similar properties but do not contain an `id` property that uses a
-        global identifier, such as a URL.
+        使用这些[=图=]在执行JSON-LD处理时会产生具体效果，这样可以正确地将一个图中的图节点标识符与另一个图中的图节点标识符分开。将输入限制为特定于应用程序的JSON-LD文档的实现者在将一个[=可验证凭证=]中的数据与另一个[=可验证凭证=]中的数据合并时，也需要考虑到这一点，例如，当`credentialSubject.id`在两个[=可验证凭证=]中都相同时，但对象可能包含前一段中描述的"Jane Doe"形式的对象。在不包含使用全局标识符（如URL）的`id`属性的情况下，不要合并看似具有相似属性的对象非常重要。
       </p>
     </section>
 
     <section>
-      <h3>Securing Mechanism Specifications</h3>
+      <h3>安全机制规范</h3>
 
       <p>
-        As described in Section <a href="#securing-mechanisms"></a>, there are
-        multiple strategies that an implementer can use when securing a
-        [=conforming document=]. In order to maximize utility and interoperability,
-        specification authors that desire to author new ways of securing
-        [=conforming documents=] are provided with the guidance in this section.
+        如第<a href="#securing-mechanisms">节</a>所述，实现者在保护[=符合规范的文档=]时可以使用多种策略。为了最大化实用性和互操作性，希望建立新的保护[=符合规范的文档=]方法的规范作者可以参考本节的指南。
       </p>
 
       <p>
-        Securing mechanism specifications MUST document normative algorithms that
-        provide content integrity protection for [=conforming documents=]. The
-        algorithms MAY be general in nature and MAY be used to secure data other than
-        [=conforming documents=].
+        安全机制规范必须记录为[=符合规范的文档=]提供内容完整性保护的规范性算法。这些算法可以是通用的，也可以用于保护除[=符合规范的文档=]之外的其他数据。
       </p>
 
       <p>
-        Securing mechanism specifications MUST provide a verification mechanism that
-        returns only the information in the [=conforming document=] that has been
-        secured, without any securing mechanism information included, such as `proof` or
-        JOSE/COSE header parameters and signatures. Specifications MAY provide additional mechanisms to convey
-        other information that might be helpful (for example, during validation or for
-        debugging purposes), such as securing mechanism data. A securing mechanism's
-        verification algorithm MUST provide an interface that receives a sequence of
-        bytes ([=byte sequence=] |inputBytes|) or a document ([=map=] |inputDocument|)
-        and a media type ([=string=] |inputMediaType|) as inputs and returns a
-        verification result with at least the following [=struct/items=]:
+        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=字节序列=] |inputBytes|）或文档（[=映射=] |inputDocument|）和媒体类型（[=字符串=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
       </p>
 
       <dl>
-        <dt>[=boolean=] |status|</dt>
+        <dt>[=布尔值=] |status|</dt>
         <dd>
-          A verification status whose value is `true` if the verification succeeded and
-          `false` if it did not.
+          验证状态，如果验证成功，则值为`true`，如果验证失败，则值为`false`。
         </dd>
-        <dt>[=map=] |document|</dt>
+        <dt>[=映射=] |document|</dt>
         <dd>
-          A document that only contains information that was successfully secured.
+          一个仅包含成功保护的信息的文档。
         </dd>
-        <dt>[=string=] |mediaType|</dt>
+        <dt>[=字符串=] |mediaType|</dt>
         <dd>
-          A media type as defined in [[RFC6838]].
+          一个在[[RFC6838]]中定义的媒体类型。
         </dd>
       </dl>
 
-      <p class="issue atrisk" title="Controller document reference might change">
-        The Working Group is currently attempting to align the definitions of a
-        controller document between [[[?DID-CORE]]], [[[?VC-DATA-INTEGRITY]]], and
-        [[[?VC-JOSE-COSE]]]. The goal is to have one specification that each of the
-        previously stated specifications, and this specification, can reference for
-        the normative statements related to controller documents. The normative
-        references to controller documents are expected to change during the
-        Candidate Recommendation phase.
+      <p class="issue atrisk" title="控制器文档引用可能会发生变化">
+        工作组目前正在尝试在[[[?DID-CORE]]]、[[[?VC-DATA-INTEGRITY]]]和[[[?VC-JOSE-COSE]]]之间对控制器文档的定义进行对齐。目标是让每个先前声明的规范和本规范都可以引用一个关于控制器文档的规范性声明。在候选推荐阶段，对控制器文档的规范性引用预计会发生变化。
       </p>
 
       <p>
-        Securing mechanism specifications SHOULD provide integrity protection for any
-        information referenced by a URL that is critical to validation. Mechanisms that
-        can achieve this protection are discussed in Section
-        <a href="#integrity-of-related-resources"></a> and Section
-        <a href="#base-context"></a>.
+        安全机制规范应为对验证至关重要的URL引用的任何信息提供完整性保护。可以实现此保护的机制在第<a href="#integrity-of-related-resources">节</a>和第<a href="#base-context">节</a>中有讨论。
       </p>
 
       <p>
-        Securing mechanism specifications that create new types of [=embedded proofs=]
-        MUST specify a [=property=] for securing both [=verifiable credentials=] and
-        [=verifiable presentations=]. The requirements for the property used by the
-        embedded securing mechanism are as follows:
+        创建新类型[=嵌入式证明=]的安全机制规范必须为保护[=可验证凭证=]和[=可验证演示文稿=]指定一个[=属性=]。嵌入式安全机制所使用的属性要求如下：
       </p>
 
       <ul>
         <li>
-          The property MUST relate the [=verifiable credential=] or [=verifiable
-          presentation=] to a separable and securable [=proof graph=].
+          该属性必须将[=可验证凭证=]或[=可验证演示文稿=]与可分离且可保护的[=证明图=]关联起来。
         </li>
         <li>
-          The property MUST define all terms used by the [=proof graph=]. For example,
-          the mechanism could define vocabulary specifications and `@context` files
-          in the same manner as they are utilized by this specification.
+          该属性必须定义[=证明图=]所使用的所有术语。例如，该机制可以定义词汇表规范和`@context`文件，就像它们被本规范使用的那样。
         </li>
         <li>
-          In a [=verifiable credential=], the property MUST secure the
-          [=default graph=].
+          在[=可验证凭证=]中，该属性必须保护[=默认图=]。
         </li>
         <li>
-          In a [=verifiable presentation=], the property MUST secure the
-          [=default graph=] of the [=presentation=] as well as every [=proof graph=]
-          related to each [=verifiable credential=] in the [=presentation=].
+          在[=可验证演示文稿=]中，该属性必须保护[=演示文稿=]的[=默认图=]以及[=演示文稿=]中每个[=可验证凭证=]相关的[=证明图=]。
         </li>
         <li>
-          The `proof` property as defined in [[VC-DATA-INTEGRITY]] MAY be used by the
-          embedded securing mechanism.
+          [[VC-DATA-INTEGRITY]]中定义的`proof`属性可以被嵌入式安全机制使用。
         </li>
       </ul>
 
       <p>
-        Securing mechanism specifications SHOULD register the securing mechanism in the
-        <a data-cite="?VC-SPECS#securing-mechanisms">Securing Mechanisms</a> section
-        of the [[[?VC-SPECS]]] [[?VC-SPECS]].
+        安全机制规范应在<a data-cite="?VC-SPECS#securing-mechanisms">安全机制</a>部分[[[?VC-SPECS]]] [[?VC-SPECS]]中注册安全机制。
       </p>
 
-      <p class="note" title="Choice of securing mechanism is use-case dependent">
-        There are multiple acceptable securing mechanisms, and this specification does
-        not mandate any particular securing mechanism for use with
-        [=verifiable credentials=] or [=verifiable presentations=].
-        The Working Group that produced this specification did standardize two
-        securing mechanism options, which are:
-        [[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]] and [[[VC-JOSE-COSE]]]
-        [[VC-JOSE-COSE]]. Other securing mechanisms that are known to the community
-        can be found in the
-        <a data-cite="?VC-SPECS#securing-mechanisms">Securing Mechanisms</a> section
-        of the [[[?VC-SPECS]]] [[?VC-SPECS]].
+      <p class="note" title="选择安全机制取决于用例">
+        有多种可接受的安全机制，本规范并未规定任何特定的安全机制用于[=可验证凭证=]或[=可验证演示文稿=]。制定本规范的工作组确实对两种安全机制选项进行了标准化，分别是：[[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]]和[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]。社区已知的其他安全机制可以在[[[?VC-SPECS]]] [[?VC-SPECS]]的<a data-cite="?VC-SPECS#securing-mechanisms">安全机制</a>部分找到。
       </p>
 
     </section>
@@ -3446,198 +3357,150 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section>
-    <h2>Syntaxes</h2>
+    <h2>语法</h2>
 
     <p>
-      The data model as described in Sections
-      <a href="#core-data-model"></a>, <a href="#basic-concepts"></a>, and
-      <a href="#advanced-concepts"></a> is the canonical structural representation of
-      a [=verifiable credential=] or [=verifiable presentation=]. All
-      serializations are representations of that data model in a specific format. This
-      section specifies how the data model is realized in JSON-LD for
-      `application/vc+ld+json`, the base media type for Verifiable Credentials.
-      Although syntactic mappings are only provided for JSON-LD, applications and
-      services can use any other data representation syntax (such as XML, YAML, or
-      CBOR) that is capable of being mapped back to `application/vc+ld+json`. As the
-      [=verification=] and [=validation=] requirements are defined in terms of
-      the data model, all serialization syntaxes have to be deterministically
-      translated to the data model for processing, [=validation=], or comparison.
+      如<a href="#core-data-model"></a>、<a href="#basic-concepts"></a>和
+      <a href="#advanced-concepts"></a>章节所述的数据模型是
+      [=可验证凭证=]或[=可验证展示=]的规范结构表示。所有
+      序列化都是以特定格式表示该数据模型。本节指定了如何在JSON-LD中实现数据模型
+      用于`application/vc+ld+json`，可验证凭证的基本媒体类型。
+      尽管语法映射仅提供给JSON-LD，应用程序和
+      服务可以使用任何其他能够映射回`application/vc+ld+json`的数据表示语法（如XML、YAML或
+      CBOR）。由于[=验证=]和[=验证=]要求是基于
+      数据模型，所有序列化语法都必须确定性地
+      转换为数据模型以进行处理，[=验证=]或比较。
     </p>
 
     <p>
-      The expected arity of the property values in this specification, and the
-      resulting datatype which holds those values, can vary depending on the property.
-      If present, the following properties are represented as a single value:
+      本规范中属性值的预期元数以及保存这些值的
+      结果数据类型可能因属性而异。
+      如果存在，以下属性表示为单个值：
     </p>
 
     <ul>
       <li>
-        `id` [=property=]
+        `id` [=属性=]
       </li>
       <li>
-        `issuer` [=property=]
+        `issuer` [=属性=]
       </li>
       <li>
-        `validFrom` [=property=]
+        `validFrom` [=属性=]
       </li>
       <li>
-        `validUntil` [=property=].
+        `validUntil` [=属性=]。
       </li>
     </ul>
 
     <p>
-      All other properties, if present, are represented as either a single value
-      or an array of values.
+      所有其他属性（如果存在）表示为单个值
+      或值数组。
     </p>
 
     <section>
       <h3>JSON-LD</h3>
 
       <p>
-        [[!JSON-LD11]] is a JSON-based format used to serialize
-        <a href="https://www.w3.org/TR/ld-glossary/#linked-data">Linked Data</a>. The
-        syntax is designed to easily integrate into deployed systems already using JSON,
-        and provides a smooth upgrade path from JSON to [[!JSON-LD11]]. It is primarily
-        intended to be a way to use Linked Data in Web-based programming environments,
-        to build interoperable Web services, and to store Linked Data in JSON-based
-        storage engines.
+        [[!JSON-LD11]] 是一种基于 JSON 的格式，用于序列化
+        <a href="https://www.w3.org/TR/ld-glossary/#linked-data">链接数据</a>。该
+        语法旨在轻松集成到已经使用 JSON 的部署系统中，
+        并为从 JSON 升级到 [[!JSON-LD11]] 提供平滑升级路径。它主要
+        用于在基于 Web 的编程环境中使用链接数据，
+        构建可互操作的 Web 服务，并将链接数据存储在基于 JSON 的
+        存储引擎中。
       </p>
 
       <p>
-        [[!JSON-LD11]] is useful when extending the data model described in this
-        specification. Instances of the data model are encoded in JSON-LD compacted
-        form [[!JSON-LD11]] and include the `@context` [=property=]. The
-        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD context</a>
-        is described in detail in the [[!JSON-LD11]] specification and its use is
-        elaborated on in Section <a href="#contexts"></a> and
-        Section <a href="#extensibility"></a>.
+        [[!JSON-LD11]] 在扩展本规范中描述的数据模型时非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包括 `@context` [=property=]。 
+        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>
+        在 [[!JSON-LD11]] 规范中详细描述，其用法在第 <a href="#contexts"></a> 节和
+        第 <a href="#extensibility"></a> 节中进一步阐述。
       </p>
 
       <p>
-        Multiple contexts MAY be used or combined to express any arbitrary information
-        about [=verifiable credentials=] in idiomatic JSON. The
-        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD context</a>,
-        available at `https://www.w3.org/ns/credentials/v2`, is a static
-        document that is never updated and can therefore be downloaded and cached client
-        side. The associated vocabulary document for the Verifiable Credentials Data
-        Model is available at `https://www.w3.org/2018/credentials`.
+        可以使用或组合多个上下文来以惯用的 JSON 表达关于 [=verifiable credentials=] 的任意信息。
+        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>，
+        可在 `https://www.w3.org/ns/credentials/v2` 获取，是一个静态
+        文档，永远不会更新，因此可以在客户端下载和缓存。可验证凭据数据模型的关联词汇文档可在 `https://www.w3.org/2018/credentials` 获取。
       </p>
 
       <p>
-        This specification restricts the usage of JSON-LD representations of
-        the data model. JSON-LD <a href="https://www.w3.org/TR/json-ld/#compacted-document-form">compacted document
-          form</a> MUST be utilized for all representations of the data model in the
-        base media type, `application/vc+ld+json`.
+        本规范限制了对数据模型的 JSON-LD 表示的使用。JSON-LD <a href="https://www.w3.org/TR/json-ld/#compacted-document-form">紧凑文档形式</a> 必须用于基本媒体类型 `application/vc+ld+json` 中的数据模型的所有表示。
       </p>
 
       <p>
-        As elaborated upon in Section
-        <a href="#credential-type-specific-processing"></a>, some software applications
-        might not perform generalized JSON-LD processing. Authors of [=conforming
-        documents=] are advised that interoperability might be reduced if JSON-LD
-        keywords in the `@context` value are used to globally affect values in a
-        [=verifiable credential=] or [=verifiable presentation=], such as by
-        globally setting the `@base` keyword. For example, globally setting these values
-        might trigger a failure in a mis-implemented JSON Schema check on the `@context`
-        value in an implementation that is performing [=credential type-specific
-        processing=] and not expecting the `@base` value to be expressed in the
-        `@context` value.
+        如第 <a href="#credential-type-specific-processing"></a> 节中详细阐述的那样，某些软件应用可能不执行通用的 JSON-LD 处理。 [=conforming documents=] 的作者应注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=verifiable credential=] 或 [=verifiable presentation=] 中的值（例如，通过全局设置 `@base` 关键字），互操作性可能会降低。例如，全局设置这些值可能会在执行 [=credential type-specific processing=] 的实现中触发对 `@context` 值的错误实现的 JSON Schema 检查，而该实现并未期望在 `@context` 值中表达 `@base` 值。
       </p>
 
       <p>
-        In order to increase interoperability, [=conforming document=] authors are
-        urged to not use JSON-LD features that are not easily detected when performing
-        [=credential type-specific processing=]. These features include:
+        为了提高互操作性，建议 [=conforming document=] 作者不要使用在执行 [=credential type-specific processing=] 时不容易检测到的 JSON-LD 功能。这些功能包括：
       </p>
 
       <ul>
         <li>
-          Use of JSON-LD keywords in the `@context` value that globally modify document
-          value processing, such as global settings of `@base`
+          在 `@context` 值中使用 JSON-LD 关键字，全局修改文档值处理，例如全局设置 `@base`
         </li>
         <li>
-          In-line declaration of JSON-LD contexts in the `@context` property.
+          在 `@context` 属性中内联声明 JSON-LD 上下文。
         </li>
         <li>
-          Use of full URLs for JSON-LD terms and types (e.g.,
-          `https://www.w3.org/2018/credentials#VerifiableCredential` or
-          `https://vocab.example/myvocab#SomeNewType`) instead of the short forms of
-          any such values (e.g., `VerifiableCredential` or `SomeNewType`) that are
-          either explicitly defined as JSON-LD `@context` mappings (e.g.,
-          `https://www.w3.org/ns/credentials/v2`) or are implicitly defined via the
-          `@vocab` feature that applies to all undefined terms.
+          使用 JSON-LD 术语和类型的完整 URL（例如，
+          `https://www.w3.org/2018/credentials#VerifiableCredential` 或
+          `https://vocab.example/myvocab#SomeNewType`）而不是使用任何这样的值的简短形式（例如，`VerifiableCredential` 或 `SomeNewType`），这些值要么被明确定义为 JSON-LD `@context` 映射（例如，
+          `https://www.w3.org/ns/credentials/v2`），要么通过适用于所有未定义术语的 `@vocab` 功能隐式定义。
         </li>
       </ul>
 
       </p>
 
       <section>
-        <h3>Syntactic Sugar</h3>
+        <h3>语法糖</h3>
 
         <p>
-          In general, the data model and syntaxes described in this document are
-          designed such that developers can copy and paste examples to incorporate
-          [=verifiable credentials=] into their software systems. The design goal of
-          this approach is to provide a low barrier to entry while still ensuring global
-          interoperability between a heterogeneous set of software systems. This section
-          describes some of these approaches, which will likely go unnoticed by most
-          developers, but whose details will be of interest to implementers. The most
-          noteworthy syntactic sugars provided by [[!JSON-LD11]] are:
+          总的来说，本文档中描述的数据模型和语法设计使得开发者可以复制粘贴示例，将
+          [=可验证凭证=]集成到他们的软件系统中。这种方法的设计目标是在确保不同软件系统之间实现全球互操作性的同时，降低进入门槛。本节描述了其中一些方法，这些方法可能不会被大多数开发者注意到，但其细节对于实现者来说是有趣的。[[!JSON-LD11]]提供的最值得注意的语法糖包括：
         </p>
 
         <ul>
           <li>
-            The `@id` and `@type` keywords are aliased to
-            `id` and `type` respectively, enabling developers to use
-            this specification as idiomatic JSON.
+            `@id` 和 `@type` 关键字分别被别名为
+            `id` 和 `type`，使开发者能够将本规范用作地道的 JSON。
           </li>
           <li>
-            Data types, such as integers, dates, units of measure, and URLs, are
-            automatically typed to provide stronger type guarantees for use cases that
-            require them.
+            数据类型，如整数、日期、度量单位和 URL，会自动进行类型化，以便为需要它们的用例提供更强的类型保证。
           </li>
           <li>
-            The `verifiableCredential` [=property=]
-            is defined as a
-            <a href="https://www.w3.org/TR/json-ld11/#graph-containers">JSON-LD 1.1 graph
-              container</a>. This requires the creation of [=named graphs=], used to isolate
-            sets of data asserted by different entities. This ensures, for example, proper
-            cryptographic separation between the data graph provided by each [=issuer=]
-            and the one provided by the [=holder=] presenting the [=verifiable
-            credential=] to ensure the provenance of the information for each graph is
-            preserved.
+            `verifiableCredential` [=属性=]
+            被定义为
+            <a href="https://www.w3.org/TR/json-ld11/#graph-containers">JSON-LD 1.1 图形
+              容器</a>。这要求创建 [=命名图=]，用于隔离由不同实体声明的数据集。这确保了，例如，每个 [=发行者=] 提供的数据图与 [=持有者=] 提供的数据图之间的适当加密分离，以确保每个图的信息来源得以保留。
           </li>
           <li>
-            The `@protected` properties feature of [[!JSON-LD11]] 1.1 is used to
-            ensure that terms defined by this specification cannot be overridden. This means
-            that as long as the same `@context` declaration is made at the top of
-            a [=verifiable credential=] or [=verifiable presentation=],
-            interoperability is guaranteed for all terms understood by users of the data
-            model whether or not they use a [[!JSON-LD11]] processor.
+            使用 [[!JSON-LD11]] 1.1 的 `@protected` 属性功能
+            确保本规范定义的术语不能被覆盖。这意味着只要在
+            [=可验证凭证=] 或 [=可验证展示=] 的顶部进行相同的 `@context` 声明，
+            对于数据模型的所有用户理解的术语，无论他们是否使用 [[!JSON-LD11]] 处理器，都可以保证互操作性。
           </li>
         </ul>
       </section>
       <section>
-        <h3>Lists and Arrays</h3>
+        <h3>列表和数组</h3>
         <p>
-          Lists, arrays, and even lists of lists, are possible when using [[JSON-LD11]] 1.1.
-          We encourage those who want RDF semantics in use
-          cases requiring lists and arrays to follow the guidance on
-          <a href="https://www.w3.org/TR/json-ld11/#lists">lists in JSON-LD 1.1</a>.
+          当使用[[JSON-LD11]] 1.1时，列表、数组，甚至列表的列表都是可能的。
+          我们鼓励那些希望在需要列表和数组的用例中使用RDF语义的人遵循
+          <a href="https://www.w3.org/TR/json-ld11/#lists">JSON-LD 1.1中的列表</a>的指导。
         </p>
         <p>
-          In general, a JSON array is ordered, while a JSON-LD array is not ordered unless
-          that array uses the `@list` keyword.
+          一般来说，JSON数组是有序的，而JSON-LD数组在没有使用`@list`关键字的情况下是无序的。
         </p>
         <p class="note">
-          While it is possible to use this data model without any JSON-LD processing,
-          those who do so and make use of arrays need to be aware that unless the above
-          guidance is followed, the order of items in an array cannot be guaranteed in
-          JSON-LD. This might lead to unexpected behavior.
+          虽然可以在不进行任何JSON-LD处理的情况下使用此数据模型，
+          但那些这样做并使用数组的人需要注意，除非遵循上述指导，否则无法保证JSON-LD中数组中项目的顺序。这可能导致意外的行为。
         </p>
         <p>
-          If JSON structure or ordering is important to your application,
-          we recommend you mark such elements as `@json` via an `@context`.
+          如果JSON结构或排序对您的应用程序很重要，
+          我们建议您通过`@context`将这些元素标记为`@json`。
         </p>
         <pre class="example" title="A @context file that defines a matrix as an embedded JSON data structure">
 {
@@ -3677,194 +3540,122 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </section>
     </section>
     <section>
-      <h3>Media Types</h3>
+      <h3>媒体类型</h3>
 
       <p>
-        Media types, as defined in [[RFC6838]], identify the syntax used to express a
-        [=verifiable credential=] as well as other useful processing guidelines.
+        媒体类型，如[[RFC6838]]中定义，标识用于表达
+        [=可验证证书=]的语法以及其他有用的处理指南。
       </p>
       <p>
-        Syntaxes used to express the data model in this specification SHOULD be
-        identified by a media type, and conventions outlined in this section SHOULD be
-        followed when defining or using media types with [=verifiable credentials=].
+        本规范中用于表达数据模型的语法应由媒体类型标识，且在定义或使用与[=可验证证书=]相关的媒体类型时，应遵循本节概述的约定。
       </p>
       <p>
-        There are two media types associated with the core data model, which are
-        listed in the Section <a href="#iana-considerations"></a>:
-        `application/vc+ld+json` and `application/vp+ld+json`.
+        与核心数据模型相关的有两种媒体类型，列在<a href="#iana-considerations">考虑因素</a>一节中：
+        `application/vc+ld+json` 和 `application/vp+ld+json`。
       </p>
       <p>
-        The `application/vc+ld+json` and `application/vp+ld+json` media types do not
-        imply any particular securing mechanism, but are intended to be used in
-        conjunction with securing mechanisms. A securing mechanism needs to be applied
-        to protect the integrity of these media types. Do not assume security of content
-        regardless of the media type used to communicate it.
+        `application/vc+ld+json` 和 `application/vp+ld+json` 媒体类型并不暗示任何特定的安全机制，但是预期将与安全机制一起使用。需要应用一个安全机制来保护这些媒体类型的完整性。不论用于通信的媒体类型是什么，都不要假设内容的安全性。
       </p>
 
       <section class="informative">
-        <h3>Media Type Precision</h3>
+        <h3>媒体类型精度</h3>
 
         <p>
-          At times, developers or systems might use lower precision media types to convey
-          [=verifiable credentials=] or [=verifiable presentations=]. Some of the
-          reasons for use of lower precision media types include:
+          有时，开发者或系统可能使用较低精度的媒体类型来传递
+          [=可验证证书=]或[=可验证展示=]。使用较低精度媒体类型的一些原因包括：
         </p>
 
         <ul>
           <li>
-            A web server defaults to `text/plain` or `application/octet-stream` when a file
-            extension is not available and it cannot determine the media type.
+            当文件扩展名不可用且无法确定媒体类型时，Web服务器默认为`text/plain`或`application/octet-stream`。
           </li>
           <li>
-            A developer adds a file extension that leads to a media type that is less
-            specific than the content of the file. For example, `.json` could result in a
-            media type of `application/json` and `.jsonld` might result in a media type of
-            `application/ld+json`.
+            开发者添加的文件扩展名导致媒体类型比文件内容的精度低。例如，`.json`可能导致`application/json`的媒体类型，而`.jsonld`可能导致`application/ld+json`的媒体类型。
           </li>
           <li>
-            A protocol requires a less precise media type for a particular transaction; for
-            example, `application/json` instead of `application/vp+ld+json`,
+            协议要求对于特定交易使用较不精确的媒体类型；例如，`application/json`而不是`application/vp+ld+json`。
           </li>
         </ul>
 
         <p>
-          Implementers are urged to not raise errors when it is possible to determine the
-          intended media type from a payload, provided that the media type used is
-          acceptable in the given protocol. For example, if an application only accepts
-          payloads that conform to the rules associated with the `application/vc+ld+json`
-          media type, but the payload is tagged with `application/json` or
-          `application/ld+json` instead, the application might perform the following
-          steps to determine whether the payload also conforms to the higher precision
-          media type:
+          实施者被敦促在可能从有效载荷确定预期的媒体类型的情况下，不要引发错误，前提是在给定协议中使用的媒体类型是可接受的。例如，如果一个应用程序只接受符合`application/vc+ld+json`媒体类型相关规则的有效载荷，但有效载荷被标记为`application/json`或`application/ld+json`，则应用程序可能执行以下步骤来确定有效载荷是否也符合更高精度的媒体类型：
         </p>
 
         <ol>
           <li>
-            Parse the payload as a JSON document.
+            将有效载荷解析为JSON文档。
           </li>
           <li>
-            Ensure that the first element of the `@context` field matches
-            `https://www.w3.org/2018/credentials/v2`.
+            确保`@context`字段的第一个元素匹配`https://www.w3.org/2018/credentials/v2`。
           </li>
           <li>
-            Assume an `application/vp+ld+json` media type if the JSON document contains a
-            top-level `type` field containing a `VerifiablePresentation` element. Additional
-            subsequent checks are still expected to be performed (according to this
-            specification) to ensure the payload expresses a conformant Verifiable
-            Presentation.
+            如果JSON文档包含一个顶级`type`字段，其中包含一个`VerifiablePresentation`元素，则假设其为`application/vp+ld+json`媒体类型。仍然期望执行额外的后续检查（根据本规范），以确保有效载荷表达了一个符合规范的可验证展示。
           </li>
           <li>
-            Assume an `application/vc+ld+json` media type if the JSON document contains a
-            top-level `type` field containing a `VerifiableCredential` element. Additional
-            subsequent checks are still expected to be performed (according to this
-            specification) to ensure the payload expresses a conformant Verifiable
-            Credential.
+            如果JSON文档包含一个顶级`type`字段，其中包含一个`VerifiableCredential`元素，则假设其为`application/vc+ld+json`媒体类型。仍然期望执行额外的后续检查（根据本规范），以确保有效载荷表达了一个符合规范的可验证证书。
           </li>
         </ol>
 
         <p>
-          Whenever possible, implementers are advised to use the most precise (the highest
-          precision) media type for all payloads defined by this specification.
-          Implementers are also advised to recognize that a payload tagged with a lower
-          precision media type does not mean that the payload does not meet the rules
-          necessary to tag it with a higher precision type. Similarly, a payload tagged
-          with a higher precision media type does not mean that the payload will meet the
-          requirements associated with the media type. Receivers of payloads, regardless
-          of their associated media type, are expected to perform appropriate checks to
-          ensure that payloads conform with the requirements for their use in a given
-          system.
+          在任何可能的情况下，建议实施者对本规范定义的所有有效载荷使用最精确（最高精度）的媒体类型。实施者还建议认识到，用较低精度媒体类型标记的有效载荷并不意味着有效载荷不符合用更高精度类型标记的规则。同样，用较高精度媒体类型标记的有效载荷并不意味着有效载荷将满足与媒体类型相关的要求。接收有效载荷的系统，无论其关联的媒体类型如何，都应执行适当的检查，以确保有效载荷符合在给定系统中使用的要求。
         </p>
       </section>
       <section class="informative">
         <h2>HTTP</h2>
         <p>
-          It is expected that HTTP endpoints will use the media types associated with
-          [=verifiable credentials=] and [=verifiable presentations=] in accept
-          headers and when indicating content types.
+          预期HTTP端点将在接受标头和指示内容类型时使用与
+          [=可验证证书=]和[=可验证展示=]相关的媒体类型。
         </p>
         <p>
-          Nonetheless, HTTP servers might ignore the accept header and return another
-          content type, or return an error code such as
-          <a data-cite="RFC7231#section-6.5.13">`415 Unsupported Media Type`</a>.
+          尽管如此，HTTP服务器可能会忽略接受标头并返回另一种内容类型，或返回错误代码，例如
+          <a data-cite="RFC7231#section-6.5.13">`415 Unsupported Media Type`</a>。
         </p>
       </section>
     </section>
 
     <section class="informative">
-      <h2>Credential Type-Specific Processing</h2>
+      <h2>凭证类型特定处理</h2>
 
       <p>
-        <dfn>General JSON-LD processing</dfn> is defined as a mechanism that utilizes a
-        JSON-LD software library to process a [=conforming document=] by performing
-        various <a data-cite="?JSON-LD11#forms-of-json-ld">transformations</a>.
-        <dfn>Credential type-specific processing</dfn> is defined as a lighter-weight
-        mechanism for processing [=conforming documents=], that doesn't require
-        a JSON-LD software library. Some consumers of [=verifiable credentials=]
-        only need to consume credentials with specific types. These consumers can use
-        credential-type-specific processing instead of generalized processing. Scenarios
-        where credential-type-specific processing can be desirable include, but are not
-        limited to, the following:
+        <dfn>通用JSON-LD处理</dfn>被定义为一种利用JSON-LD软件库对[=符合要求的文档=]进行各种<a data-cite="?JSON-LD11#forms-of-json-ld">转换</a>的机制。
+        <dfn>凭证类型特定处理</dfn>被定义为一种处理[=符合要求的文档=]的轻量级机制，不需要JSON-LD软件库。一些[=可验证凭证=]的消费者只需要处理特定类型的凭证。这些消费者可以使用凭证类型特定处理而不是通用处理。凭证类型特定处理可能是可取的场景包括但不限于以下几种：
       </p>
 
       <ul>
         <li>
-          Before applying a securing mechanism to a [=conforming document=], or after
-          verifying a [=conforming document=] protected by a securing mechanism, to
-          ensure
-          <a href="https://csrc.nist.gov/glossary/term/data_integrity">data integrity</a>.
+          在对[=符合要求的文档=]应用安全机制之前，或在验证受安全机制保护的[=符合要求的文档=]之后，确保
+          <a href="https://csrc.nist.gov/glossary/term/data_integrity">数据完整性</a>。
         </li>
         <li>
-          When performing JSON Schema validation, as described in Section
-          <a href="#data-schemas"></a>.
+          在执行JSON Schema验证时，如第<a href="#data-schemas"></a>节所述。
         </li>
         <li>
-          When serializing or deserializing [=verifiable credentials=] or
-          [=verifiable presentations=] into systems that store or index their contents.
+          在将[=可验证凭证=]或[=可验证展示=]序列化或反序列化到存储或索引其内容的系统中。
         </li>
         <li>
-          When operating on [=verifiable credentials=] or [=verifiable
-          presentations=] in a software application, after verification or validation
-          is performed for securing mechanisms that require
-          [=general JSON-LD processing=].
+          在软件应用程序中操作[=可验证凭证=]或[=可验证展示=]，在执行需要[=通用JSON-LD处理=]的安全机制的验证或验证之后。
         </li>
         <li>
-          When an application chooses to process the media type using the `+json`
-          structured media type suffix.
+          当应用程序选择使用`+json`结构化媒体类型后缀处理媒体类型时。
         </li>
       </ul>
 
       <p>
-        That is, [=credential type-specific processing=] is allowed as long as the
-        document being consumed or produced is a [=conforming document=]. If this
-        type of processing is desired, an implementer is advised to follow this rule:
+        也就是说，只要消费或生成的文档是[=符合要求的文档=]，就允许进行[=凭证类型特定处理=]。如果需要这种类型的处理，建议实施者遵循以下规则：
       </p>
 
       <ul>
         <li>
-          Ensure that all values associated with a `@context` property are in the
-          expected order, the contents of the context files match known good
-          cryptographic hashes for each file, and domain experts have deemed that the
-          contents are appropriate for the intended use case.
+          确保与`@context`属性关联的所有值按预期顺序排列，上下文文件的内容与每个文件的已知良好加密哈希匹配，领域专家认为内容适用于预期的用例。
         </li>
       </ul>
 
       <p>
-        Using static context files with a JSON Schema is one acceptable approach to
-        implementing the rule above. This can ensure proper term identification,
-        typing, and order, when performing [=credential type-specific processing=].
+        使用静态上下文文件和JSON Schema是实现上述规则的一种可接受方法。在执行[=凭证类型特定处理=]时，这可以确保正确识别、类型化和排序术语。
       </p>
 
       <p>
-        The rule above guarantees semantic interoperability between the two processing
-        mechanisms for mapping literal JSON keys to URIs via the `@context` mechanism.
-        While [=general JSON-LD processing=] can use previously unseen `@context`
-        values provided in its algorithms to verify that all terms are correctly
-        specified, implementations that perform [=credential type-specific
-        processing=] only accept specific `@context` values which the implementation
-        is engineered ahead of time to understand, resulting in the same semantics
-        without invoking any JSON-LD APIs. In other words, the context in which the data
-        exchange happens is explicitly stated for both processing mechanisms by using
-        `@context` in a way that leads to the same [=conforming document=] semantics.
+        上述规则保证了通过`@context`机制将字面JSON键映射到URI的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但执行[=凭证类型特定处理=]的实现只接受特定的`@context`值，这些值是实现事先设计好的，从而在不调用任何JSON-LD API的情况下实现相同的语义。换句话说，通过使用`@context`以导致相同的[=符合要求的文档=]语义的方式，明确说明了数据交换发生的上下文，以便两种处理机制都能使用。
       </p>
 
     </section>
@@ -3872,177 +3663,119 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section class="normative">
-    <h2>Algorithms</h2>
+    <h2>算法</h2>
 
     <p>
-      This section contains algorithms that can be used by implementations to perform
-      common operations, such as verification. Conformance requirements phrased as
-      algorithms utilize normative concepts from the [[[INFRA]]] [[INFRA]]. See the
-      section on <a data-cite="INFRA#conformance">Conformance</a> in the [[[INFRA]]]
-      for more guidance on implementation requirements.
+      本节包含可供实现使用的算法，以执行常见操作，如验证。以算法表述的一致性要求使用[[[INFRA]]] [[INFRA]]中的规范性概念。有关实现要求的更多指导，请参阅[[[INFRA]]]中关于<a data-cite="INFRA#conformance">一致性</a>的部分。
     </p>
 
-    <p class="issue atrisk" title="Issues need resolution before Candidate Recommendation">
-      There is one issue that is associated with this section that will need
-      to be resolved before the Working Group can enter the Candidate Recommendation
-      phase. This entire section is at risk until those issues are resolved.
+    <p class="issue atrisk" title="在候选推荐之前需要解决的问题">
+      与本节相关的有一个问题需要在工作组进入候选推荐阶段之前解决。在这些问题得到解决之前，整个部分都处于风险之中。
     </p>
 
     <p class="issue" data-number="1377"></p>
 
-    <p class="note" title="Implementers can include additional checks, warnings, and errors.">
-      Implementers are advised that the algorithms in this section contain the bare
-      minimum set of checks used by implementations to test conformance to this
-      specification. Implementations are expected to provide additional checks that
-      report helpful warnings for developers to help debug potential issues.
-      Similarly, implementations are likely to provide additional checks that
-      could result in new types of errors being reported in order to stop harmful
-      content. Any of these additional checks might be integrated into future
-      versions of this specification.
+    <p class="note" title="实现者可以包括额外的检查、警告和错误。">
+      建议实现者注意，本节中的算法包含了实现用于测试对本规范的一致性的最基本的检查集。预计实现将提供额外的检查，为开发人员报告有用的警告，以帮助调试潜在问题。同样，实现可能会提供额外的检查，这可能导致报告新类型的错误，以阻止有害内容。这些额外检查中的任何一个都可能被整合到本规范的未来版本中。
     </p>
 
     <section class="normative">
-      <h3>Verification</h3>
+      <h3>验证</h3>
 
       <p>
-        This section contains an algorithm that [=conforming verifier
-        implementations=] MUST run when verifying a [=verifiable credential=] or a
-        [=verifiable presentation=]. This algorithm takes a sequence of bytes
-        ([=byte sequence=] |inputBytes|) or a document
-        ([=map=] |inputDocument|) and a media type
-        ([=string=] |inputMediaType|) as inputs, and returns a [=map=]
-        that contains the following:
+        本节包含一个算法，该算法是[=符合验证器实现=]在验证[=可验证凭证=]或[=可验证演示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=] |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
       </p>
 
       <ul>
         <li>
-          a status ([=boolean=] |status|)
+          状态（[=boolean=] |status|）
         </li>
         <li>
-          a [=conforming document=] ([=map=] |document|)
+          一个[=符合的文档=]（[=map=] |document|）
         </li>
         <li>
-          a media type ([=string=] |mediaType|)
+          媒体类型（[=string=] |mediaType|）
         </li>
         <li>
-          a controller of the verification method associated with the securing mechanism
-          ([=string=] |controller|)
+          与保护机制相关联的验证方法的控制器（[=string=] |controller|）
         </li>
         <li>
-          a controller document that is associated with the verification method used
-          to verify the securing mechanism ([=map=] |controllerDocument|)
+          与用于验证保护机制的验证方法相关联的控制器文档（[=map=] |controllerDocument|）
         </li>
         <li>
-          zero or more warnings ([=list=] of [=ProblemDetails=] |warnings|)
+          零个或多个警告（[=ProblemDetails=]的[=list=] |warnings|）
         </li>
         <li>
-          zero or more errors ([=list=] of [=ProblemDetails=] |errors|)
+          零个或多个错误（[=ProblemDetails=]的[=list=] |errors|）
         </li>
       </ul>
 
       <p>
-        The verification algorithm is as follows:
+        验证算法如下：
       </p>
 
       <ol class="algorithm">
         <li>
-          Ensure that the securing mechanism has properly protected the
-          [=conforming document=] by performing the following steps:
+          通过执行以下步骤，确保保护机制已正确保护[=符合的文档=]：
           <ol class="algorithm">
             <li>
-              Set the |verifyProof| function by using the |inputMediaType| and the
-              <a data-cite="?VC-SPECS#securing-mechanisms">Securing Mechanisms</a> section of
-              the [[[?VC-SPECS]]] [[?VC-SPECS]], or other mechanisms known to the
-              implementation, to determine the cryptographic suite to use when verifying
-              the securing mechanism. The |verifyProof| function MUST implement the interface
-              described in <a href="#securing-mechanisms"></a>.
-              <div class="issue" title="Mechanism for 'determining' is being detailed">
-                At present, the Working Group is concerned that the algorithm for "determining"
-                might need to be more formally defined. At present, no implementation has
-                had an issue determining the proper |verifyProof| algorithm to use, but the
-                Working Group is attempting to see if saying more here would be worthwhile.
-                Additional example language could be added that says that an implementation
-                might have an allow list of acceptable cryptosuites -- and these will be used as
-                inputs for finding matching proofs to be verified.
+              使用|inputMediaType|和[[[?VC-SPECS]]] [[?VC-SPECS]]的<a data-cite="?VC-SPECS#securing-mechanisms">保护机制</a>部分，或实现已知的其他机制，来确定在验证保护机制时使用的加密套件，从而设置|verifyProof|函数。|verifyProof|函数必须实现在<a href="#securing-mechanisms"></a>中描述的接口。
+              <div class="issue" title="“确定”的机制正在详细说明">
+                目前，工作组担心“确定”的算法可能需要更正式地定义。目前，没有实现遇到确定适当的|verifyProof|算法使用的问题，但工作组正在尝试看看在这里说更多是否值得。可以添加额外的示例语言，说明实现可能有一个可接受的加密套件的允许列表——这些将用作查找要验证的匹配证明的输入。
               </div>
             </li>
             <li>
-              Set |result| to the result of passing |inputBytes| and
-              |inputMediaType| to the |verifyProof| function. If the call was
-              successful, |result| will contain the |status|,
-              |document|, |mediaType|, |controller|,
-              |controllerDocument|, |warnings|, and |errors|
-              properties.
+              将|result|设置为将|inputBytes|和|inputMediaType|传递给|verifyProof|函数的结果。如果调用成功，|result|将包含|status|、|document|、|mediaType|、|controller|、|controllerDocument|、|warnings|和|errors|属性。
             </li>
             <li>
-              If |result|.|status| is set to `false`, add a
-              <a href="#CRYPTOGRAPHIC_SECURITY_ERROR">CRYPTOGRAPHIC_SECURITY_ERROR</a> to
-              |result|.|errors|.
+              如果|result|.|status|设置为`false`，则将<a href="#CRYPTOGRAPHIC_SECURITY_ERROR">CRYPTOGRAPHIC_SECURITY_ERROR</a>添加到|result|.|errors|。
             </li>
           </ol>
         </li>
         <li>
-          If |result|.|status| is set to `true`, ensure that
-          |result|.|document| is a [=conforming document=]. If it is
-          not, set |result|.|status| to `false`, remove the
-          |document| property from |result|, and add at least
-          one <a href="#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a> to
-          |result|.|errors|. Other warnings and errors MAY be included
-          to aid any debugging process.
+          如果|result|.|status|设置为`true`，确保|result|.|document|是一个[=符合的文档=]。如果不是，将|result|.|status|设置为`false`，从|result|中删除|document|属性，并至少向|result|.|errors|添加一个<a href="#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>。可能包含其他警告和错误以帮助任何调试过程。
         </li>
         <li>
-          Return |result|.
+          返回|result|。
         </li>
       </ol>
 
       <p>
-        The steps for verifying the state of the securing mechanism and verifying
-        that the input document is a [=conforming document=] MAY be performed in
-        a different order than that provided above as long as the
-        implementation returns errors for the same invalid inputs.
-        Implementations MAY produce different errors than described above.
+        验证保护机制的状态和验证输入文档是否为[=符合的文档=]的步骤可以按照与上述不同的顺序执行，只要实现对相同的无效输入返回错误。实现可能产生与上述不同的错误。
       </p>
 
     </section>
 
     <section>
-      <h3>Problem Details</h3>
+      <h3>问题详情</h3>
 
       <p>
-        When an implementation detects an anomaly while processing a document, a
-        <dfn>ProblemDetails</dfn> object can be used to report the issue to other
-        software systems. The interface for these types of objects follows [[RFC9457]]
-        to encode the data. A [=ProblemDetails=] object consists of the following
-        properties:
+        当实现在处理文档时检测到异常时，可以使用<dfn>ProblemDetails</dfn>对象将问题报告给其他软件系统。这些类型对象的接口遵循[[RFC9457]]对数据进行编码。一个[=ProblemDetails=]对象包括以下属性：
       </p>
 
       <dl>
         <dt>type</dt>
         <dd>
-          The `type` [=property=] MUST be present and its value MUST be a [=URL=]
-          identifying the type of problem.
+          `type` [=property=] 必须存在，其值必须是一个 [=URL=]，用于标识问题的类型。
         </dd>
         <dt>code</dt>
         <dd>
-          The `code` [=property=] is OPTIONAL.
-          present, its value MUST be an integer that identifies the type of the problem.
-          Integer codes are useful in systems that only provide integer return values.
+          `code` [=property=] 是可选的。
+          如果存在，其值必须是一个整数，用于标识问题的类型。
+          整数代码在只提供整数返回值的系统中很有用。
         </dd>
         <dt>title</dt>
         <dd>
-          The `title` [=property=] MUST be present and its value SHOULD provide a short
-          but specific human-readable string for the problem.
+          `title` [=property=] 必须存在，其值应提供一个简短但具体的问题的人类可读字符串。
         </dd>
         <dt>detail</dt>
         <dd>
-          The `detail` [=property=] MUST be present and its value SHOULD provide a
-          longer human-readable string for the problem.
+          `detail` [=property=] 必须存在，其值应提供一个较长的问题的人类可读字符串。
         </dd>
       </dl>
 
       <p>
-        The following problem description types and codes are defined by this
-        specification:
+        本规范定义了以下问题描述类型和代码：
       </p>
 
       <dl>
@@ -4051,44 +3784,38 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           (-64)
         </dt>
         <dd>
-          There was an error while parsing input.
+          在解析输入时出现错误。
         </dd>
         <dt id="CRYPTOGRAPHIC_SECURITY_ERROR">
           https://www.w3.org/TR/vc-data-model#CRYPTOGRAPHIC_SECURITY_ERROR
           (-65)
         </dt>
         <dd>
-          The securing mechanism for the document has detected a
-          modification in the contents of the document since it was created;
-          potential tampering detected. See Section
-          <a href="#verification"></a>.
+          文档的安全机制检测到自创建以来文档内容的修改；
+          检测到潜在的篡改。请参阅
+          <a href="#verification"></a>部分。
         </dd>
         <dt id="MALFORMED_VALUE_ERROR">
           https://www.w3.org/TR/vc-data-model#MALFORMED_VALUE_ERROR
           (-66)
         </dt>
         <dd>
-          The value associated with a particular [=property=] is malformed. The
-          name of the [=property=] and the path to the property SHOULD be provided
-          in the [=ProblemDetails=] object. See Section
-          <a href="#verification"></a>.
+          与特定[=property=]关联的值格式错误。在[=ProblemDetails=]对象中应提供[=property=]的名称和属性路径。请参阅
+          <a href="#verification"></a>部分。
         </dd>
         <dt id="RANGE_ERROR">
           https://www.w3.org/TR/vc-data-model#RANGE_ERROR
           (-67)
         </dt>
         <dd>
-          A provided value is outside of the expected range of an associated value,
-          such as a given index value for an array being larger than the current size
-          of the array.
+          提供的值超出了关联值的预期范围，
+          例如，给定的数组索引值大于数组的当前大小。
         </dd>
       </dl>
 
       <p>
-        Implementations MAY extend the [=ProblemDetails=] object by specifying
-        additional types, codes, or properties. See the
-        <a data-cite="RFC9457#name-extension-members">Extension Member</a> section
-        in [[RFC9457]] for further guidance on using this mechanism.
+        实现可以通过指定其他类型、代码或属性来扩展[=ProblemDetails=]对象。有关使用此机制的进一步指导，请参阅[[RFC9457]]中的
+        <a data-cite="RFC9457#name-extension-members">扩展成员</a>部分。
       </p>
 
     </section>
@@ -4096,442 +3823,250 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section class="informative">
-    <h2>Privacy Considerations</h2>
+    <h2>隐私考虑</h2>
 
     <p>
-      This section details the general privacy considerations and specific privacy
-      implications of deploying the Verifiable Credentials Data Model into production
-      environments.
+      本节详细介绍了将可验证凭证数据模型部署到生产环境中的一般隐私考虑和具体隐私影响。
     </p>
 
     <section class="informative">
-      <h3>Spectrum of Privacy</h3>
+      <h3>隐私范围</h3>
 
       <p>
-        It is important to recognize there is a spectrum of privacy ranging from
-        pseudonymous to strongly identified. Depending on the use case, people have
-        different comfort levels about what information they are willing to provide
-        and what information can be derived from what is provided.
+        重要的是要认识到，隐私有一个范围，从伪名到强烈识别。根据用例，人们对于他们愿意提供的信息以及从所提供的信息中可以得出的信息有不同的舒适度。
       </p>
 
       <figure>
-        <img style="margin: auto; display: block; width: 80%;" src="diagrams/privacy-spectrum.svg" alt="Horizontal bar with
-            red on the left, orange in the middle, and green on the
-            right.  The red has the text 'Highly correlatable (global
-            IDs), e.g., government ID, shipping address, credit card
-            number'.  The orange has the text 'Correlatable via collusion
-            (personally identifiable info), e.g., name, birthday, zip
-            code'.  The green has the text 'Non-correlatable
-            (pseudonyms), e.g., age over 21'.">
+        <img style="margin: auto; display: block; width: 80%;" src="diagrams/privacy-spectrum.svg" alt="水平条形图，左侧为红色，中间为橙色，右侧为绿色。红色部分的文字为'高度关联（全球ID），例如，政府ID，邮寄地址，信用卡号码'。橙色部分的文字为'通过勾结关联（个人身份信息），例如，姓名，生日，邮政编码'。绿色部分的文字为'不可关联（化名），例如，年龄超过21岁'。">
         <figcaption style="text-align: center;">
-          Privacy spectrum ranging from pseudonymous to fully identified.
+          从伪名到完全识别的隐私范围。
         </figcaption>
       </figure>
 
       <p>
-        For example, most people probably want to remain anonymous when purchasing
-        alcohol because the regulatory check required is solely based on whether a
-        person is above a specific age. Alternatively, for medical prescriptions
-        written by a doctor for a patient, the pharmacy fulfilling the prescription is
-        required to more strongly identify the medical professional and the patient.
-        Therefore there is not one approach to privacy that works for all use cases.
-        Privacy solutions are use case specific.
+        例如，大多数人在购买酒精时可能希望保持匿名，因为所需的监管检查仅基于一个人是否超过特定年龄。另一方面，对于医生为患者开具的医疗处方，配药的药房需要更强烈地识别医疗专业人员和患者。因此，并没有一种适用于所有用例的隐私方法。隐私解决方案是针对特定用例的。
       </p>
 
       <p class="note">
-        Even for those wanting to remain anonymous when purchasing alcohol, photo
-        identification might still be required to provide appropriate assurance to the
-        merchant. The merchant might not need to know your name or other details (other
-        than that you are over a specific age), but in many cases just proof of age
-        might still be insufficient to meet regulations.
+        即使对于那些在购买酒精时希望保持匿名的人，也可能仍需要提供照片身份证明以向商家提供适当的保证。商家可能不需要知道您的姓名或其他详细信息（除了您是否超过特定年龄），但在许多情况下，仅提供年龄证明可能仍然不足以满足法规要求。
       </p>
 
       <p>
-        The Verifiable Credentials Data Model strives to support the full privacy
-        spectrum and does not take philosophical positions on the correct level of
-        anonymity for any specific transaction. The following sections provide guidance
-        for implementers who want to avoid specific scenarios that are hostile to
-        privacy.
+        可验证凭证数据模型力求支持完整的隐私范围，并且在任何特定交易的正确匿名程度上不持哲学立场。以下各节为希望避免特定对隐私不友好的场景的实施者提供指导。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Software Trust Boundaries</h3>
+      <h3>软件信任边界</h3>
 
       <p>
-        A variety of trust relationships exist in the
-        <a href="#ecosystem-overview">ecosystem described by this specification</a>. An
-        individual using a web browser trusts the web browser, also known as a <a
-          href="https://www.w3.org/TR/UAAG20/#def-user-agent">user agent</a>, to preserve
-        that trust by not uploading their personal information to a data broker;
-        similarly, entities filling the roles in the ecosystem described by this
-        specification trust the software that operates on behalf of each of those roles.
-        Examples include the following:
+        在本规范所描述的<a href="#ecosystem-overview">生态系统</a>中存在各种信任关系。个人使用Web浏览器时，信任Web浏览器（也称为<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>）不会将他们的个人信息上传到数据代理；同样，填充本规范所描述的生态系统中的角色的实体信任代表这些角色的软件。示例包括以下内容：
       </p>
 
       <ul>
         <li>
-          An [=issuer's=]
-          <a href="https://www.w3.org/TR/UAAG20/#def-user-agent">user agent</a>
-          (issuer software), such as an online education platform, is expected to only
-          issue [=verifiable credentials=] to individuals that the issuer asserts
-          have completed their educational program.
+          [=发行者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（发行者软件），例如在线教育平台，预期只向发行者确认已完成其教育计划的个人发行[=可验证凭证=]。
         </li>
         <li>
-          A [=verifier's=]
-          <a href="https://www.w3.org/TR/UAAG20/#def-user-agent">user agent</a>
-          (verification software), such as a hiring website, is expected to only allow
-          access to individuals with a valid verification status for
-          [=verifiable credentials=] and [=verifiable presentations=] provided to
-          the platform by such individuals.
+          [=验证者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（验证软件），例如招聘网站，预期只允许具有有效验证状态的个人访问，这些个人向平台提供[=可验证凭证=]和[=可验证演示文稿=]。
         </li>
         <li>
-          A [=holder's=]
-          <a href="https://www.w3.org/TR/UAAG20/#def-user-agent">user agent</a>
-          (holder software), such as a digital wallet, is expected to only divulge
-          information to a [=verifier=] when the [=holder=] has consented to
-          the release of that information.
+          [=持有者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（持有者软件），例如数字钱包，预期只有在[=持有者=]同意释放该信息时才会向[=验证者=]泄露信息。
         </li>
       </ul>
 
       <p>
-        The examples above are not exhaustive, and the users in these roles can also
-        expect a variety of other things from the software they use to achieve their
-        goals. In short, the software is expected to operate in the best interests
-        of the user, and a violation of that expectation is a violation of trust
-        that will result in the software being replaced by something that does not
-        violate that trust. Implementers are strongly advised to write software that
-        does not violate the trust of the users it will serve. Implementers are
-        also advised to provide auditing features in the software that they create
-        such that the users, or trusted third parties, can check whether the software
-        is indeed behaving in their best interests.
+        上述示例并非详尽无遗，这些角色中的用户还可以期望从他们用来实现目标的软件中获得各种其他功能。简而言之，预计软件将为用户的最佳利益服务，违反该期望将导致信任的破裂，软件将被不违反信任的其他软件替代。强烈建议实施者编写不违反其服务用户信任的软件。实施者还建议在他们创建的软件中提供审计功能，以便用户或受信任的第三方可以检查软件是否确实在为他们的最佳利益服务。
       </p>
 
       <p>
-        Readers are advised that some software, such as a website that provides services
-        to a single [=verifier=] and multiple [=holders=], might operate as a
-        <a href="https://www.w3.org/TR/UAAG20/#def-user-agent">user agent</a> to both
-        roles, but might not always be able to simultaneously operate in the best
-        interests of all parties. For example, if that website detects an attempt at
-        fraudulent [=verifiable credential=] use among multiple [=holders=], it
-        might report such an anomaly to the [=verifier=], which might be considered
-        to not be in the best interest of the [=holder=] committing the violation,
-        but would be in the best interest of the [=verifier=] as well as any
-        [=holders=] <em>not</em> committing such a violation. It is strongly advised
-        that when software operates in this manner, that it is made clear in whose best
-        interest the software is operating through mechanisms such as a website usage
-        policy.
+        建议读者注意，某些软件（例如为单个[=验证者=]和多个[=持有者=]提供服务的网站）可能作为<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>同时为这两个角色提供服务，但可能无法始终同时为所有各方的最佳利益服务。例如，如果该网站检测到多个[=持有者=]之间存在欺诈性[=可验证凭证=]的使用尝试，它可能会向[=验证者=]报告此类异常，这可能被认为不符合犯规的[=持有者=]的最佳利益，但符合[=验证者=]以及任何<em>不</em>犯此类违规行为的[=持有者=]的最佳利益。强烈建议在软件以这种方式运行时，通过诸如网站使用政策之类的机制明确软件是在谁的最佳利益下运行。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Personally Identifiable Information</h3>
+      <h3>个人身份信息</h3>
 
       <p>
-        Data associated with [=verifiable credentials=] stored in the
-        `credential.credentialSubject` field is susceptible to privacy
-        violations when shared with [=verifiers=]. Personally identifying data, such
-        as a government-issued identifier, shipping address, and full name, can be
-        easily used to determine, track, and correlate an [=entity=]. Even
-        information that does not seem personally identifiable, such as the
-        combination of a birthdate and a postal code, has very powerful correlation
-        and de-anonymizing capabilities.
+        存储在`credential.credentialSubject`字段中与[=可验证凭证=]相关的数据在与[=验证者=]共享时容易受到隐私侵犯。例如政府发行的标识符、邮寄地址和全名等个人身份信息，可以很容易地用来确定、追踪和关联一个[=实体=]。即使是看似不具有个人身份特征的信息，如出生日期和邮政编码的组合，也具有非常强大的关联和去匿名化能力。
       </p>
 
       <p>
-        Implementers are strongly advised to warn [=holders=] when they share data
-        with these kinds of characteristics. [=Issuers=] are strongly advised to
-        provide privacy-protecting [=verifiable credentials=] when possible. For
-        example, issuing `ageOver` [=verifiable credentials=] instead of
-        date of birth [=verifiable credentials=] when a [=verifier=] wants to
-        determine whether an [=entity=] is over the age of 18.
+        强烈建议实施者在[=持有者=]分享这类特征的数据时进行警告。强烈建议[=发行者=]在可能的情况下提供保护隐私的[=可验证凭证=]。例如，当一个[=验证者=]想要确定一个[=实体=]是否已满18岁时，发行`ageOver` [=可验证凭证=]而不是出生日期[=可验证凭证=]。
       </p>
 
       <p>
-        Because a [=verifiable credential=] often contains personally identifiable
-        information (PII), implementers are strongly advised to use mechanisms while
-        storing and transporting [=verifiable credentials=] that protect the data
-        from those who should not access it. Mechanisms that could be considered include
-        Transport Layer Security (TLS) or other means of encrypting the data while in
-        transit, as well as encryption or data access control mechanisms to protect
-        the data in a [=verifiable credential=] while at rest.
+        由于[=可验证凭证=]通常包含个人身份信息(PII)，因此强烈建议实施者在存储和传输[=可验证凭证=]时使用保护数据免受非法访问的机制。可以考虑的机制包括传输层安全性(TLS)或其他在传输过程中加密数据的方式，以及加密或数据访问控制机制来保护存储在[=可验证凭证=]中的数据。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Identifier-Based Correlation</h3>
+      <h3>基于标识符的关联</h3>
 
       <p>
-        [=Subjects=] of [=verifiable credentials=] are identified using the
-        `credential.credentialSubject.id` field. The identifiers used to
-        identify a [=subject=] create a greater risk of correlation when the
-        identifiers are long-lived or used across more than one web domain.
+        [=可验证凭证=]的[=主体=]使用`credential.credentialSubject.id`字段进行识别。用于识别[=主体=]的标识符在跨多个网络域或长时间使用时，关联风险更大。
       </p>
 
       <p>
-        Similarly, disclosing the [=credential=] identifier
-        (`credential.id`) leads to situations where multiple
-        [=verifiers=], or an [=issuer=] and a [=verifier=], can collude to
-        correlate the [=holder=]. If [=holders=] want to reduce correlation, they
-        should use [=verifiable credential=] schemes that allow hiding the
-        identifier during [=verifiable presentation=]. Such schemes expect the
-        [=holder=] to generate the identifier and might even allow hiding the
-        identifier from the [=issuer=], while still keeping the identifier embedded
-        and signed in the [=verifiable credential=].
+        同样地，披露[=凭证=]标识符（`credential.id`）会导致多个[=验证者=]或[=发行者=]与[=验证者=]串通关联[=持有者=]的情况。如果[=持有者=]希望减少关联，他们应使用允许在[=可验证呈现=]过程中隐藏标识符的[=可验证凭证=]方案。这类方案要求[=持有者=]生成标识符，甚至允许在保持标识符嵌入并签署在[=可验证凭证=]中的同时，将标识符对[=发行者=]进行隐藏。
       </p>
 
       <p>
-        If strong anti-correlation properties are a requirement in a
-        [=verifiable credentials=] system, it is strongly advised that identifiers
-        are either:
+        如果在[=可验证凭证=]系统中需要强大的反关联特性，强烈建议标识符采用以下方式之一：
       </p>
 
       <ul>
         <li>
-          Bound to a single origin
+          绑定到单一来源
         </li>
         <li>
-          Single-use
+          一次性使用
         </li>
         <li>
-          Not used at all, but instead replaced by short-lived, single-use bearer tokens.
+          根本不使用，而是用短时、一次性的持票人令牌替代。
         </li>
       </ul>
     </section>
 
     <section class="informative">
-      <h3>Signature-Based Correlation</h3>
+      <h3>基于签名的关联</h3>
 
       <p>
-        The contents of a [=credential=] are secured using a securing mechanism.
-        Values used to represent the securing mechanism
-        create a greater risk of correlation when the same values are used across more
-        than one session or domain and the value does not change.
+        使用安全机制保护[=凭证=]的内容。当在多个会话或域中使用相同的值且值不变时，用于表示安全机制的值会增加关联风险。
       </p>
 
       <p>
-        If strong anti-correlation properties are required, it is advised that
-        signature values and metadata are regenerated each time using technologies like
-        third-party pairwise signatures, zero-knowledge proofs, or group signatures.
+        如果需要强大的反关联特性，建议使用第三方成对签名、零知识证明或群签名等技术，每次重新生成签名值和元数据。
       </p>
 
       <p class="note">
-        Even when using anti-correlation signatures, information might still be
-        contained in a [=verifiable credential=] that defeats the anti-correlation
-        properties of the cryptography used.
+        即使在使用反关联签名时，[=可验证凭证=]中可能仍然包含信息，从而使所使用的密码学的反关联特性失效。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Long-Lived Identifier-Based Correlation</h3>
+      <h3>基于长期标识符的关联</h3>
 
       <p>
-        [=Verifiable credentials=] might contain long-lived identifiers that could
-        be used to correlate individuals. These types of identifiers include
-        [=subject=] identifiers, email addresses, government-issued identifiers,
-        organization-issued identifiers, addresses, healthcare vitals,
-        [=verifiable credential=]-specific JSON-LD contexts, and many other sorts of
-        long-lived identifiers.
+        [=可验证凭证=]可能包含可用于关联个人的长期标识符。这些类型的标识符包括
+        [=主题=]标识符、电子邮件地址、政府颁发的标识符、
+        机构颁发的标识符、地址、医疗保健生命体征、
+        [=可验证凭证=]特定的JSON-LD上下文，以及许多其他类型的
+        长期标识符。
       </p>
 
       <p>
-        Organizations providing software to [=holders=] should strive to identify
-        fields in [=verifiable credentials=] containing information that could be
-        used to correlate individuals and warn [=holders=] when this information is
-        shared.
+        向[=持有者=]提供软件的组织应努力识别
+        [=可验证凭证=]中包含可用于关联个人的信息的字段，并在此类信息被
+        共享时警告[=持有者=]。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Metadata-based Correlation</h3>
+      <h3>基于元数据的关联</h3>
 
       <p>
-        The use of different extension points described in Section
-        <a href="#basic-concepts"></a> and Section <a href="#advanced-concepts"></a>
-        can serve as an unintentional or unwanted correlation mechanism if the number
-        of [=issuers=] using a specific extension type or combination of types
-        is relatively small.
-        For example, the use of certain types of cryptography that are only used by
-        particular nation states, or revocation formats used by specific jurisdictions,
-        or credential types used by specific localities, can be used as a mechanism
-        to reduce the pseudonymity that a [=holder=] might expect to have when
-        performing a selective disclosure of information to a [=verifier=].
+        在第<a href="#basic-concepts"></a>节和第<a href="#advanced-concepts"></a>节中描述的不同扩展点的使用
+        如果使用特定扩展类型或类型组合的[=颁发者=]数量相对较少，
+        可能会成为一种无意识或不希望的关联机制。
+        例如，仅由特定国家使用的某些类型的加密技术，或特定司法管辖区使用的吊销格式，
+        或特定地区使用的凭证类型，都可以作为一种机制
+        降低[=持有者=]在向[=验证者=]选择性披露信息时期望的匿名性。
       </p>
 
       <p>
-        [=Issuers=] are urged to reduce metadata-based correlation possibilities when
-        issuing [=verifiable credentials=] that are expected to be used in a
-        pseudonymous fashion by reducing the types of extensions that can be used to
-        narrow the pseudonymity of the [=holder=]. Using credential types,
-        extensions, and technology profiles that have global use is preferred over ones
-        that have national use, which are preferred over ones that only have local use.
+        建议[=颁发者=]在颁发预期以匿名方式使用的[=可验证凭证=]时减少基于元数据的关联可能性，
+        通过减少可用于缩小[=持有者=]匿名性的扩展类型。使用具有全球应用的凭证类型、
+        扩展和技术概况优于具有国家应用的凭证类型，而具有国家应用的凭证类型优于仅具有地方应用的凭证类型。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Device Tracking and Fingerprinting</h3>
+      <h3>设备追踪和指纹识别</h3>
 
       <p>
-        There are mechanisms external to [=verifiable credentials=] that are used to
-        track and correlate individuals on the Internet and the Web. Some of these
-        mechanisms include Internet protocol (IP) address tracking, web browser
-        fingerprinting, evercookies, advertising network trackers, mobile network
-        position information, and in-application Global Positioning System (GPS) APIs.
-        Using [=verifiable credentials=] cannot prevent the use of these other
-        tracking technologies. Also, when these technologies are used in conjunction
-        with [=verifiable credentials=], new correlatable information could be
-        discovered. For example, a birthday coupled with a GPS position can be used to
-        strongly correlate an individual across multiple websites.
+        存在一些外部机制，用于在互联网和Web上追踪和关联个体，这些机制不包括[=可验证的凭证=]。这些机制包括互联网协议（IP）地址追踪、网络浏览器指纹识别、永久cookies、广告网络追踪器、移动网络位置信息以及应用内全球定位系统（GPS）API。使用[=可验证的凭证=]无法阻止这些其他追踪技术的使用。此外，当这些技术与[=可验证的凭证=]一起使用时，可能会发现新的可关联信息。例如，生日与GPS位置的组合可以被用来在多个网站上强烈关联一个个体。
       </p>
 
       <p>
-        It is recommended that privacy-respecting systems prevent the use of these
-        other tracking technologies when [=verifiable credentials=] are being used.
-        In some cases, tracking technologies might need to be disabled on devices that
-        transmit [=verifiable credentials=] on behalf of a [=holder=].
+        建议尊重隐私的系统在使用[=可验证的凭证=]时阻止这些其他追踪技术的使用。在某些情况下，可能需要在代表[=持有者=]传输[=可验证的凭证=]的设备上禁用追踪技术。
       </p>
 
       <p>
-        The Oblivious HTTP protocol [[?OHTTP]] is one mechanism that implementers might
-        consider using when fetching external resources that are associated with a
-        [=verifiable credential=] or a [=verifiable presentation=].
-        Oblivious HTTP allows a client to make multiple requests to an origin server
-        without that server being able to link those requests to that client or even to
-        identify those requests as having come from a single client, while placing only
-        limited trust in the nodes used to forward the messages. Hence, Oblivious HTTP
-        is one privacy-preserving mechanism that can be used to reduce the possibility
-        of device tracking and fingerprinting. Concrete examples for how Oblivious HTTP
-        can benefit ecosystem participants are included below.
+        Oblivious HTTP协议[[?OHTTP]]是实施者在获取与[=可验证的凭证=]或[=可验证的展示=]相关的外部资源时可能会考虑使用的一种机制。Oblivious HTTP允许客户端向源服务器发送多个请求，而该服务器无法将这些请求链接到该客户端，甚至无法识别这些请求来自同一个客户端，同时只对用于转发消息的节点有限的信任。因此，Oblivious HTTP是一种可以用来减少设备追踪和指纹识别可能性的保护隐私的机制。以下包含了Oblivious HTTP如何使生态系统参与者受益的具体示例。
       </p>
 
       <ul>
         <li>
-          A [=holder=] using a digital wallet can reduce the chances that they
-          will be tracked by a 3rd party when accessing external links within a
-          [=verifiable credential=] stored in their digital wallet.
-          For example, a digital wallet might fetch and render linked images, or
-          check the validity of a [=verifiable credential=] by fetching an
-          externally linked revocation list.
+          使用数字钱包的[=持有者=]可以减少他们在访问存储在其数字钱包中的[=可验证的凭证=]内的外部链接时被第三方追踪的可能性。例如，数字钱包可能会获取并呈现链接的图像，或者通过获取外部链接的撤销列表来检查[=可验证的凭证=]的有效性。
         </li>
         <li>
-          A [=verifier=] can reduce signalling to an [=issuer=] that the
-          [=verifier=] has received a specific [=verifiable credential=].
-          For example, a [=verifier=] might fetch an externally linked revocation
-          list while performing status checks on a [=verifiable credential=].
+          [=验证者=]可以减少向[=发行者=]发出已收到特定[=可验证的凭证=]的信号。例如，[=验证者=]在对[=可验证的凭证=]进行状态检查时，可能会获取外部链接的撤销列表。
         </li>
       </ul>
     </section>
 
     <section class="informative">
-      <h3>Favor Abstract Claims</h3>
+      <h3>偏爱抽象声明</h3>
 
       <p>
-        To enable recipients of [=verifiable credentials=] to use them in a variety
-        of circumstances without revealing more PII than necessary for transactions,
-        [=issuers=] should consider limiting the information published in a
-        [=credential=] to a minimal set needed for the expected purposes. One way to
-        avoid placing PII in a [=credential=] is to use an abstract [=property=]
-        that meets the needs of [=verifiers=] without providing specific information
-        about a [=subject=].
+        为了让[=可验证凭证=]的接收者在各种情况下使用它们，而无需透露比交易所需更多的个人身份信息（PII），[=发行者=]应考虑将发布在[=凭证=]中的信息限制为预期目的所需的最小集合。避免在[=凭证=]中放置个人身份信息的一种方法是使用一种抽象的[=属性=]，该属性满足[=验证者=]的需求，而无需提供关于[=主题=]的具体信息。
       </p>
       <p>
-        For example, this document uses the `ageOver` [=property=]
-        instead of a specific birthdate, which constitutes much stronger PII. If
-        retailers in a specific market commonly require purchasers to be older than a
-        certain age, an [=issuer=] trusted in that market might choose to offer a
-        [=verifiable credential=] claiming that [=subjects=] have met that
-        requirement instead of offering [=verifiable credentials=] containing
-        [=claims=] about specific birthdates. This enables individual customers to
-        make purchases without revealing specific PII.
+        例如，本文档使用了`ageOver` [=属性=]，而不是具体的出生日期，后者构成了更强的个人身份信息。如果某个特定市场的零售商通常要求购买者年龄大于某个年龄，那么在该市场受信任的[=发行者=]可能会选择提供一种[=可验证凭证=]，声称[=主题=]已经满足了该要求，而不是提供包含关于具体出生日期的[=声明=]的[=可验证凭证=]。这使得个人顾客可以在不透露具体个人身份信息的情况下进行购买。
       </p>
     </section>
 
     <section class="informative">
-      <h3>The Principle of Data Minimization</h3>
+      <h3>数据最小化原则</h3>
 
       <p>
-        Privacy violations occur when information divulged in one context leaks into
-        another. Accepted best practice for preventing such violations is to limit the
-        information requested, and received, to the absolute minimum necessary. This
-        data minimization approach is required by regulation in multiple jurisdictions,
-        including the Health Insurance Portability and Accountability Act (HIPAA) in the
-        United States and the General Data Protection Regulation (GDPR) in the European
-        Union.
+        当在一个上下文中泄露的信息泄露到另一个上下文时，就会发生隐私侵犯。防止此类侵犯的公认最佳做法是将请求和接收的信息限制到绝对最小必要。这种数据最小化方法在多个司法管辖区中都被法规要求，包括美国的健康保险可携带性和责任法案（HIPAA）和欧盟的一般数据保护条例（GDPR）。
       </p>
       <p>
-        With [=verifiable credentials=], data minimization for [=issuers=] means
-        limiting the content of a [=verifiable credential=] to the minimum required
-        by potential [=verifiers=] for expected use. For [=verifiers=], data
-        minimization means limiting the scope of the information requested or
-        required for accessing services.
+        对于[=可验证的凭证=]，对[=发行者=]来说，数据最小化意味着将[=可验证的凭证=]的内容限制到潜在的[=验证者=]预期使用所需的最小限度。对于[=验证者=]，数据最小化意味着限制请求或获取服务所需的信息范围。
       </p>
       <p>
-        For example, a driver's license containing a driver's ID number, height, weight,
-        birthday, and home address is a [=credential=] containing more information
-        than is necessary to establish that the person is above a certain age.
+        例如，一个包含驾驶员ID号码、身高、体重、生日和家庭地址的驾驶执照是一个[=凭证=]，它包含的信息比确认一个人是否超过某个年龄所需的信息更多。
       </p>
 
       <p>
-        It is considered best practice for [=issuers=] to atomize information or use
-        a signature scheme that allows for [=selective disclosure=]. For example, an
-        [=issuer=] of driver's licenses could issue a [=verifiable credential=]
-        containing every attribute that appears on a driver's license, as well as a set
-        of [=verifiable credentials=] where every [=verifiable credential=]
-        contains only a single attribute, such as a person's birthday. It could also
-        issue more abstract [=verifiable credentials=] (for example, a
-        [=verifiable credential=] containing only an `ageOver` attribute).
-        One possible adaptation would be for [=issuers=] to provide secure HTTP
-        endpoints for retrieving single-use [=bearer credentials=] that promote the
-        pseudonymous usage of [=verifiable credentials=]. Implementers that find this
-        impractical or unsafe, should consider using [=selective disclosure=] schemes
-        that eliminate dependence on [=issuers=] at proving time and reduce temporal
-        correlation risk from [=issuers=].
+        一般认为，[=发行者=]最好将信息原子化或使用允许[=选择性披露=]的签名方案。例如，驾驶执照的[=发行者=]可以发行一个包含驾驶执照上出现的每个属性的[=可验证的凭证=]，以及一组每个[=可验证的凭证=]只包含一个属性（如一个人的生日）的[=可验证的凭证=]。它还可以发行更抽象的[=可验证的凭证=]（例如，只包含`ageOver`属性的[=可验证的凭证=]）。一种可能的适应方式是[=发行者=]提供安全的HTTP端点，用于检索单次使用的[=持有人凭证=]，以促进[=可验证的凭证=]的匿名使用。认为这种做法不切实际或不安全的实施者，应考虑使用[=选择性披露=]方案，以消除在证明时间和减少来自[=发行者=]的时间关联风险的依赖。
       </p>
 
       <p>
-        [=Verifiers=] are urged to only request information that is absolutely
-        necessary for a specific transaction to occur. This is important for at least
-        two reasons. It:
+        强烈建议[=验证者=]只请求进行特定交易绝对必要的信息。这至少有两个原因。它：
       </p>
 
       <ul>
         <li>
-          Reduces the liability on the [=verifier=] for handling highly sensitive
-          information that it does not need to.
+          减少了[=验证者=]处理其不需要的高度敏感信息的责任。
         </li>
         <li>
-          Enhances the privacy of the individual by only asking for information required
-          for a specific transaction.
+          通过只询问特定交易所需的信息，增强了个人的隐私。
         </li>
       </ul>
 
       <p class="note">
-        While it is possible to practice the principle of minimum disclosure, it might
-        be impossible to avoid the strong identification of an individual for
-        specific use cases during a single session or over multiple sessions. The
-        authors of this document cannot stress how difficult it is to meet this
-        principle in real-world scenarios.
+        虽然可以实践最小披露原则，但在一个会话或多个会话中，对于特定用例，可能无法避免强烈识别个人。本文档的作者无法强调在现实世界场景中满足这一原则有多困难。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Bearer Credentials</h3>
+      <h3>持票人凭证</h3>
 
       <p>
-        A <dfn data-lt="bearer credentials">bearer credential</dfn> is a
-        privacy-enhancing piece of information, such as a concert ticket, which entitles
-        the [=holder=] of the bearer credential to a specific resource without
-        divulging sensitive information about the [=holder=]. Bearer credentials are
-        often used in low-risk use cases where the sharing of the bearer credential is
-        not a concern or would not result in large economic or reputational losses.
+        一个<dfn data-lt="bearer credentials">持票人凭证</dfn>是一种
+        增强隐私的信息，例如音乐会门票，它使得持票人凭证的[=持有者=]有权获得特定资源，而无需
+        泄露关于[=持有者=]的敏感信息。持票人凭证通常用于低风险的使用场景，其中分享持票人凭证不是
+        一个问题，或者不会导致巨大的经济或声誉损失。
       </p>
 
       <p>
-        [=Verifiable credentials=] that are [=bearer credentials=] are made
-        possible by not specifying the [=subject=] identifier, expressed using the
-        `id` [=property=], which is nested in the
-        `credentialSubject` [=property=]. For example, the following
-        [=verifiable credential=] is a [=bearer credential=]:
+        [=可验证凭证=]中的[=持票人凭证=]是通过不指定[=主题=]标识符实现的，该标识符使用
+        `id` [=属性=]表示，它嵌套在
+        `credentialSubject` [=属性=]中。例如，以下
+        [=可验证凭证=]是一个[=持票人凭证=]：
       </p>
 
       <pre class="example nohighlight vc" title="Usage of issuer properties"
@@ -4555,46 +4090,38 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 }
         </pre>
 
-      <p>
-        While [=bearer credentials=] can be privacy-enhancing, they must be carefully
-        crafted so as not accidentally divulge more information than the [=holder=]
-        of the [=bearer credential=] expects. For example, repeated use of the same
-        [=bearer credential=] across multiple sites enables these sites to
-        potentially collude to unduly track or correlate the [=holder=]. Likewise,
-        information that might seem non-identifying, such as a birthdate and postal
-        code, can be used to statistically identify an individual when used together in
-        the same [=bearer credential=] or session.
-      </p>
-
-      <p>
-        [=Issuers=] of [=bearer credentials=] should ensure that the
-        [=bearer credentials=] provide privacy-enhancing benefits that:
-      </p>
-
-      <ul>
-        <li>
-          Are single-use, where possible.
-        </li>
-        <li>
-          Do not contain personally identifying information.
-        </li>
-        <li>
-          Are not unduly correlatable.
-        </li>
-      </ul>
-
-      <p>
-        [=Holders=] should be warned by their software if [=bearer credentials=]
-        containing sensitive information are issued or requested, or if there is a
-        correlation risk when combining two or more [=bearer credentials=] across one
-        or more sessions. While it might be impossible to detect all correlation risks,
-        some might certainly be detectable.
-      </p>
-
-      <p>
-        [=Verifiers=] should not request [=bearer credentials=] that can be used
-        to unduly correlate the [=holder=].
-      </p>
+        <p>
+          虽然[=持票人凭证=]可以增强隐私，但必须精心设计，以免意外泄露比[=持有人=]
+          预期的更多信息。例如，在多个站点上重复使用相同的
+          [=持票人凭证=]使这些站点可能串通起来不当地跟踪或关联[=持有人=]。同样，
+          可能看似非识别的信息，如出生日期和邮政编码，在同一[=持票人凭证=]或会话中一起使用时
+          可以用于统计识别个人。
+        </p>
+  
+        <p>
+          [=发行人=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
+        </p>
+  
+        <ul>
+          <li>
+            尽可能实现一次性使用。
+          </li>
+          <li>
+            不包含个人识别信息。
+          </li>
+          <li>
+            不会过度关联。
+          </li>
+        </ul>
+  
+        <p>
+          如果发行或请求包含敏感信息的[=持票人凭证=]，或者在一个或多个会话中组合两个或多个[=持票人凭证=]时存在关联风险，
+          [=持有人=]应被其软件警告。虽然检测到所有关联风险可能是不可能的，但某些风险肯定是可以检测到的。
+        </p>
+  
+        <p>
+          [=验证者=]不应请求可用于不当关联[=持有人=]的[=持票人凭证=]。
+        </p>
     </section>
 
     <section class="informative">

@@ -4125,435 +4125,267 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>Validation</h3>
+      <h3>验证</h3>
 
       <p>
-        When processing [=verifiable credentials=], [=verifiers=]
-        evaluate any relevant [=claims=] before relying upon them. This
-        evaluation might be done in any manner desired, as long as it satisfies
-        the requirements of the [=verifier=] doing the validation.
-        Many verifiers will perform the checks listed in Appendix <a href="#validation-0"></a> as well as a variety of
-        specific business process
-        checks such as:
+        在处理[=可验证的凭证=]时，[=验证者=]
+        在依赖它们之前会评估任何相关的[=声明=]。只要满足
+        进行验证的[=验证者=]的要求，这种评估可以以任何期望的方式进行。
+        许多验证者将执行附录<a href="#validation-0"></a>中列出的检查，以及各种
+        特定的业务流程
+        检查，例如：
       </p>
 
       <ul>
         <li>
-          The professional licensure status of the [=holder=].
+          [=持有者=]的专业许可状态。
         </li>
         <li>
-          A date of license renewal or revocation.
+          许可证续期或撤销的日期。
         </li>
         <li>
-          The sub-qualifications of an individual.
+          个人的子资格。
         </li>
         <li>
-          If a relationship exists between the [=holder=] and the [=entity=]
-          with whom the [=holder=] is attempting to interact.
+          [=持有者=]与[=持有者=]试图互动的[=实体=]
+          之间是否存在关系。
         </li>
         <li>
-          The geolocation information associated with the [=holder=].
+          与[=持有者=]相关联的地理位置信息。
         </li>
       </ul>
 
       <p>
-        The process of performing these checks might result in information leakage that
-        leads to a privacy violation of the [=holder=]. For example, a simple
-        operation, such as checking an improperly configured revocation list, can
-        notify the [=issuer=] that a specific business is likely interacting
-        with the [=holder=]. This could
-        enable [=issuers=] to collude to correlate individuals without their
-        knowledge.
+        执行这些检查的过程可能会导致信息泄露，从而侵犯[=持有者=]的隐私。例如，一个简单
+        的操作，如检查一个配置不当的撤销列表，可以
+        通知[=发行者=]某个特定的业务可能正在与[=持有者=]互动。这可能
+        使[=发行者=]在不知情的情况下串谋关联个人。
       </p>
 
       <p>
-        [=Issuers=] are urged to not use mechanisms, such as [=credential=]
-        revocation lists that are unique per [=credential=], during the
-        [=verification=] process that could lead to privacy violations. Organizations
-        providing software to [=holders=] should warn when [=credentials=] include
-        information that could lead to privacy violations during the verification
-        process. [=Verifiers=] should consider rejecting [=credentials=] that
-        produce privacy violations or that enable bad privacy practices.
+        建议[=发行者=]在
+        [=验证=]过程中不要使用可能导致隐私侵权的机制，如每个[=凭证=]都有唯一的撤销列表。为[=持有者=]提供软件的组织应当警告，当[=凭证=]包含可能在验证过程中导致隐私侵权的信息时。[=验证者=]应考虑拒绝可能产生隐私侵权或促成不良隐私实践的[=凭证=]。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Storage Providers and Data Mining</h3>
+      <h3>存储提供商和数据挖掘</h3>
 
       <p>
-        When a [=holder=] receives a [=verifiable credential=] from an
-        [=issuer=], the [=verifiable credential=] needs to be stored somewhere
-        (for example, in a [=credential=] repository). [=Holders=] are warned that
-        the information in a [=verifiable credential=] is sensitive in nature and
-        highly individualized, making it a high value target for data mining. Services
-        that advertise free storage of [=verifiable credentials=] might in fact be
-        mining personal data and selling it to organizations wanting to build
-        individualized profiles on people and organizations.
+        当一个[=持有者=]从[=发行者=]那里收到一份[=可验证的凭证=]时，这份[=可验证的凭证=]需要存储在某个地方（例如，在一个[=凭证=]仓库中）。[=持有者=]需要注意，[=可验证的凭证=]中的信息具有敏感性和高度个性化，使其成为数据挖掘的高价值目标。宣传免费存储[=可验证凭证=]的服务实际上可能在挖掘个人数据，并将其出售给希望建立个人和组织个性化档案的组织。
       </p>
       <p>
-        [=Holders=] need to be aware of the terms of service for their
-        [=credential=] repository, specifically the correlation and data mining
-        protections in place for those who store their [=verifiable credentials=]
-        with the service provider.
+        [=持有者=]需要了解他们的[=凭证=]仓库的服务条款，特别是针对那些将其[=可验证凭证=]存储在服务提供商处的用户的关联和数据挖掘保护措施。
       </p>
       <p>
-        Some effective mitigations for data mining and profiling include using:
+        针对数据挖掘和分析的一些有效缓解措施包括使用：
       </p>
 
       <ul>
         <li>
-          Service providers that do not sell your information to third parties.
+          不将您的信息出售给第三方的服务提供商。
         </li>
         <li>
-          Software that encrypts [=verifiable credentials=] such that a service
-          provider cannot view the contents of the [=credential=].
+          对[=可验证凭证=]进行加密的软件，以使服务提供商无法查看[=凭证=]的内容。
         </li>
         <li>
-          Software that stores [=verifiable credentials=] locally on a device that you
-          control and that does not upload or analyze your information beyond your
-          expectations.
+          将[=可验证凭证=]存储在您控制的设备上的软件，该软件不会在超出您的期望范围内上传或分析您的信息。
         </li>
       </ul>
     </section>
 
     <section class="informative">
-      <h3>Aggregation of Credentials</h3>
+      <h3>证书的聚合</h3>
 
       <p>
-        Holding two pieces of information about the same [=subject=] almost always
-        reveals more about the [=subject=] than just the sum of the two pieces, even
-        when the information is delivered through different channels. The aggregation of
-        [=verifiable credentials=] is a privacy risk and all participants in
-        the ecosystem need to be aware of the risks of data aggregation.
+        持有关于同一[=主题=]的两份信息几乎总是会揭示出比两份信息之和更多的关于[=主题=]的信息，即使这些信息是通过不同的渠道传递的。[=可验证证书=]的聚合是一个隐私风险，生态系统中的所有参与者都需要意识到数据聚合的风险。
       </p>
 
       <p>
-        For example, if two [=bearer credentials=], one for an email address and then
-        one stating the [=holder=] is over the age of 21, are provided across
-        multiple sessions, the [=verifier=] of the information now has a unique
-        identifier as well as age-related information for that individual. It is now
-        easy to create and build a profile for the [=holder=] such that more and more
-        information is leaked over time. Aggregation of [=credentials=] can also be
-        performed across multiple sites in collusion with each other, leading to privacy
-        violations.
+        例如，如果两个[=持有者证书=]，一个是电子邮件地址，另一个声明[=持有者=]已经超过21岁，都在多个会话中提供，那么信息的[=验证者=]现在就拥有了该个体的唯一标识符以及与年龄相关的信息。现在很容易为[=持有者=]创建和建立一个档案，以便随着时间的推移泄露出越来越多的信息。在彼此串通的多个网站上也可以进行[=证书=]的聚合，这会导致隐私侵犯。
       </p>
 
       <p>
-        From a technological perspective, preventing aggregation of information is a
-        very difficult privacy problem to address. While new cryptographic techniques,
-        such as zero-knowledge proofs, are being proposed as solutions to the problem
-        of aggregation and correlation, the existence of long-lived identifiers and
-        browser tracking techniques defeats even the most modern cryptographic
-        techniques.
+        从技术角度来看，防止信息聚合是一个非常难以解决的隐私问题。虽然新的加密技术，如零知识证明，被提出来解决聚合和关联问题，但是长期存在的标识符和浏览器跟踪技术甚至可以打败最现代的加密技术。
       </p>
 
       <p>
-        The solution to the privacy implications of correlation or aggregation tends not
-        to be technological in nature, but policy driven instead. Therefore, if a
-        [=holder=] does not want information about them to be aggregated, they must
-        express this in the [=verifiable presentations=] they transmit.
+        解决关联或聚合的隐私问题的解决方案往往不是技术性的，而是由政策驱动的。因此，如果一个[=持有者=]不希望他们的信息被聚合，他们必须在他们传输的[=可验证的展示=]中表达这一点。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Usage Patterns</h3>
+      <h3>使用模式</h3>
 
       <p>
-        Despite the best efforts to assure privacy, actually using
-        [=verifiable credentials=] can potentially lead to de-anonymization and a
-        loss of privacy. This correlation can occur when:
+        尽管我们竭尽全力确保隐私，但实际使用[=可验证证书=]可能会导致去匿名化和隐私丧失。这种关联可能发生在以下情况：
       </p>
 
       <ul>
         <li>
-          The same [=verifiable credential=] is presented to the same [=verifier=]
-          more than once. The [=verifier=] could infer that the [=holder=] is the
-          same individual.
+          相同的[=可验证证书=]被呈现给同一个[=验证者=]多次。[=验证者=]可以推断出[=持有者=]是同一个人。
         </li>
         <li>
-          The same [=verifiable credential=] is presented to different
-          [=verifiers=], and either those [=verifiers=] collude or a third party
-          has access to transaction records from both [=verifiers=]. An observant
-          party could infer that the individual presenting the
-          [=verifiable credential=] is the same person at both services. That is, the
-          accounts are controlled by the same person.
+          相同的[=可验证证书=]被呈现给不同的[=验证者=]，这些[=验证者=]串通起来或者第三方可以访问来自两个[=验证者=]的交易记录。一个观察者可以推断出呈现[=可验证证书=]的个体在两个服务中是同一个人。也就是说，这些账户由同一个人控制。
         </li>
         <li>
-          A [=subject=] identifier of a [=credential=] refers to the same
-          [=subject=] across multiple [=presentations=] or [=verifiers=]. Even
-          when different [=credentials=] are presented, if the [=subject=]
-          identifier is the same, [=verifiers=] (and those with access to
-          [=verifier=] logs) could infer that the [=holder=] of the
-          [=credential=] is the same person.
+          [=证书=]的[=主体=]标识符在多个[=演示文稿=]或[=验证者=]中都指向同一个[=主体=]。即使呈现的[=证书=]不同，如果[=主体=]标识符相同，[=验证者=]（以及那些可以访问[=验证者=]日志的人）可以推断出[=证书=]的[=持有者=]是同一个人。
         </li>
         <li>
-          The underlying information in a [=credential=] can be used to identify an
-          individual across services. In this case, using information from other sources
-          (including information provided directly by the [=holder=]), [=verifiers=]
-          can use information inside the [=credential=] to correlate the individual
-          with an existing profile. For example, if a [=holder=] presents
-          [=credentials=] that include postal code, age, and gender, a [=verifier=]
-          can potentially correlate the [=subject=] of that [=credential=] with an
-          established profile. For more information, see [[DEMOGRAPHICS]].
+          [=证书=]中的基本信息可以用于在各种服务中识别个人。在这种情况下，使用来自其他来源的信息（包括由[=持有者=]直接提供的信息），[=验证者=]可以使用[=证书=]中的信息将个人与现有的个人资料进行关联。例如，如果[=持有者=]呈现包含邮政编码、年龄和性别的[=证书=]，[=验证者=]可以将该[=证书=]的[=主体=]与已建立的个人资料进行关联。有关更多信息，请参阅[[DEMOGRAPHICS]]。
         </li>
         <li>
-          Passing the identifier of a [=credential=] to a centralized revocation
-          server. The centralized server can correlate the [=credential=] usage across
-          interactions. For example, if a [=credential=] is used for proof of age in
-          this manner, the centralized service could know everywhere that
-          [=credential=] was presented (all liquor stores, bars, adult stores, lottery
-          purchases, and so on).
+          将[=证书=]的标识符传递给一个集中式撤销服务器。集中式服务器可以在交互过程中关联[=证书=]的使用。例如，如果以这种方式使用[=证书=]作为年龄证明，集中式服务可以知道[=证书=]呈现的所有地方（所有的酒类商店、酒吧、成人商店、彩票购买等）。
         </li>
       </ul>
 
       <p>
-        In part, it is possible to mitigate this de-anonymization and loss of privacy
-        by:
+        在某种程度上，可以通过以下方式来减轻这种去匿名化和隐私丧失：
       </p>
 
       <ul>
         <li>
-          Using a globally-unique identifier as the [=subject=] for any given
-          [=credential=] and never re-use that [=credential=].
+          使用全球唯一标识符作为任何给定[=证书=]的[=主体=]，并且永远不要重复使用该[=证书=]。
         </li>
         <li>
-          If the [=credential=] supports revocation, using a globally-distributed
-          service for revocation.
+          如果[=证书=]支持撤销，使用全球分布式服务进行撤销。
         </li>
         <li>
-          Designing revocation APIs that do not depend on submitting the ID of the
-          [=credential=]. For example, use a revocation list instead of a query.
+          设计不依赖于提交[=证书=] ID 的撤销 API。例如，使用撤销列表而不是查询。
         </li>
         <li>
-          Avoiding the association of personally identifiable information with any
-          specific long-lived [=subject=] identifier.
+          避免将个人身份信息与任何特定的长期[=主体=]标识符关联起来。
         </li>
       </ul>
 
       <p>
-        It is understood that these mitigation techniques are not always practical
-        or even compatible with necessary usage. Sometimes correlation is a
-        requirement.
+        人们理解这些缓解技术并不总是实用，甚至与必要的使用兼容。有时候关联是一种要求。
       </p>
       <p>
-        For example, in some prescription drug monitoring programs, usage monitoring is
-        a requirement. Enforcement entities need to be able to confirm that individuals
-        are not cheating the system to get multiple prescriptions for controlled
-        substances. This statutory or regulatory need to correlate usage overrides
-        individual privacy concerns.
+        例如，在某些处方药监测计划中，使用监测是一项要求。执法实体需要确认个人没有欺骗系统以获得多个受控药物的处方。这种法定或监管需求优先于个人隐私关切。
       </p>
 
       <p>
-        [=Verifiable credentials=] will also be used to intentionally correlate
-        individuals across services, for example, when using a common persona to log in
-        to multiple services, so all activity on each of those services is
-        intentionally linked to the same individual. This is not a privacy issue as
-        long as each of those services uses the correlation in the expected manner.
+        [=可验证证书=]还将被用于在服务之间有意识地关联个人，例如，在使用通用角色登录多个服务时，以便在这些服务上的所有活动都有意识地与同一个个人关联。只要每个服务都按照预期的方式使用关联，这就不是一个隐私问题。
       </p>
 
       <p>
-        Privacy risks of [=credential=] usage occur when unintended or unexpected
-        correlation arises from the presentation of [=credentials=].
+        [=证书=]使用的隐私风险发生在因呈现[=证书=]而产生意外或意料之外的关联时。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Sharing Information with the Wrong Party</h3>
+      <h3>与错误的一方分享信息</h3>
 
       <p>
-        When a [=holder=] chooses to share information with a [=verifier=], it
-        might be the case that the [=verifier=] is acting in bad faith and requests
-        information that could be used to harm the [=holder=]. For example, a
-        [=verifier=] might ask for a bank account number, which could then be used
-        with other information to defraud the [=holder=] or the bank.
+        当一个[=持有者=]选择与[=验证者=]分享信息时，
+        可能的情况是[=验证者=]恶意行事并请求
+        可能用于伤害[=持有者=]的信息。例如，
+        [=验证者=]可能会要求提供银行账号，然后可以使用
+        其他信息来欺诈[=持有者=]或银行。
       </p>
 
       <p>
-        [=Issuers=] should strive to tokenize as much information as possible such
-        that if a [=holder=] accidentally transmits [=credentials=] to the wrong
-        [=verifier=], the situation is not catastrophic.
+        [=发行者=]应努力将尽可能多的信息标记化，
+        这样即使[=持有者=]不小心将[=凭证=]传输给错误的
+        [=验证者=]，情况也不会太糟。
       </p>
 
       <p>
-        For example, instead of including a bank account number for the purpose of
-        checking an individual's bank balance, provide a token that enables the
-        [=verifier=] to check if the balance is above a certain amount. In this
-        case, the bank could issue a [=verifiable credential=] containing a balance
-        checking token to a [=holder=]. The [=holder=] would then include the
-        [=verifiable credential=] in a [=verifiable presentation=] and bind the
-        token to a credit checking agency using a digital signature. The
-        [=verifier=] could then wrap the [=verifiable presentation=] in their
-        digital signature, and hand it back to the issuer to dynamically check the
-        account balance.
+        例如，不是为了检查个人的银行余额而包含银行账号，
+        而是提供一个令牌，使[=验证者=]能够检查余额是否超过某个金额。
+        在这种情况下，银行可以向[=持有者=]发出包含余额检查令牌的
+        [=可验证凭证=]。然后，[=持有者=]将
+        [=可验证凭证=]包含在[=可验证的演示=]中，并使用数字签名将
+        令牌绑定到信用检查机构。然后，[=验证者=]可以将他们的
+        数字签名包裹在[=可验证的演示=]中，并将其交还给发行者以动态检查
+        账户余额。
       </p>
 
       <p>
-        Using this approach, even if a [=holder=] shares the account balance token
-        with the wrong party, an attacker cannot discover the bank account number, nor
-        the exact value in the account. And given the validity period for the
-        counter-signature, does not gain access to the token for more than a few
-        minutes.
+        使用这种方法，即使[=持有者=]与错误的一方分享了账户余额令牌，
+        攻击者也无法发现银行账号，也无法知道账户中的确切金额。并且考虑到
+        反签名的有效期，攻击者也无法获得令牌的访问权限超过几分钟。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Data Theft</h3>
+      <h3>数据盗窃</h3>
 
       <p>
-        The data expressed in [=verifiable credentials=] and
-        [=verifiable presentations=] are valuable since they contain authentic
-        statements made by trusted third parties, such as [=issuers=], or
-        individuals, such as [=holders=] and [=subjects=]. Storing this data
-        can create honeypots of sensitive data that attackers are motivated to
-        break into in order to acquire and exchange that data for financial gain.
+        在[=可验证凭证=]和[=可验证展示=]中表达的数据具有价值，因为它们包含由值得信赖的第三方（如[=发行者=]）或个人（如[=持有者=]和[=主体=]）所作的真实陈述。存储这些数据会产生攻击者有动机突破以获取和交换数据以获得经济利益的敏感数据蜜罐。
       </p>
       <p>
-        [=Issuers=] are advised to retain the minimum amount of data
-        necessary to issue [=verifiable credentials=] to [=holders=] and
-        manage the status and revocation of those credentials.
+        建议[=发行者=]保留发行[=可验证凭证=]给[=持有者=]以及管理这些凭证的状态和撤销所需的最少数据量。
       </p>
       <p>
-        [=Holders=] are advised to use implementations that appropriately
-        encrypt their data both in transit and at rest, and protect sensitive
-        material (such as cryptographic secrets) in ways that cannot be easily
-        extracted from hardware devices. Furthermore, it is suggested that
-        [=holders=] store and manipulate their data only on devices that they
-        control, away from centralized systems, to reduce the likelihood of
-        attack on their data, or large-scale theft if an attack is successful.
+        建议[=持有者=]使用在传输和休息时适当加密其数据的实现，并以无法轻易从硬件设备中提取的方式保护敏感材料（如加密秘密）。此外，建议[=持有者=]仅在他们控制的设备上存储和操作他们的数据，远离集中式系统，以减少对他们数据的攻击可能性，或者如果攻击成功，减少大规模盗窃的可能性。
       </p>
       <p>
-        [=Verifiers=] are advised to only ask for data necessary for a particular
-        transaction and to not retain any data beyond the needs of any particular
-        transaction.
+        建议[=验证者=]仅要求进行特定交易所需的数据，并且不要保留超出任何特定交易需求的任何数据。
       </p>
       <p>
-        Regulators are advised to rethink audit requirements such that more
-        privacy-preserving mechanisms can be used to achieve similar levels of
-        enforcement and audit capabilities. For example, audit-focused regulations
-        that insist on collection and long-term retention of personally identifiable
-        information can cause harm to individuals and organizations if that same
-        information is compromised and accessed by an attacker. The technologies
-        described by this specification enable [=holders=] to more-readily prove
-        attributes about themselves and others, reducing the need for long-term data
-        retention by [=verifiers=]. Alternatives include keeping logs that the
-        information was collected and checked, as well as random tests to ensure
-        that compliance regimes are operating as expected.
+        建议监管者重新考虑审计要求，以便可以使用更多隐私保护机制来实现类似的执法和审计能力。例如，以收集和长期保留个人身份信息为目的的审计型法规可能会对个人和组织造成伤害，如果这些信息被攻击者窃取并访问。本规范描述的技术使[=持有者=]能够更容易地证明他们自己和他人的属性，从而减少了[=验证者=]对长期数据保留的需求。替代方案包括保留收集和检查信息的日志，以及随机测试以确保合规制度按预期运行。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Frequency of Claim Issuance</h3>
+      <h3>声明发行频率</h3>
 
       <p>
-        As detailed in Section <a href="#usage-patterns"></a>, usage patterns can be
-        correlated into certain types of behavior. Part of this correlation is
-        mitigated when a [=holder=] uses a [=verifiable credential=] without the
-        knowledge of the [=issuer=]. [=Issuers=] can defeat this protection
-        however, by making their [=verifiable credentials=] short lived and renewal
-        automatic.
+        如第<a href="#usage-patterns"></a>节详述，使用模式可以与某些类型的行为相关联。当[=持有者=]在不知道[=发行者=]的情况下使用[=可验证凭证=]时，这种关联的一部分就被减轻了。然而，[=发行者=]可以通过使其[=可验证凭证=]的有效期短暂且自动更新来破坏这种保护。
       </p>
 
       <p>
-        For example, an `ageOver` [=verifiable credential=] is useful for
-        gaining access to a bar. If an [=issuer=] issues such a
-        [=verifiable credential=] with a very short validity period and an automatic
-        renewal mechanism, then the [=issuer=] could possibly correlate the behavior
-        of the [=holder=] in a way that negatively impacts the [=holder=].
+        例如，`ageOver` [=可验证凭证=]对于进入酒吧是有用的。如果[=发行者=]发行这样一个具有非常短的有效期和自动更新机制的[=可验证凭证=]，那么[=发行者=]可能会以一种对[=持有者=]产生负面影响的方式关联[=持有者=]的行为。
       </p>
 
       <p>
-        Organizations providing software to [=holders=] should warn them if they
-        repeatedly use [=credentials=] with short lifespans, which could result in
-        behavior correlation. [=Issuers=] should avoid issuing [=credentials=] in
-        a way that enables them to correlate usage patterns.
+        为[=持有者=]提供软件的组织应该警告他们，如果他们反复使用具有短生命周期的[=凭证=]，可能会导致行为关联。[=发行者=]应避免以一种使他们能够关联使用模式的方式发行[=凭证=]。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Prefer Single-Use Credentials</h3>
+      <h3>优先使用一次性凭证</h3>
 
       <p>
-        An ideal privacy-respecting system would require only the information necessary
-        for interaction with the [=verifier=] to be disclosed by the [=holder=].
-        The [=verifier=] would then record that the disclosure requirement was met
-        and forget any sensitive information that was disclosed. In many cases,
-        competing priorities, such as regulatory burden, prevent this ideal system from
-        being employed. In other cases, long-lived identifiers prevent single use. The
-        design of any [=verifiable credentials=] ecosystem, however, should strive
-        to be as privacy-respecting as possible by preferring single-use
-        [=verifiable credentials=] whenever possible.
+        理想的尊重隐私的系统只需要由[=持有者=]披露与[=验证者=]互动所需的信息。
+        [=验证者=]随后记录披露要求得到满足，并忘记披露的任何敏感信息。在许多情况下，
+        诸如监管负担等相互竞争的优先事项，阻止了这一理想系统的实施。在其他情况下，长期存在的标识符阻止了一次性使用。然而，
+        任何[=可验证凭证=]生态系统的设计都应力求尽可能尊重隐私，尽可能优先使用一次性
+        [=可验证凭证=]。
       </p>
 
       <p>
-        Using single-use [=verifiable credentials=] provides several benefits. The
-        first benefit is to [=verifiers=] who can be sure that the data in a
-        [=verifiable credential=] is fresh. The second benefit is to [=holders=],
-        who know that if there are no long-lived identifiers in the
-        [=verifiable credential=], the [=verifiable credential=] itself cannot be
-        used to track or correlate them online. Finally, there is nothing for attackers
-        to steal, making the entire ecosystem safer to operate within.
+        使用一次性[=可验证凭证=]带来了几个好处。第一个好处是对[=验证者=]，他们可以确保
+        [=可验证凭证=]中的数据是最新的。第二个好处是对[=持有者=]，他们知道如果
+        [=可验证凭证=]中没有长期存在的标识符，那么[=可验证凭证=]本身就不能用于
+        在线跟踪或关联他们。最后，攻击者没有可窃取的东西，使整个生态系统更安全地运行。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Private Browsing</h3>
+      <h3>私密浏览</h3>
 
       <p>
-        In an ideal private browsing scenario, no PII will be revealed. Because many
-        [=credentials=] include PII, organizations providing software to
-        [=holders=] should warn them about the possibility of revealing this
-        information if they wish to use [=credentials=] and [=presentations=]
-        while in private browsing mode. As each browser vendor handles private browsing
-        differently, and some browsers might not have this feature at all, it is
-        important for implementers to be aware of these differences and implement
-        solutions accordingly.
+        在理想的私密浏览场景中，不会泄露任何个人身份信息（PII）。因为许多
+        [=凭证=]包含个人身份信息，为[=持有者=]提供软件的组织应该警告他们，如果他们希望在私密浏览模式下使用
+        [=凭证=]和[=展示=]，可能会泄露这些信息。由于每个浏览器厂商处理私密浏览的方式不同，有些浏览器可能根本没有这个功能，所以
+        实施者需要了解这些差异并相应地实施解决方案。
       </p>
     </section>
 
     <section class="informative">
-      <h3>Issuer Cooperation Impacts on Privacy</h3>
+      <h3>发行者合作对隐私的影响</h3>
 
       <p>
-        It cannot be overstated that [=verifiable credentials=] rely on a high degree
-        of trust in [=issuers=]. The degree to which a [=holder=] might take
-        advantage of possible privacy protections often depends strongly on the support
-        an [=issuer=] provides for such features. In many cases, privacy protections
-        which make use of zero-knowledge proofs, data minimization techniques, bearer
-        credentials, abstract claims, and protections against signature-based
-        correlation, require the [=issuer=] to actively support such capabilities and
-        incorporate them into the [=verifiable credentials=] they issue.
+        无法过分强调[=可验证凭证=]对[=发行者=]的高度信任的依赖性。[=持有者=]可能利用可能的隐私保护的程度通常强烈依赖于[=发行者=]对这些功能的支持。在许多情况下，利用零知识证明、数据最小化技术、持有者凭证、抽象声明以及防止基于签名的关联的隐私保护，需要[=发行者=]积极支持这些能力并将它们纳入他们发行的[=可验证凭证=]中。
       </p>
       <p>
-        It should also be noted that, in addition to a reliance on [=issuer=]
-        participation to provide [=verifiable credential=] capabilities that help
-        preserve [=holder=] and [=subject=] privacy, [=holders=] rely on
-        [=issuers=] to not deliberately subvert privacy protections. For example, an
-        [=issuer=] might sign [=verifiable credentials=] using a signature scheme
-        that protects against signature-based correlation. This would protect the
-        [=holder=] from being correlated by the signature value as it is shared among
-        [=verifiers=]. However, if the [=issuer=] creates a unique key for each
-        issued [=credential=], it might be possible for the [=issuer=] to track
-        [=presentations=] of the [=credential=], regardless of a [=verifier=]'s
-        inability to do so.
+        还应注意，除了依赖[=发行者=]参与提供帮助保护[=持有者=]和[=主题=]隐私的[=可验证凭证=]能力外，[=持有者=]还依赖[=发行者=]不故意破坏隐私保护。例如，[=发行者=]可能使用一种保护免受基于签名的关联的签名方案来签署[=可验证凭证=]。这将保护[=持有者=]免受由于签名值在[=验证者=]之间共享而产生的关联。然而，如果[=发行者=]为每个发行的[=凭证=]创建一个唯一的密钥，那么[=发行者=]可能能够跟踪[=凭证=]的[=展示=]，无论[=验证者=]是否有能力这样做。
       </p>
       <p>
-        In addition to previously described privacy protections an [=issuer=] might
-        use, [=issuers=] need to also be aware of data they leak associated with
-        identifiers and claim types they use when issuing [=credentials=]. One
-        example of this would be an [=issuer=] issuing drivers licenses which reveal
-        both the location(s) in which they have jurisdiction and the location of the
-        [=subject's=] residence. [=Verifiers=] might take advantage of this by
-        requesting a [=credential=] to check that the [=subject=] is licensed to
-        drive, when in fact they are interested in metadata <em>about</em> the
-        credential, such as which [=issuer=] issued the credential, and tangential
-        information that might have been leaked by the [=issuer=], such as the
-        subject's home address. To mitigate such leakage, [=issuers=] might choose to
-        use common identifiers to mask specific location information or other sensitive
-        metadata; for example, a shared issuer identifier at a state or nation level,
-        instead of at the level of a county, city, town, or other smaller municipality.
-        Further, [=holder=] attestation mechanisms can be used by [=verifiers=] to
-        preserve privacy, by providing proofs that an [=issuer=] exists in a set of
-        trusted entities, without needing to disclose the exact [=issuer=].
+        除了前述的隐私保护，[=发行者=]可能使用，[=发行者=]还需要注意他们在发行[=凭证=]时使用的与标识符和声明类型相关的数据泄漏。这的一个例子可能是[=发行者=]发行驾驶执照，这既揭示了他们有管辖权的地点，也揭示了[=主题=]的居住地。[=验证者=]可能利用这一点，通过请求[=凭证=]来检查[=主题=]是否有驾驶执照，实际上他们对凭证的元数据<em>关于</em>感兴趣，例如哪个[=发行者=]发行了凭证，以及可能被[=发行者=]泄漏的与主题的家庭地址等相关的间接信息。为了减轻这种泄漏，[=发行者=]可能选择使用常见的标识符来掩盖特定的位置信息或其他敏感的元数据；例如，使用一个在州或国家级别共享的发行者标识符，而不是在县、城市、镇或其他较小的市政单位级别。此外，[=验证者=]可以使用[=持有者=]的声明机制来保护隐私，通过提供证明一个[=发行者=]存在于一组受信任的实体中，而无需公开具体的[=发行者=]。
       </p>
     </section>
   </section>

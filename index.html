@@ -1066,7 +1066,8 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        一旦开发者将他们的凭证原型设计到他们认为所有凭证属性都稳定的程度，建议他们为他们的应用程序生成词汇表和上下文文件，并将它们发布在稳定的URL上，以便其他开发者可以使用相同的词汇表和上下文实现互操作性。这个过程在第<a href="#extensibility"></a>节中有介绍。或者，开发者可以重用现有的词汇表和上下文文件，以适应他们的用例。他们可以浏览[[[VC-SPECS]]] [[VC-SPECS]]以获取可重用资源。
+        一旦开发者将他们的凭证原型设计到他们认为所有凭证属性都稳定的程度，建议他们为他们的应用程序生成词汇表和上下文文件，并将它们发布在稳定的URL上，以便其他开发者可以使用相同的词汇表和上下文实现互操作性。这个过程在第<a
+          href="#extensibility"></a>节中有介绍。或者，开发者可以重用现有的词汇表和上下文文件，以适应他们的用例。他们可以浏览[[[VC-SPECS]]] [[VC-SPECS]]以获取可重用资源。
       </p>
 
     </section>
@@ -1078,7 +1079,9 @@ arrow, to a separate rectangle, containing a single text field:
         <em>对话的上下文</em>。
       </p>
       <p>
-        [=可验证的凭证=]和[=可验证的展示=]有许多由[=URLs=] [[URL]]标识的属性和值。然而，这些[=URLs=]可能很长，对人类并不友好。在这种情况下，短格式的人类友好别名可能更有帮助。本规范使用`@context` [=属性=]将这种短格式别名映射到特定的[=可验证的凭证=]和[=可验证的展示=]所需的[=URLs=]。
+        [=可验证的凭证=]和[=可验证的展示=]有许多由[=URLs=]
+        [[URL]]标识的属性和值。然而，这些[=URLs=]可能很长，对人类并不友好。在这种情况下，短格式的人类友好别名可能更有帮助。本规范使用`@context`
+        [=属性=]将这种短格式别名映射到特定的[=可验证的凭证=]和[=可验证的展示=]所需的[=URLs=]。
       </p>
       <p class="note">
         在JSON-LD中，`@context` [=属性=]也可以用来传递其他细节，如数据类型信息，语言信息，转换规则等，这些超出了本规范的需要，但可能在未来或相关工作中有用。更多信息，请参见
@@ -1185,8 +1188,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="id属性的使用"
-        data-vc-vm="https://university.example/issuers/565049#key-1">
+      <pre class="example nohighlight vc" title="id属性的使用" data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1255,8 +1257,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="使用type属性"
-        data-vc-vm="https://university.example/issuers/565049#key-1">
+      <pre class="example nohighlight vc" title="使用type属性" data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1679,7 +1680,8 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        `issuer` [=property=] 的值也可以是一个 JWK（例如，`"https://example.com/keys/foo.jwk"`）或者一个 [=DID=]（例如，`"did:example:abfe13f712120431c276e12ecab"`）。
+        `issuer` [=property=] 的值也可以是一个 JWK（例如，`"https://example.com/keys/foo.jwk"`）或者一个
+        [=DID=]（例如，`"did:example:abfe13f712120431c276e12ecab"`）。
       </p>
 
     </section>
@@ -1688,7 +1690,8 @@ arrow, to a separate rectangle, containing a single text field:
       <h3>有效期</h3>
 
       <p>
-        本规范定义了`validFrom` [=property=]，以帮助发行者表达[=credential=]生效的日期和时间，以及`validUntil` [=property=]，用于表达[=credential=]失效的日期和时间。
+        本规范定义了`validFrom` [=property=]，以帮助发行者表达[=credential=]生效的日期和时间，以及`validUntil`
+        [=property=]，用于表达[=credential=]失效的日期和时间。
       </p>
 
       <p>
@@ -1740,90 +1743,43 @@ arrow, to a separate rectangle, containing a single text field:
         如果`validFrom`和`validUntil`不存在，则认为[=可验证凭证=]的有效期无限。在这种情况下，假定[=可验证凭证=]从创建时开始有效。
       </p>
 
-      <h4>Representing Time</h4>
+      <h4>表示时间</h4>
 
       <p>
-        Implementers are urged to understand that representing and processing time
-        values is not as straight-forward as it might seem and have a variety of
-        idiosyncrasies that are not immediately obvious nor uniformly observed in
-        different regions of the world. For example:
+        实现者应该了解，表示和处理时间值并非像看起来那么简单，并且在世界不同地区有各种各样的特殊性。例如：
       </p>
 
       <ul>
         <li>
-          Calendaring systems other than the Gregorian calendar are actively used by
-          various regions.
+          除了公历日历系统外，其他日历系统也被各个地区积极使用。
         </li>
         <li>
-          When processing Daylight Saving/Summer Time, it is important to understand that
-          1) it is not observed in all regions, 2) it does not necessarily begin or end on
-          the same day or at the same time of day, and 3) the amount or direction of the
-          adjustment does not always match other similar regions.
+          在处理夏令时/夏时制时，重要的是要了解：1) 并非所有地区都遵循夏令时，2) 开始和结束的日期或时间并不一定相同，3) 调整的幅度或方向并不总是与其他类似地区相匹配。
         </li>
         <li>
-          Leap seconds might not be taken into account in all software systems, especially
-          for dates and times that precede the introduction of the leap second. Leap
-          seconds can affects highly sensitive systems that depend on the exact
-          millisecond offset from the epoch. However, note that for most applications the
-          only moment in time that is affected is the one second period of the leap second
-          itself. That is, the moment after the most recent leap second can always be
-          represented as the first moment of the next day (for example,
-          `2023-01-01T00:00:00Z`), regardless of whether the system in question
-          understands leap seconds.
+          跳秒可能不会在所有软件系统中考虑，尤其是对于在引入跳秒之前的日期和时间。跳秒会影响那些依赖于从纪元开始的精确毫秒偏移的高度敏感系统。然而，请注意，对于大多数应用程序，唯一受影响的时间点是跳秒本身的那一秒。也就是说，最近一次跳秒之后的时刻总是可以表示为下一天的第一个时刻（例如，`2023-01-01T00:00:00Z`），无论所讨论的系统是否理解跳秒。
         </li>
       </ul>
 
       <p>
-        These are just a few examples that illustrate that the actual time of day, as
-        would be seen on a clock on the wall, can exist in one region but not exist in
-        another region. For this reason, implementers are urged to use time values
-        that are more universal, such as values anchored to the `Z` time zone over
-        values that are affected by Daylight Saving/Summer Time.
+        这些只是一些例子，说明实际的一天时间，如墙上的时钟所示，在一个地区可能存在，而在另一个地区可能不存在。因此，实现者应该使用更通用的时间值，如锚定在`Z`时区的值，而不是受夏令时/夏时制影响的值。
       </p>
 
       <p>
-        This specification attempts to increase the number of universally recognized
-        combinations of dates and times, and reduce the potential for
-        misinterpretation of time values, by utilizing the
-        `dateTimeStamp` construction first established by the [<a
-          data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>] specification. In
-        order to reduce misinterpretations between different time zones, all time values
-        expressed in [=conforming documents=] SHOULD be specified in `dateTimeStamp`
-        format, either in Universal Coordinated Time (UTC), denoted by a `Z` at the end
-        of the value, or with a time zone offset relative to UTC. Time values that are
-        incorrectly serialized without an offset MUST be interpreted as UTC. Examples of
-        valid time zone offsets relative to UTC include `Z`, `+01:00`, `-08:00`, and
-        `+14:00`. See the regular expression at the end of this section for a formal
-        definition of all acceptable values.
+        本规范试图增加通用认可的日期和时间组合的数量，并通过使用首次由[<a data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>]规范建立的
+        `dateTimeStamp`构造来减少时间值误解的可能性。为了减少不同时区之间的误解，所有在[=符合规范的文档=]中表示的时间值都应该以`dateTimeStamp`
+        格式指定，要么是世界协调时间（UTC），用`Z`表示，要么是相对于UTC的时区偏移。没有偏移的错误序列化的时间值必须解释为UTC。相对于UTC的有效时区偏移的示例包括`Z`、`+01:00`、`-08:00`和
+        `+14:00`。请参阅本节末尾的正则表达式，以获取所有可接受值的正式定义。
       </p>
 
       <p>
-        Time zone definitions are occasionally changed by their governing body. When
-        replacing or issuing new [=verifiable credentials=], implementers are advised
-        to ensure that changes to local time zone rules do not result in unexpected gaps
-        in validity. For example, consider the zone `America/Los_Angeles`, which has
-        a raw offset of UTC-8 and had voted to stop observing daylight savings time in
-        the year 2024. A given [=verifiable credential=] that had a `validUtil`
-        value of `2024-07-12T12:00:00-07:00`, might be re-issued to have a
-        `validFrom` value of `2024-07-12T12:00:00-08:00`, which would create a gap of
-        an hour where the [=verifiable credential=] would not be valid.
+        时区定义有时会被其管理机构更改。在更换或发布新的[=可验证证书=]时，实现者应确保当地时区规则的更改不会导致意外的有效期间隙。例如，考虑时区`America/Los_Angeles`，其原始偏移为UTC-8，并在2024年投票决定停止遵循夏令时。一个给定的[=可验证证书=]，其`validUtil`
+        值为`2024-07-12T12:00:00-07:00`，可能会被重新发布，使其`validFrom`值为`2024-07-12T12:00:00-08:00`，这将导致一个小时的间隙，在这个间隙内，[=可验证证书=]将无效。
       </p>
 
       <p>
-        Implementers that desire to check `dateTimeStamp` values for validity
-        can use the regular expression provided below, which is reproduced from the [<a
-          data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>] specification for
-        convenience. To avoid doubt, the regular expression in [[XMLSCHEMA11-2]] is the
-        normative definition. Implementers are advised that not all
-        `dateTimeStamp` values that pass the regular expression below are
-        valid moments in time. For example, the regular expression below allows for 31
-        days in every month, which allows for leap years, and leap seconds, as well as
-        days in places where they do not exist. That said, modern system libraries that
-        generate `dateTimeStamp` values are often error-free in their
-        generation of valid `dateTimeStamp` values. The regular
-        expression shown below (minus the whitespace included here for readability),
-        is often adequate when processing library-generated dates and times on
-        modern systems.
+        希望检查`dateTimeStamp`值有效性的实现者可以使用下面提供的正则表达式，该正则表达式是从[<a
+          data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>]规范中复制过来的，以方便使用。为避免疑虑，[[XMLSCHEMA11-2]]中的正则表达式是规范性定义。实现者应注意，并非所有通过下面正则表达式的`dateTimeStamp`值都是有效的时间点。例如，下面的正则表达式允许每个月有31天，这包括闰年和闰秒，以及那些不存在的地方的日子。话虽如此，现代系统库生成的`dateTimeStamp`值在生成有效的`dateTimeStamp`值时通常是无误的。下面显示的正则表达式（减去为了可读性而包含的空白），在处理现代系统上库生成的日期和时间时通常是足够的。
       </p>
 
       <pre class="example nohighlight"
@@ -1838,29 +1794,23 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
     </section>
 
     <section>
-      <h3>Securing Mechanisms</h3>
+      <h3>安全机制</h3>
 
       <p>
-        This specification recognizes two classes of securing mechanisms: those that use
-        enveloping proofs and those that use embedded proofs.
+        本规范认可两类安全机制：使用封装证明的机制和使用嵌入式证明的机制。
       </p>
 
       <p>
-        An <dfn class="export">enveloping proof</dfn> is one that wraps a serialization
-        of this data model. One such RECOMMENDED enveloping proof mechanism is defined
-        in [[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]].
+        一个<dfn class="export">封装证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装证明机制。
       </p>
 
       <p>
-        An <dfn class="export">embedded proof</dfn> is a mechanism where the proof is
-        included in the serialization of the data model. One such RECOMMENDED embedded
-        proof mechanism is defined in [[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]].
+        一个<dfn class="export">嵌入式证明</dfn>是一种证明包含在数据模型序列化中的机制。[[[VC-DATA-INTEGRITY]]]
+        [[VC-DATA-INTEGRITY]]中定义了一种建议的嵌入式证明机制。
       </p>
 
       <p>
-        These two classes of securing mechanisms are not mutually exclusive. Additional
-        securing mechanism specifications might also be defined according to the rules
-        in Section <a href="#securing-mechanism-specifications"></a>.
+        这两类安全机制并非互斥。根据第<a href="#securing-mechanism-specifications"></a>节的规则，还可以定义其他安全机制规范。
       </p>
 
       <pre class="example nohighlight" title="A verifiable credential utilizing an embedded proof">
@@ -1933,43 +1883,30 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>Status</h3>
+      <h3>状态</h3>
 
       <p>
-        This specification defines the `credentialStatus` [=property=] for the
-        discovery of information about the status of a [=verifiable credential=], such
-        as whether it is suspended or revoked.
+        本规范为[=verifiable credential=]的状态信息（如是否被暂停或撤销）的发现定义了`credentialStatus` [=property=]。
       </p>
 
       <p>
-        The following properties are defined for object values associated with the
-        <strong id="defn-credentialStatus">credentialStatus</strong> [=property=]:
+        下面为与<strong id="defn-credentialStatus">credentialStatus</strong> [=property=]关联的对象值定义了以下属性：
       </p>
 
       <dl>
         <dt>id</dt>
         <dd>
-          The `id` [=property=] is OPTIONAL. It MAY be used to provide a
-          unique identifier for the credential status object. If present, the
-          normative guidance in Section <a href="#identifiers"></a> MUST be followed.
+          `id` [=property=]是可选的。它可以用于为凭证状态对象提供唯一标识符。如果存在，必须遵循第<a href="#identifiers"></a>节的规范性指南。
         </dd>
         <dt>type</dt>
         <dd>
-          The `type` [=property=] is REQUIRED. It is used to express the
-          type of status information expressed by the object. The related normative
-          guidance in Section <a href="#types"></a> MUST be followed.
+          `type` [=property=]是必需的。它用于表示对象所表达的状态信息的类型。必须遵循第<a href="#types"></a>节的相关规范性指南。
         </dd>
       </dl>
 
       <p>
-        The precise content of the [=credential=] status information is determined by
-        the specific `credentialStatus` [=type=] definition, and varies
-        depending on factors such as whether it is simple to implement or if it is
-        privacy-enhancing. It is expected that the value will provide enough information
-        to determine the current status of the [=credential=] and that machine
-        readable information will be retrievable from the URL. For example, the object
-        could contain a link to an external document which notes whether or not the
-        [=credential=] is suspended or revoked.
+        [=credential=]状态信息的确切内容由特定的`credentialStatus`
+        [=type=]定义决定，具体取决于诸如实现简单性和是否增强隐私等因素。预期该值将提供足够的信息来确定[=credential=]的当前状态，并且可以从URL检索机器可读信息。例如，对象可以包含指向外部文档的链接，该文档注明[=credential=]是否被暂停或撤销。
       </p>
 
       <pre class="example nohighlight" title="Usage of the status property">
@@ -2000,104 +1937,76 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        Defining the data model, formats, and protocols for status schemes are out of
-        scope for this specification. A Verifiable Credential Specifications Directory
-        [[?VC-SPECS]] exists that contains available status schemes
-        for implementers who want to implement [=verifiable credential=]
-        status checking.
+        定义状态方案的数据模型、格式和协议超出了本规范的范围。存在一个可验证的凭证规范目录
+        [[?VC-SPECS]]，其中包含了实施者想要实施[=可验证的凭证=]
+        状态检查的可用状态方案。
       </p>
 
       <p>
-        Specification authors that create status schemes are provided the following
-        guideline:
+        创建状态方案的规范作者提供了以下指南：
       </p>
 
       <ul>
         <li>
-          Status schemes MUST NOT be implemented in ways that enable tracking of
-          individuals, such as an [=issuer=] being notified (either directly or
-          indirectly) when a [=verifier=] is interested in a particular [=holder=]
-          or [=subject=]. Unacceptable approaches include "phoning home," such that
-          every use of a credential contacts the [=issuer=] of the credential to
-          check the status for a specific individual, or "pseudonymity reduction,"
-          such that every use of the credential causes a request for information
-          from the [=issuer=] that can be used by the [=issuer=] to deduce
-          [=verifier=] interest in a specific individual.
+          状态方案绝对不能以使得能够追踪个人的方式实施，例如，当一个[=验证者=]对特定的[=持有人=]
+          或[=主题=]感兴趣时，[=发行者=]被通知（直接或间接）。不可接受的方法包括"电话回家"，即
+          每次使用凭证都会联系凭证的[=发行者=]，以检查特定个人的状态，或者"伪名减少"，即
+          每次使用凭证都会导致从[=发行者=]那里请求信息，这些信息可以被[=发行者=]用来推断
+          [=验证者=]对特定个人的兴趣。
         </li>
       </ul>
 
     </section>
 
     <section>
-      <h3>Presentations</h3>
+      <h3>展示</h3>
 
       <p>
-        [=Verifiable presentations=] MAY be used to aggregate information from
-        multiple [=verifiable credentials=].
+        [=可验证展示=] 可用于汇总来自多个 [=可验证凭证=] 的信息。
       </p>
       <p>
-        [=Verifiable presentations=] SHOULD be extremely short-lived, and bound to a
-        challenge provided by a [=verifier=]. Details for accomplishing this depend
-        on the securing mechanism, the transport protocol, and [=verifier=] policies.
-        Unless additional requirements are defined by the particular securing mechanism
-        or embedding protocol, a [=verifier=] cannot generally assume that the
-        [=verifiable presentation=] has any correlation with the presented
-        [=verifiable credentials=].
+        [=可验证展示=] 应该非常短暂，并绑定到由 [=验证者=] 提供的挑战。实现这一点的细节取决于安全机制、传输协议和 [=验证者=] 策略。除非特定的安全机制或嵌入协议定义了其他要求，否则 [=验证者=] 通常无法假定
+        [=可验证展示=] 与所提供的 [=可验证凭证=] 之间存在任何关联。
       </p>
 
       <p>
-        The [=default graph=] of a [=verifiable presentation=] is also referred to
-        as the <dfn>verifiable presentation graph</dfn>.
+        [=可验证展示=] 的 [=默认图=] 也被称为 <dfn>可验证展示图</dfn>。
       </p>
 
-
       <p>
-        The following properties are defined for a [=verifiable presentation=]:
+        下面为 [=可验证展示=] 定义了以下属性：
       </p>
 
       <dl>
         <dt>|id|</dt>
         <dd>
-          The `id` [=property=] is optional. It MAY be used to provide a
-          unique identifier for the [=verifiable presentation=]. If present, the
-          normative guidance in Section <a href="#identifiers"></a> MUST be followed.
+          `id` [=属性=] 是可选的。它可以用于为 [=可验证展示=] 提供唯一标识符。如果存在，必须遵循第 <a href="#identifiers"></a> 节的规范性指南。
         </dd>
         <dt>|type|</dt>
         <dd>
-          The `type` [=property=] MUST be present. It is used to express the
-          type of [=verifiable presentation=]. One value of this property MUST be
-          `VerifiablePresentation`, but additional types MAY be included. The
-          related normative guidance in Section <a href="#types"></a> MUST be followed.
+          `type` [=属性=] 必须存在。它用于表示 [=可验证展示=] 的类型。此属性的一个值必须是 `VerifiablePresentation`，但可以包含其他类型。必须遵循第 <a
+            href="#types"></a> 节的相关规范性指南。
         </dd>
         <dt><var id="defn-verifiableCredential">verifiableCredential</var></dt>
         <dd>
-          The `verifiableCredential` [=property=] MAY be present. The value
-          MUST be one or more [=verifiable credential=] and/or
-          <a href="#enveloped-verifiable-credentials">enveloped verifiable credential</a>
-          objects (to be clear, the values MUST NOT be non-object values such as
-          numbers, strings, or URLs). These types of objects are called
-          <a href="#verifiable-credential-graphs">verifiable credential graphs</a> and
-          MUST express information that is secured using a
-          <a href="#securing-mechanisms">securing mechanism</a>.
-          See Section <a href="#verifiable-credential-graphs"></a> for further details.
+          `verifiableCredential` [=属性=] 可以存在。该值必须是一个或多个 [=可验证凭证=] 和/或
+          <a href="#enveloped-verifiable-credentials">封装的可验证凭证</a>
+          对象（明确地说，值不能是非对象值，如数字、字符串或URL）。这些类型的对象称为
+          <a href="#verifiable-credential-graphs">可验证凭证图</a>，并且必须使用
+          <a href="#securing-mechanisms">安全机制</a>来表达已加密的信息。
+          请参阅第 <a href="#verifiable-credential-graphs"></a> 节以获取更多详细信息。
         </dd>
         <dt><var id="defn-holder">holder</var></dt>
         <dd>
-          The [=verifiable presentation=] MAY include a `holder`
-          [=property=]. If present, the value MUST be either a [=URL=] or an object
-          containing an `id` [=property=]. It is RECOMMENDED that the
-          [=URL=] in the `holder` or its `id` be one which, if
-          dereferenced, results in a document containing machine-readable information
-          about the [=holder=] that can be used to [=verify=] the information
-          expressed in the [=verifiable presentation=].
-          If the `holder` [=property=] is absent, information about the
-          [=holder=] is expected to either be obtained via the securing mechanism, or
-          to not pertain to the [=validation=] of the [=verifiable presentation=].
+          [=可验证展示=] 可以包含一个 `holder`
+          [=属性=]。如果存在，其值必须是一个 [=URL=] 或包含 `id` [=属性=] 的对象。建议 `holder` 中的 [=URL=] 或其 `id` 是一个可以解引用的 URL，解引用后会得到一个包含关于
+          [=持有者=] 的机器可读信息的文档，该信息可用于 [=验证=] 在 [=可验证展示=] 中表达的信息。
+          如果 `holder` [=属性=] 不存在，则预期关于 [=持有者=] 的信息将通过安全机制获得，或者与 [=可验证展示=] 的 [=验证=] 无关。
         </dd>
       </dl>
 
       <p>
-        The example below shows a [=verifiable presentation=]:
+        下面的示例显示了一个 [=可验证展示=]：
       </p>
 
       <pre class="example nohighlight" title="Basic structure of a presentation">
@@ -2113,42 +2022,35 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        The contents of the `verifiableCredential` [=property=] shown
-        above are <a href="#verifiable-credential-graphs">verifiable credential
-          graphs</a>, as described by this specification.
+        上述的 `verifiableCredential` 属性的内容是本规范所描述的可验证凭证图。
       </p>
 
       <section>
-        <h4>Enveloped Verifiable Credentials</h4>
+        <h4>封装的可验证凭证</h4>
 
         <p>
-          It is possible for a [=verifiable presentation=] to include one or more
-          [=verifiable credentials=] that have been secured using a securing mechanism
-          that "envelopes" the payload, such as [[[?VC-JOSE-COSE]]] [[?VC-JOSE-COSE]].
-          This can be accomplished by associating the `verifiableCredential` property with
-          an object that has a `type` of `EnvelopedVerifiableCredential`.
+          一个[=可验证的展示=]可以包含一个或多个使用安全机制保护的
+          [=可验证的凭证=]，这种安全机制会"封装"载荷，例如[[[?VC-JOSE-COSE]]] [[?VC-JOSE-COSE]]。
+          这可以通过将`verifiableCredential`属性与一个`type`为`EnvelopedVerifiableCredential`的对象关联来实现。
         </p>
 
         <dl>
-          <dt id="defn-EnvelopedVerifiableCredential">EnvelopedVerifiableCredential</dt>
+          <dt id="defn-EnvelopedVerifiableCredential">封装的可验证凭证</dt>
           <dd>
-            Used to associate an object containing an enveloped [=verifiable credential=]
-            with the `verifiableCredential` property in a [=verifiable presentation=].
-            The `@context` property of the object MUST be present and include a context,
-            such as the <a href="#base-context">base context for this specification</a>,
-            that defines at least the `id`, `type`, and `EnvelopedVerifiableCredential`
-            terms as defined by the base context provided by this specification. The `id`
-            value of the object MUST be a `data:` URL [[RFC2397]] that expresses a secured
-            [=verifiable credential=] using an
-            <a href="#dfn-enveloping-proof">enveloping</a> security scheme, such as
-            [[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]. The `type` value of the object MUST be
-            `EnvelopedVerifiableCredential`.
+            用于将包含封装的[=可验证凭证=]的对象与[=可验证的展示=]中的`verifiableCredential`属性关联。
+            对象的`@context`属性必须存在并包含一个上下文，
+            例如<a href="#base-context">此规范的基础上下文</a>，
+            至少定义了`id`、`type`和`EnvelopedVerifiableCredential`
+            这些术语，这些术语由此规范提供的基础上下文定义。对象的`id`
+            值必须是一个`data:` URL [[RFC2397]]，它用
+            <a href="#dfn-enveloping-proof">封装</a>的安全方案表达了一个安全的
+            [=可验证凭证=]，例如[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]。对象的`type`值必须是
+            `EnvelopedVerifiableCredential`。
           </dd>
         </dl>
 
         <p>
-          The example below shows a [=verifiable presentation=] that contains an
-          enveloped [=verifiable credential=]:
+          下面的例子展示了一个包含封装的[=可验证凭证=]的[=可验证的展示=]：
         </p>
 
         <pre class="example nohighlight" title="Basic structure of a presentation">
@@ -2169,32 +2071,29 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </section>
 
       <section>
-        <h4>Presentations Using Derived Credentials</h4>
+        <h4>使用派生凭证的演示</h4>
 
         <p>
-          Some zero-knowledge cryptography schemes might enable [=holders=] to
-          indirectly prove they hold [=claims=] from a [=verifiable credential=]
-          without revealing all claims in that [=verifiable credential=]. In these
-          schemes, a [=verifiable credential=] might be used to derive presentable
-          data, which is cryptographically asserted such that a [=verifier=] can trust
-          the value if they trust the [=issuer=].
+          一些零知识密码学方案可能使[=持有人=]能够
+          间接证明他们持有来自[=可验证凭证=]的[=声明=]
+          而无需揭示该[=可验证凭证=]中的所有声明。在这些
+          方案中，[=可验证凭证=]可用于派生可呈现的
+          数据，这些数据经过加密断言，使得[=验证者=]可以信任
+          该值（如果他们信任[=颁发者=]）。
         </p>
         <p>
-          Some selective disclosure schemes can share a subset of [=claims=]
-          derived from a [=verifiable credential=].
+          一些选择性披露方案可以共享从[=可验证凭证=]派生的[=声明=]子集。
         </p>
 
         <p class="note">
-          For an example of a ZKP-style [=verifiable presentation=] containing
-          derived data instead of directly embedded [=verifiable credentials=], see
-          Section <a href="#zero-knowledge-proofs"></a>.
+          有关包含派生数据而非直接嵌入[=可验证凭证=]的ZKP风格[=可验证演示=]的示例，请参见第<a href="#zero-knowledge-proofs"></a>节。
         </p>
 
         <figure>
-          <img style="margin: auto; display: block; width: 50%;" src="diagrams/claim-example-2.svg" alt="Pat has a property
-                 overAge whose value is 21">
+          <img style="margin: auto; display: block; width: 50%;" src="diagrams/claim-example-2.svg" alt="Pat拥有一个
+                 overAge属性，其值为21">
           <figcaption style="text-align: center;">
-            A basic claim expressing that Pat is over the age of 21.
+            表示Pat年龄超过21岁的基本声明。
           </figcaption>
         </figure>
       </section>
@@ -6438,22 +6337,14 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="normative">
-      <h3>Vocabularies</h3>
+      <h3>词汇表</h3>
 
-      <p class="issue" title="(AT RISK) URL values might change during Candidate Recommendation">
-        This section lists URL values that might change during the Candidate
-        Recommendation phase based on migration of documents to time-stamped locations,
-        migration of documents to the W3C Technical Reports namespace, and/or
-        implementer feedback that requires the referenced URLs to be modified.
+      <p class="issue" title="(有风险) URL 值可能在候选推荐阶段发生变化">
+        本节列出了在候选推荐阶段可能发生变化的 URL 值，这取决于将文档迁移到时间戳位置、将文档迁移到 W3C 技术报告命名空间以及需要修改引用的 URL 的实施者反馈。
       </p>
 
       <p>
-        Implementations that depend on RDF vocabulary processing MUST ensure that the
-        following vocabulary URLs used in the base context ultimately resolve to the
-        following files, which are normative. Other semantically equivalent
-        serializations of the vocabulary files MAY be used by implementations.
-        Cryptographic hashes are provided for all content to ensure that developers can
-        verify that the contents of each file are correct.
+        依赖 RDF 词汇处理的实现必须确保基本上解析到以下文件的词汇 URL，这些文件是规范的。实现可以使用其他语义等效的词汇文件的序列化。为了确保开发人员可以验证每个文件的内容是否正确，提供了所有内容的加密哈希。
       </p>
 
       <table class="simple">
@@ -6492,25 +6383,17 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
       </table>
 
       <p>
-        It is possible to confirm the cryptographic digests listed above by running the
-        following command from a modern Unix command interface line:
+        可以通过在现代Unix命令界面中运行以下命令来确认上述加密摘要：
         `curl -sL -H "Accept: &lt;MEDIA_TYPE>" &lt;DOCUMENT_URL> | openssl dgst -&ltDIGEST_ALGORITHM> -binary | openssl
         base64 -nopad -a`
       </p>
 
-      <p class="note" title="schema.org changes regularly, but is considered stable">
-        Implementers and document authors might note that cryptographic digests for
-        `schema.org` are not provided. This is because the `schema.org` vocabulary
-        undergoes regular changes; any digest provided would be out of date within
-        weeks of publication. The Working Group discussed this concern and concluded
-        that the vocabulary terms from `schema.org`, that are used by this
-        specification, have been stable for years and are highly unlikely to change in
-        their semantic meaning.
+      <p class="note" title="schema.org定期更改，但被认为是稳定的">
+        实施者和文档作者可能注意到，`schema.org`的加密摘要未提供。这是因为`schema.org`词汇经常更改；任何提供的摘要在发布几周后就会过时。工作组讨论了这个问题，并得出结论，本规范使用的`schema.org`词汇的语义含义多年来一直稳定，并且极不可能发生变化。
       </p>
 
       <p>
-        The following base classes are defined in this specification for processors
-        and other specifications that benefit from such definitions:
+        本规范为处理器和其他受益于此类定义的规范定义了以下基类：
       </p>
 
       <table class="simple">
@@ -6609,47 +6492,43 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
     </section>
 
     <section>
-      <h3>Datatypes</h3>
+      <h3>数据类型</h3>
       <p>
-        This section defines datatypes that are used by this specification.
+        本节定义了该规范使用的数据类型。
       </p>
 
       <section>
-        <h4>The `sriString` Datatype</h4>
+        <h4>`sriString` 数据类型</h4>
 
         <p>
-          The string provides the integrity information for a resource using the method
-          specified in the [[SRI]] specification.
+          字符串使用[[SRI]]规范中指定的方法为资源提供完整性信息。
         </p>
 
         <p>
-          The `sriString` datatype is defined as follows:
+          `sriString` 数据类型定义如下：
         </p>
 
         <dl>
-          <dt>The URL denoting this datatype</dt>
+          <dt>表示此数据类型的URL</dt>
           <dd>`https://www.w3.org/2018/credentials#sriString`</dd>
-          <dt>The lexical space</dt>
+          <dt>词法空间</dt>
           <dd>
-            See the <a href="https://www.w3.org/TR/SRI/#the-integrity-attribute">ABNF
-              grammar</a>, defining the `integrity` attribute in the [[SRI]] specification,
-            for the restrictions on the string format.
+            请参阅[[SRI]]规范中定义的`integrity`属性的<a href="https://www.w3.org/TR/SRI/#the-integrity-attribute">ABNF
+              语法</a>，了解字符串格式的限制。
           </dd>
-          <dt>The value space</dt>
+          <dt>值空间</dt>
           <dd>
-            A (possibly empty) list of <i>(alg,val)</i> pairs, where <i>alg</i> identifies a
-            hash function, and <i>val</i> is an integer as a standard mathematical concept.
+            一个（可能为空的）<i>(alg,val)</i>对列表，其中<i>alg</i>标识哈希函数，<i>val</i>是标准数学概念中的整数。
           </dd>
-          <dt>The lexical-to-value mapping</dt>
+          <dt>词法到值的映射</dt>
           <dd>
-            Any element of the lexical space is mapped to the value space by following the
-            <a href="https://www.w3.org/TR/SRI/#parse-metadata">parse metadata algorithm</a>
-            based on the <a href="https://www.w3.org/TR/SRI/#the-integrity-attribute">ABNF
-              grammar</a> in the [[SRI]] specification.
+            通过根据[[SRI]]规范中的<a href="https://www.w3.org/TR/SRI/#parse-metadata">解析元数据算法</a>和<a
+              href="https://www.w3.org/TR/SRI/#the-integrity-attribute">ABNF
+              语法</a>，将词法空间中的任何元素映射到值空间。
           </dd>
-          <dt>The canonical mapping</dt>
+          <dt>规范映射</dt>
           <dd>
-            The canonical mapping consists of the lexical-to-value mapping.
+            规范映射包括词法到值的映射。
           </dd>
         </dl>
       </section>
@@ -6681,7 +6560,8 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
       </p>
 
       <p>
-        虽然可以使用一些[[JSON-LD11]]的特性来暗示[=可验证凭证=]的内容，但通常不建议使用`@context`来限制数据模型的数据类型。例如，`"@type": "@json"`对于保持语义开放和不严格定义是有用的。如果实现者希望限制[=凭证=]中声明的数据类型，并且不希望使用该属性，这可能是危险的。
+        虽然可以使用一些[[JSON-LD11]]的特性来暗示[=可验证凭证=]的内容，但通常不建议使用`@context`来限制数据模型的数据类型。例如，`"@type":
+        "@json"`对于保持语义开放和不严格定义是有用的。如果实现者希望限制[=凭证=]中声明的数据类型，并且不希望使用该属性，这可能是危险的。
       </p>
 
       <p>
@@ -6691,132 +6571,114 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
   </section>
 
   <section class="appendix informative">
-    <h2>IANA Considerations</h2>
+    <h2>IANA注意事项</h2>
 
     <p>
-      This section will be submitted to the Internet Engineering Steering Group (IESG)
-      for review, approval, and registration with IANA.
+      本节将提交给互联网工程指导组（IESG）进行审查、批准，并在IANA注册。
     </p>
 
     <section id="vc-ld-media-type">
       <h2>application/vc+ld+json</h2>
       <p>
-        This specification registers the `application/vc+ld+json` Media Type
-        specifically for identifying documents conforming to the Verifiable Credentials
-        format.
+        本规范专门为识别符合可验证凭证格式的文档注册了`application/vc+ld+json`媒体类型。
       </p>
       <table>
         <tr>
-          <td>Type name: </td>
-          <td>application</td>
+          <td>类型名称：</td>
+          <td>应用程序</td>
         </tr>
         <tr>
-          <td>Subtype name: </td>
+          <td>子类型名称：</td>
           <td>vc+ld+json</td>
         </tr>
         <tr>
-          <td>Required parameters: </td>
-          <td>None</td>
+          <td>必需参数：</td>
+          <td>无</td>
         </tr>
         <tr>
-          <td>Encoding considerations: </td>
+          <td>编码注意事项：</td>
           <td>
-            Resources that use the "`application/vc+ld+json`" Media Type are
-            required to conform to all of the requirements for the
-            "`application/ld+json`" Media Type and are therefore subject to the
-            same encoding considerations specified in Section 11 of [[RFC7159]].
+            使用"`application/vc+ld+json`"媒体类型的资源
+            必须符合所有"`application/ld+json`"媒体类型的要求，因此受到[[RFC7159]]第11节中指定的相同编码注意事项的约束。
           </td>
         </tr>
         <tr>
-          <td>Security considerations: </td>
-          <td>As defined in this specification.</td>
+          <td>安全性考虑：</td>
+          <td>按照本规范定义。</td>
         </tr>
         <tr>
-          <td>Contact: </td>
+          <td>联系方式：</td>
           <td>
-            W3C Verifiable Credentials Working Group
+            W3C 可验证凭证工作组
             <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
           </td>
         </tr>
       </table>
 
       <p>
-        Note that while the Verifiable Credentials format uses JSON-LD conventions,
-        there are a number of constraints and additional requirements for Verifiable
-        Credential implementations that justify the use of a specific media type.
+        请注意，虽然可验证凭证格式使用了JSON-LD约定，
+        但是对于可验证凭证实现有一些约束和额外要求，这就证明了使用特定媒体类型的必要性。
       </p>
 
       <p>
-        This media type can be used for credentials secured using an
-        [=enveloping proof=].
+        这种媒体类型可以用于使用[=封装证明=]保护的凭证。
       </p>
       <p>
-        A [[JSON-LD11]] context is expected to be present in the body of the document, and
-        as indicated by the presence of `ld+json` in the media type, the credential is
-        expected to be a valid
+        期望在文档的主体中存在一个[[JSON-LD11]]上下文，并且如媒体类型中的`ld+json`所示，期望凭证是一个有效的
         <a href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-document">JSON-LD
-          document</a>.
+          文档</a>。
       </p>
     </section>
 
     <section id="vp-ld-media-type">
       <h2>application/vp+ld+json</h2>
       <p>
-        This specification registers the `application/vp+ld+json` Media
-        Type specifically for identifying documents conforming to the Verifiable
-        Presentations format.
+        本规范专门为符合可验证呈现格式的文档注册了`application/vp+ld+json`媒体类型。
       </p>
       <table>
         <tr>
-          <td>Type name: </td>
+          <td>类型名称：</td>
           <td>application</td>
         </tr>
         <tr>
-          <td>Subtype name: </td>
+          <td>子类型名称：</td>
           <td>vp+ld+json</td>
         </tr>
         <tr>
-          <td>Required parameters: </td>
-          <td>None</td>
+          <td>必需参数：</td>
+          <td>无</td>
         </tr>
         <tr>
-          <td>Encoding considerations: </td>
+          <td>编码注意事项：</td>
           <td>
-            Resources that use the "`application/vp+ld+json`" Media Type are
-            required to conform to all of the requirements for the
-            "`application/ld+json`" Media Type and are therefore subject to the
-            same encoding considerations specified in Section 11 of [[RFC7159]].
+            使用"`application/vp+ld+json`"媒体类型的资源需要遵守
+            "`application/ld+json`"媒体类型的所有要求，因此需要遵循[[RFC7159]]第11节中规定的相同编码注意事项。
           </td>
         </tr>
         <tr>
-          <td>Security considerations: </td>
-          <td>As defined in this specification.</td>
+          <td>安全注意事项：</td>
+          <td>按照本规范定义。</td>
         </tr>
         <tr>
-          <td>Contact: </td>
+          <td>联系方式：</td>
           <td>
-            W3C Verifiable Credentials Working Group
+            W3C 可验证凭证工作组
             <a href="mailto:public-vc-wg@w3.org">public-vc-wg@w3.org</a>
           </td>
         </tr>
       </table>
 
       <p>
-        Note that while the Verifiable Credentials format uses JSON-LD conventions,
-        there are a number of constraints and additional requirements for Verifiable
-        Credential implementations that justify the use of a specific media type.
+        请注意，虽然可验证凭证格式使用 JSON-LD 约定，但可验证凭证实现有许多限制和额外要求，这些限制和要求足以证明使用特定媒体类型是合理的。
       </p>
 
       <p>
-        This media type can be used for presentations secured using an
-        [=enveloping proof=].
+        该媒体类型可用于使用[=enveloping proof=]保护的演示文稿。
       </p>
       <p>
-        A [[JSON-LD11]] context is expected to be present in the body of the document, and
-        as indicated by the presence of `ld+json` in the media type, the credential is
-        expected to be a valid
+        预计文档正文中会存在一个[[JSON-LD11]]上下文，并且如媒体类型中的`ld+json`所示，凭证预计将是一个有效的
         <a href="https://www.w3.org/TR/json-ld11/#dfn-json-ld-document">JSON-LD
-          document</a>.
+          文档</a>。
       </p>
     </section>
 

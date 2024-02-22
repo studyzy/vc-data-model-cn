@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Verifiable Credentials Data Model v2.0</title>
+  <title>可验证凭证数据模型v2.0</title>
   <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
   <!--
       === NOTA BENE ===
@@ -336,21 +336,21 @@
       </p>
 
       <dl>
-        <dt>[=holder=]（持有者）</dt>
+        <dt>[=持有者=]（持有者）</dt>
         <dd>
           通过拥有一个或多个可验证凭证并从中生成可验证展示来执行的实体角色。示例持有者包括学生、员工和客户。
         </dd>
-        <dt>[=issuer=]（发行者）</dt>
+        <dt>[=发行者=]（发行者）</dt>
         <dd>
           实体执行的角色，通过对一个或多个主体进行声明，从这些声明中创建可验证凭证，并将可验证凭证传输给持有者。示例发行者包括公司、非营利组织、行业协会、政府和个人。
         </dd>
-        <dt>[=subject=]（主体）</dt>
+        <dt>[=主体=]（主体）</dt>
         <dd>
           进行声明的实体。示例主体包括人类、动物和事物。在许多情况下，可验证凭证的持有者是主体，但在某些情况下不是。例如，父母（持有者）可能持有孩子（主体）的可验证凭证，或者宠物主人（持有者）可能持有他们宠物（主体）的可验证凭证。有关这些特殊情况的更多信息，请参阅可验证凭证实施指南[[VC-IMP-GUIDE]]中的
           <a href="https://www.w3.org/TR/vc-imp-guide/#subject-holder-relationships">
             主体-持有者关系</a>部分。
         </dd>
-        <dt>[=verifier=]（验证者）</dt>
+        <dt>[=验证者=]（验证者）</dt>
         <dd>
           通过接收一个或多个可验证凭证（可选地在可验证展示中）进行处理的实体角色。示例验证者包括雇主、安全人员和网站。
         </dd>
@@ -594,7 +594,7 @@
         [=持有者=]、[=发行者=]和[=验证者=]之间的
         通信。
       </dd>
-      <dt><dfn class="export" data-lt="claim validation|validate">验证</dfn></dt>
+      <dt><dfn class="export" data-lt="claim validation|validate">校验</dfn></dt>
       <dd>
         确保特定[=发行者=]的[=声明=]满足[=验证者=]对特定用途的业务要求的保证。本规范定义了验证者如何验证[=可验证凭证=]和
         [=可验证呈现=]。<br />
@@ -649,14 +649,14 @@
     <h2>核心数据模型</h2>
 
     <p>
-      以下部分概述了核心数据模型概念，如 [=claims=]、[=credentials=]、[=presentations=]、[=verifiable credentials=] 和 [=verifiable
+      以下部分概述了核心数据模型概念，如 [=claims=]、[=凭证=]、[=呈现=]、[=可验证凭证=] 和 [=verifiable
       presentations=]，这些概念构成了本规范的基础。
     </p>
 
     <p class="note" title="凭证和可验证凭证之间的区别">
-      读者可能会注意到，本节中描述的一些概念，如 [=credential=] 和 [=presentation=]，在本规范中没有定义媒体类型。然而，[=verifiable credential=] 或 [=verifiable
-      presentation=] 这些概念被定义为 [=conforming documents=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=credential=] 和
-      [=presentation=] 与 [=verifiable credential=] 和 [=verifiable presentation=] 之间的区别 &mdash; 仅仅在于 "可验证"
+      读者可能会注意到，本节中描述的一些概念，如 [=凭证=] 和 [=presentation=]，在本规范中没有定义媒体类型。然而，[=可验证凭证=] 或 [=verifiable
+      presentation=] 这些概念被定义为 [=conforming documents=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=凭证=] 和
+      [=presentation=] 与 [=可验证凭证=] 和 [=可验证呈现=] 之间的区别 &mdash; 仅仅在于 "可验证"
       对象以加密可验证的方式进行保护，而其他对象则没有。有关详细信息，请参见<a href="#securing-mechanisms">安全机制部分</a>。
     </p>
 
@@ -664,7 +664,7 @@
       <h3>声明</h3>
 
       <p>
-        一个[=claim=]是关于一个[=subject=]的陈述。一个[=subject=]是可以对其进行[=claims=]的事物。[=Claims=]使用<strong><em>主体</em></strong>-<dfn
+        一个[=claim=]是关于一个[=主体=]的陈述。一个[=主体=]是可以对其进行[=claims=]的事物。[=Claims=]使用<strong><em>主体</em></strong>-<dfn
           data-lt="property|properties">
           属性</dfn>-<dfn class="lint-ignore">值</dfn>关系来表示。
       </p>
@@ -690,7 +690,7 @@
       </figure>
 
       <p>
-        单个[=claims=]可以合并在一起，以表达关于[=subject=]的信息[=graph=]。下图<a
+        单个[=claims=]可以合并在一起，以表达关于[=主体=]的信息[=graph=]。下图<a
           href="#multiple-claims"></a>中的示例通过添加Pat认识Sam的[=claims=]以及Sam被雇佣为教授的[=claims=]来扩展之前的[=claim=]。
       </p>
 
@@ -711,8 +711,8 @@
       <h3>凭证</h3>
 
       <p>
-        一个[=credential=]是由相同的[=entity=]做出的一个或多个[=claims=]的集合。[=Credentials=]还可能包括一个标识符和元数据，用于描述[=credential=]的属性，如[=issuer=]、有效日期和时间段、代表性图像、[=verification
-        material=]、吊销机制等。元数据可能由[=issuer=]签名。一个[=verifiable credential=]是一个防篡改的[=claims=]和元数据的集合，可以加密地证明谁发行了它。
+        一个[=凭证=]是由相同的[=entity=]做出的一个或多个[=claims=]的集合。[=Credentials=]还可能包括一个标识符和元数据，用于描述[=凭证=]的属性，如[=发行者=]、有效日期和时间段、代表性图像、[=verification
+        material=]、吊销机制等。元数据可能由[=发行者=]签名。一个[=可验证凭证=]是一个防篡改的[=claims=]和元数据的集合，可以加密地证明谁发行了它。
       </p>
 
       <figure id="basic-vc">
@@ -723,23 +723,21 @@
       </figure>
 
       <p>
-        [=verifiable credentials=]的示例包括数字员工身份证、数字出生证明和数字教育证书。
+        [=可验证凭证=]的示例包括数字员工身份证、数字出生证明和数字教育证书。
       </p>
 
       <p class="note">
-        [=Credential=]标识符通常用于识别特定实例的[=credential=]。这些标识符也可以用于关联。希望最小化关联的[=holder=]建议使用一种选择性披露方案，该方案不会泄露[=credential=]标识符。
+        [=Credential=]标识符通常用于识别特定实例的[=凭证=]。这些标识符也可以用于关联。希望最小化关联的[=持有者=]建议使用一种选择性披露方案，该方案不会泄露[=凭证=]标识符。
       </p>
 
       <p>
-        <a href="#basic-vc"></a>上面显示了一个[=verifiable
-        credential=]的基本组件，但抽象了关于如何将[=claims=]组织成信息[=graphs=]的细节，然后将其组织成[=verifiable credentials=]。
+        <a href="#basic-vc"></a>上面显示了一个[=可验证凭证=]的基本组件，但抽象了关于如何将[=claims=]组织成信息[=graphs=]的细节，然后将其组织成[=可验证凭证=]。
       </p>
       <p>
-        <a href="#info-graph-vc"></a>下面显示了一个使用基于[[?VC-DATA-INTEGRITY]]的[=embedded proof=]的更完整的[=verifiable
-        credential=]描述。它由至少两个信息[=graphs=]组成。
+        <a href="#info-graph-vc"></a>下面显示了一个使用基于[[?VC-DATA-INTEGRITY]]的[=embedded proof=]的更完整的[=可验证凭证=]描述。它由至少两个信息[=graphs=]组成。
         这些信息[=graphs=]中的第一个，即[=verifiable credential graph=]（它是[=default
-        graph=]），通过[=credential=]元数据和其他[=claims=]来表达[=verifiable credential=]本身。
-        第二个信息[=graph=]，由`proof`属性引用，是[=verifiable credential=]的<dfn>proof graph</dfn>，是一个单独的[=named graph=]。
+        graph=]），通过[=凭证=]元数据和其他[=claims=]来表达[=可验证凭证=]本身。
+        第二个信息[=graph=]，由`proof`属性引用，是[=可验证凭证=]的<dfn>proof graph</dfn>，是一个单独的[=named graph=]。
         [=proof graph=]表达了数字证明，这种情况下是数字签名。
       </p>
 
@@ -793,10 +791,10 @@ arrow, to a separate rectangle, containing a single text field:
       </figure>
 
       <p class="note">
-        可以有一个[=credential=]，例如婚姻证书，其中包含关于不同[=subjects=]的多个[=claims=]，这些主题不需要相关。
+        可以有一个[=凭证=]，例如婚姻证书，其中包含关于不同[=subjects=]的多个[=claims=]，这些主题不需要相关。
       </p>
       <p class="note">
-        可以有一个[=credential=]，其中不包含关于发行[=credential=]的[=entity=]的任何[=claims=]。例如，一个只包含关于特定狗的[=claims=]，但发给其所有者的[=credential=]。
+        可以有一个[=凭证=]，其中不包含关于发行[=凭证=]的[=entity=]的任何[=claims=]。例如，一个只包含关于特定狗的[=claims=]，但发给其所有者的[=凭证=]。
       </p>
     </section>
 
@@ -927,32 +925,30 @@ arrow, to a separate rectangle, containing a single text field:
       <h3>具体生命周期示例</h3>
 
       <p>
-        前面的章节使用图形描述介绍了[=claims=]、[=verifiable credentials=]和[=verifiable
-        presentations=]的概念。本节提供了一个具体的简单但完整的生命周期示例，用本规范支持的一种具体语法表示数据模型。在
-        <a href="#ecosystem-overview">可验证凭证生态系统</a>中，[=credentials=]和[=presentations=]的生命周期通常遵循以下路径：
+        前面的章节使用图形描述介绍了[=claims=]、[=可验证凭证=]和[=可验证呈现=]的概念。本节提供了一个具体的简单但完整的生命周期示例，用本规范支持的一种具体语法表示数据模型。在
+        <a href="#ecosystem-overview">可验证凭证生态系统</a>中，[=凭证=]和[=呈现=]的生命周期通常遵循以下路径：
       </p>
 
       <ol>
         <li>
-          发行一个或多个[=verifiable credentials=]。
+          发行一个或多个[=可验证凭证=]。
         </li>
         <li>
-          将[=verifiable credentials=]存储在[=credential repository=]（如数字钱包）中。
+          将[=可验证凭证=]存储在[=仓库=]（如数字钱包）中。
         </li>
         <li>
-          将[=verifiable credentials=]组合成一个[=verifiable presentation=]，供[=verifiers=]使用。
+          将[=可验证凭证=]组合成一个[=可验证呈现=]，供[=验证者=]使用。
         </li>
         <li>
-          [=verifier=]对[=verifiable presentation=]进行[=Verification=]。
+          [=验证者=]对[=可验证呈现=]进行[=验证=]。
         </li>
         <li>
-          [=verifier=]对包含在[=verifiable presentation=]中的相关[=claims=]进行[=Validation=]。
+          [=验证者=]对包含在[=可验证呈现=]中的相关[=claims=]进行[=校验=]。
         </li>
       </ol>
 
       <p>
-        为了说明这个生命周期，我们将使用从大学兑换校友折扣的例子。在下面的例子中，Pat从一所大学获得了一份校友[=verifiable credential=]，并将这个[=verifiable
-        credential=]存储在一个数字钱包中。
+        为了说明这个生命周期，我们将使用从大学兑换校友折扣的例子。在下面的例子中，Pat从一所大学获得了一份校友[=可验证凭证=]，并将这个[=可验证凭证=]存储在一个数字钱包中。
       </p>
 
       <pre class="example nohighlight" title="一个可验证凭证内容的简单示例">
@@ -987,18 +983,15 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        然后，Pat尝试兑换校友折扣。[=verifier=]，一个票务销售系统，声明“Example
-        University”的校友可以获得体育赛事季票的折扣。使用移动设备，Pat开始购买季票的过程。在这个过程中的一个步骤请求一个校友[=verifiable
-        credential=]，这个请求被路由到Pat的数字钱包。数字钱包询问Pat是否愿意提供以前发行的[=verifiable credential=]。Pat选择了校友[=verifiable
-        credential=]，然后将其组合成一个[=verifiable presentation=]。[=verifiable presentation=]被发送到[=verifier=]并进行[=verified=]。
+        然后，Pat尝试兑换校友折扣。[=验证者=]，一个票务销售系统，声明“Example
+        University”的校友可以获得体育赛事季票的折扣。使用移动设备，Pat开始购买季票的过程。在这个过程中的一个步骤请求一个校友[=可验证凭证=]，这个请求被路由到Pat的数字钱包。数字钱包询问Pat是否愿意提供以前发行的[=可验证凭证=]。Pat选择了校友[=可验证凭证=]，然后将其组合成一个[=可验证呈现=]。[=可验证呈现=]被发送到[=验证者=]并进行[=验证=]。
       </p>
       <p>
-        一旦被[=verified=]为真实和当前的，季票的卖家然后验证[=verifiable credential=]的[=issuer=]是否被认可为校友状态的声明——它是，因为它是由Example
-        University发行的——并且今天的日期在由`validFrom`和`validUntil`属性定义的有效期内。由于期望[=holder=]是[=verifiable
-        credential=]的[=subject=]，[=verifier=]也确认校友声明的`id`与[=verifiable presentation=]的创建者的`id`匹配。
+        一旦被[=验证=]为真实和当前的，季票的卖家然后验证[=可验证凭证=]的[=发行者=]是否被认可为校友状态的声明——它是，因为它是由Example
+        University发行的——并且今天的日期在由`validFrom`和`validUntil`属性定义的有效期内。由于期望[=持有者=]是[=可验证凭证=]的[=主体=]，[=验证者=]也确认校友声明的`id`与[=可验证呈现=]的创建者的`id`匹配。
       </p>
       <p>
-        在[=verified=]了凭证和演示，并验证了相关的声明后，票务销售商安全地为Pat启用了校友折扣，确信Pat有合法的权利享受这个折扣。
+        在[=验证=]了凭证和演示，并验证了相关的声明后，票务销售商安全地为Pat启用了校友折扣，确信Pat有合法的权利享受这个折扣。
       </p>
       <pre class="example nohighlight" title="一个可验证演示的简单示例">
 {
@@ -1029,7 +1022,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        上面的例子是未加密的。对于有兴趣了解更多关于保护[=verifiable credentials=]的实现者，可以参见规范[[[VC-JOSE-COSE]]]
+        上面的例子是未加密的。对于有兴趣了解更多关于保护[=可验证凭证=]的实现者，可以参见规范[[[VC-JOSE-COSE]]]
         [[VC-JOSE-COSE]]和[[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]]
         以及[[[VC-SPECS]]]
         [[VC-SPECS]]的"Proofs"部分。
@@ -1406,27 +1399,27 @@ arrow, to a separate rectangle, containing a single text field:
       <h3>名称和描述</h3>
 
       <p>
-        在显示一个[=credential=]时，由[=issuer=]提供的文本可以为
-        [=credential=]提供一个名称以及其目的的简短描述。`name` 和 `description` [=properties=]
+        在显示一个[=凭证=]时，由[=发行者=]提供的文本可以为
+        [=凭证=]提供一个名称以及其目的的简短描述。`name` 和 `description` [=属性=]
         就是为了实现这些目的。
       </p>
 
       <dl>
         <dt><dfn class="export">name</dfn></dt>
         <dd>
-          一个可选的属性，表示[=credential=]的名称。如果
-          存在，`name` [=property=]的值必须是一个字符串或
+          一个可选的属性，表示[=凭证=]的名称。如果
+          存在，`name` [=属性=]的值必须是一个字符串或
           如<a href="#language-and-base-direction"></a>所述的语言值对象。理想情况下，一个
-          [=credential=]的名称简洁、易于阅读，并能让个人
-          快速区分他们可能持有的其他任何[=credentials=]。
+          [=凭证=]的名称简洁、易于阅读，并能让个人
+          快速区分他们可能持有的其他任何[=凭证=]。
         </dd>
         <dt><dfn class="export">description</dfn></dt>
         <dd>
-          一个可选的属性，传达关于[=credential=]的具体细节。如果
-          存在，`description` [=property=]的值必须是一个
+          一个可选的属性，传达关于[=凭证=]的具体细节。如果
+          存在，`description` [=属性=]的值必须是一个
           字符串或如<a href="#language-and-base-direction"></a>所述的语言值对象。理想情况下，一个
-          [=credential=]的描述长度不超过几句话，传达足够的
-          关于[=credential=]的信息，以提醒个人其内容
+          [=凭证=]的描述长度不超过几句话，传达足够的
+          关于[=凭证=]的信息，以提醒个人其内容
           而无需查看全部的[=claims=]。
         </dd>
       </dl>
@@ -1616,17 +1609,17 @@ arrow, to a separate rectangle, containing a single text field:
       <h3>发行者</h3>
 
       <p>
-        本规范定义了一个用于表示[=verifiable credential=]的[=issuer=]属性。
+        本规范定义了一个用于表示[=可验证凭证=]的[=发行者=]属性。
       </p>
 
       <p>
-        一个[=verifiable credential=]必须具有一个`issuer`[=property=]。
+        一个[=可验证凭证=]必须具有一个`issuer`[=属性=]。
       </p>
 
       <dl>
         <dt><var id="defn-issuer">issuer</var></dt>
         <dd>
-          `issuer`[=property=]的值必须是一个[=URL=]，或者是一个包含`id`[=property=]的对象，其值为[=URL=]；在任何情况下，发行者都选择这个[=URL=]以全球无歧义的方式识别自己。建议该[=URL=]为一个可解引用的URL，解引用后的结果是一个关于[=issuer=]的控制器文档，如[[VC-DATA-INTEGRITY]]或[[VC-JOSE-COSE]]中定义的，可用于[=verify=]在[=credential=]中表达的信息。
+          `issuer`[=属性=]的值必须是一个[=URL=]，或者是一个包含`id`[=属性=]的对象，其值为[=URL=]；在任何情况下，发行者都选择这个[=URL=]以全球无歧义的方式识别自己。建议该[=URL=]为一个可解引用的URL，解引用后的结果是一个关于[=发行者=]的控制器文档，如[[VC-DATA-INTEGRITY]]或[[VC-JOSE-COSE]]中定义的，可用于[=verify=]在[=凭证=]中表达的信息。
         </dd>
       </dl>
 
@@ -1680,7 +1673,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p class="note">
-        `issuer` [=property=] 的值也可以是一个 JWK（例如，`"https://example.com/keys/foo.jwk"`）或者一个
+        `issuer` [=属性=] 的值也可以是一个 JWK（例如，`"https://example.com/keys/foo.jwk"`）或者一个
         [=DID=]（例如，`"did:example:abfe13f712120431c276e12ecab"`）。
       </p>
 
@@ -1690,8 +1683,8 @@ arrow, to a separate rectangle, containing a single text field:
       <h3>有效期</h3>
 
       <p>
-        本规范定义了`validFrom` [=property=]，以帮助发行者表达[=credential=]生效的日期和时间，以及`validUntil`
-        [=property=]，用于表达[=credential=]失效的日期和时间。
+        本规范定义了`validFrom` [=属性=]，以帮助发行者表达[=凭证=]生效的日期和时间，以及`validUntil`
+        [=属性=]，用于表达[=凭证=]失效的日期和时间。
       </p>
 
       <p>
@@ -1701,18 +1694,18 @@ arrow, to a separate rectangle, containing a single text field:
       <dl>
         <dt><var id="defn-validFrom">validFrom</var></dt>
         <dd>
-          如果存在，`validFrom` [=property=]的值必须是一个
+          如果存在，`validFrom` [=属性=]的值必须是一个
           [<a data-cite="XMLSCHEMA11-2#dateTime">XMLSCHEMA11-2</a>]
-          `dateTimeStamp`字符串值，表示[=credential=]生效的日期和时间，可以是未来或过去的日期和时间。请注意，此值表示与`credentialSubject`
-          [=property=]关联的信息生效的最早时间点。如果还存在`validUntil`值，则
+          `dateTimeStamp`字符串值，表示[=凭证=]生效的日期和时间，可以是未来或过去的日期和时间。请注意，此值表示与`credentialSubject`
+          [=属性=]关联的信息生效的最早时间点。如果还存在`validUntil`值，则
           `validFrom`值必须表示与`validUntil`值表示的日期时间相同或更早的日期时间。
         </dd>
         <dt><var id="defn-validUntil">validUntil</var></dt>
         <dd>
-          如果存在，`validUntil` [=property=]的值必须是一个
+          如果存在，`validUntil` [=属性=]的值必须是一个
           [<a data-cite="XMLSCHEMA11-2#dateTime">XMLSCHEMA11-2</a>]
-          `dateTimeStamp`字符串值，表示[=credential=]失效的日期和时间，可以是过去或未来的日期和时间。请注意，此值表示与`credentialSubject`
-          [=property=]关联的信息有效的最晚时间点。如果还存在`validFrom`值，则`validUntil`
+          `dateTimeStamp`字符串值，表示[=凭证=]失效的日期和时间，可以是过去或未来的日期和时间。请注意，此值表示与`credentialSubject`
+          [=属性=]关联的信息有效的最晚时间点。如果还存在`validFrom`值，则`validUntil`
           值必须表示与`validFrom`值表示的日期时间相同或更晚的日期时间。
         </dd>
       </dl>
@@ -1886,27 +1879,27 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>状态</h3>
 
       <p>
-        本规范为[=verifiable credential=]的状态信息（如是否被暂停或撤销）的发现定义了`credentialStatus` [=property=]。
+        本规范为[=可验证凭证=]的状态信息（如是否被暂停或撤销）的发现定义了`credentialStatus` [=属性=]。
       </p>
 
       <p>
-        下面为与<strong id="defn-credentialStatus">credentialStatus</strong> [=property=]关联的对象值定义了以下属性：
+        下面为与<strong id="defn-credentialStatus">credentialStatus</strong> [=属性=]关联的对象值定义了以下属性：
       </p>
 
       <dl>
         <dt>id</dt>
         <dd>
-          `id` [=property=]是可选的。它可以用于为凭证状态对象提供唯一标识符。如果存在，必须遵循第<a href="#identifiers"></a>节的规范性指南。
+          `id` [=属性=]是可选的。它可以用于为凭证状态对象提供唯一标识符。如果存在，必须遵循第<a href="#identifiers"></a>节的规范性指南。
         </dd>
         <dt>type</dt>
         <dd>
-          `type` [=property=]是必需的。它用于表示对象所表达的状态信息的类型。必须遵循第<a href="#types"></a>节的相关规范性指南。
+          `type` [=属性=]是必需的。它用于表示对象所表达的状态信息的类型。必须遵循第<a href="#types"></a>节的相关规范性指南。
         </dd>
       </dl>
 
       <p>
-        [=credential=]状态信息的确切内容由特定的`credentialStatus`
-        [=type=]定义决定，具体取决于诸如实现简单性和是否增强隐私等因素。预期该值将提供足够的信息来确定[=credential=]的当前状态，并且可以从URL检索机器可读信息。例如，对象可以包含指向外部文档的链接，该文档注明[=credential=]是否被暂停或撤销。
+        [=凭证=]状态信息的确切内容由特定的`credentialStatus`
+        [=type=]定义决定，具体取决于诸如实现简单性和是否增强隐私等因素。预期该值将提供足够的信息来确定[=凭证=]的当前状态，并且可以从URL检索机器可读信息。例如，对象可以包含指向外部文档的链接，该文档注明[=凭证=]是否被暂停或撤销。
       </p>
 
       <pre class="example nohighlight" title="Usage of the status property">
@@ -2534,7 +2527,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        让我们假设我们从下面显示的[=verifiable credential=]开始。
+        让我们假设我们从下面显示的[=可验证凭证=]开始。
       </p>
 
       <pre class="example nohighlight vc" title="A simple credential"
@@ -2633,8 +2626,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </ul>
 
         <p>
-          任何寻求互操作性的实现者都应发布一个描述`@context` [=property=]的值预期顺序的人类可读文档。期望JSON-LD实现者在寻求互操作性时，在`@context`
-          [=property=]中指定的URL上发布机器可读描述（即，一个普通的JSON-LD上下文文档）。
+          任何寻求互操作性的实现者都应发布一个描述`@context` [=属性=]的值预期顺序的人类可读文档。期望JSON-LD实现者在寻求互操作性时，在`@context`
+          [=属性=]中指定的URL上发布机器可读描述（即，一个普通的JSON-LD上下文文档）。
         </p>
       </section>
     </section>
@@ -2744,29 +2737,26 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        对于系统来说，启用过期的[=verifiable credential=]的手动或自动刷新是很有用的。有关[=verifiable credentials=]的有效期的更多信息，请参见第<a
-          href="#validity-periods"></a>节。本规范定义了一个`refreshService` [=property=]，使[=issuer=]能够包含指向刷新服务的链接。
+        对于系统来说，启用过期的[=可验证凭证=]的手动或自动刷新是很有用的。有关[=可验证凭证=]的有效期的更多信息，请参见第<a
+          href="#validity-periods"></a>节。本规范定义了一个`refreshService` [=属性=]，使[=发行者=]能够包含指向刷新服务的链接。
       </p>
       <p>
-        [=issuer=]可以将刷新服务作为[=verifiable credential=]内部的一个元素，如果它既适用于[=verifier=]，也适用于[=holder=]（或两者），或者在[=verifiable
-        presentation=]内部，如果它仅适用于[=holder=]。在后一种情况下，这使得[=holder=]在创建[=verifiable
-        presentation=]与[=verifier=]共享之前可以刷新[=verifiable credential=]。在前一种情况下，将刷新服务包含在[=verifiable
-        credential=]内部，使得[=holder=]或[=verifier=]可以执行未来的[=credential=]更新。
+        [=发行者=]可以将刷新服务作为[=可验证凭证=]内部的一个元素，如果它既适用于[=验证者=]，也适用于[=持有者=]（或两者），或者在[=verifiable
+        presentation=]内部，如果它仅适用于[=持有者=]。在后一种情况下，这使得[=持有者=]在创建[=verifiable
+        presentation=]与[=验证者=]共享之前可以刷新[=可验证凭证=]。在前一种情况下，将刷新服务包含在[=可验证凭证=]内部，使得[=持有者=]或[=验证者=]可以执行未来的[=凭证=]更新。
       </p>
       <p>
-        只有在[=credential=]已过期或[=issuer=]不发布[=credential=]状态信息时，才预期使用刷新服务。建议[=Issuers=]不要将`refreshService`
-        [=property=]放在一个不包含公共信息或其刷新服务未以某种方式受保护的[=verifiable credential=]中。
+        只有在[=凭证=]已过期或[=发行者=]不发布[=凭证=]状态信息时，才预期使用刷新服务。建议[=Issuers=]不要将`refreshService`
+        [=属性=]放在一个不包含公共信息或其刷新服务未以某种方式受保护的[=可验证凭证=]中。
       </p>
       <p class="note">
-        将`refreshService` [=property=]放在[=verifiable
-        credential=]中，使其对[=verifiers=]可用，可能会从[=holder=]中移除控制和同意，并允许[=verifiable
-        credential=]直接发给[=verifier=]，从而绕过[=holder=]。
+        将`refreshService` [=属性=]放在[=可验证凭证=]中，使其对[=验证者=]可用，可能会从[=持有者=]中移除控制和同意，并允许[=可验证凭证=]直接发给[=验证者=]，从而绕过[=持有者=]。
       </p>
 
       <dl>
         <dt><var id="defn-refreshService">refreshService</var></dt>
         <dd>
-          `refreshService` [=property=]的值必须是一个或多个刷新服务，为接收者的软件提供足够的信息，以便接收者可以刷新[=verifiable
+          `refreshService` [=属性=]的值必须是一个或多个刷新服务，为接收者的软件提供足够的信息，以便接收者可以刷新[=verifiable
           credential=]。每个`refreshService`值必须指定其`type`（例如，`ManualRefreshService2018`）和其`id`，即服务的[=URL=]。预期需要从URL检索机器可读的信息。每个刷新服务的确切内容由特定的`refreshService`
           [=type=]定义确定。
         </dd>
@@ -2797,7 +2787,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        在上面的示例中，[=issuer=]指定了一个手动的`refreshService`，可以通过将[=holder=]或[=verifier=]指向`https://university.example/refresh/3732`来使用。
+        在上面的示例中，[=发行者=]指定了一个手动的`refreshService`，可以通过将[=持有者=]或[=验证者=]指向`https://university.example/refresh/3732`来使用。
       </p>
 
     </section>
@@ -3003,12 +2993,12 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p class="note">
-        在这个`evidence`示例中，[=issuer=]声称他们将[=credential=]的[=subject=]与实体驾驶执照的副本进行了匹配，该副本上有所述的驾驶执照号码。这张驾驶执照在发证过程中被用来验证“Example
+        在这个`evidence`示例中，[=发行者=]声称他们将[=凭证=]的[=主体=]与实体驾驶执照的副本进行了匹配，该副本上有所述的驾驶执照号码。这张驾驶执照在发证过程中被用来验证“Example
         University”在发放证书之前对主体进行了验证，以及他们是如何做到这一点的（实体验证）。
       </p>
 
       <p class="note">
-        `evidence` [=property=] 提供的信息与所使用的保护机制的信息不同。`evidence` [=property=]
+        `evidence` [=属性=] 提供的信息与所使用的保护机制的信息不同。`evidence` [=属性=]
         用于表达与[=可验证凭证=]的完整性相关的支持信息，如文件证据。相反，保护机制用于表达与[=发行者=]的真实性和[=可验证凭证=]的完整性相关的机器可验证的数学证明。有关保护机制的更多信息，请参见第<a
           href="#securing-mechanisms"></a>节。
       </p>
@@ -3094,7 +3084,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <ul>
         <li>
-          不可链接的安全机制不得设计成会泄露信息，从而使得 [=verifier=] 能够在多个 [=verifiable presentations=] 到不同的 [=verifiers=] 之间关联一个 [=holder=]。
+          不可链接的安全机制不得设计成会泄露信息，从而使得 [=验证者=] 能够在多个 [=verifiable presentations=] 到不同的 [=验证者=] 之间关联一个 [=持有者=]。
         </li>
       </ul>
       </p>
@@ -3421,14 +3411,14 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        [[!JSON-LD11]] 在扩展本规范中描述的数据模型时非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包括 `@context` [=property=]。
+        [[!JSON-LD11]] 在扩展本规范中描述的数据模型时非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包括 `@context` [=属性=]。
         <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>
         在 [[!JSON-LD11]] 规范中详细描述，其用法在第 <a href="#contexts"></a> 节和
         第 <a href="#extensibility"></a> 节中进一步阐述。
       </p>
 
       <p>
-        可以使用或组合多个上下文来以惯用的 JSON 表达关于 [=verifiable credentials=] 的任意信息。
+        可以使用或组合多个上下文来以惯用的 JSON 表达关于 [=可验证凭证=] 的任意信息。
         <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>，
         可在 `https://www.w3.org/ns/credentials/v2` 获取，是一个静态
         文档，永远不会更新，因此可以在客户端下载和缓存。可验证凭据数据模型的关联词汇文档可在 `https://www.w3.org/2018/credentials` 获取。
@@ -3441,7 +3431,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         如第 <a href="#credential-type-specific-processing"></a> 节中详细阐述的那样，某些软件应用可能不执行通用的 JSON-LD 处理。 [=conforming
-        documents=] 的作者应注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=verifiable credential=] 或 [=verifiable presentation=]
+        documents=] 的作者应注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=可验证凭证=] 或 [=可验证呈现=]
         中的值（例如，通过全局设置 `@base` 关键字），互操作性可能会降低。例如，全局设置这些值可能会在执行 [=credential type-specific processing=] 的实现中触发对 `@context`
         值的错误实现的 JSON Schema 检查，而该实现并未期望在 `@context` 值中表达 `@base` 值。
       </p>
@@ -3779,21 +3769,21 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <dl>
         <dt>type</dt>
         <dd>
-          `type` [=property=] 必须存在，其值必须是一个 [=URL=]，用于标识问题的类型。
+          `type` [=属性=] 必须存在，其值必须是一个 [=URL=]，用于标识问题的类型。
         </dd>
         <dt>code</dt>
         <dd>
-          `code` [=property=] 是可选的。
+          `code` [=属性=] 是可选的。
           如果存在，其值必须是一个整数，用于标识问题的类型。
           整数代码在只提供整数返回值的系统中很有用。
         </dd>
         <dt>title</dt>
         <dd>
-          `title` [=property=] 必须存在，其值应提供一个简短但具体的问题的人类可读字符串。
+          `title` [=属性=] 必须存在，其值应提供一个简短但具体的问题的人类可读字符串。
         </dd>
         <dt>detail</dt>
         <dd>
-          `detail` [=property=] 必须存在，其值应提供一个较长的问题的人类可读字符串。
+          `detail` [=属性=] 必须存在，其值应提供一个较长的问题的人类可读字符串。
         </dd>
       </dl>
 
@@ -3823,7 +3813,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           (-66)
         </dt>
         <dd>
-          与特定[=property=]关联的值格式错误。在[=ProblemDetails=]对象中应提供[=property=]的名称和属性路径。请参阅
+          与特定[=属性=]关联的值格式错误。在[=ProblemDetails=]对象中应提供[=属性=]的名称和属性路径。请参阅
           <a href="#verification"></a>部分。
         </dd>
         <dt id="RANGE_ERROR">
@@ -4531,7 +4521,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>未签名声明</h3>
 
       <p>
-        本规范允许生成没有通过签名或任何形式的证明来保护的[=credentials=]。这类[=credentials=]通常用于中间存储或自我声明信息，类似于在网页上填写表单。实现者应该注意，这类[=credentials=]不是[=verifiable=]的，因为作者身份要么未知，要么不可信。
+        本规范允许生成没有通过签名或任何形式的证明来保护的[=凭证=]。这类[=凭证=]通常用于中间存储或自我声明信息，类似于在网页上填写表单。实现者应该注意，这类[=凭证=]不是[=verifiable=]的，因为作者身份要么未知，要么不可信。
       </p>
     </section>
 
@@ -4840,11 +4830,11 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>发行者</h3>
 
       <p>
-        与`issuer` [=property=]关联的值预计将识别一个已知并受到[=verifier=]信任的[=issuer=]。
+        与`issuer` [=属性=]关联的值预计将识别一个已知并受到[=验证者=]信任的[=发行者=]。
       </p>
 
       <p>
-        与`issuer` [=property=]相关的元数据可通过<a href="#verification">验证算法</a>提供给[=verifier=]，如第<a
+        与`issuer` [=属性=]相关的元数据可通过<a href="#verification">验证算法</a>提供给[=验证者=]，如第<a
           href="#verification"></a>节所定义。此元数据包括验证用于保护每个[=可验证凭证=]或[=可验证展示=]的安全机制所使用的验证方法的控制器的身份，控制器通常是各自的`issuer`或`holder`。
       </p>
 
@@ -4856,15 +4846,15 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     <section class="informative">
       <h4>持有者</h4>
       <p>
-        与`holder` [=property=]关联的值预计可用于识别[=holder=]给[=verifier=]。
+        与`holder` [=属性=]关联的值预计可用于识别[=持有者=]给[=验证者=]。
       </p>
       <p>
-        通常，关于[=holder=]的相关元数据（由`holder`
-        [=property=]的值标识）可提供给[=verifier=]，或者由[=verifier=]检索。例如，[=holder=]可以发布包含用于保护[=可验证展示=]的[=验证材料=]的信息。在检查[=可验证展示=]上的证明时，预计将使用此元数据。某些加密标识符在标识符本身中包含所有必要的元数据。在这些情况下，不需要其他元数据。其他标识符使用可验证数据注册表，在那里，这样的元数据会自动发布供[=verifiers=]使用，无需[=holder=]采取任何其他操作。
+        通常，关于[=持有者=]的相关元数据（由`holder`
+        [=属性=]的值标识）可提供给[=验证者=]，或者由[=验证者=]检索。例如，[=持有者=]可以发布包含用于保护[=可验证展示=]的[=验证材料=]的信息。在检查[=可验证展示=]上的证明时，预计将使用此元数据。某些加密标识符在标识符本身中包含所有必要的元数据。在这些情况下，不需要其他元数据。其他标识符使用可验证数据注册表，在那里，这样的元数据会自动发布供[=验证者=]使用，无需[=持有者=]采取任何其他操作。
       </p>
       <p>
         请参阅<a data-cite="VC-IMP-GUIDE/#subject-holder-relationships"></a>和
-        <a data-cite="VC-USE-CASES#user-tasks"></a>以获取与[=subject=]和[=holder=]相关的其他示例。
+        <a data-cite="VC-USE-CASES#user-tasks"></a>以获取与[=主体=]和[=持有者=]相关的其他示例。
       </p>
 
       <p class="note">
@@ -4875,14 +4865,14 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </li>
       </ul>
       <p>
-        [=verifier=]可能需要根据复杂的业务规则验证给定的[=可验证展示=]；例如，验证者可能需要确信[=holder=]与[=可验证凭证=]的[=subject=]是相同的实体。在这种情况下，以下因素可以为[=verifier=]提供合理的信心，即关于该标识符的声明，在包含的[=可验证凭证=]中，实际上是关于当前演示者的：
+        [=验证者=]可能需要根据复杂的业务规则验证给定的[=可验证展示=]；例如，验证者可能需要确信[=持有者=]与[=可验证凭证=]的[=主体=]是相同的实体。在这种情况下，以下因素可以为[=验证者=]提供合理的信心，即关于该标识符的声明，在包含的[=可验证凭证=]中，实际上是关于当前演示者的：
       </p>
       <ul>
         <li>
-          [=可验证展示=]是安全的，使用[=verifier=]信任的机制来保护内容的完整性。
+          [=可验证展示=]是安全的，使用[=验证者=]信任的机制来保护内容的完整性。
         </li>
         <li>
-          [=可验证展示=]包括一个或多个[=可验证凭证=]，这些凭证是安全的，使用[=verifier=]信任的机制来保护内容的完整性。
+          [=可验证展示=]包括一个或多个[=可验证凭证=]，这些凭证是安全的，使用[=验证者=]信任的机制来保护内容的完整性。
         </li>
         <li>
           [=可验证展示=]的`holder`属性中的标识符和`credentialSubject`数组中至少一个对象的至少一个标识符属性相同。
@@ -4897,7 +4887,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>颁发日期</h3>
 
       <p>
-        `validFrom` 预计在 [=verifier=] 的预期范围内。例如，[=verifier=] 可以检查 [=可验证凭证=] 的有效期开始时间是否在未来。
+        `validFrom` 预计在 [=验证者=] 的预期范围内。例如，[=验证者=] 可以检查 [=可验证凭证=] 的有效期开始时间是否在未来。
       </p>
     </section>
 

@@ -504,7 +504,7 @@
       <dt><dfn data-lt="identity providers|idp">身份提供者</dfn></dt>
       <dd>
         身份提供者，有时缩写为<em>IdP</em>，是一个为[=持有者=]创建、维护和管理身份信息的系统，
-        同时为联盟或分布式网络中的[=依赖方=]应用程序提供身份验证服务。在这种情况下，[=持有者=]始终是[=主体=]。即使[=可验证凭证=]是持票人
+        同时为联盟或分布式网络中的[=依赖方=]应用程序提供身份验证服务。在这种情况下，[=持有者=]始终是[=主体=]。即使[=可验证凭证=]是持有者
         [=凭证=]，也假设[=可验证凭证=]仍然随着
         [=主体=]，如果没有，它们是被攻击者窃取的。本规范不使用此术语，除非将本文档中的概念与其他规范进行比较或映射。本规范将
         [=身份提供者=]概念拆分为两个独立的概念：[=发行者=]
@@ -1083,7 +1083,7 @@ arrow, to a separate rectangle, containing a single text field:
     </section>
 
     <section>
-      <h3>标识符</h3>
+      <h3 id="identifiers">标识符</h3>
 
       <p>
         当对特定事物（如人、产品或组织）进行陈述时，使用该事物的全球唯一标识符可能会很有用。
@@ -1161,7 +1161,7 @@ arrow, to a separate rectangle, containing a single text field:
     </section>
 
     <section>
-      <h3>类型</h3>
+      <h3 id="types">类型</h3>
 
       <p>
         处理本文档中指定的对象类型的软件系统
@@ -2692,7 +2692,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>刷新</h3>
+      <h3 id="refreshing">刷新</h3>
 
       <p class="issue" title="(AT RISK) 特性取决于独立实现的展示">
         该特性处于风险状态，如果在候选推荐阶段结束前，至少没有两个独立的、可互操作的实现针对单个扩展类型进行展示，它将从规范中删除。如果删除此特性，该属性将包含在第<a
@@ -3071,7 +3071,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
 
     <section class="normative">
-      <h3>保留的扩展点</h3>
+      <h3 id="reserved-extension-points">保留的扩展点</h3>
 
       <p>
         本规范保留了若干[=属性=]作为可能的扩展点。虽然一些实现者对这些属性表示了兴趣，
@@ -3242,7 +3242,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>安全机制规范</h3>
+      <h3 id="securing-mechanism-specifications">安全机制规范</h3>
 
       <p>
         如第<a
@@ -3891,7 +3891,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>基于标识符的关联</h3>
+      <h3 id="identifier-based-correlation">基于标识符的关联</h3>
 
       <p>
         [=可验证凭证=]的[=主体=]使用`credential.credentialSubject.id`字段进行识别。用于识别[=主体=]的标识符在跨多个网络域或长时间使用时，关联风险更大。
@@ -3913,7 +3913,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           一次性使用
         </li>
         <li>
-          根本不使用，而是用短时、一次性的持票人令牌替代。
+          根本不使用，而是用短时、一次性的持有者令牌替代。
         </li>
       </ul>
     </section>
@@ -4024,7 +4024,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        一般认为，[=发行者=]最好将信息原子化或使用允许[=选择性披露=]的签名方案。例如，驾驶执照的[=发行者=]可以发行一个包含驾驶执照上出现的每个属性的[=可验证凭证=]，以及一组每个[=可验证凭证=]只包含一个属性（如一个人的生日）的[=可验证凭证=]。它还可以发行更抽象的[=可验证凭证=]（例如，只包含`ageOver`属性的[=可验证凭证=]）。一种可能的适应方式是[=发行者=]提供安全的HTTP端点，用于检索单次使用的[=持有人凭证=]，以促进[=可验证凭证=]的匿名使用。认为这种做法不切实际或不安全的实施者，应考虑使用[=选择性披露=]方案，以消除在证明时间和减少来自[=发行者=]的时间关联风险的依赖。
+        一般认为，[=发行者=]最好将信息原子化或使用允许[=选择性披露=]的签名方案。例如，驾驶执照的[=发行者=]可以发行一个包含驾驶执照上出现的每个属性的[=可验证凭证=]，以及一组每个[=可验证凭证=]只包含一个属性（如一个人的生日）的[=可验证凭证=]。它还可以发行更抽象的[=可验证凭证=]（例如，只包含`ageOver`属性的[=可验证凭证=]）。一种可能的适应方式是[=发行者=]提供安全的HTTP端点，用于检索单次使用的[=持有者凭证=]，以促进[=可验证凭证=]的匿名使用。认为这种做法不切实际或不安全的实施者，应考虑使用[=选择性披露=]方案，以消除在证明时间和减少来自[=发行者=]的时间关联风险的依赖。
       </p>
 
       <p>
@@ -4046,20 +4046,20 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>持票人凭证</h3>
+      <h3>持有者凭证</h3>
 
       <p>
-        一个<dfn data-lt="bearer credentials">持票人凭证</dfn>是一种
-        增强隐私的信息，例如音乐会门票，它使得持票人凭证的[=持有者=]有权获得特定资源，而无需
-        泄露关于[=持有者=]的敏感信息。持票人凭证通常用于低风险的使用场景，其中分享持票人凭证不是
+        一个<dfn data-lt="bearer credentials">持有者凭证</dfn>是一种
+        增强隐私的信息，例如音乐会门票，它使得持有者凭证的[=持有者=]有权获得特定资源，而无需
+        泄露关于[=持有者=]的敏感信息。持有者凭证通常用于低风险的使用场景，其中分享持有者凭证不是
         一个问题，或者不会导致巨大的经济或声誉损失。
       </p>
 
       <p>
-        [=可验证凭证=]中的[=持票人凭证=]是通过不指定[=主体=]标识符实现的，该标识符使用
+        [=可验证凭证=]中的[=持有者凭证=]是通过不指定[=主体=]标识符实现的，该标识符使用
         `id` [=属性=]表示，它嵌套在
         `credentialSubject` [=属性=]中。例如，以下
-        [=可验证凭证=]是一个[=持票人凭证=]：
+        [=可验证凭证=]是一个[=持有者凭证=]：
       </p>
 
       <pre class="example nohighlight vc" title="Usage of issuer properties"
@@ -4084,15 +4084,15 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        虽然[=持票人凭证=]可以增强隐私，但必须精心设计，以免意外泄露比[=持有者=]
+        虽然[=持有者凭证=]可以增强隐私，但必须精心设计，以免意外泄露比[=持有者=]
         预期的更多信息。例如，在多个站点上重复使用相同的
-        [=持票人凭证=]使这些站点可能串通起来不当地跟踪或关联[=持有者=]。同样，
-        可能看似非识别的信息，如出生日期和邮政编码，在同一[=持票人凭证=]或会话中一起使用时
+        [=持有者凭证=]使这些站点可能串通起来不当地跟踪或关联[=持有者=]。同样，
+        可能看似非识别的信息，如出生日期和邮政编码，在同一[=持有者凭证=]或会话中一起使用时
         可以用于统计识别个人。
       </p>
 
       <p>
-        [=发行者=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
+        [=发行者=]应确保[=持有者凭证=]提供增强隐私的好处，包括：
       </p>
 
       <ul>
@@ -4108,12 +4108,12 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </ul>
 
       <p>
-        如果发行或请求包含敏感信息的[=持票人凭证=]，或者在一个或多个会话中组合两个或多个[=持票人凭证=]时存在关联风险，
+        如果发行或请求包含敏感信息的[=持有者凭证=]，或者在一个或多个会话中组合两个或多个[=持有者凭证=]时存在关联风险，
         [=持有者=]应被其软件警告。虽然检测到所有关联风险可能是不可能的，但某些风险肯定是可以检测到的。
       </p>
 
       <p>
-        [=验证者=]不应请求可用于不当关联[=持有者=]的[=持票人凭证=]。
+        [=验证者=]不应请求可用于不当关联[=持有者=]的[=持有者凭证=]。
       </p>
     </section>
 
@@ -4909,7 +4909,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>有效期限</h3>
+      <h3 id="validity-periods">有效期限</h3>
 
       <p>
         [=验证者=]期望`validFrom`和`validUntil`属性在一定范围内。例如，[=验证者=]可以检查[=可验证凭证=]的有效期结束时间是否已过去。由于某些凭证在其原始有效期过期后仍可用于次要目的，因此使用`validFrom`和`validUntil`属性表示的有效期始终被视为验证的组成部分，验证是在<em>验证之后</em>执行的。
@@ -5293,7 +5293,7 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
   </section>
 
   <section class="appendix informative">
-    <h2>可验证展示的附加图表</h2>
+    <h2 id="additional-diagrams-for-verifiable-presentations">可验证展示的附加图表</h2>
 
     <p>
       下面的<a href="#info-graph-vp-mult-creds"></a>是<a href="#info-graph-vp"></a>的一个变体：

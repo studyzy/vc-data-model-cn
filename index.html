@@ -325,7 +325,7 @@
 
       <p>
         虽然本规范试图改进表达数字凭证的便利性，但它还试图平衡这一目标与一系列保护隐私的目标。数字信息的持久性以及不同数字数据来源的收集和关联的便利性，构成了使用可验证且易于机器阅读的凭证可能加剧的隐私问题。本文档在<a
-          href="#privacy-considerations">隐私考虑</a>部分概述并试图解决这些问题。本文档还提供了如何使用保护隐私的技术（例如零知识证明）使用此数据模型的示例。
+          href="#privacy-considerations"></a>部分概述并试图解决这些问题。本文档还提供了如何使用保护隐私的技术（例如零知识证明）使用此数据模型的示例。
       </p>
 
       <p>
@@ -1114,7 +1114,7 @@ arrow, to a separate rectangle, containing a single text field:
 
       <p class="note">
         开发者应记住，在需要匿名性的场景中，标识符可能会造成伤害。鼓励开发者在考虑此类场景时仔细阅读<a href="#identifier-based-correlation"></a>部分。
-        在<a href="#privacy-considerations">隐私考虑</a>部分记录的其他类型的关联机制也会产生隐私问题。在隐私是重要考虑因素的地方，`id` [=属性=]
+        在<a href="#privacy-considerations"></a>部分记录的其他类型的关联机制也会产生隐私问题。在隐私是重要考虑因素的地方，`id` [=属性=]
         可以省略。有些用例不需要，或明确要求省略，`id` [=属性=]。
       </p>
 
@@ -2238,7 +2238,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </p>
 
     <section class="informative">
-      <h3>生命周期详细信息</h3>
+      <h3 id="lifecycle-details">生命周期详细信息</h3>
 
       <p>
         第<a href="#ecosystem-overview"></a>节提供了
@@ -2821,7 +2821,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        在上述示例中，[=发行者=] 断言作为欧洲区块链服务基础设施（EBSI）认证发行者，它遵守 EBSI 政策作为认证发行者，并在 EBSI 受信任发行者注册中注册。[=termsOfUse=] [=id=] 可以由
+        在上述示例中，[=发行者=] 断言作为欧洲区块链服务基础设施（EBSI）认证发行者，它遵守 EBSI 政策作为认证发行者，并在 EBSI 受信任发行者注册中注册。termsOfUse [=id=] 可以由
         [=验证者=] 解析，以确认 [=发行者=] 已获得由 EBSI 信任链中更高级别的受信任发行者颁发的认证 VC（JWT 格式）[?EBSI]。
       </p>
 
@@ -3254,7 +3254,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=byte sequence=]
+        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=byte
+        sequence=]
         |inputBytes|）或文档（[=map=] |inputDocument|）和媒体类型（[=string=] |inputMediaType|）作为输入，并返回至少包含以下[=struct/items=]的验证结果：
       </p>
 
@@ -4900,7 +4901,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p class="note">
         数字签名提供了许多保护措施，除了防篡改之外，还有一些不太明显的保护措施。例如，链接数据签名 `created` [=属性=] 建立了一个日期和时间，在此之前，[=凭证=] 不应被视为
-        [=已验证=]，这与凭证的有效期不同。此属性描述了证明的有效性，而不是凭证的有效性。
+        已[=验证=]，这与凭证的有效期不同。此属性描述了证明的有效性，而不是凭证的有效性。
         JWT `iat` 声明同样提供了签名制作的时间。
         <br /><br />
         `verificationMethod` [=属性=] 例如指定了可用于验证数字签名的公钥。解引用公钥 URL 揭示了关于密钥控制者的信息，这可以与 [=凭证=] 的发行者进行比对。`proofPurpose` [=属性=]

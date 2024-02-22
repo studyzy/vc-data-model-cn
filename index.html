@@ -1010,7 +1010,7 @@ arrow, to a separate rectangle, containing a single text field:
 
     </section>
     <section>
-      <h3>上下文</h3>
+      <h3 id="contexts">上下文</h3>
 
       <p>
         当两个软件系统需要交换数据时，它们需要使用双方都理解的术语。作为一个类比，考虑一下两个人如何交流。两个人必须使用相同的语言，他们使用的词语对彼此必须具有相同的含义。这可能被称为
@@ -1398,9 +1398,9 @@ arrow, to a separate rectangle, containing a single text field:
 
       <p>
         名称和描述还支持以不同的语言表达内容。
-        要表达带有语言和[=基本方向=]信息的字符串，
+        要表达带有语言和[=基础方向=]信息的字符串，
         可以使用包含`@value`、`@language`和`@direction`属性的对象，
-        分别表示文本值、语言标签和基本方向。
+        分别表示文本值、语言标签和基础方向。
         有关详细信息，请参见
         <a href="#language-and-base-direction"></a>。
       </p>
@@ -1963,7 +1963,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <section>
-        <h4>封装的可验证凭证</h4>
+        <h4 id="enveloped-verifiable-credentials">封装的可验证凭证</h4>
 
         <p>
           一个[=可验证展示=]可以包含一个或多个使用安全机制保护的
@@ -2895,7 +2895,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>证据</h3>
+      <h3 id="evidence">证据</h3>
 
       <p class="issue" data-number="1303" title="(AT RISK) 特性取决于独立实现的展示">
         该特性存在风险，如果在候选推荐阶段结束时，至少没有两个独立的、可互操作的实现针对单个扩展类型进行展示，那么该特性将从规范中删除。如果删除了此功能，该属性将包含在第
@@ -3581,7 +3581,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h2>类型特定的凭证处理</h2>
+      <h2 id="type-specific-credential-processing">类型特定的凭证处理</h2>
 
       <p>
         由于JSON可以用来表示不同类型的信息，一个特定JSON文档的使用者只有在拥有将其与其他可能的表达方式区分开来的上下文信息时，才能正确解释作者的意图。辅助解释的信息可以完全独立于JSON文档之外，也可以从文档内部链接。压缩后的JSON-LD文档包含一个<code>@context</code>属性，用于内部表达或链接到上下文信息，以表达<a>声明</a>。这些功能使得可以编写通用处理器，将JSON-LD文档从一个上下文转换为另一个上下文，但在接收到已经使用他们期望的上下文和形状的JSON-LD文档时，这是不需要的。JSON-LD文档的作者，如<a>可验证凭证</a>的<a>发行者</a>，需要提供适当的JSON-LD上下文并遵循这些规则，以便促进互操作性。
@@ -3661,7 +3661,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3 id="verification">验证</h3>
 
       <p>
-        本节包含一个算法，该算法是[=符合验证器实现=]在验证[=可验证凭证=]或[=可验证展示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=]
+        本节包含一个算法，该算法是[=符合规范的验证器实现=]在验证[=可验证凭证=]或[=可验证展示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=]
         |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
       </p>
 
@@ -4767,7 +4767,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section class="appendix informative">
-    <h2>验证</h2>
+    <h2 id="validation-0">验证</h2>
 
     <p>
       尽管本规范没有为[=可验证凭证=]或[=可验证展示=]的[=验证=]过程提供符合性标准，但读者可能会对如何在[=验证=]过程中利用本数据模型中的信息感到好奇。本节涵盖了工作组关于[=验证者=]在本规范中使用数据字段的预期用途的一系列讨论。
@@ -4917,7 +4917,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>状态</h3>
+      <h3 id="status">状态</h3>
 
       <p>
         如果`credentialStatus`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialStatus`

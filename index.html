@@ -983,7 +983,7 @@ arrow, to a separate rectangle, containing a single text field:
     </p>
 
     <section class="informative">
-      <h3>入门</h3>
+      <h3 id="getting-started">入门</h3>
 
       <p>
         本规范旨在简化新类型的[=可验证凭证=]原型的设计。开发者可以复制下面的模板，并将其粘贴到常见的[=可验证凭证=]工具中，以开始发布、持有和验证原型凭证。
@@ -2110,7 +2110,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>数据模式</h3>
+      <h3 id="data-schemas">数据模式</h3>
 
       <p>
         当对给定的数据集合强制执行特定结构时，数据模式很有用。本规范考虑的数据模式至少有两种：
@@ -2438,7 +2438,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>可扩展性</h3>
+      <h3 id="extensibility">可扩展性</h3>
 
       <p>
         可验证凭证数据模型的目标之一是实现无需许可的创新。为实现这一目标，数据模型需要在多个方面具有可扩展性。数据模型需要：
@@ -2969,7 +2969,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h3>零知识证明</h3>
+      <h3 id="zero-knowledge-proofs">零知识证明</h3>
 
       <p>
         零知识证明是一种加密方法，它使用户能够证明对一个值的知识，而不需要披露实际的值。这种数据模型支持使用零知识证明机制进行安全保护。
@@ -3632,7 +3632,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         上述规则保证了通过`@context`机制将字面JSON键映射到URIs的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但只执行[=类型特定的凭证处理=]的实现只接受实现提前设计理解的特定`@context`值，从而在不调用任何JSON-LD
-        API的情况下产生相同的语义。换句话说，通过使用`@context`，数据交换发生的上下文对两种处理机制都明确地声明，从而导致相同的[=符合文档=]语义。
+        API的情况下产生相同的语义。换句话说，通过使用`@context`，数据交换发生的上下文对两种处理机制都明确地声明，从而导致相同的[=符合规范的文档=]语义。
       </p>
 
     </section>
@@ -3640,7 +3640,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section class="normative">
-    <h2>算法</h2>
+    <h2 id="algorithms">算法</h2>
 
     <p>
       本节包含可供实现使用的算法，以执行常见操作，如验证。以算法表述的一致性要求使用[[[INFRA]]] [[INFRA]]中的规范性概念。有关实现要求的更多指导，请参阅[[[INFRA]]]中关于<a
@@ -3658,7 +3658,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </p>
 
     <section class="normative">
-      <h3>验证</h3>
+      <h3 id="verification">验证</h3>
 
       <p>
         本节包含一个算法，该算法是[=符合验证器实现=]在验证[=可验证凭证=]或[=可验证展示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=]
@@ -3670,7 +3670,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           状态（[=boolean=] |status|）
         </li>
         <li>
-          一个[=符合的文档=]（[=map=] |document|）
+          一个[=符合规范的文档=]（[=map=] |document|）
         </li>
         <li>
           媒体类型（[=string=] |mediaType|）
@@ -3695,7 +3695,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <ol class="algorithm">
         <li>
-          通过执行以下步骤，确保保护机制已正确保护[=符合的文档=]：
+          通过执行以下步骤，确保保护机制已正确保护[=符合规范的文档=]：
           <ol class="algorithm">
             <li>
               使用|inputMediaType|和[[[?VC-SPECS]]] [[?VC-SPECS]]的<a
@@ -3715,7 +3715,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           </ol>
         </li>
         <li>
-          如果|result|.|status|设置为`true`，确保|result|.|document|是一个[=符合的文档=]。如果不是，将|result|.|status|设置为`false`，从|result|中删除|document|属性，并至少向|result|.|errors|添加一个<a
+          如果|result|.|status|设置为`true`，确保|result|.|document|是一个[=符合规范的文档=]。如果不是，将|result|.|status|设置为`false`，从|result|中删除|document|属性，并至少向|result|.|errors|添加一个<a
             href="#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>。可能包含其他警告和错误以帮助任何调试过程。
         </li>
         <li>
@@ -3724,13 +3724,13 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </ol>
 
       <p>
-        验证保护机制的状态和验证输入文档是否为[=符合的文档=]的步骤可以按照与上述不同的顺序执行，只要实现对相同的无效输入返回错误。实现可能产生与上述不同的错误。
+        验证保护机制的状态和验证输入文档是否为[=符合规范的文档=]的步骤可以按照与上述不同的顺序执行，只要实现对相同的无效输入返回错误。实现可能产生与上述不同的错误。
       </p>
 
     </section>
 
     <section>
-      <h3>问题详情</h3>
+      <h3 id="problem-details">问题详情</h3>
 
       <p>
         当实现在处理文档时检测到异常时，可以使用<dfn>问题详情</dfn>对象将问题报告给其他软件系统。这些类型对象的接口遵循[[RFC9457]]对数据进行编码。一个[=问题详情=]对象包括以下属性：
@@ -4208,7 +4208,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>使用模式</h3>
+      <h3 id="usage-patterns">使用模式</h3>
 
       <p>
         尽管我们竭尽全力确保隐私，但实际使用[=可验证凭证=]可能会导致去匿名化和隐私丧失。这种关联可能发生在以下情况：
@@ -4861,7 +4861,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>证明（签名）</h3>
+      <h3 id="proofs-signatures">证明（签名）</h3>
 
       <p>
         用于证明 [=可验证凭证=] 或 [=可验证展示=] 中的信息未被篡改的加密机制称为<em>证明</em>。有许多类型的加密证明，包括但不限于数字签名和零知识证明。一般来说，在验证证明时，实现预计要确保：
@@ -4952,7 +4952,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     <h2>上下文、词汇表、类型和凭证模式</h2>
 
     <section class="normative">
-      <h3>基础上下文</h3>
+      <h3 id="base-context">基础上下文</h3>
 
       <p class="issue" title="(存在风险) 哈希值可能在候选推荐阶段发生变化">
         本节列出了在候选推荐阶段可能发生变化的加密哈希值，这取决于需要修改引用文件的实施者反馈。

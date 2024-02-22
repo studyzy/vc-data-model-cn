@@ -386,8 +386,8 @@
       <p>
         一个<dfn>符合规范的文档</dfn>是一个遵循本规范中所有相关“必须”声明的
         <a data-cite="JSON-LD11-API#compaction-algorithms">压缩</a> JSON-LD
-        文档。具体来说，本文档<a href="#basic-concepts">基本概念</a>、<a href="#advanced-concepts">高级概念</a>和
-        <a href="#syntaxes">语法</a>部分的相关规范性“必须”声明必须得到执行。
+        文档。具体来说，本文档<a href="#basic-concepts"></a>、<a href="#advanced-concepts"></a>和
+        <a href="#syntaxes"></a>部分的相关规范性“必须”声明必须得到执行。
         符合规范的文档可以是使用`application/vc+ld+json`媒体类型序列化的[=可验证凭证=]，或者使用
         `application/vp+ld+json`媒体类型序列化的[=可验证展示=]。符合规范的文档必须至少通过本文档<a href="#securing-mechanisms"></a>部分描述的一种安全机制来保护。
       </p>
@@ -607,7 +607,7 @@
       读者可能会注意到，本节中描述的一些概念，如 [=凭证=] 和 [=展示=]，在本规范中没有定义媒体类型。然而，[=可验证凭证=] 或 [=可验证展示=] 这些概念被定义为
       [=符合规范的文档=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=凭证=] 和
       [=展示=] 与 [=可验证凭证=] 和 [=可验证展示=] 之间的区别 &mdash; 仅仅在于 "可验证"
-      对象以加密可验证的方式进行保护，而其他对象则没有。有关详细信息，请参见<a href="#securing-mechanisms">安全机制部分</a>。
+      对象以加密可验证的方式进行保护，而其他对象则没有。有关详细信息，请参见<a href="#securing-mechanisms"></a>部分。
     </p>
 
     <section class="informative">
@@ -979,7 +979,7 @@ arrow, to a separate rectangle, containing a single text field:
   </section>
 
   <section class="normative">
-    <h2>基本概念</h2>
+    <h2 id="basic-concepts">基本概念</h2>
 
     <p>
       本节介绍了规范的一些基本概念，为文档后面的<a href="#advanced-concepts"></a>部分做准备。
@@ -1735,7 +1735,7 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
     </section>
 
     <section>
-      <h3>安全机制</h3>
+      <h3 id="securing-mechanisms">安全机制</h3>
 
       <p>
         本规范认可两类安全机制：使用封装证明的机制和使用嵌入式证明的机制。
@@ -1933,7 +1933,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           <a href="#enveloped-verifiable-credentials">封装的可验证凭证</a>
           对象（明确地说，值不能是非对象值，如数字、字符串或URL）。这些类型的对象称为
           <a href="#verifiable-credential-graphs">可验证凭证图</a>，并且必须使用
-          <a href="#securing-mechanisms">安全机制</a>来表达已加密的信息。
+          <a href="#securing-mechanisms"></a>来表达已加密的信息。
           请参阅第 <a href="#verifiable-credential-graphs"></a> 节以获取更多详细信息。
         </dd>
         <dt><var id="defn-holder">holder</var></dt>
@@ -2234,7 +2234,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section>
-    <h2>高级概念</h2>
+    <h2 id="advanced-concepts">高级概念</h2>
 
     <p>
       在第<a href="#basic-concepts"></a>节介绍的基本概念基础上，本节探讨了关于可验证凭证的更复杂的主题。
@@ -2381,7 +2381,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           [=验证者=]信任[=颁发者=]颁发其收到的[=凭证=]。为建立这种信任，预期[=凭证=]应该：
           <ul>
             <li>
-              使用<a href="#securing-mechanisms">安全机制</a>保护[=凭证=]，确立
+              使用<a href="#securing-mechanisms"></a>保护[=凭证=]，确立
               [=颁发者=]生成了[=凭证=]（即，它是一个
               [=可验证凭证=]），或
             </li>
@@ -3046,7 +3046,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </figure>
 
       <p>
-        对于创建提供不可链接性的<a href="#securing-mechanisms">安全机制</a>规范的作者，提供以下准则：
+        对于创建提供不可链接性的<a href="#securing-mechanisms"></a>规范的作者，提供以下准则：
 
       <ul>
         <li>
@@ -4433,7 +4433,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         [=可验证凭证=]本身之外的数据的URL。链接到存在于
         [=可验证凭证=]之外的内容，如图片、JSON-LD上下文、JSON模式，
         以及其他机器可读数据，通常无法防止篡改，
-        因为数据位于<a href="#securing-mechanisms">安全机制</a>之外的
+        因为数据位于<a href="#securing-mechanisms"></a>之外的
         [=可验证凭证=]。例如，通过解引用以下突出显示的链接可检索的内容没有完整性保护，但
         可能应该有：
       </p>
@@ -4587,7 +4587,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         此外，冒充的实例可以以各种形式出现，包括[=实体=]试图否认其行为的情况。提高[=可验证凭证=]领域的信任和安全级别不仅仅是避免冒充；它涉及到非否认机制的实施。这些机制巩固了[=实体=]对其行为或交易的责任，从而加强了问责制并阻止了恶意行为。实现非否认是一项多方面的努力，包括从<a
-          href="#securing-mechanisms">安全机制</a>、持有证明和各种协议中的认证方案等一系列技术。
+          href="#securing-mechanisms"></a>、持有证明和各种协议中的认证方案等一系列技术。
       </p>
     </section>
     <section class="informative">

@@ -493,7 +493,7 @@
         通过持有一个或多个
         [=可验证凭证=]并从中生成[=可验证展示=]来执行的角色。持有者通常是，但不总是，他们持有的
         [=可验证凭证=]的[=主体=]。持有者将其
-        [=凭证=]存储在[=凭证仓库=]中。
+        [=凭证=]存储在凭证[=仓库=]中。
       </dd>
       <dt><dfn class="lint-ignore" data-lt="identities|identity's">身份</dfn></dt>
       <dd>
@@ -824,9 +824,9 @@ named graph)'">
 
       <p>
         <a href="#info-graph-vp-jwt"></a> 下面显示的是与 <a href="#info-graph-vp"></a> 相同的 [=可验证展示=]，但使用基于 [[?VC-JOSE-COSE]] 的
-        [=封装证明=]。有效负载仅包含两个信息图：通过展示元数据表达 [=可验证展示=] 本身的 [=可验证展示图=]；以及相应的 [=可验证凭证图=]，由 `verifiableCredential`
+        [=封装式证明=]。有效负载仅包含两个信息图：通过展示元数据表达 [=可验证展示=] 本身的 [=可验证展示图=]；以及相应的 [=可验证凭证图=]，由 `verifiableCredential`
         属性引用。[=可验证凭证图=] 包含单个 <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a> 实例，通过
-        `data:` URL [[RFC2397]] 引用，指向通过 <a href="#info-graph-vc-jwt"></a> 上显示的 [=封装证明=] 保护的可验证凭证。
+        `data:` URL [[RFC2397]] 引用，指向通过 <a href="#info-graph-vc-jwt"></a> 上显示的 [=封装式证明=] 保护的可验证凭证。
       </p>
 
       <figure id="info-graph-vp-jwt">
@@ -852,7 +852,7 @@ arrow, to a separate rectangle, containing a single text field:
 'XaOOh4ljklxH7L99RTVSfOl...'.
           ">
         <figcaption style="text-align: center;">
-          与基本[=可验证展示=]相关的信息图，该展示使用基于JOSE [[?VC-JOSE-COSE]]的[=封装证明=]。
+          与基本[=可验证展示=]相关的信息图，该展示使用基于JOSE [[?VC-JOSE-COSE]]的[=封装式证明=]。
           `data:` URL指向<a href="#info-graph-vc-jwt"></a>上显示的[=可验证凭证=]。
         </figcaption>
       </figure>
@@ -1735,11 +1735,11 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
       <h3 id="securing-mechanisms">安全机制</h3>
 
       <p>
-        本规范认可两类安全机制：使用封装证明的机制和使用嵌入式证明的机制。
+        本规范认可两类安全机制：使用封装式证明的机制和使用嵌入式证明的机制。
       </p>
 
       <p>
-        一个<dfn class="export">封装证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装证明机制。
+        一个<dfn class="export">封装式证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装式证明机制。
       </p>
 
       <p>
@@ -2038,7 +2038,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         <h4>包含持有人声明的展示</h4>
         <p>
           [=持有者=]可以在[=可验证展示=]中使用`verifiableCredential`
-          [=属性=]，包含来自任何[=发行人=]的[=可验证凭证=]，包括他们自己。当[=可验证凭证=]的[=发行人=]是[=持有者=]时，该[=可验证凭证=]中的[=声明=]被认为是<em>自我声明</em>。这些自我声明的声明可以通过保护包含它们的[=可验证展示=]的相同机制或任何适用于其他[=可验证凭证=]的机制来保护。
+          [=属性=]，包含来自任何[=发行者=]的[=可验证凭证=]，包括他们自己。当[=可验证凭证=]的[=发行者=]是[=持有者=]时，该[=可验证凭证=]中的[=声明=]被认为是<em>自我声明</em>。这些自我声明的声明可以通过保护包含它们的[=可验证展示=]的相同机制或任何适用于其他[=可验证凭证=]的机制来保护。
         </p>
         <p>
           这些自我声明的[=声明=]的<a
@@ -2643,7 +2643,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         对于希望进行选择性披露的任何对象，不应将其作为`relatedResource`数组中的一个对象包含进去。
       </p>
       <p>
-        编写根据[=符合性文档=]中对象的`id`获取资源的算法的规范作者需要考虑该资源的内容是否对该文档的有效性至关重要。如果是，除非资源具有预期的媒体类型，并且其字节散列到预期的摘要，否则规范必须产生验证错误。
+        编写根据[=符合规范的文档=]中对象的`id`获取资源的算法的规范作者需要考虑该资源的内容是否对该文档的有效性至关重要。如果是，除非资源具有预期的媒体类型，并且其字节散列到预期的摘要，否则规范必须产生验证错误。
       </p>
       <p>
         实施者被敦促咨询适当的资源，例如
@@ -3283,12 +3283,12 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        创建新类型[=嵌入式证明=]的安全机制规范必须为保护[=可验证凭证=]和[=可验证展示文稿=]指定一个[=属性=]。嵌入式安全机制所使用的属性要求如下：
+        创建新类型[=嵌入式证明=]的安全机制规范必须为保护[=可验证凭证=]和[=可验证展示=]指定一个[=属性=]。嵌入式安全机制所使用的属性要求如下：
       </p>
 
       <ul>
         <li>
-          该属性必须将[=可验证凭证=]或[=可验证展示文稿=]与可分离且可保护的[=证明图=]关联起来。
+          该属性必须将[=可验证凭证=]或[=可验证展示=]与可分离且可保护的[=证明图=]关联起来。
         </li>
         <li>
           该属性必须定义[=证明图=]所使用的所有术语。例如，该机制可以定义词汇表规范和`@context`文件，就像它们被本规范使用的那样。
@@ -3297,7 +3297,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           在[=可验证凭证=]中，该属性必须保护[=默认图=]。
         </li>
         <li>
-          在[=可验证展示文稿=]中，该属性必须保护[=展示文稿=]的[=默认图=]以及[=展示文稿=]中每个[=可验证凭证=]相关的[=证明图=]。
+          在[=可验证展示=]中，该属性必须保护[=展示=]的[=默认图=]以及[=展示=]中每个[=可验证凭证=]相关的[=证明图=]。
         </li>
         <li>
           [[VC-DATA-INTEGRITY]]中定义的`proof`属性可以被嵌入式安全机制使用。
@@ -3309,7 +3309,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p class="note" title="选择安全机制取决于用例">
-        有多种可接受的安全机制，本规范并未规定任何特定的安全机制用于[=可验证凭证=]或[=可验证展示文稿=]。制定本规范的工作组确实对两种安全机制选项进行了标准化，分别是：[[[VC-DATA-INTEGRITY]]]
+        有多种可接受的安全机制，本规范并未规定任何特定的安全机制用于[=可验证凭证=]或[=可验证展示=]。制定本规范的工作组确实对两种安全机制选项进行了标准化，分别是：[[[VC-DATA-INTEGRITY]]]
         [[VC-DATA-INTEGRITY]]和[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]。社区已知的其他安全机制可以在[[[?VC-SPECS]]] [[?VC-SPECS]]的<a
           data-cite="?VC-SPECS#securing-mechanisms">安全机制</a>部分找到。
       </p>
@@ -3599,7 +3599,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <ul>
         <li>
-          在对[=符合要求的文档=]应用安全机制之前，或在验证受安全机制保护的[=符合要求的文档=]之后，确保
+          在对[=符合规范的文档=]应用安全机制之前，或在验证受安全机制保护的[=符合规范的文档=]之后，确保
           <a href="https://csrc.nist.gov/glossary/term/data_integrity">数据完整性</a>。
         </li>
         <li>
@@ -3855,7 +3855,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </li>
         <li>
           [=验证者=]的<a
-            href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（验证软件），例如招聘网站，预期只允许具有有效验证状态的个人访问，这些个人向平台提供[=可验证凭证=]和[=可验证展示文稿=]。
+            href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（验证软件），例如招聘网站，预期只允许具有有效验证状态的个人访问，这些个人向平台提供[=可验证凭证=]和[=可验证展示=]。
         </li>
         <li>
           [=持有者=]的<a
@@ -4092,7 +4092,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        [=发行人=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
+        [=发行者=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
       </p>
 
       <ul>
@@ -4222,7 +4222,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           相同的[=可验证凭证=]被展示给不同的[=验证者=]，这些[=验证者=]串通起来或者第三方可以访问来自两个[=验证者=]的交易记录。一个观察者可以推断出展示[=可验证凭证=]的个体在两个服务中是同一个人。也就是说，这些账户由同一个人控制。
         </li>
         <li>
-          [=凭证=]的[=主体=]标识符在多个[=展示文稿=]或[=验证者=]中都指向同一个[=主体=]。即使展示的[=凭证=]不同，如果[=主体=]标识符相同，[=验证者=]（以及那些可以访问[=验证者=]日志的人）可以推断出[=凭证=]的[=持有者=]是同一个人。
+          [=凭证=]的[=主体=]标识符在多个[=展示=]或[=验证者=]中都指向同一个[=主体=]。即使展示的[=凭证=]不同，如果[=主体=]标识符相同，[=验证者=]（以及那些可以访问[=验证者=]日志的人）可以推断出[=凭证=]的[=持有者=]是同一个人。
         </li>
         <li>
           [=凭证=]中的基本信息可以用于在各种服务中识别个人。在这种情况下，使用来自其他来源的信息（包括由[=持有者=]直接提供的信息），[=验证者=]可以使用[=凭证=]中的信息将个人与现有的个人资料进行关联。例如，如果[=持有者=]展示包含邮政编码、年龄和性别的[=凭证=]，[=验证者=]可以将该[=凭证=]的[=主体=]与已建立的个人资料进行关联。有关更多信息，请参阅[[DEMOGRAPHICS]]。
@@ -5229,7 +5229,7 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
       </p>
 
       <p>
-        这种媒体类型可以用于使用[=封装证明=]保护的凭证。
+        这种媒体类型可以用于使用[=封装式证明=]保护的凭证。
       </p>
       <p>
         期望在文档的主体中存在一个[[JSON-LD11]]上下文，并且如媒体类型中的`ld+json`所示，期望凭证是一个有效的
@@ -5332,10 +5332,10 @@ parenthetical remark '(a named graph)'
 
     <p>
       下面的<a href="#info-graph-vp-jwt-mult-creds"></a>显示了与<a
-        href="#info-graph-vp-mult-creds"></a>相同的[=可验证展示=]，但使用基于[[?VC-JOSE-COSE]]的[=封装证明=]。
+        href="#info-graph-vp-mult-creds"></a>相同的[=可验证展示=]，但使用基于[[?VC-JOSE-COSE]]的[=封装式证明=]。
       每个[=可验证凭证图=]包含一个单独的
       <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a>实例，
-      通过`data:` URL [[RFC2397]]引用一个通过[=封装证明=]保护的可验证凭证。
+      通过`data:` URL [[RFC2397]]引用一个通过[=封装式证明=]保护的可验证凭证。
     </p>
 
     <figure id="info-graph-vp-jwt-mult-creds">
@@ -5365,7 +5365,7 @@ separate rectangle, containing a single text field:
 'cYjaSdfIoJH45NIqw3MYnasGIba...'.
         ">
       <figcaption style="text-align: center;">
-        <a href="#info-graph-vp-jwt">？</a>的一个变体：与[=可验证展示=]相关联的信息[=图=]，引用两个使用基于JOSE [[?VC-JOSE-COSE]]的[=封装证明=]的可验证凭证。
+        <a href="#info-graph-vp-jwt">？</a>的一个变体：与[=可验证展示=]相关联的信息[=图=]，引用两个使用基于JOSE [[?VC-JOSE-COSE]]的[=封装式证明=]的可验证凭证。
       </figcaption>
     </figure>
 

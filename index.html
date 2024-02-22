@@ -93,7 +93,7 @@
           note: "v2.0", w3cid: 116851
         },
       ],
-      translator:[
+      translator: [
         {
           name: "曾毅", url: "https://github.com/studyzy",
           company: "个人", companyURL: "https://www.cnblogs.com/studyzy",
@@ -270,22 +270,20 @@
       对于那些不熟悉与可验证凭证相关的概念的人，以下部分提供了一个概述：
     </p>
 
-      <ul>
-        <li>
-The components that constitute a [=verifiable credential=]
-        </li>
-        <li>
-The components that constitute a [=verifiable presentation=]
-        </li>
-        <li>
-An ecosystem where [=verifiable credentials=] and
-[=verifiable presentations=] are expected to be useful
-        </li>
-      </ul>
-      <p>
-The use cases and requirements that informed this specification can be found
-in [[[VC-USE-CASES]]] [[?VC-USE-CASES]].
-      </p>
+    <ul>
+      <li>
+        构成[=可验证凭证=]的组件
+      </li>
+      <li>
+        构成[=可验证展示=]的组件
+      </li>
+      <li>
+        一个预期[=可验证凭证=]和[=可验证展示=]有用的生态系统
+      </li>
+    </ul>
+    <p>
+      影响本规范的用例和需求可以在[[[VC-USE-CASES]]] [[?VC-USE-CASES]]中找到。
+    </p>
 
     <section class="informative">
       <h3>什么是可验证凭证？</h3>
@@ -385,58 +383,45 @@ in [[[VC-USE-CASES]]] [[?VC-USE-CASES]].
       </p>
     </section>
 
-      <section id="conformance" class="normative">
-        <p>
-A <dfn>conforming document</dfn> is a
-<a data-cite="JSON-LD11-API#compaction-algorithms">compacted</a> JSON-LD
-document that complies with all of the relevant "MUST" statements in this
-specification. Specifically, the relevant normative "MUST" statements in
-Sections <a href="#basic-concepts"></a>, <a href="#advanced-concepts"></a>, and
-<a href="#syntaxes"></a> of this document MUST be enforced.
-A conforming document is either a [=verifiable credential=] that MUST be
-serialized using the `application/vc+ld+json` media type or a
-[=verifiable presentation=] that MUST be serialized using the
-`application/vp+ld+json` media type. A conforming document MUST be
-secured by at least one securing mechanism as described in Section
-<a href="#securing-mechanisms"></a>.
-        </p>
+    <section id="conformance" class="normative">
+      <p>
+        一个<dfn>符合规范的文档</dfn>是一个遵循本规范中所有相关“必须”声明的
+        <a data-cite="JSON-LD11-API#compaction-algorithms">压缩</a> JSON-LD
+        文档。具体来说，本文档<a href="#basic-concepts"></a>、<a href="#advanced-concepts"></a>和
+        <a href="#syntaxes"></a>部分的相关规范性“必须”声明必须得到执行。
+        符合规范的文档可以是使用`application/vc+ld+json`媒体类型序列化的[=可验证凭证=]，或者使用
+        `application/vp+ld+json`媒体类型序列化的[=可验证呈现=]。符合规范的文档必须至少通过本文档<a href="#securing-mechanisms"></a>部分描述的一种安全机制来保护。
+      </p>
 
-        <p>
-A <dfn class="lint-ignore">conforming issuer implementation</dfn> produces
-[=conforming documents=], MUST include all required properties in the
-[=conforming documents=] that it produces, and MUST secure the [=conforming
-documents=] it produces using a securing mechanism as described in Section
-<a href="#securing-mechanisms"></a>.
-        </p>
+      <p>
+        一个<dfn class="lint-ignore">符合规范的发行者实现</dfn>生成
+        [=符合规范的文档=]，必须在其生成的[=符合规范的文档=]中包含所有必需的属性，并且必须使用本文档<a
+          href="#securing-mechanisms"></a>部分描述的安全机制来保护其生成的[=符合规范的文档=]。
+      </p>
 
-        <p>
-A <dfn class="lint-ignore">conforming verifier implementation</dfn>
-consumes [=conforming documents=], MUST perform [=verification=] on a
-[=conforming document=] as described in Section
-<a href="#securing-mechanisms"></a>, MUST check that each
-required property satisfies the normative requirements for that property, and
-MUST produce errors when non-[=conforming documents=] are detected.
-        </p>
+      <p>
+        一个<dfn class="lint-ignore">符合规范的验证器实现</dfn>
+        消费[=符合规范的文档=]，必须对[=符合规范的文档=]执行本文档<a href="#securing-mechanisms"></a>部分描述的[=验证=]，必须检查每个
+        必需属性是否满足该属性的规范要求，并且
+        在检测到不符合规范的文档时必须产生错误。
+      </p>
 
-        <p>
-This specification includes both required and optional properties. Optional
-properties MAY be ignored by [=conforming issuer implementations=] and/or
-[=conforming verifier implementations=].
-        </p>
+      <p>
+        本规范包括必需的和可选的属性。可选属性可以被[=符合规范的发行者实现=]和/或
+        [=符合规范的验证器实现=]忽略。
+      </p>
 
-        <p>
-This document also contains examples that contain characters that are invalid
-JSON, such as inline comments (`//`) and the use of ellipsis
-(`...`) to denote information that adds little value to the example.
-Implementers are cautioned to remove this content if they desire to use the
-information as a valid document.
-        </p>
-      </section>
-
+      <p>
+        本文档还包含一些包含无效JSON字符的示例，如内联注释（`//`）和使用省略号
+        （`...`）表示对示例价值不大的信息。
+        实现者在使用这些信息作为有效文档时，需谨慎删除这些内容。
+      </p>
     </section>
 
-    <section class="normative">
-      <h2>Terminology</h2>
+  </section>
+
+  <section class="normative">
+    <h2>术语</h2>
 
     <p>
       以下术语用于描述本规范中的概念。
@@ -620,7 +605,8 @@ information as a valid document.
     </p>
 
     <p class="note" title="凭证和可验证凭证之间的区别">
-      读者可能会注意到，本节中描述的一些概念，如 [=凭证=] 和 [=呈现=]，在本规范中没有定义媒体类型。然而，[=可验证凭证=] 或 [=可验证呈现=] 这些概念被定义为 [=符合规范的文档=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=凭证=] 和
+      读者可能会注意到，本节中描述的一些概念，如 [=凭证=] 和 [=呈现=]，在本规范中没有定义媒体类型。然而，[=可验证凭证=] 或 [=可验证呈现=] 这些概念被定义为
+      [=符合规范的文档=]，并且具有相关联的媒体类型。这些概念之间的具体区别 &mdash; 即 [=凭证=] 和
       [=呈现=] 与 [=可验证凭证=] 和 [=可验证呈现=] 之间的区别 &mdash; 仅仅在于 "可验证"
       对象以加密可验证的方式进行保护，而其他对象则没有。有关详细信息，请参见<a href="#securing-mechanisms">安全机制部分</a>。
     </p>
@@ -768,12 +754,9 @@ arrow, to a separate rectangle, containing a single text field:
         增强隐私是本规范的一个关键设计特性。因此，对于使用这项技术的[=实体=]来说，能够仅表达适用于特定情境的个人形象的部分非常重要。一个人形象的子集被称为[=可验证呈现=]。不同形象的例子包括一个人的专业形象、他们的在线游戏形象、他们的家庭形象或匿名形象。
       </p>
 
-        <p>
-A [=verifiable presentation=] is <dfn>created</dfn> by a [=holder=], can express
-data from multiple [=verifiable credentials=], and can contain arbitrary additional
-data encoded as JSON-LD. They are used to present [=claims=] to a [=verifier=].
-It is also possible to present [=verifiable credentials=] directly.
-        </p>
+      <p>
+        一个[=可验证的展示=]是由[=持有人=]创建的，可以表达来自多个[=可验证的凭证=]的数据，并且可以包含编码为JSON-LD的任意额外数据。它们被用于向[=验证者=]展示[=声明=]。也可以直接展示[=可验证的凭证=]。
+      </p>
 
       <p>
         [=演示=]中的数据通常与同一个[=主题=]有关，但可能是由多个[=发行者=]发布的。这些信息的汇总通常表达了一个人、组织或[=实体=]的某个方面。
@@ -2578,73 +2561,38 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <section>
         <h4>语义互操作性</h4>
 
-          <p>
-When defining new terms in an application-specific vocabulary, developers MUST
-use globally unambiguous [=URLs=] to identify the terms. Whenever possible, it
-is RECOMMENDED to re-use terms — and their corresponding URLs — defined by
-well-known, public vocabularies, such as [[[?DCTERMS]]] [[?DCTERMS]] or
-[[[?schema-org]]] [[?schema-org]]. If that is not possible, authors MUST
-<em>define</em> a new URL for each term. When doing so, the general guidelines
-for [[LINKED-DATA]] are expected to be followed, in particular:
-          </p>
+        <p>
+          在定义特定应用词汇中的新术语时，开发者必须使用全局无歧义的[=URLs=]来标识这些术语。只要有可能，建议重用由知名公共词汇表定义的术语及其对应的URL，例如[[[?DCTERMS]]] [[?DCTERMS]] 或 [[[?schema-org]]] [[?schema-org]]。如果无法做到这一点，作者必须为每个术语<em>定义</em>一个新的URL。在这样做时，应遵循[[LINKED-DATA]]的一般指南，特别是：
+        </p>
 
-          <ul>
-              <li>
-Human-readable documentation MUST be published, describing the semantics of and
-the constraints on the use of each term.
-              </li>
-              <li>
-It is RECOMMENDED to also publish the collection of all new terms as a
-machine-readable vocabulary using [[[?RDF-SCHEMA]]] [[?RDF-SCHEMA]].
-              </li>
-              <li>
-It SHOULD be possible to dereference the URL of a term, resulting in its
-description and/or formal definition.
-              </li>
-          </ul>
+        <ul>
+          <li>
+            必须发布人类可读的文档，描述每个术语的语义及其使用限制。
+          </li>
+          <li>
+            建议使用[[[?RDF-SCHEMA]]] [[?RDF-SCHEMA]]将所有新术语的集合发布为机器可读的词汇表。
+          </li>
+          <li>
+            应该能够解引用术语的URL，从而得到其描述和/或正式定义。
+          </li>
+        </ul>
 
-          <p>
-Developers SHOULD follow the <a data-cite="?LD-BP#vocabulary-checklist">detailed
-checklist</a> in [[[?LD-BP]]] [[?LD-BP]] when defining a new vocabulary.
-          </p>
-          <p>
-Furthermore, a machine-readable description (that is, a
-<a data-cite="JSON-LD11#dfn-context">JSON-LD Context document</a>) MUST be
-published at the URL specified in the `@context` [=property=] for the
-vocabulary. This context MUST map each term to its corresponding URL, possibly
-accompanied by further constraints like the type of the property value. A
-human-readable document describing the expected order of values for the
-`@context` [=property=] is also expected to be published by any implementer
-seeking interoperability.
-          </p>
+        <p>
+          开发者在定义新词汇时，应遵循[[[?LD-BP]]] [[?LD-BP]]中的<a data-cite="?LD-BP#vocabulary-checklist">详细清单</a>。
+        </p>
+        <p>
+          此外，必须在词汇表的`@context` [=属性=]中指定的URL处发布机器可读的描述（即，<a data-cite="JSON-LD11#dfn-context">JSON-LD Context文档</a>）。此上下文必须将每个术语映射到其对应的URL，可能还需要附加进一步的约束，如属性值的类型。任何寻求互操作性的实现者还应发布描述`@context` [=属性=]值预期顺序的人类可读文档。
+        </p>
 
-          <p class="note">
-When processing the <a data-cite="JSON-LD11#dfn-active-context">active
-context</a> defined by the base JSON-LD Context document <a
-href="#dfn-context">defined in this specification</a>, compliant JSON-LD-based
-processors produce an error when a JSON-LD context
-<em>redefines</em> any term. The only way to change the definition of existing
-terms is to introduce a new term that clears the active context within the scope
-of that new term. Authors that are interested in this feature should read about
-the <a data-cite="JSON-LD11#protected-term-definitions">`@protected`</a>
-keyword in the JSON-LD 1.1 specification.
-          </p>
+        <p class="note">
+          在处理由基本JSON-LD Context文档<a href="#dfn-context">定义的</a><a data-cite="JSON-LD11#dfn-active-context">活动上下文</a>时，符合要求的基于JSON-LD的处理器在JSON-LD上下文<em>重新定义</em>任何术语时会产生错误。更改现有术语的定义的唯一方法是引入一个新术语，该术语在新术语的范围内清除活动上下文。对此功能感兴趣的作者应阅读JSON-LD 1.1规范中关于<a data-cite="JSON-LD11#protected-term-definitions">`@protected`</a>关键字的内容。
+        </p>
 
-          <p>
-The base JSON-LD Context file for this specification also includes an extra
-feature, using the <a data-cite="JSON-LD11/#default-vocabulary">`@vocab`</a>
-keyword, which ensures that any undefined term in a [=verifiable credential=] or
-a [=verifiable presentation=] is automatically mapped to a URL prefixed with
-`https://www.w3.org/ns/credentials/issuer-dependent#`. This is to allow early
-experimentation with terms during the development phase, without requiring a
-formal definition in every cycle of that experimentation. Note that developers
-SHOULD NOT use this feature in production; this could lead to name clashes,
-yielding semantic ambiguities with other applications. Instead, they SHOULD
-define all the terms, as described earlier in this section, to achieve proper
-interoperability.
-          </p>
-        </section>
+        <p>
+          本规范的基本JSON-LD Context文件还包括一个额外的功能，使用<a data-cite="JSON-LD11/#default-vocabulary">`@vocab`</a>关键字，确保[=可验证的凭证=]或[=可验证的展示=]中的任何未定义术语都自动映射到一个以`https://www.w3.org/ns/credentials/issuer-dependent#`为前缀的URL。这是为了在开发阶段允许对术语进行早期实验，而无需在每个实验周期中都要求正式定义。请注意，开发者不应在生产中使用此功能；这可能导致名称冲突，产生与其他应用程序的语义歧义。相反，他们应该按照本节前面所述的方式定义所有术语，以实现适当的互操作性。
+        </p>
       </section>
+    </section>
 
     <section>
       <h2>相关资源的完整性</h2>
@@ -2765,17 +2713,12 @@ interoperability.
         将`refreshService` [=属性=]放在[=可验证凭证=]中，使其对[=验证者=]可用，可能会从[=持有者=]中移除控制和同意，并允许[=可验证凭证=]直接发给[=验证者=]，从而绕过[=持有者=]。
       </p>
 
-        <dl>
-          <dt><var id="defn-refreshService">refreshService</var></dt>
-          <dd>
-The value of the `refreshService` [=property=] MUST be one or more
-refresh services that provides enough information to the recipient's software
-such that the recipient can refresh the [=verifiable credential=]. Each
-`refreshService` value MUST specify its `type`. The precise content of each
-refresh service is determined by the specific `refreshService` [=type=]
-definition.
-          </dd>
-        </dl>
+      <dl>
+        <dt><var id="defn-refreshService">refreshService</var></dt>
+        <dd>
+          `refreshService` [=property=]的值必须是一个或多个刷新服务，这些服务为接收方的软件提供足够的信息，以便接收方可以刷新[=可验证的凭证=]。每个`refreshService`值必须指定其`type`。每个刷新服务的确切内容由特定的`refreshService` [=type=]定义确定。
+        </dd>
+      </dl>
 
       <pre class="example nohighlight" title="Usage of the refreshService property by an issuer">
 {
@@ -2804,11 +2747,9 @@ definition.
 }
         </pre>
 
-        <p>
-In the example above, the [=issuer=] specifies an automatic
-`refreshService` that can be used by directing the [=holder=] to
-`https://university.example/workflows/refresh-degree`.
-        </p>
+      <p>
+        在上面的示例中，[=发行者=]指定了一个自动的`refreshService`，可以通过将[=持有者=]指向`https://university.example/workflows/refresh-degree`来使用。
+      </p>
 
     </section>
 
@@ -2824,25 +2765,17 @@ In the example above, the [=issuer=] specifies an automatic
         `termsOfUse` [=属性=]的值可能用于告知[=验证者=]以下任何或所有内容，以及其他事项：
       </p>
 
-        <ul>
-          <li>
-the procedures or policies that were used in issuing the [=verifiable
-credential=], by providing, for example, a pointer to a public location
-(to avoid "phone home" privacy issues) where these procedures or policies
-can be found, or the name of the standard that defines them
-          </li>
-          <li>
-the rules and policies of the [=issuer=] that apply to the presentation
-of this [=verifiable credential=] to a [=verifier=], by providing,
-for example, a pointer to a public location (to avoid "phone home" privacy
-issues) where these rules or policies can be found
-          </li>
-          <li>
-the identity of the entity under whose authority the [=issuer=] issued
-this particular [=verifiable credential=]
-          </li>
-        </ul>
-
+      <ul>
+        <li>
+          发行[=可验证凭证=]时使用的程序或政策，例如，通过提供指向公共位置（以避免“电话回家”隐私问题）的指针，这些程序或政策可以在该位置找到，或者提供定义它们的标准的名称
+        </li>
+        <li>
+          适用于向[=验证者=]展示此[=可验证凭证=]的[=发行者=]的规则和政策，例如，通过提供指向公共位置（以避免“电话回家”隐私问题）的指针，这些规则或政策可以在该位置找到
+        </li>
+        <li>
+          根据其权威发行此特定[=可验证凭证=]的实体的身份
+        </li>
+      </ul>
       <dl>
         <dt><var id="defn-termsOfUse">termsOfUse</var></dt>
         <dd>
@@ -3427,33 +3360,21 @@ this particular [=verifiable credential=]
     <section>
       <h3>JSON-LD</h3>
 
-        <p>
-[[!JSON-LD11]] is a JSON-based format used to serialize
-<a href="https://www.w3.org/TR/ld-glossary/#linked-data">Linked Data</a>.
-Linked Data is modeled using Resource Description Framework (RDF).
-RDF [[?RDF11-CONCEPTS]] is a technology for modeling graphs of statements. Each statement is a
-single <i>subject→property→value</i> (also known as
-<i>entity→attribute→value</i>) relationship, which is referred to
-as a <a>claim</a> in this specification. JSON-LD [[?JSON-LD11]] is a technology that enables
-the expression of RDF using idiomatic JSON, enabling developers familiar with
-JSON to write applications that consume RDF as JSON. In general, subjects are
-expressed as JSON objects with each property and value of the subject as a JSON
-key and value, respectively. A special affordance is made to express an
-identifier of a subject, if necessary, using the <code>id</code> key in this
-specification. See
-<a data-cite="?JSON-LD11#relationship-to-rdf">Relationship of JSON-LD to RDF</a>
-for more details.
-          </p>
-        <p>
-[[!JSON-LD11]] is useful when extending the data model described in this
-specification. Instances of the data model are encoded in JSON-LD compacted
-form [[!JSON-LD11]] and include the `@context` [=property=]. The
-<a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD context</a>
-is described in detail in the [[!JSON-LD11]] specification and its use is
-elaborated on in Section <a href="#contexts"></a> and
-Section <a href="#extensibility"></a>.
-        </p>
-
+      <p>
+        [[!JSON-LD11]] 是一种基于 JSON 的格式，用于序列化
+        <a href="https://www.w3.org/TR/ld-glossary/#linked-data">链接数据</a>。
+        链接数据使用资源描述框架 (RDF) 进行建模。
+        RDF [[?RDF11-CONCEPTS]] 是一种用于建模陈述图的技术。每个陈述是一个
+        单独的 <i>主题→属性→值</i>（也称为
+        <i>实体→属性→值</i>）关系，本规范中称之为<a>声明</a>。JSON-LD [[?JSON-LD11]] 是一种技术，可以使用惯用的 JSON 表达 RDF，使熟悉 JSON 的开发人员能够编写使用 JSON 消费 RDF 的应用程序。通常，主题表示为 JSON 对象，主题的每个属性和值分别作为 JSON 键和值。本规范中，如果需要，可以使用 <code>id</code> 键表示主题的标识符。有关更多详细信息，请参见
+        <a data-cite="?JSON-LD11#relationship-to-rdf">JSON-LD 与 RDF 的关系</a>。
+      </p>
+      <p>
+        当扩展本规范中描述的数据模型时，[[!JSON-LD11]] 非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包含 `@context` [=property=]。详细描述了
+        <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>
+        的[[!JSON-LD11]] 规范，以及在第<a href="#contexts"></a>节和
+        第<a href="#extensibility"></a>节中对其使用的详细说明。
+      </p>
       <p>
         可以使用或组合多个上下文来以惯用的 JSON 表达关于 [=可验证凭证=] 的任意信息。
         <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>，
@@ -3466,25 +3387,14 @@ Section <a href="#extensibility"></a>.
         必须用于基本媒体类型 `application/vc+ld+json` 中的数据模型的所有表示。
       </p>
 
-        <p>
-As elaborated upon in Section
-<a href="#type-specific-credential-processing"></a>, some software applications
-might not perform generalized JSON-LD processing. Authors of [=conforming
-documents=] are advised that interoperability might be reduced if JSON-LD
-keywords in the `@context` value are used to globally affect values in a
-[=verifiable credential=] or [=verifiable presentation=], such as by
-globally setting the `@base` keyword. For example, globally setting these values
-might trigger a failure in a mis-implemented JSON Schema check on the `@context`
-value in an implementation that is performing [=type-specific credential
-processing=] and not expecting the `@base` value to be expressed in the
-`@context` value.
-        </p>
+      <p>
+        如在第
+        <a href="#type-specific-credential-processing"></a>节中详细阐述的，一些软件应用可能不执行通用的 JSON-LD 处理。建议[=符合规范的文档=]的作者注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=可验证的凭证=] 或 [=可验证的展示=] 中的值，例如通过全局设置 `@base` 关键字，可能会降低互操作性。例如，全局设置这些值可能会在执行 [=类型特定的凭证处理=] 并且没有预期 `@base` 值在 `@context` 值中表达的实现中触发 `@context` 值上的 JSON Schema 检查失败。
+      </p>
 
-        <p>
-In order to increase interoperability, [=conforming document=] authors are
-urged to not use JSON-LD features that are not easily detected when performing
-[=type-specific credential processing=]. These features include:
-        </p>
+      <p>
+        为了提高互操作性，强烈建议[=符合规范的文档=]的作者不要使用在执行 [=类型特定的凭证处理=] 时不容易检测到的 JSON-LD 功能。这些功能包括：
+      </p>
 
       <ul>
         <li>
@@ -3664,49 +3574,20 @@ urged to not use JSON-LD features that are not easily detected when performing
       </section>
     </section>
 
-        <section class="informative">
-          <h2>Type-Specific Credential Processing</h2>
+    <section class="informative">
+      <h2>类型特定的凭证处理</h2>
 
-          <p>
-As JSON can be used to express different kinds of information, a consumer of
-a particular JSON document can only properly interpret the author's intent if they
-possess information that contextualizes and disambiguates it from other possible
-expressions. Information to assist with this interpretation can either be wholly
-external to the JSON document or linked from within it. Compacted JSON-LD documents
-include a <code>@context</code> property that internally expresses or links to
-contextual information to express <a>claims</a>. These features
-enable generalized processors to be written to convert JSON-LD documents from one
-context to another, but this is not needed when consumers receive JSON-LD documents
-that already use the context and shape that they expect. Authors of JSON-LD
-documents, such as <a>issuers</a> of <a>verifiable credentials</a>, are required
-to provide proper JSON-LD contexts and follow these rules in order to facilitate
-interoperability.
-          </p>
+      <p>
+        由于JSON可以用来表示不同类型的信息，一个特定JSON文档的使用者只有在拥有将其与其他可能的表达方式区分开来的上下文信息时，才能正确解释作者的意图。辅助解释的信息可以完全独立于JSON文档之外，也可以从文档内部链接。压缩后的JSON-LD文档包含一个<code>@context</code>属性，用于内部表达或链接到上下文信息，以表达<a>声明</a>。这些功能使得可以编写通用处理器，将JSON-LD文档从一个上下文转换为另一个上下文，但在接收到已经使用他们期望的上下文和形状的JSON-LD文档时，这是不需要的。JSON-LD文档的作者，如<a>可验证凭证</a>的<a>颁发者</a>，需要提供适当的JSON-LD上下文并遵循这些规则，以便促进互操作性。
+      </p>
 
-          <p>
-The text below helps consumers understand how to ensure a JSON-LD document is
-expressed in a context and shape that their application already understands
-such that they do not need to transform it in order to consume its contents.
-Notably, this does not mean that consumers do not need to understand any
-context at all; rather, consuming applications only need to understand a chosen
-set of contexts and document shapes to work with and not others. Issuers can
-publish contexts and information about their <a>verifiable credentials</a> to
-aid consumers who do not use generalized processors, just as can be done
-with any other JSON-formatted data.
-          </p>
+      <p>
+        下面的文本帮助使用者了解如何确保JSON-LD文档以他们的应用程序已经理解的上下文和形状表示，以便他们不需要对其进行转换就可以使用其内容。值得注意的是，这并不意味着使用者不需要理解任何上下文；相反，使用应用程序只需要理解一组选定的上下文和文档形状，而不是其他。颁发者可以发布关于他们的<a>可验证凭证</a>的上下文和信息，以帮助那些不使用通用处理器的使用者，就像可以使用任何其他JSON格式化数据一样。
+      </p>
 
-          <p>
-<dfn>General JSON-LD processing</dfn> is defined as a mechanism that utilizes a
-JSON-LD software library to process a [=conforming document=] by performing
-various <a data-cite="?JSON-LD11#forms-of-json-ld">transformations</a>.
-<dfn>Type-specific credential processing</dfn> is defined as a lighter-weight
-mechanism for processing [=conforming documents=], that doesn't require
-a JSON-LD software library. Some consumers of [=verifiable credentials=]
-only need to consume credentials with specific types. These consumers can use
-type-specific credential processing instead of generalized processing. Scenarios
-where type-specific credential processing can be desirable include, but are not
-limited to, the following:
-          </p>
+      <p>
+        <dfn>通用JSON-LD处理</dfn>被定义为一种利用JSON-LD软件库处理[=符合规范的文档=]的机制，通过执行各种<a data-cite="?JSON-LD11#forms-of-json-ld">转换</a>。 <dfn>类型特定的凭证处理</dfn>被定义为一种处理[=符合规范的文档=]的轻量级机制，不需要JSON-LD软件库。一些[=可验证凭证=]的使用者只需要使用特定类型的凭证。这些使用者可以使用类型特定的凭证处理，而不是通用处理。类型特定凭证处理可能是可取的场景包括但不限于以下情况：
+      </p>
 
       <ul>
         <li>
@@ -3727,11 +3608,9 @@ limited to, the following:
         </li>
       </ul>
 
-          <p>
-That is, [=type-specific credential processing=] is allowed as long as the
-document being consumed or produced is a [=conforming document=]. If this
-type of processing is desired, an implementer is advised to follow this rule:
-          </p>
+      <p>
+        换句话说，只要被消费或生成的文档是符合规范的文档，就允许进行类型特定的凭证处理。如果需要进行这种类型的处理，建议实施者遵循以下规则：
+      </p>
 
       <ul>
         <li>
@@ -3739,24 +3618,13 @@ type of processing is desired, an implementer is advised to follow this rule:
         </li>
       </ul>
 
-          <p>
-Using static context files with a JSON Schema is one acceptable approach to
-implementing the rule above. This can ensure proper term identification,
-typing, and order, when performing [=type-specific credential processing=].
-          </p>
+      <p>
+        使用带有JSON Schema的静态上下文文件是实现上述规则的一种可接受方法。这可以在执行[=类型特定的证书处理=]时，确保正确识别术语，进行类型化和排序。
+      </p>
 
-          <p>
-The rule above guarantees semantic interoperability between the two processing
-mechanisms for mapping literal JSON keys to URIs via the `@context` mechanism.
-While [=general JSON-LD processing=] can use previously unseen `@context`
-values provided in its algorithms to verify that all terms are correctly
-specified, implementations that perform [=type-specific credential
-processing=] only accept specific `@context` values which the implementation
-is engineered ahead of time to understand, resulting in the same semantics
-without invoking any JSON-LD APIs. In other words, the context in which the data
-exchange happens is explicitly stated for both processing mechanisms by using
-`@context` in a way that leads to the same [=conforming document=] semantics.
-          </p>
+      <p>
+        上述规则保证了通过`@context`机制将字面JSON键映射到URIs的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但只执行[=类型特定的证书处理=]的实现只接受实现提前设计理解的特定`@context`值，从而在不调用任何JSON-LD API的情况下产生相同的语义。换句话说，通过使用`@context`，数据交换发生的上下文对两种处理机制都明确地声明，从而导致相同的[=符合文档=]语义。
+      </p>
 
     </section>
 
@@ -4802,7 +4670,8 @@ exchange happens is explicitly stated for both processing mechanisms by using
         </pre>
 
       <p>
-        当语言值对象用于替代字符串值时，该对象必须包含一个`@value`属性，其值为字符串，并应包含一个`@language`属性，其值为一个由[[BCP47]]定义的格式良好的`Language-Tag`字符串，并可能包含一个`@direction`属性，其值为由[[JSON-LD11]]中的`@direction`属性定义的[=base direction=]字符串。语言值对象不得包含`@value`，`@language`和`@direction`之外的任何其他键。
+        当语言值对象用于替代字符串值时，该对象必须包含一个`@value`属性，其值为字符串，并应包含一个`@language`属性，其值为一个由[[BCP47]]定义的格式良好的`Language-Tag`字符串，并可能包含一个`@direction`属性，其值为由[[JSON-LD11]]中的`@direction`属性定义的[=base
+        direction=]字符串。语言值对象不得包含`@value`，`@language`和`@direction`之外的任何其他键。
       </p>
 
       <p>
@@ -4864,7 +4733,8 @@ exchange happens is explicitly stated for both processing mechanisms by using
       <h3>复杂语言标记</h3>
 
       <p>
-        当单个自然语言字符串包含多种语言或注释时，字符串的内容可能需要额外的结构或标记才能正确呈现。可以使用标记语言，如HTML，来标记不同语言的文本片段或提供呈现[=bidirectional text=]所需的字符串内部标记。还可以使用`rdf:HTML`数据类型在JSON-LD中准确地编码这些值。
+        当单个自然语言字符串包含多种语言或注释时，字符串的内容可能需要额外的结构或标记才能正确呈现。可以使用标记语言，如HTML，来标记不同语言的文本片段或提供呈现[=bidirectional
+        text=]所需的字符串内部标记。还可以使用`rdf:HTML`数据类型在JSON-LD中准确地编码这些值。
       </p>
 
       <p>
@@ -5500,180 +5370,180 @@ separate rectangle, containing a single text field:
       本节包含了此规范随时间所做的实质性更改。
     </p>
 
-      <p>
-Changes since the
-<a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/">
-v1.1 Recommendation</a>:
-      </p>
-      <ul>
-        <li>
-Many editorial updates and fixes to modernize the specification and make
-it easier to understand particular concepts.
-        </li>
-        <li>
-Remove duplicated statements regarding `proof` between Data Integrity and
-this specification.
-        </li>
-        <li>
-Clarify how issuer validation occurs.
-        </li>
-        <li>
-Clarify requirements for securing mechanism extension points.
-        </li>
-        <li>
-Add dependency on [[?INFRA]] for algorithm section.
-        </li>
-        <li>
-Add requirements for securing mechanism specifications.
-        </li>
-        <li>
-Clarify how to perform type-specific credential processing.
-        </li>
-        <li>
-Add mechanism to embed enveloped verifiable credentials in verifiable
-presentations.
-        </li>
-        <li>
-Add verification algorithm, interface to securing mechanisms, and
-ProblemDetails objects.
-        </li>
-        <li>
-Fine tune allowable values for `issuer` property.
-        </li>
-        <li>
-Provide more concrete guidance on how to express language information as well as
-default language and direction.
-        </li>
-        <li>
-Add new conformance classes for issuer and verifier implementations.
-        </li>
-        <li>
-Add new Security Considerations regarding key management.
-        </li>
-        <li>
-Add new Privacy Considerations for trust boundaries, metadata-based correlation,
-data theft, and use of Oblivious HTTP.
-        </li>
-        <li>
-Formally define base classes and properties for vocabulary.
-        </li>
-        <li>
-Provide warnings around not using advanced JSON-LD features in order to
-maximize interoperability.
-        </li>
-        <li>
-Provide more explicit guidance around sets and arrays.
-        </li>
-        <li>
-Add support for `name` and `description` fields for issuers and credentials.
-        </li>
-        <li>
-Add security considerations around interception, replay, and spoofing attacks.
-        </li>
-        <li>
-Add JWT and SD-JWT claims to base JSON-LD Context.
-        </li>
-        <li>
-Clarify the difference between a "credential" and a "verifiable credential".
-        </li>
-        <li>
-Add section on how to ensure ecosystem compatibility.
-        </li>
-        <li>
-Add section on type-specific credential processing.
-        </li>
-        <li>
-Add section on validation and relevance to holders.
-        </li>
-        <li>
-Add section on media type precision and interpretation.
-        </li>
-        <li>
-Ensure that `dateTimeStamp` is used for time values. Provide further guidance
-on proper usage of time values and timezones.
-        </li>
-        <li>
-Make `validFrom` optional.
-        </li>
-        <li>
-Add `relatedResource` feature.
-        </li>
-        <li>
-Make base context and vocabularies normative and provide cryptographic hashes
-for their content.
-        </li>
-        <li>
-Add `renderMethod` and `confidenceMethod` to list of reserved properties.
-        </li>
-        <li>
-Modernize examples in the specification.
-        </li>
-        <li>
-Add "Getting Started" section.
-        </li>
-        <li>
-Add table of reserved properties for properties that are not yet standardized
-or are at risk for removal.
-        </li>
-        <li>
-Restrict data model serialization to JSON-LD in compacted document form.
-        </li>
-        <li>
-Update ZKP section to remove older content.
-        </li>
-        <li>
-Add `termsOfUse` to presentations in v2 context.
-        </li>
-        <li>
-Add default vocabulary for undefined terms to v2 context.
-        </li>
-        <li>
-Add media types for `application/vc+ld+json` and `application/vp+ld+json`.
-        </li>
-        <li>
-Provide guidance on converting to and from conforming documents from other
-digital credential formats.
-        </li>
-        <li>
-Change reference to URI/IRI to use WHATWG URL specification.
-        </li>
-        <li>
-Add normative dependency on Data Integrity and JOSE/COSE securing mechanisms.
-        </li>
-        <li>
-Rename `issuanceDate`/`expirationDate` to `validFrom`/`validUntil`.
-        </li>
-        <li>
-Add JSON Schema support and update examples to use new format.
-        </li>
-        <li>
-Clarify that `credentialSubject` values cannot be strings.
-        </li>
-        <li>
-Create more formal vocabulary document that refers to this specification.
-        </li>
-        <li>
-Define v2.0 JSON-LD Context.
-        </li>
-        <li>
-Migrate VC-JWT section to separate securing specification.
-        </li>
-        <li>
-Move Subject-Holder relationships to Verifiable Credential implementation guide.
-        </li>
-        <li>
-Increment version number to v2.0 and remove prior REC-track comments.
-        </li>
-        <li>
-Add normative dependency on Verifiable Credential Data Integrity specification
-[[VC-DATA-INTEGRITY]].
-        </li>
-        <li>
-The section on
-<a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/#disputes">Disputes</a>
-was removed due to lack of implementations in v1.0 and v1.1.
-        </li>
-      </ul>
+    <p>
+      Changes since the
+      <a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/">
+        v1.1 Recommendation</a>:
+    </p>
+    <ul>
+      <li>
+        Many editorial updates and fixes to modernize the specification and make
+        it easier to understand particular concepts.
+      </li>
+      <li>
+        Remove duplicated statements regarding `proof` between Data Integrity and
+        this specification.
+      </li>
+      <li>
+        Clarify how issuer validation occurs.
+      </li>
+      <li>
+        Clarify requirements for securing mechanism extension points.
+      </li>
+      <li>
+        Add dependency on [[?INFRA]] for algorithm section.
+      </li>
+      <li>
+        Add requirements for securing mechanism specifications.
+      </li>
+      <li>
+        Clarify how to perform type-specific credential processing.
+      </li>
+      <li>
+        Add mechanism to embed enveloped verifiable credentials in verifiable
+        presentations.
+      </li>
+      <li>
+        Add verification algorithm, interface to securing mechanisms, and
+        ProblemDetails objects.
+      </li>
+      <li>
+        Fine tune allowable values for `issuer` property.
+      </li>
+      <li>
+        Provide more concrete guidance on how to express language information as well as
+        default language and direction.
+      </li>
+      <li>
+        Add new conformance classes for issuer and verifier implementations.
+      </li>
+      <li>
+        Add new Security Considerations regarding key management.
+      </li>
+      <li>
+        Add new Privacy Considerations for trust boundaries, metadata-based correlation,
+        data theft, and use of Oblivious HTTP.
+      </li>
+      <li>
+        Formally define base classes and properties for vocabulary.
+      </li>
+      <li>
+        Provide warnings around not using advanced JSON-LD features in order to
+        maximize interoperability.
+      </li>
+      <li>
+        Provide more explicit guidance around sets and arrays.
+      </li>
+      <li>
+        Add support for `name` and `description` fields for issuers and credentials.
+      </li>
+      <li>
+        Add security considerations around interception, replay, and spoofing attacks.
+      </li>
+      <li>
+        Add JWT and SD-JWT claims to base JSON-LD Context.
+      </li>
+      <li>
+        Clarify the difference between a "credential" and a "verifiable credential".
+      </li>
+      <li>
+        Add section on how to ensure ecosystem compatibility.
+      </li>
+      <li>
+        Add section on type-specific credential processing.
+      </li>
+      <li>
+        Add section on validation and relevance to holders.
+      </li>
+      <li>
+        Add section on media type precision and interpretation.
+      </li>
+      <li>
+        Ensure that `dateTimeStamp` is used for time values. Provide further guidance
+        on proper usage of time values and timezones.
+      </li>
+      <li>
+        Make `validFrom` optional.
+      </li>
+      <li>
+        Add `relatedResource` feature.
+      </li>
+      <li>
+        Make base context and vocabularies normative and provide cryptographic hashes
+        for their content.
+      </li>
+      <li>
+        Add `renderMethod` and `confidenceMethod` to list of reserved properties.
+      </li>
+      <li>
+        Modernize examples in the specification.
+      </li>
+      <li>
+        Add "Getting Started" section.
+      </li>
+      <li>
+        Add table of reserved properties for properties that are not yet standardized
+        or are at risk for removal.
+      </li>
+      <li>
+        Restrict data model serialization to JSON-LD in compacted document form.
+      </li>
+      <li>
+        Update ZKP section to remove older content.
+      </li>
+      <li>
+        Add `termsOfUse` to presentations in v2 context.
+      </li>
+      <li>
+        Add default vocabulary for undefined terms to v2 context.
+      </li>
+      <li>
+        Add media types for `application/vc+ld+json` and `application/vp+ld+json`.
+      </li>
+      <li>
+        Provide guidance on converting to and from conforming documents from other
+        digital credential formats.
+      </li>
+      <li>
+        Change reference to URI/IRI to use WHATWG URL specification.
+      </li>
+      <li>
+        Add normative dependency on Data Integrity and JOSE/COSE securing mechanisms.
+      </li>
+      <li>
+        Rename `issuanceDate`/`expirationDate` to `validFrom`/`validUntil`.
+      </li>
+      <li>
+        Add JSON Schema support and update examples to use new format.
+      </li>
+      <li>
+        Clarify that `credentialSubject` values cannot be strings.
+      </li>
+      <li>
+        Create more formal vocabulary document that refers to this specification.
+      </li>
+      <li>
+        Define v2.0 JSON-LD Context.
+      </li>
+      <li>
+        Migrate VC-JWT section to separate securing specification.
+      </li>
+      <li>
+        Move Subject-Holder relationships to Verifiable Credential implementation guide.
+      </li>
+      <li>
+        Increment version number to v2.0 and remove prior REC-track comments.
+      </li>
+      <li>
+        Add normative dependency on Verifiable Credential Data Integrity specification
+        [[VC-DATA-INTEGRITY]].
+      </li>
+      <li>
+        The section on
+        <a href="https://www.w3.org/TR/2022/REC-vc-data-model-20220303/#disputes">Disputes</a>
+        was removed due to lack of implementations in v1.0 and v1.1.
+      </li>
+    </ul>
 
     <p>
       自

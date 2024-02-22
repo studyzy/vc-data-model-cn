@@ -70,7 +70,7 @@
         {
           name: "曾毅", url: "https://github.com/studyzy",
           company: "个人", companyURL: "https://www.cnblogs.com/studyzy",
-          note: "中文翻译", w3cid: 0
+          note: "中文翻译", w3cid: 999999
         },
         {
           name: "Manu Sporny", url: "https://www.linkedin.com/in/manusporny/",
@@ -334,7 +334,7 @@
     </section>
 
     <section class="informative">
-      <h3>生态系统概述</h3>
+      <h3 id="ecosystem-overview">生态系统概述</h3>
 
       <p>
         本节描述了核心参与者的角色以及在可验证凭证预期有用的生态系统中它们之间的关系。角色是一个抽象，可以用许多不同的方式实现。角色的分离表明了可能的接口和协议标准化。本规范引入了以下角色：
@@ -669,7 +669,7 @@
       </figure>
 
       <p>
-        [=可验证凭证=]的示例包括数字员工身份证、数字出生证明和数字教育证书。
+        [=可验证凭证=]的示例包括数字员工身份证、数字出生证明和数字教育凭证。
       </p>
 
       <p class="note">
@@ -736,7 +736,7 @@ arrow, to a separate rectangle, containing a single text field:
       </figure>
 
       <p class="note">
-        可以有一个[=凭证=]，例如婚姻证书，其中包含关于不同[=主体=]的多个[=声明=]，这些主题不需要相关。
+        可以有一个[=凭证=]，例如婚姻凭证，其中包含关于不同[=主体=]的多个[=声明=]，这些主题不需要相关。
       </p>
       <p class="note">
         可以有一个[=凭证=]，其中不包含关于发行[=凭证=]的[=实体=]的任何[=声明=]。例如，一个只包含关于特定狗的[=声明=]，但发给其所有者的[=凭证=]。
@@ -794,7 +794,7 @@ arrow, to a separate rectangle, containing a single text field:
       </p>
 
       <p>
-        请注意，[=可验证展示=]和[=可验证凭证=]的验证过程可能会涉及与多个[=发行者=]和其他参与者的交互，以检查证书状态、获取公钥等。为了保护用户隐私，这些交互应尽可能地减少，并遵循最小披露原则，即仅披露验证所需的最少信息。
+        请注意，[=可验证展示=]和[=可验证凭证=]的验证过程可能会涉及与多个[=发行者=]和其他参与者的交互，以检查凭证状态、获取公钥等。为了保护用户隐私，这些交互应尽可能地减少，并遵循最小披露原则，即仅披露验证所需的最少信息。
       </p>
 
       <p>
@@ -1216,7 +1216,7 @@ arrow, to a separate rectangle, containing a single text field:
         </pre>
 
       <p>
-        关于本规范，下表列出了必须指定[=类型=]的对象。
+        关于本规范，下表列出了必须指定[=type=]的对象。
       </p>
 
       <table class="simple">
@@ -1234,7 +1234,7 @@ arrow, to a separate rectangle, containing a single text field:
             </td>
             <td>
               `VerifiableCredential`以及可选的更具体的
-              [=可验证凭证=] [=类型=]。例如，<br>
+              [=可验证凭证=] [=type=]。例如，<br>
               `"type": ["VerifiableCredential", "ExampleDegreeCredential"]`
             </td>
           </tr>
@@ -1245,7 +1245,7 @@ arrow, to a separate rectangle, containing a single text field:
             </td>
             <td>
               `VerifiablePresentation`以及可选的更具体的
-              [=可验证展示=] [=类型=]。例如，<br>
+              [=可验证展示=] [=type=]。例如，<br>
               `"type": ["VerifiablePresentation", "ExamplePresentation"]`
             </td>
           </tr>
@@ -1255,7 +1255,7 @@ arrow, to a separate rectangle, containing a single text field:
               <a href="#status">credentialStatus</a>&nbsp;对象
             </td>
             <td>
-              有效的[=凭证=]状态[=类型=]。例如，<br>
+              有效的[=凭证=]状态[=type=]。例如，<br>
               `"type": "BitstringStatusListEntry"`
             </td>
           </tr>
@@ -1265,7 +1265,7 @@ arrow, to a separate rectangle, containing a single text field:
               <a href="#terms-of-use">termsOfUse</a>&nbsp;对象
             </td>
             <td>
-              有效的使用条款[=类型=]。例如，<br>
+              有效的使用条款[=type=]。例如，<br>
               `"type": "ExampleTermsPolicy"`
             </td>
           </tr>
@@ -1275,7 +1275,7 @@ arrow, to a separate rectangle, containing a single text field:
               <a href="#evidence">evidence</a>&nbsp;对象
             </td>
             <td>
-              有效的证据[=类型=]。例如，<br>
+              有效的证据[=type=]。例如，<br>
               `"type": "ExampleEvidence"`
             </td>
           </tr>
@@ -1284,7 +1284,7 @@ arrow, to a separate rectangle, containing a single text field:
       </table>
 
       <p class="note">
-        可验证凭证数据模型的[=类型=]系统与[[JSON-LD11]]的系统相同，详细信息在
+        可验证凭证数据模型的[=type=]系统与[[JSON-LD11]]的系统相同，详细信息在
         <a href="https://www.w3.org/TR/json-ld/#specifying-the-type">第3.5节:
           指定类型</a>和
         <a href="https://www.w3.org/TR/json-ld/#json-ld-grammar">第9节: JSON-LD
@@ -1296,7 +1296,7 @@ arrow, to a separate rectangle, containing a single text field:
 
       <p>
         所有[=凭证=]、[=展示=]和封装对象应该
-        指定，或与，更窄的[=类型=]（如
+        指定，或与，更窄的[=type=]（如
         `ExampleDegreeCredential`，例如）相关联，以便软件系统可以
         更容易地检测和处理这些额外的信息。
       </p>
@@ -1304,8 +1304,8 @@ arrow, to a separate rectangle, containing a single text field:
       <p>
         在处理本规范中定义的封装对象时（例如，与`credentialSubject`对象或
         深层嵌套在其中的对象相关联），软件系统应使用
-        在层次结构中更高的封装对象中指定的[=类型=]信息。具体来说，一个
-        封装对象，如[=凭证=]，应传达关联对象[=类型=]，以便[=验证者=]可以快速确定基于封装对象[=类型=]的关联对象的内容。
+        在层次结构中更高的封装对象中指定的[=type=]信息。具体来说，一个
+        封装对象，如[=凭证=]，应传达关联对象[=type=]，以便[=验证者=]可以快速确定基于封装对象[=type=]的关联对象的内容。
       </p>
 
       <p>
@@ -1329,7 +1329,7 @@ arrow, to a separate rectangle, containing a single text field:
 
       <p>
         这使得实现者可以依赖与
-        `type`属性关联的值进行[=验证=]。[=类型=]及其关联属性的期望应至少在人类可读的规范中记录，最好在另一个机器可读的表示中记录。
+        `type`属性关联的值进行[=验证=]。[=type=]及其关联属性的期望应至少在人类可读的规范中记录，最好在另一个机器可读的表示中记录。
       </p>
 
       <p class="note">
@@ -1711,8 +1711,8 @@ arrow, to a separate rectangle, containing a single text field:
       </p>
 
       <p>
-        时区定义有时会被其管理机构更改。在更换或发布新的[=可验证证书=]时，实现者应确保当地时区规则的更改不会导致意外的有效期间隙。例如，考虑时区`America/Los_Angeles`，其原始偏移为UTC-8，并在2024年投票决定停止遵循夏令时。一个给定的[=可验证证书=]，其`validUtil`
-        值为`2024-07-12T12:00:00-07:00`，可能会被重新发布，使其`validFrom`值为`2024-07-12T12:00:00-08:00`，这将导致一个小时的间隙，在这个间隙内，[=可验证证书=]将无效。
+        时区定义有时会被其管理机构更改。在更换或发布新的[=可验证凭证=]时，实现者应确保当地时区规则的更改不会导致意外的有效期间隙。例如，考虑时区`America/Los_Angeles`，其原始偏移为UTC-8，并在2024年投票决定停止遵循夏令时。一个给定的[=可验证凭证=]，其`validUtil`
+        值为`2024-07-12T12:00:00-07:00`，可能会被重新发布，使其`validFrom`值为`2024-07-12T12:00:00-08:00`，这将导致一个小时的间隙，在这个间隙内，[=可验证凭证=]将无效。
       </p>
 
       <p>
@@ -2429,11 +2429,11 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p class="note">
-        本规范详细介绍的数据模型并不意味着传递性信任模型，例如由更传统的证书颁发机构信任模型提供的那种。在可验证凭证数据模型中，[=验证者=]要么直接信任[=发行者=]，要么不信任[=发行者=]。虽然可以使用可验证凭证数据模型构建传递性信任模型，但实施者应该
+        本规范详细介绍的数据模型并不意味着传递性信任模型，例如由更传统的凭证颁发机构信任模型提供的那种。在可验证凭证数据模型中，[=验证者=]要么直接信任[=发行者=]，要么不信任[=发行者=]。虽然可以使用可验证凭证数据模型构建传递性信任模型，但实施者应该
         <a href="https://datatracker.ietf.org/doc/draft-iab-web-pki-problems/">了解
           安全弱点</a>，这些弱点是由
         <a href="https://www.usenix.org/conference/imc-05/perils-transitive-trust-domain-name-system">
-          广泛委托信任</a>的方式引入的，这种方式是证书颁发机构系统所采用的。
+          广泛委托信任</a>的方式引入的，这种方式是凭证颁发机构系统所采用的。
       </p>
     </section>
 
@@ -2513,7 +2513,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <p>
         创建完这个 JSON-LD 上下文后，开发人员将其发布到某个地方，以便[=验证者=]可以访问并处理[=可验证凭证=]。
         假设上述 JSON-LD 上下文发布在 `https://example.com/contexts/mycontext.jsonld`，
-        我们可以通过包含上下文并添加新的[=属性=]和[=凭证=]的[=类型=]来扩展这个示例。
+        我们可以通过包含上下文并添加新的[=属性=]和[=凭证=]的[=type=]来扩展这个示例。
       </p>
 
       <pre class="example nohighlight" title="A verifiable credential with a custom extension">
@@ -2783,8 +2783,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         <dt><var id="defn-termsOfUse">termsOfUse</var></dt>
         <dd>
           `termsOfUse`
-          [=属性=]的值必须指定创建者发行[=凭证=]或[=展示=]所遵循的一个或多个使用条款政策。如果接收者（[=持有者=]或[=验证者=]）不愿意遵守指定的使用条款，则他们需要自行承担责任，并且如果违反了规定的使用条款，可能会承担法律责任。每个`termsOfUse`值必须指定其[=类型=]，例如，`IssuerPolicy`，并可以指定其实例`id`。每个使用条款的具体内容由特定的`termsOfUse`
-          [=类型=]定义来确定。
+          [=属性=]的值必须指定创建者发行[=凭证=]或[=展示=]所遵循的一个或多个使用条款政策。如果接收者（[=持有者=]或[=验证者=]）不愿意遵守指定的使用条款，则他们需要自行承担责任，并且如果违反了规定的使用条款，可能会承担法律责任。每个`termsOfUse`值必须指定其[=type=]，例如，`IssuerPolicy`，并可以指定其实例`id`。每个使用条款的具体内容由特定的`termsOfUse`
+          [=type=]定义来确定。
         </dd>
       </dl>
 
@@ -2916,9 +2916,9 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <dl>
         <dt><dfn id="defn-evidence" class="export">evidence</dfn></dt>
         <dd>
-          `evidence` [=属性=]的值必须是一个或多个证据方案，为[=验证者=]提供足够的信息，以确定[=发行者=]收集的证据是否满足其对[=凭证=]的信心要求。每个证据方案由其[=类型=]标识。`id`
+          `evidence` [=属性=]的值必须是一个或多个证据方案，为[=验证者=]提供足够的信息，以确定[=发行者=]收集的证据是否满足其对[=凭证=]的信心要求。每个证据方案由其[=type=]标识。`id`
           [=属性=]是可选的，
-          但如果存在，应包含一个指向有关此证据实例的更多信息的URL。每个证据方案的确切内容由特定的`evidence` [=类型=]定义确定。
+          但如果存在，应包含一个指向有关此证据实例的更多信息的URL。每个证据方案的确切内容由特定的`evidence` [=type=]定义确定。
         </dd>
       </dl>
 
@@ -2957,7 +2957,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p class="note">
         在这个`evidence`示例中，[=发行者=]声称他们将[=凭证=]的[=主体=]与实体驾驶执照的副本进行了匹配，该副本上有所述的驾驶执照号码。这张驾驶执照在发证过程中被用来验证“Example
-        University”在发放证书之前对主体进行了验证，以及他们是如何做到这一点的（实体验证）。
+        University”在发放凭证之前对主体进行了验证，以及他们是如何做到这一点的（实体验证）。
       </p>
 
       <p class="note">
@@ -3510,10 +3510,10 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         媒体类型，如[[RFC6838]]中定义，标识用于表达
-        [=可验证证书=]的语法以及其他有用的处理指南。
+        [=可验证凭证=]的语法以及其他有用的处理指南。
       </p>
       <p>
-        本规范中用于表达数据模型的语法应由媒体类型标识，且在定义或使用与[=可验证证书=]相关的媒体类型时，应遵循本节概述的约定。
+        本规范中用于表达数据模型的语法应由媒体类型标识，且在定义或使用与[=可验证凭证=]相关的媒体类型时，应遵循本节概述的约定。
       </p>
       <p>
         与核心数据模型相关的有两种媒体类型，列在<a href="#iana-considerations">考虑因素</a>一节中：
@@ -3529,7 +3529,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
         <p>
           有时，开发者或系统可能使用较低精度的媒体类型来传递
-          [=可验证证书=]或[=可验证展示=]。使用较低精度媒体类型的一些原因包括：
+          [=可验证凭证=]或[=可验证展示=]。使用较低精度媒体类型的一些原因包括：
         </p>
 
         <ul>
@@ -3559,7 +3559,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             如果JSON文档包含一个顶级`type`字段，其中包含一个`VerifiablePresentation`元素，则假设其为`application/vp+ld+json`媒体类型。仍然期望执行额外的后续检查（根据本规范），以确保有效载荷表达了一个符合规范的可验证展示。
           </li>
           <li>
-            如果JSON文档包含一个顶级`type`字段，其中包含一个`VerifiableCredential`元素，则假设其为`application/vc+ld+json`媒体类型。仍然期望执行额外的后续检查（根据本规范），以确保有效载荷表达了一个符合规范的可验证证书。
+            如果JSON文档包含一个顶级`type`字段，其中包含一个`VerifiableCredential`元素，则假设其为`application/vc+ld+json`媒体类型。仍然期望执行额外的后续检查（根据本规范），以确保有效载荷表达了一个符合规范的可验证凭证。
           </li>
         </ol>
 
@@ -3571,7 +3571,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         <h2>HTTP</h2>
         <p>
           预期HTTP端点将在接受标头和指示内容类型时使用与
-          [=可验证证书=]和[=可验证展示=]相关的媒体类型。
+          [=可验证凭证=]和[=可验证展示=]相关的媒体类型。
         </p>
         <p>
           尽管如此，HTTP服务器可能会忽略接受标头并返回另一种内容类型，或返回错误代码，例如
@@ -3627,11 +3627,11 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </ul>
 
       <p>
-        使用带有JSON Schema的静态上下文文件是实现上述规则的一种可接受方法。这可以在执行[=类型特定的证书处理=]时，确保正确识别术语，进行类型化和排序。
+        使用带有JSON Schema的静态上下文文件是实现上述规则的一种可接受方法。这可以在执行[=类型特定的凭证处理=]时，确保正确识别术语，进行类型化和排序。
       </p>
 
       <p>
-        上述规则保证了通过`@context`机制将字面JSON键映射到URIs的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但只执行[=类型特定的证书处理=]的实现只接受实现提前设计理解的特定`@context`值，从而在不调用任何JSON-LD
+        上述规则保证了通过`@context`机制将字面JSON键映射到URIs的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但只执行[=类型特定的凭证处理=]的实现只接受实现提前设计理解的特定`@context`值，从而在不调用任何JSON-LD
         API的情况下产生相同的语义。换句话说，通过使用`@context`，数据交换发生的上下文对两种处理机制都明确地声明，从而导致相同的[=符合文档=]语义。
       </p>
 
@@ -4188,14 +4188,14 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section class="informative">
-      <h3>证书的聚合</h3>
+      <h3>凭证的聚合</h3>
 
       <p>
-        持有关于同一[=主体=]的两份信息几乎总是会揭示出比两份信息之和更多的关于[=主体=]的信息，即使这些信息是通过不同的渠道传递的。[=可验证证书=]的聚合是一个隐私风险，生态系统中的所有参与者都需要意识到数据聚合的风险。
+        持有关于同一[=主体=]的两份信息几乎总是会揭示出比两份信息之和更多的关于[=主体=]的信息，即使这些信息是通过不同的渠道传递的。[=可验证凭证=]的聚合是一个隐私风险，生态系统中的所有参与者都需要意识到数据聚合的风险。
       </p>
 
       <p>
-        例如，如果两个[=持有者证书=]，一个是电子邮件地址，另一个声明[=持有者=]已经超过21岁，都在多个会话中提供，那么信息的[=验证者=]现在就拥有了该个体的唯一标识符以及与年龄相关的信息。现在很容易为[=持有者=]创建和建立一个档案，以便随着时间的推移泄露出越来越多的信息。在彼此串通的多个网站上也可以进行[=证书=]的聚合，这会导致隐私侵犯。
+        例如，如果两个[=持有者凭证=]，一个是电子邮件地址，另一个声明[=持有者=]已经超过21岁，都在多个会话中提供，那么信息的[=验证者=]现在就拥有了该个体的唯一标识符以及与年龄相关的信息。现在很容易为[=持有者=]创建和建立一个档案，以便随着时间的推移泄露出越来越多的信息。在彼此串通的多个网站上也可以进行[=凭证=]的聚合，这会导致隐私侵犯。
       </p>
 
       <p>
@@ -4211,24 +4211,24 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>使用模式</h3>
 
       <p>
-        尽管我们竭尽全力确保隐私，但实际使用[=可验证证书=]可能会导致去匿名化和隐私丧失。这种关联可能发生在以下情况：
+        尽管我们竭尽全力确保隐私，但实际使用[=可验证凭证=]可能会导致去匿名化和隐私丧失。这种关联可能发生在以下情况：
       </p>
 
       <ul>
         <li>
-          相同的[=可验证证书=]被展示给同一个[=验证者=]多次。[=验证者=]可以推断出[=持有者=]是同一个人。
+          相同的[=可验证凭证=]被展示给同一个[=验证者=]多次。[=验证者=]可以推断出[=持有者=]是同一个人。
         </li>
         <li>
-          相同的[=可验证证书=]被展示给不同的[=验证者=]，这些[=验证者=]串通起来或者第三方可以访问来自两个[=验证者=]的交易记录。一个观察者可以推断出展示[=可验证证书=]的个体在两个服务中是同一个人。也就是说，这些账户由同一个人控制。
+          相同的[=可验证凭证=]被展示给不同的[=验证者=]，这些[=验证者=]串通起来或者第三方可以访问来自两个[=验证者=]的交易记录。一个观察者可以推断出展示[=可验证凭证=]的个体在两个服务中是同一个人。也就是说，这些账户由同一个人控制。
         </li>
         <li>
-          [=证书=]的[=主体=]标识符在多个[=展示文稿=]或[=验证者=]中都指向同一个[=主体=]。即使展示的[=证书=]不同，如果[=主体=]标识符相同，[=验证者=]（以及那些可以访问[=验证者=]日志的人）可以推断出[=证书=]的[=持有者=]是同一个人。
+          [=凭证=]的[=主体=]标识符在多个[=展示文稿=]或[=验证者=]中都指向同一个[=主体=]。即使展示的[=凭证=]不同，如果[=主体=]标识符相同，[=验证者=]（以及那些可以访问[=验证者=]日志的人）可以推断出[=凭证=]的[=持有者=]是同一个人。
         </li>
         <li>
-          [=证书=]中的基本信息可以用于在各种服务中识别个人。在这种情况下，使用来自其他来源的信息（包括由[=持有者=]直接提供的信息），[=验证者=]可以使用[=证书=]中的信息将个人与现有的个人资料进行关联。例如，如果[=持有者=]展示包含邮政编码、年龄和性别的[=证书=]，[=验证者=]可以将该[=证书=]的[=主体=]与已建立的个人资料进行关联。有关更多信息，请参阅[[DEMOGRAPHICS]]。
+          [=凭证=]中的基本信息可以用于在各种服务中识别个人。在这种情况下，使用来自其他来源的信息（包括由[=持有者=]直接提供的信息），[=验证者=]可以使用[=凭证=]中的信息将个人与现有的个人资料进行关联。例如，如果[=持有者=]展示包含邮政编码、年龄和性别的[=凭证=]，[=验证者=]可以将该[=凭证=]的[=主体=]与已建立的个人资料进行关联。有关更多信息，请参阅[[DEMOGRAPHICS]]。
         </li>
         <li>
-          将[=证书=]的标识符传递给一个集中式撤销服务器。集中式服务器可以在交互过程中关联[=证书=]的使用。例如，如果以这种方式使用[=证书=]作为年龄证明，集中式服务可以知道[=证书=]展示的所有地方（所有的酒类商店、酒吧、成人商店、彩票购买等）。
+          将[=凭证=]的标识符传递给一个集中式撤销服务器。集中式服务器可以在交互过程中关联[=凭证=]的使用。例如，如果以这种方式使用[=凭证=]作为年龄证明，集中式服务可以知道[=凭证=]展示的所有地方（所有的酒类商店、酒吧、成人商店、彩票购买等）。
         </li>
       </ul>
 
@@ -4238,13 +4238,13 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <ul>
         <li>
-          使用全球唯一标识符作为任何给定[=证书=]的[=主体=]，并且永远不要重复使用该[=证书=]。
+          使用全球唯一标识符作为任何给定[=凭证=]的[=主体=]，并且永远不要重复使用该[=凭证=]。
         </li>
         <li>
-          如果[=证书=]支持撤销，使用全球分布式服务进行撤销。
+          如果[=凭证=]支持撤销，使用全球分布式服务进行撤销。
         </li>
         <li>
-          设计不依赖于提交[=证书=] ID 的撤销 API。例如，使用撤销列表而不是查询。
+          设计不依赖于提交[=凭证=] ID 的撤销 API。例如，使用撤销列表而不是查询。
         </li>
         <li>
           避免将个人身份信息与任何特定的长期[=主体=]标识符关联起来。
@@ -4259,11 +4259,11 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        [=可验证证书=]还将被用于在服务之间有意识地关联个人，例如，在使用通用角色登录多个服务时，以便在这些服务上的所有活动都有意识地与同一个个人关联。只要每个服务都按照预期的方式使用关联，这就不是一个隐私问题。
+        [=可验证凭证=]还将被用于在服务之间有意识地关联个人，例如，在使用通用角色登录多个服务时，以便在这些服务上的所有活动都有意识地与同一个个人关联。只要每个服务都按照预期的方式使用关联，这就不是一个隐私问题。
       </p>
 
       <p>
-        [=证书=]使用的隐私风险发生在因展示[=证书=]而产生意外或意料之外的关联时。
+        [=凭证=]使用的隐私风险发生在因展示[=凭证=]而产生意外或意料之外的关联时。
       </p>
     </section>
 
@@ -4659,7 +4659,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </p>
 
     <section>
-      <h3>语言和基础方向</h3>
+      <h3 id="language-and-base-direction">语言和基础方向</h3>
 
       <p>
         强烈建议数据发布者阅读<em>网络上的字符串：语言和方向元数据</em>文档[[STRING-META]]中的跨语法表达部分，以确保能够在多种表达语法中，如[[JSON-LD11]]，[[JSON]]和CBOR
@@ -4921,7 +4921,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         如果`credentialStatus`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialStatus`
-        [=类型=]定义以及[=验证者=]自己的状态评估标准来评估[=可验证凭证=]的状态。例如，[=验证者=]可以确保[=可验证凭证=]的状态不是“由[=发行者=]撤销原因”。
+        [=type=]定义以及[=验证者=]自己的状态评估标准来评估[=可验证凭证=]的状态。例如，[=验证者=]可以确保[=可验证凭证=]的状态不是“由[=发行者=]撤销原因”。
       </p>
     </section>
 
@@ -4930,7 +4930,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         如果`credentialSchema`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialSchema`
-        [=类型=]定义以及[=验证者=]自己的模式评估标准来评估[=可验证凭证=]的模式。例如，如果`credentialSchema`的`type`值为[[?VC-JSON-SCHEMA]]，那么[=验证者=]可以确保凭证的数据符合给定的JSON模式。
+        [=type=]定义以及[=验证者=]自己的模式评估标准来评估[=可验证凭证=]的模式。例如，如果`credentialSchema`的`type`值为[[?VC-JSON-SCHEMA]]，那么[=验证者=]可以确保凭证的数据符合给定的JSON模式。
       </p>
     </section>
 

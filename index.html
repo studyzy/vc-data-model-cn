@@ -3208,7 +3208,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         与本规范中定义的扩展点相关联的规范的非官方列表，以及本节中定义的保留扩展点，可在可验证凭证规范目录 [[?VC-SPECS]] 中找到。
         目录中涉及保留扩展点的项目应被视为实验性质。
       </p>
-      
+
 
     </section>
 
@@ -3271,16 +3271,20 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>可验证凭证图</h3>
 
       <p>
-        在表达[=可验证凭证=]（例如在[=展示=]中）时，确保一个[=可验证凭证=]中的数据不会被误认为是另一个[=可验证凭证=]中的相同数据是很重要的。例如，如果有两个[=可验证凭证=]，每个都包含以下形式的对象：`{"type": "Person", "name": "Jane
+        在表达[=可验证凭证=]（例如在[=展示=]中）时，确保一个[=可验证凭证=]中的数据不会被误认为是另一个[=可验证凭证=]中的相同数据是很重要的。例如，如果有两个[=可验证凭证=]，每个都包含以下形式的对象：`{"type":
+        "Person", "name": "Jane
         Doe"}`，就无法判断一个对象是否在描述与另一个对象相同的人。换句话说，在确认两个[=可验证凭证=]讨论的是相同实体和/或属性之前，合并两个[=可验证凭证=]之间的数据可能会导致数据集损坏。
       </p>
 
       <p>
-        为了确保来自不同[=可验证凭证=]的数据不会意外地混合在一起，使用<dfn class="export">可验证凭证图</dfn>的概念来封装每个[=可验证凭证=]。对于简单的[=可验证凭证=]，即JSON-LD文档包含一个可能带有关联证明的单一凭证时，此图是[=默认图=]。对于[=展示=]，与[=展示=]的`verifiableCredential`属性关联的每个值都是一个单独的[=命名图=]，类型为<dfn class="export">VerifiableCredentialGraph</dfn>，其中包含一个[=可验证凭证=]或一个
+        为了确保来自不同[=可验证凭证=]的数据不会意外地混合在一起，使用<dfn
+          class="export">可验证凭证图</dfn>的概念来封装每个[=可验证凭证=]。对于简单的[=可验证凭证=]，即JSON-LD文档包含一个可能带有关联证明的单一凭证时，此图是[=默认图=]。对于[=展示=]，与[=展示=]的`verifiableCredential`属性关联的每个值都是一个单独的[=命名图=]，类型为<dfn
+          class="export">VerifiableCredentialGraph</dfn>，其中包含一个[=可验证凭证=]或一个
         <a href="#enveloped-verifiable-credentials">封装的可验证凭证</a>。
       </p>
       <p>
-        使用这些[=图=]在执行JSON-LD处理时会产生具体效果，这样可以正确地将一个图中的图节点标识符与另一个图中的图节点标识符分开。将输入限制为特定于应用程序的JSON-LD文档的实现者在将一个[=可验证凭证=]中的数据与另一个[=可验证凭证=]中的数据合并时，也需要考虑到这一点，例如，当`credentialSubject.id`在两个[=可验证凭证=]中都相同时，但对象可能包含前一段中描述的"Jane Doe"形式的对象。在不包含使用全局标识符（如URL）的`id`属性的情况下，不要合并看似具有相似属性的对象非常重要。
+        使用这些[=图=]在执行JSON-LD处理时会产生具体效果，这样可以正确地将一个图中的图节点标识符与另一个图中的图节点标识符分开。将输入限制为特定于应用程序的JSON-LD文档的实现者在将一个[=可验证凭证=]中的数据与另一个[=可验证凭证=]中的数据合并时，也需要考虑到这一点，例如，当`credentialSubject.id`在两个[=可验证凭证=]中都相同时，但对象可能包含前一段中描述的"Jane
+        Doe"形式的对象。在不包含使用全局标识符（如URL）的`id`属性的情况下，不要合并看似具有相似属性的对象非常重要。
       </p>
     </section>
 
@@ -3288,7 +3292,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>安全机制规范</h3>
 
       <p>
-        如第<a href="#securing-mechanisms">节</a>所述，实现者在保护[=符合规范的文档=]时可以使用多种策略。为了最大化实用性和互操作性，希望建立新的保护[=符合规范的文档=]方法的规范作者可以参考本节的指南。
+        如第<a
+          href="#securing-mechanisms">节</a>所述，实现者在保护[=符合规范的文档=]时可以使用多种策略。为了最大化实用性和互操作性，希望建立新的保护[=符合规范的文档=]方法的规范作者可以参考本节的指南。
       </p>
 
       <p>
@@ -3296,7 +3301,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=字节序列=] |inputBytes|）或文档（[=映射=] |inputDocument|）和媒体类型（[=字符串=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
+        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=字节序列=]
+        |inputBytes|）或文档（[=映射=] |inputDocument|）和媒体类型（[=字符串=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
       </p>
 
       <dl>
@@ -3319,7 +3325,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        安全机制规范应为对验证至关重要的URL引用的任何信息提供完整性保护。可以实现此保护的机制在第<a href="#integrity-of-related-resources">节</a>和第<a href="#base-context">节</a>中有讨论。
+        安全机制规范应为对验证至关重要的URL引用的任何信息提供完整性保护。可以实现此保护的机制在第<a href="#integrity-of-related-resources">节</a>和第<a
+          href="#base-context">节</a>中有讨论。
       </p>
 
       <p>
@@ -3349,7 +3356,9 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p class="note" title="选择安全机制取决于用例">
-        有多种可接受的安全机制，本规范并未规定任何特定的安全机制用于[=可验证凭证=]或[=可验证演示文稿=]。制定本规范的工作组确实对两种安全机制选项进行了标准化，分别是：[[[VC-DATA-INTEGRITY]]] [[VC-DATA-INTEGRITY]]和[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]。社区已知的其他安全机制可以在[[[?VC-SPECS]]] [[?VC-SPECS]]的<a data-cite="?VC-SPECS#securing-mechanisms">安全机制</a>部分找到。
+        有多种可接受的安全机制，本规范并未规定任何特定的安全机制用于[=可验证凭证=]或[=可验证演示文稿=]。制定本规范的工作组确实对两种安全机制选项进行了标准化，分别是：[[[VC-DATA-INTEGRITY]]]
+        [[VC-DATA-INTEGRITY]]和[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]。社区已知的其他安全机制可以在[[[?VC-SPECS]]] [[?VC-SPECS]]的<a
+          data-cite="?VC-SPECS#securing-mechanisms">安全机制</a>部分找到。
       </p>
 
     </section>
@@ -3412,7 +3421,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        [[!JSON-LD11]] 在扩展本规范中描述的数据模型时非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包括 `@context` [=property=]。 
+        [[!JSON-LD11]] 在扩展本规范中描述的数据模型时非常有用。数据模型的实例以 JSON-LD 紧凑形式 [[!JSON-LD11]] 编码，并包括 `@context` [=property=]。
         <a href="https://www.w3.org/TR/json-ld/#the-context">JSON-LD 上下文</a>
         在 [[!JSON-LD11]] 规范中详细描述，其用法在第 <a href="#contexts"></a> 节和
         第 <a href="#extensibility"></a> 节中进一步阐述。
@@ -3426,15 +3435,20 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        本规范限制了对数据模型的 JSON-LD 表示的使用。JSON-LD <a href="https://www.w3.org/TR/json-ld/#compacted-document-form">紧凑文档形式</a> 必须用于基本媒体类型 `application/vc+ld+json` 中的数据模型的所有表示。
+        本规范限制了对数据模型的 JSON-LD 表示的使用。JSON-LD <a href="https://www.w3.org/TR/json-ld/#compacted-document-form">紧凑文档形式</a>
+        必须用于基本媒体类型 `application/vc+ld+json` 中的数据模型的所有表示。
       </p>
 
       <p>
-        如第 <a href="#credential-type-specific-processing"></a> 节中详细阐述的那样，某些软件应用可能不执行通用的 JSON-LD 处理。 [=conforming documents=] 的作者应注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=verifiable credential=] 或 [=verifiable presentation=] 中的值（例如，通过全局设置 `@base` 关键字），互操作性可能会降低。例如，全局设置这些值可能会在执行 [=credential type-specific processing=] 的实现中触发对 `@context` 值的错误实现的 JSON Schema 检查，而该实现并未期望在 `@context` 值中表达 `@base` 值。
+        如第 <a href="#credential-type-specific-processing"></a> 节中详细阐述的那样，某些软件应用可能不执行通用的 JSON-LD 处理。 [=conforming
+        documents=] 的作者应注意，如果在 `@context` 值中使用 JSON-LD 关键字全局影响 [=verifiable credential=] 或 [=verifiable presentation=]
+        中的值（例如，通过全局设置 `@base` 关键字），互操作性可能会降低。例如，全局设置这些值可能会在执行 [=credential type-specific processing=] 的实现中触发对 `@context`
+        值的错误实现的 JSON Schema 检查，而该实现并未期望在 `@context` 值中表达 `@base` 值。
       </p>
 
       <p>
-        为了提高互操作性，建议 [=conforming document=] 作者不要使用在执行 [=credential type-specific processing=] 时不容易检测到的 JSON-LD 功能。这些功能包括：
+        为了提高互操作性，建议 [=conforming document=] 作者不要使用在执行 [=credential type-specific processing=] 时不容易检测到的 JSON-LD
+        功能。这些功能包括：
       </p>
 
       <ul>
@@ -3447,7 +3461,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         <li>
           使用 JSON-LD 术语和类型的完整 URL（例如，
           `https://www.w3.org/2018/credentials#VerifiableCredential` 或
-          `https://vocab.example/myvocab#SomeNewType`）而不是使用任何这样的值的简短形式（例如，`VerifiableCredential` 或 `SomeNewType`），这些值要么被明确定义为 JSON-LD `@context` 映射（例如，
+          `https://vocab.example/myvocab#SomeNewType`）而不是使用任何这样的值的简短形式（例如，`VerifiableCredential` 或
+          `SomeNewType`），这些值要么被明确定义为 JSON-LD `@context` 映射（例如，
           `https://www.w3.org/ns/credentials/v2`），要么通过适用于所有未定义术语的 `@vocab` 功能隐式定义。
         </li>
       </ul>
@@ -3554,7 +3569,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         `application/vc+ld+json` 和 `application/vp+ld+json`。
       </p>
       <p>
-        `application/vc+ld+json` 和 `application/vp+ld+json` 媒体类型并不暗示任何特定的安全机制，但是预期将与安全机制一起使用。需要应用一个安全机制来保护这些媒体类型的完整性。不论用于通信的媒体类型是什么，都不要假设内容的安全性。
+        `application/vc+ld+json` 和 `application/vp+ld+json`
+        媒体类型并不暗示任何特定的安全机制，但是预期将与安全机制一起使用。需要应用一个安全机制来保护这些媒体类型的完整性。不论用于通信的媒体类型是什么，都不要假设内容的安全性。
       </p>
 
       <section class="informative">
@@ -3655,7 +3671,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        上述规则保证了通过`@context`机制将字面JSON键映射到URI的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但执行[=凭证类型特定处理=]的实现只接受特定的`@context`值，这些值是实现事先设计好的，从而在不调用任何JSON-LD API的情况下实现相同的语义。换句话说，通过使用`@context`以导致相同的[=符合要求的文档=]语义的方式，明确说明了数据交换发生的上下文，以便两种处理机制都能使用。
+        上述规则保证了通过`@context`机制将字面JSON键映射到URI的两种处理机制之间的语义互操作性。虽然[=通用JSON-LD处理=]可以使用其算法中提供的以前未见过的`@context`值来验证所有术语是否正确指定，但执行[=凭证类型特定处理=]的实现只接受特定的`@context`值，这些值是实现事先设计好的，从而在不调用任何JSON-LD
+        API的情况下实现相同的语义。换句话说，通过使用`@context`以导致相同的[=符合要求的文档=]语义的方式，明确说明了数据交换发生的上下文，以便两种处理机制都能使用。
       </p>
 
     </section>
@@ -3666,7 +3683,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     <h2>算法</h2>
 
     <p>
-      本节包含可供实现使用的算法，以执行常见操作，如验证。以算法表述的一致性要求使用[[[INFRA]]] [[INFRA]]中的规范性概念。有关实现要求的更多指导，请参阅[[[INFRA]]]中关于<a data-cite="INFRA#conformance">一致性</a>的部分。
+      本节包含可供实现使用的算法，以执行常见操作，如验证。以算法表述的一致性要求使用[[[INFRA]]] [[INFRA]]中的规范性概念。有关实现要求的更多指导，请参阅[[[INFRA]]]中关于<a
+        data-cite="INFRA#conformance">一致性</a>的部分。
     </p>
 
     <p class="issue atrisk" title="在候选推荐之前需要解决的问题">
@@ -3683,7 +3701,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>验证</h3>
 
       <p>
-        本节包含一个算法，该算法是[=符合验证器实现=]在验证[=可验证凭证=]或[=可验证演示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=] |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
+        本节包含一个算法，该算法是[=符合验证器实现=]在验证[=可验证凭证=]或[=可验证演示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=]
+        |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
       </p>
 
       <ul>
@@ -3719,7 +3738,9 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           通过执行以下步骤，确保保护机制已正确保护[=符合的文档=]：
           <ol class="algorithm">
             <li>
-              使用|inputMediaType|和[[[?VC-SPECS]]] [[?VC-SPECS]]的<a data-cite="?VC-SPECS#securing-mechanisms">保护机制</a>部分，或实现已知的其他机制，来确定在验证保护机制时使用的加密套件，从而设置|verifyProof|函数。|verifyProof|函数必须实现在<a href="#securing-mechanisms"></a>中描述的接口。
+              使用|inputMediaType|和[[[?VC-SPECS]]] [[?VC-SPECS]]的<a
+                data-cite="?VC-SPECS#securing-mechanisms">保护机制</a>部分，或实现已知的其他机制，来确定在验证保护机制时使用的加密套件，从而设置|verifyProof|函数。|verifyProof|函数必须实现在<a
+                href="#securing-mechanisms"></a>中描述的接口。
               <div class="issue" title="“确定”的机制正在详细说明">
                 目前，工作组担心“确定”的算法可能需要更正式地定义。目前，没有实现遇到确定适当的|verifyProof|算法使用的问题，但工作组正在尝试看看在这里说更多是否值得。可以添加额外的示例语言，说明实现可能有一个可接受的加密套件的允许列表——这些将用作查找要验证的匹配证明的输入。
               </div>
@@ -3728,12 +3749,14 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
               将|result|设置为将|inputBytes|和|inputMediaType|传递给|verifyProof|函数的结果。如果调用成功，|result|将包含|status|、|document|、|mediaType|、|controller|、|controllerDocument|、|warnings|和|errors|属性。
             </li>
             <li>
-              如果|result|.|status|设置为`false`，则将<a href="#CRYPTOGRAPHIC_SECURITY_ERROR">CRYPTOGRAPHIC_SECURITY_ERROR</a>添加到|result|.|errors|。
+              如果|result|.|status|设置为`false`，则将<a
+                href="#CRYPTOGRAPHIC_SECURITY_ERROR">CRYPTOGRAPHIC_SECURITY_ERROR</a>添加到|result|.|errors|。
             </li>
           </ol>
         </li>
         <li>
-          如果|result|.|status|设置为`true`，确保|result|.|document|是一个[=符合的文档=]。如果不是，将|result|.|status|设置为`false`，从|result|中删除|document|属性，并至少向|result|.|errors|添加一个<a href="#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>。可能包含其他警告和错误以帮助任何调试过程。
+          如果|result|.|status|设置为`true`，确保|result|.|document|是一个[=符合的文档=]。如果不是，将|result|.|status|设置为`false`，从|result|中删除|document|属性，并至少向|result|.|errors|添加一个<a
+            href="#MALFORMED_VALUE_ERROR">MALFORMED_VALUE_ERROR</a>。可能包含其他警告和错误以帮助任何调试过程。
         </li>
         <li>
           返回|result|。
@@ -3837,7 +3860,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <figure>
-        <img style="margin: auto; display: block; width: 80%;" src="diagrams/privacy-spectrum.svg" alt="水平条形图，左侧为红色，中间为橙色，右侧为绿色。红色部分的文字为'高度关联（全球ID），例如，政府ID，邮寄地址，信用卡号码'。橙色部分的文字为'通过勾结关联（个人身份信息），例如，姓名，生日，邮政编码'。绿色部分的文字为'不可关联（化名），例如，年龄超过21岁'。">
+        <img style="margin: auto; display: block; width: 80%;" src="diagrams/privacy-spectrum.svg"
+          alt="水平条形图，左侧为红色，中间为橙色，右侧为绿色。红色部分的文字为'高度关联（全球ID），例如，政府ID，邮寄地址，信用卡号码'。橙色部分的文字为'通过勾结关联（个人身份信息），例如，姓名，生日，邮政编码'。绿色部分的文字为'不可关联（化名），例如，年龄超过21岁'。">
         <figcaption style="text-align: center;">
           从伪名到完全识别的隐私范围。
         </figcaption>
@@ -3860,18 +3884,22 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>软件信任边界</h3>
 
       <p>
-        在本规范所描述的<a href="#ecosystem-overview">生态系统</a>中存在各种信任关系。个人使用Web浏览器时，信任Web浏览器（也称为<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>）不会将他们的个人信息上传到数据代理；同样，填充本规范所描述的生态系统中的角色的实体信任代表这些角色的软件。示例包括以下内容：
+        在本规范所描述的<a href="#ecosystem-overview">生态系统</a>中存在各种信任关系。个人使用Web浏览器时，信任Web浏览器（也称为<a
+          href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>）不会将他们的个人信息上传到数据代理；同样，填充本规范所描述的生态系统中的角色的实体信任代表这些角色的软件。示例包括以下内容：
       </p>
 
       <ul>
         <li>
-          [=发行者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（发行者软件），例如在线教育平台，预期只向发行者确认已完成其教育计划的个人发行[=可验证凭证=]。
+          [=发行者=]的<a
+            href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（发行者软件），例如在线教育平台，预期只向发行者确认已完成其教育计划的个人发行[=可验证凭证=]。
         </li>
         <li>
-          [=验证者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（验证软件），例如招聘网站，预期只允许具有有效验证状态的个人访问，这些个人向平台提供[=可验证凭证=]和[=可验证演示文稿=]。
+          [=验证者=]的<a
+            href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（验证软件），例如招聘网站，预期只允许具有有效验证状态的个人访问，这些个人向平台提供[=可验证凭证=]和[=可验证演示文稿=]。
         </li>
         <li>
-          [=持有者=]的<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（持有者软件），例如数字钱包，预期只有在[=持有者=]同意释放该信息时才会向[=验证者=]泄露信息。
+          [=持有者=]的<a
+            href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>（持有者软件），例如数字钱包，预期只有在[=持有者=]同意释放该信息时才会向[=验证者=]泄露信息。
         </li>
       </ul>
 
@@ -3880,7 +3908,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        建议读者注意，某些软件（例如为单个[=验证者=]和多个[=持有者=]提供服务的网站）可能作为<a href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>同时为这两个角色提供服务，但可能无法始终同时为所有各方的最佳利益服务。例如，如果该网站检测到多个[=持有者=]之间存在欺诈性[=可验证凭证=]的使用尝试，它可能会向[=验证者=]报告此类异常，这可能被认为不符合犯规的[=持有者=]的最佳利益，但符合[=验证者=]以及任何<em>不</em>犯此类违规行为的[=持有者=]的最佳利益。强烈建议在软件以这种方式运行时，通过诸如网站使用政策之类的机制明确软件是在谁的最佳利益下运行。
+        建议读者注意，某些软件（例如为单个[=验证者=]和多个[=持有者=]提供服务的网站）可能作为<a
+          href="https://www.w3.org/TR/UAAG20/#def-user-agent">用户代理</a>同时为这两个角色提供服务，但可能无法始终同时为所有各方的最佳利益服务。例如，如果该网站检测到多个[=持有者=]之间存在欺诈性[=可验证凭证=]的使用尝试，它可能会向[=验证者=]报告此类异常，这可能被认为不符合犯规的[=持有者=]的最佳利益，但符合[=验证者=]以及任何<em>不</em>犯此类违规行为的[=持有者=]的最佳利益。强烈建议在软件以这种方式运行时，通过诸如网站使用政策之类的机制明确软件是在谁的最佳利益下运行。
       </p>
     </section>
 
@@ -3892,7 +3921,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        强烈建议实施者在[=持有者=]分享这类特征的数据时进行警告。强烈建议[=发行者=]在可能的情况下提供保护隐私的[=可验证凭证=]。例如，当一个[=验证者=]想要确定一个[=实体=]是否已满18岁时，发行`ageOver` [=可验证凭证=]而不是出生日期[=可验证凭证=]。
+        强烈建议实施者在[=持有者=]分享这类特征的数据时进行警告。强烈建议[=发行者=]在可能的情况下提供保护隐私的[=可验证凭证=]。例如，当一个[=验证者=]想要确定一个[=实体=]是否已满18岁时，发行`ageOver`
+        [=可验证凭证=]而不是出生日期[=可验证凭证=]。
       </p>
 
       <p>
@@ -3993,7 +4023,9 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        Oblivious HTTP协议[[?OHTTP]]是实施者在获取与[=可验证的凭证=]或[=可验证的展示=]相关的外部资源时可能会考虑使用的一种机制。Oblivious HTTP允许客户端向源服务器发送多个请求，而该服务器无法将这些请求链接到该客户端，甚至无法识别这些请求来自同一个客户端，同时只对用于转发消息的节点有限的信任。因此，Oblivious HTTP是一种可以用来减少设备追踪和指纹识别可能性的保护隐私的机制。以下包含了Oblivious HTTP如何使生态系统参与者受益的具体示例。
+        Oblivious HTTP协议[[?OHTTP]]是实施者在获取与[=可验证的凭证=]或[=可验证的展示=]相关的外部资源时可能会考虑使用的一种机制。Oblivious
+        HTTP允许客户端向源服务器发送多个请求，而该服务器无法将这些请求链接到该客户端，甚至无法识别这些请求来自同一个客户端，同时只对用于转发消息的节点有限的信任。因此，Oblivious
+        HTTP是一种可以用来减少设备追踪和指纹识别可能性的保护隐私的机制。以下包含了Oblivious HTTP如何使生态系统参与者受益的具体示例。
       </p>
 
       <ul>
@@ -4013,7 +4045,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         为了让[=可验证凭证=]的接收者在各种情况下使用它们，而无需透露比交易所需更多的个人身份信息（PII），[=发行者=]应考虑将发布在[=凭证=]中的信息限制为预期目的所需的最小集合。避免在[=凭证=]中放置个人身份信息的一种方法是使用一种抽象的[=属性=]，该属性满足[=验证者=]的需求，而无需提供关于[=主题=]的具体信息。
       </p>
       <p>
-        例如，本文档使用了`ageOver` [=属性=]，而不是具体的出生日期，后者构成了更强的个人身份信息。如果某个特定市场的零售商通常要求购买者年龄大于某个年龄，那么在该市场受信任的[=发行者=]可能会选择提供一种[=可验证凭证=]，声称[=主题=]已经满足了该要求，而不是提供包含关于具体出生日期的[=声明=]的[=可验证凭证=]。这使得个人顾客可以在不透露具体个人身份信息的情况下进行购买。
+        例如，本文档使用了`ageOver`
+        [=属性=]，而不是具体的出生日期，后者构成了更强的个人身份信息。如果某个特定市场的零售商通常要求购买者年龄大于某个年龄，那么在该市场受信任的[=发行者=]可能会选择提供一种[=可验证凭证=]，声称[=主题=]已经满足了该要求，而不是提供包含关于具体出生日期的[=声明=]的[=可验证凭证=]。这使得个人顾客可以在不透露具体个人身份信息的情况下进行购买。
       </p>
     </section>
 
@@ -4090,38 +4123,38 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 }
         </pre>
 
-        <p>
-          虽然[=持票人凭证=]可以增强隐私，但必须精心设计，以免意外泄露比[=持有人=]
-          预期的更多信息。例如，在多个站点上重复使用相同的
-          [=持票人凭证=]使这些站点可能串通起来不当地跟踪或关联[=持有人=]。同样，
-          可能看似非识别的信息，如出生日期和邮政编码，在同一[=持票人凭证=]或会话中一起使用时
-          可以用于统计识别个人。
-        </p>
-  
-        <p>
-          [=发行人=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
-        </p>
-  
-        <ul>
-          <li>
-            尽可能实现一次性使用。
-          </li>
-          <li>
-            不包含个人识别信息。
-          </li>
-          <li>
-            不会过度关联。
-          </li>
-        </ul>
-  
-        <p>
-          如果发行或请求包含敏感信息的[=持票人凭证=]，或者在一个或多个会话中组合两个或多个[=持票人凭证=]时存在关联风险，
-          [=持有人=]应被其软件警告。虽然检测到所有关联风险可能是不可能的，但某些风险肯定是可以检测到的。
-        </p>
-  
-        <p>
-          [=验证者=]不应请求可用于不当关联[=持有人=]的[=持票人凭证=]。
-        </p>
+      <p>
+        虽然[=持票人凭证=]可以增强隐私，但必须精心设计，以免意外泄露比[=持有人=]
+        预期的更多信息。例如，在多个站点上重复使用相同的
+        [=持票人凭证=]使这些站点可能串通起来不当地跟踪或关联[=持有人=]。同样，
+        可能看似非识别的信息，如出生日期和邮政编码，在同一[=持票人凭证=]或会话中一起使用时
+        可以用于统计识别个人。
+      </p>
+
+      <p>
+        [=发行人=]应确保[=持票人凭证=]提供增强隐私的好处，包括：
+      </p>
+
+      <ul>
+        <li>
+          尽可能实现一次性使用。
+        </li>
+        <li>
+          不包含个人识别信息。
+        </li>
+        <li>
+          不会过度关联。
+        </li>
+      </ul>
+
+      <p>
+        如果发行或请求包含敏感信息的[=持票人凭证=]，或者在一个或多个会话中组合两个或多个[=持票人凭证=]时存在关联风险，
+        [=持有人=]应被其软件警告。虽然检测到所有关联风险可能是不可能的，但某些风险肯定是可以检测到的。
+      </p>
+
+      <p>
+        [=验证者=]不应请求可用于不当关联[=持有人=]的[=持票人凭证=]。
+      </p>
     </section>
 
     <section class="informative">
@@ -4333,11 +4366,13 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>声明发行频率</h3>
 
       <p>
-        如第<a href="#usage-patterns"></a>节详述，使用模式可以与某些类型的行为相关联。当[=持有者=]在不知道[=发行者=]的情况下使用[=可验证凭证=]时，这种关联的一部分就被减轻了。然而，[=发行者=]可以通过使其[=可验证凭证=]的有效期短暂且自动更新来破坏这种保护。
+        如第<a
+          href="#usage-patterns"></a>节详述，使用模式可以与某些类型的行为相关联。当[=持有者=]在不知道[=发行者=]的情况下使用[=可验证凭证=]时，这种关联的一部分就被减轻了。然而，[=发行者=]可以通过使其[=可验证凭证=]的有效期短暂且自动更新来破坏这种保护。
       </p>
 
       <p>
-        例如，`ageOver` [=可验证凭证=]对于进入酒吧是有用的。如果[=发行者=]发行这样一个具有非常短的有效期和自动更新机制的[=可验证凭证=]，那么[=发行者=]可能会以一种对[=持有者=]产生负面影响的方式关联[=持有者=]的行为。
+        例如，`ageOver`
+        [=可验证凭证=]对于进入酒吧是有用的。如果[=发行者=]发行这样一个具有非常短的有效期和自动更新机制的[=可验证凭证=]，那么[=发行者=]可能会以一种对[=持有者=]产生负面影响的方式关联[=持有者=]的行为。
       </p>
 
       <p>
@@ -4459,9 +4494,9 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 }
         </pre>
 
-        <p>
-          尽管本规范没有推荐任何特定的内容完整性保护，但建议希望确保链接到内容具有完整性保护的文档作者使用强制内容完整性的URL方案。
-        </p>
+      <p>
+        尽管本规范没有推荐任何特定的内容完整性保护，但建议希望确保链接到内容具有完整性保护的文档作者使用强制内容完整性的URL方案。
+      </p>
 
       <pre class="example nohighlight" title="Content-integrity protection for links to external data">
 {
@@ -4482,13 +4517,13 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 }
         </pre>
 
-        <p class="note">
-          上述JSON-LD上下文是否需要保护是有争议的，因为预期生产实现将配备重要的JSON-LD上下文的静态副本。
-        </p>
-  
-        <p>
-          虽然上述示例是实现内容完整性保护的一种方式，但对于某些应用程序，可能有其他更适合的解决方案。实施者被敦促理解链接到未受内容完整性保护的外部机器可读内容可能如何导致对他们的应用程序的成功攻击。
-        </p>
+      <p class="note">
+        上述JSON-LD上下文是否需要保护是有争议的，因为预期生产实现将配备重要的JSON-LD上下文的静态副本。
+      </p>
+
+      <p>
+        虽然上述示例是实现内容完整性保护的一种方式，但对于某些应用程序，可能有其他更适合的解决方案。实施者被敦促理解链接到未受内容完整性保护的外部机器可读内容可能如何导致对他们的应用程序的成功攻击。
+      </p>
 
     </section>
 
@@ -4589,7 +4624,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </ul>
 
       <p>
-        此外，冒充的实例可以以各种形式出现，包括[=实体=]试图否认其行为的情况。提高[=可验证凭证=]领域的信任和安全级别不仅仅是避免冒充；它涉及到非否认机制的实施。这些机制巩固了[=实体=]对其行为或交易的责任，从而加强了问责制并阻止了恶意行为。实现非否认是一项多方面的努力，包括从<a href="#securing-mechanisms">安全机制</a>、持有证明和各种协议中的认证方案等一系列技术。
+        此外，冒充的实例可以以各种形式出现，包括[=实体=]试图否认其行为的情况。提高[=可验证凭证=]领域的信任和安全级别不仅仅是避免冒充；它涉及到非否认机制的实施。这些机制巩固了[=实体=]对其行为或交易的责任，从而加强了问责制并阻止了恶意行为。实现非否认是一项多方面的努力，包括从<a
+          href="#securing-mechanisms">安全机制</a>、持有证明和各种协议中的认证方案等一系列技术。
       </p>
     </section>
     <section class="informative">
@@ -4611,10 +4647,12 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
       <h4>不适当的使用</h4>
       <p>
-        虽然有效的加密签名和成功的状态检查表明[=凭证=]的可靠性，但它们并不表明所有[=凭证=]在所有情况下都是可互换的。对于[=验证者=]来说，也必须<a href="#validation-0">验证</a>任何可能相关的声明，考虑到声明的来源和性质以及凭证所呈现的特权或服务。
+        虽然有效的加密签名和成功的状态检查表明[=凭证=]的可靠性，但它们并不表明所有[=凭证=]在所有情况下都是可互换的。对于[=验证者=]来说，也必须<a
+          href="#validation-0">验证</a>任何可能相关的声明，考虑到声明的来源和性质以及凭证所呈现的特权或服务。
       </p>
       <p>
-        例如，在需要认证的医疗诊断的情况下，一个自我声明的[=凭证=]携带必要的数据可能不足够，因为它缺乏来自权威医疗来源的有效性。为了确保[=凭证=]的适当使用，各方都被敦促在他们预期的应用的特定上下文中评估<a href="#dfn-credential">凭证的</a>相关性和权威性。
+        例如，在需要认证的医疗诊断的情况下，一个自我声明的[=凭证=]携带必要的数据可能不足够，因为它缺乏来自权威医疗来源的有效性。为了确保[=凭证=]的适当使用，各方都被敦促在他们预期的应用的特定上下文中评估<a
+          href="#dfn-credential">凭证的</a>相关性和权威性。
       </p>
     </section>
   </section>
@@ -4665,7 +4703,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>语言和基础方向</h3>
 
       <p>
-        强烈建议数据发布者阅读<em>网络上的字符串：语言和方向元数据</em>文档[[STRING-META]]中的跨语法表达部分，以确保能够在多种表达语法中，如[[JSON-LD11]]，[[JSON]]和CBOR [[?RFC7049]]，表达语言和<dfn data-cite="i18n-glossary">基础方向</dfn>信息。
+        强烈建议数据发布者阅读<em>网络上的字符串：语言和方向元数据</em>文档[[STRING-META]]中的跨语法表达部分，以确保能够在多种表达语法中，如[[JSON-LD11]]，[[JSON]]和CBOR
+        [[?RFC7049]]，表达语言和<dfn data-cite="i18n-glossary">基础方向</dfn>信息。
       </p>
 
       <p>
@@ -4681,7 +4720,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </pre>
 
       <p>
-        当语言值对象用于替代字符串值时，该对象必须包含一个`@value`属性，其值为字符串，并应包含一个`@language`属性，其值为一个由[[BCP47]]定义的格式良好的`Language-Tag`字符串，并可能包含一个`@direction`属性，其值为由[[JSON-LD11]]中的`@direction`属性定义的[=base direction=]字符串。语言值对象不得包含`@value`，`@language`和`@direction`之外的任何其他键。
+        当语言值对象用于替代字符串值时，该对象必须包含一个`@value`属性，其值为字符串，并应包含一个`@language`属性，其值为一个由[[BCP47]]定义的格式良好的`Language-Tag`字符串，并可能包含一个`@direction`属性，其值为由[[JSON-LD11]]中的`@direction`属性定义的[=base
+        direction=]字符串。语言值对象不得包含`@value`，`@language`和`@direction`之外的任何其他键。
       </p>
 
       <p>
@@ -4734,7 +4774,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>提供默认语言和方向</h3>
 
       <p>
-        每个自然语言字符串属性值的语言和基础方向应该提供，可以通过每个属性值的语言值结构，也可以通过整个凭证中所有值的默认语言和基础方向来提供。使用每个值的语言值结构是首选，因为使用文档默认值可能导致下游处理器执行基于JSON-LD扩展的转换，而这本来是可选的。有关更多信息，请参阅[[JSON-LD11]]规范中的<a data-cite="JSON-LD11#string-internationalization">字符串国际化</a>部分。没有与之关联的语言的自然语言字符串值应被视为语言值为`undefined`（语言标签"`und`"）。没有与之关联的基础方向的自然语言字符串值应被视为方向值为"`auto`"。
+        每个自然语言字符串属性值的语言和基础方向应该提供，可以通过每个属性值的语言值结构，也可以通过整个凭证中所有值的默认语言和基础方向来提供。使用每个值的语言值结构是首选，因为使用文档默认值可能导致下游处理器执行基于JSON-LD扩展的转换，而这本来是可选的。有关更多信息，请参阅[[JSON-LD11]]规范中的<a
+          data-cite="JSON-LD11#string-internationalization">字符串国际化</a>部分。没有与之关联的语言的自然语言字符串值应被视为语言值为`undefined`（语言标签"`und`"）。没有与之关联的基础方向的自然语言字符串值应被视为方向值为"`auto`"。
       </p>
     </section>
 
@@ -4742,7 +4783,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>复杂语言标记</h3>
 
       <p>
-        当单个自然语言字符串包含多种语言或注释时，字符串的内容可能需要额外的结构或标记才能正确呈现。可以使用标记语言，如HTML，来标记不同语言的文本片段或提供呈现[=bidirectional text=]所需的字符串内部标记。还可以使用`rdf:HTML`数据类型在JSON-LD中准确地编码这些值。
+        当单个自然语言字符串包含多种语言或注释时，字符串的内容可能需要额外的结构或标记才能正确呈现。可以使用标记语言，如HTML，来标记不同语言的文本片段或提供呈现[=bidirectional
+        text=]所需的字符串内部标记。还可以使用`rdf:HTML`数据类型在JSON-LD中准确地编码这些值。
       </p>
 
       <p>
@@ -4776,7 +4818,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>凭证类型</h3>
 
       <p>
-        当[=验证者=]向[=持有者=]请求一个或多个[=可验证凭证=]时，他们可以指定他们希望接收的凭证类型。凭证的类型通过<a href="#types">type</a>属性表示。特定类型的[=可验证凭证=]预计包含特定的[=属性=]，这些属性可用于确定[=展示=]是否满足[=验证者=]正在执行的一组处理规则。通过请求特定`type`的[=可验证凭证=]，[=验证者=]能够从[=持有者=]那里收集特定信息，这些信息起源于每个[=可验证凭证=]的[=发行者=]，从而使其能够确定与[=持有者=]互动的下一阶段。
+        当[=验证者=]向[=持有者=]请求一个或多个[=可验证凭证=]时，他们可以指定他们希望接收的凭证类型。凭证的类型通过<a
+          href="#types">type</a>属性表示。特定类型的[=可验证凭证=]预计包含特定的[=属性=]，这些属性可用于确定[=展示=]是否满足[=验证者=]正在执行的一组处理规则。通过请求特定`type`的[=可验证凭证=]，[=验证者=]能够从[=持有者=]那里收集特定信息，这些信息起源于每个[=可验证凭证=]的[=发行者=]，从而使其能够确定与[=持有者=]互动的下一阶段。
       </p>
     </section>
 
@@ -4801,7 +4844,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        与`issuer` [=property=]相关的元数据可通过<a href="#verification">验证算法</a>提供给[=verifier=]，如第<a href="#verification"></a>节所定义。此元数据包括验证用于保护每个[=可验证凭证=]或[=可验证展示=]的安全机制所使用的验证方法的控制器的身份，控制器通常是各自的`issuer`或`holder`。
+        与`issuer` [=property=]相关的元数据可通过<a href="#verification">验证算法</a>提供给[=verifier=]，如第<a
+          href="#verification"></a>节所定义。此元数据包括验证用于保护每个[=可验证凭证=]或[=可验证展示=]的安全机制所使用的验证方法的控制器的身份，控制器通常是各自的`issuer`或`holder`。
       </p>
 
       <p>
@@ -4815,7 +4859,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         与`holder` [=property=]关联的值预计可用于识别[=holder=]给[=verifier=]。
       </p>
       <p>
-        通常，关于[=holder=]的相关元数据（由`holder` [=property=]的值标识）可提供给[=verifier=]，或者由[=verifier=]检索。例如，[=holder=]可以发布包含用于保护[=可验证展示=]的[=验证材料=]的信息。在检查[=可验证展示=]上的证明时，预计将使用此元数据。某些加密标识符在标识符本身中包含所有必要的元数据。在这些情况下，不需要其他元数据。其他标识符使用可验证数据注册表，在那里，这样的元数据会自动发布供[=verifiers=]使用，无需[=holder=]采取任何其他操作。
+        通常，关于[=holder=]的相关元数据（由`holder`
+        [=property=]的值标识）可提供给[=verifier=]，或者由[=verifier=]检索。例如，[=holder=]可以发布包含用于保护[=可验证展示=]的[=验证材料=]的信息。在检查[=可验证展示=]上的证明时，预计将使用此元数据。某些加密标识符在标识符本身中包含所有必要的元数据。在这些情况下，不需要其他元数据。其他标识符使用可验证数据注册表，在那里，这样的元数据会自动发布供[=verifiers=]使用，无需[=holder=]采取任何其他操作。
       </p>
       <p>
         请参阅<a data-cite="VC-IMP-GUIDE/#subject-holder-relationships"></a>和
@@ -4895,10 +4940,12 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </ul>
 
       <p class="note">
-        数字签名提供了许多保护措施，除了防篡改之外，还有一些不太明显的保护措施。例如，链接数据签名 `created` [=属性=] 建立了一个日期和时间，在此之前，[=凭证=] 不应被视为 [=已验证=]，这与凭证的有效期不同。此属性描述了证明的有效性，而不是凭证的有效性。
+        数字签名提供了许多保护措施，除了防篡改之外，还有一些不太明显的保护措施。例如，链接数据签名 `created` [=属性=] 建立了一个日期和时间，在此之前，[=凭证=] 不应被视为
+        [=已验证=]，这与凭证的有效期不同。此属性描述了证明的有效性，而不是凭证的有效性。
         JWT `iat` 声明同样提供了签名制作的时间。
         <br /><br />
-        `verificationMethod` [=属性=] 例如指定了可用于验证数字签名的公钥。解引用公钥 URL 揭示了关于密钥控制者的信息，这可以与 [=凭证=] 的颁发者进行比对。`proofPurpose` [=属性=] 清楚地表达了证明的目的，并确保此信息受到签名的保护。证明通常附加到 [=可验证展示=] 以用于身份验证目的，并作为断言方法附加到 [=可验证凭证=]。
+        `verificationMethod` [=属性=] 例如指定了可用于验证数字签名的公钥。解引用公钥 URL 揭示了关于密钥控制者的信息，这可以与 [=凭证=] 的颁发者进行比对。`proofPurpose` [=属性=]
+        清楚地表达了证明的目的，并确保此信息受到签名的保护。证明通常附加到 [=可验证展示=] 以用于身份验证目的，并作为断言方法附加到 [=可验证凭证=]。
       </p>
     </section>
 
@@ -4914,7 +4961,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>状态</h3>
 
       <p>
-        如果`credentialStatus`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialStatus` [=类型=]定义以及[=验证者=]自己的状态评估标准来评估[=可验证凭证=]的状态。例如，[=验证者=]可以确保[=可验证凭证=]的状态不是“由[=发行者=]撤销原因”。
+        如果`credentialStatus`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialStatus`
+        [=类型=]定义以及[=验证者=]自己的状态评估标准来评估[=可验证凭证=]的状态。例如，[=验证者=]可以确保[=可验证凭证=]的状态不是“由[=发行者=]撤销原因”。
       </p>
     </section>
 
@@ -4922,7 +4970,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>模式</h3>
 
       <p>
-        如果`credentialSchema`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialSchema` [=类型=]定义以及[=验证者=]自己的模式评估标准来评估[=可验证凭证=]的模式。例如，如果`credentialSchema`的`type`值为[[?VC-JSON-SCHEMA]]，那么[=验证者=]可以确保凭证的数据符合给定的JSON模式。
+        如果`credentialSchema`属性可用，[=验证者=]将根据[=可验证凭证=]的`credentialSchema`
+        [=类型=]定义以及[=验证者=]自己的模式评估标准来评估[=可验证凭证=]的模式。例如，如果`credentialSchema`的`type`值为[[?VC-JSON-SCHEMA]]，那么[=验证者=]可以确保凭证的数据符合给定的JSON模式。
       </p>
     </section>
 
@@ -4930,7 +4979,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3>适用性</h3>
 
       <p>
-        适用性是关于[=可验证凭证=]中的自定义[=属性=]是否适合[=验证者=]的目的。例如，如果[=验证者=]需要确定[=主题=]是否年满21岁，他们可能依赖于特定的`birthdate` [=属性=]，或者更抽象的[=属性=]，如`ageOver`。
+        适用性是关于[=可验证凭证=]中的自定义[=属性=]是否适合[=验证者=]的目的。例如，如果[=验证者=]需要确定[=主题=]是否年满21岁，他们可能依赖于特定的`birthdate`
+        [=属性=]，或者更抽象的[=属性=]，如`ageOver`。
       </p>
 
       <p>
@@ -4948,7 +4998,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <p class="issue" title="(存在风险) 哈希值可能在候选推荐阶段发生变化">
         本节列出了在候选推荐阶段可能发生变化的加密哈希值，这取决于需要修改引用文件的实施者反馈。
         <br><br>
-        工作组期望在本规范作为建议推荐发布之前，JSON-LD 上下文中提供的所有术语和URL要么稳定，要么被移除。虽然这意味着如果像[[?VC-DATA-INTEGRITY]]，[[?VC-JOSE-COSE]]，SD-JWT，[[?VC-JSON-SCHEMA]]，或状态列表等依赖项不在同一时间框架内进入建议推荐阶段，本规范可能会被延迟，但工作组已准备好在过渡到推荐阶段产生过大负担的情况下移除这些依赖项。这是工作组正在承担的一个计算风险，并已制定了缓解策略，以确保本规范能及时过渡到推荐阶段。
+        工作组期望在本规范作为建议推荐发布之前，JSON-LD
+        上下文中提供的所有术语和URL要么稳定，要么被移除。虽然这意味着如果像[[?VC-DATA-INTEGRITY]]，[[?VC-JOSE-COSE]]，SD-JWT，[[?VC-JSON-SCHEMA]]，或状态列表等依赖项不在同一时间框架内进入建议推荐阶段，本规范可能会被延迟，但工作组已准备好在过渡到推荐阶段产生过大负担的情况下移除这些依赖项。这是工作组正在承担的一个计算风险，并已制定了缓解策略，以确保本规范能及时过渡到推荐阶段。
       </p>
       <p>
         实现必须将位于`https://www.w3.org/ns/credentials/v2`的基础上下文值视为已经检索到的；以下值是根据[[SRI]]对`digest`的定义计算并编码的资源的SHA-384摘要：
@@ -4968,8 +5019,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         `curl -s https://www.w3.org/ns/credentials/v2 | openssl dgst -sha384 -binary | openssl base64 -A`
       </p>
       <p>
-        关于此哈希编码方法的更多详细信息可以在<a
-          href="https://www.w3.org/TR/SRI/#integrity-metadata">完整性元数据</a>
+        关于此哈希编码方法的更多详细信息可以在<a href="https://www.w3.org/TR/SRI/#integrity-metadata">完整性元数据</a>
         部分的[[SRI]]中找到。
       </p>
       <p class="note" title="如果检测到哈希值变化，请查看勘误">
@@ -5067,7 +5117,8 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
             </td>
             <td>
               作为放入
-              <a href="#evidence">证据</a>属性中的特定证据类型的超类。 <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的超类实现，此超类将处于风险并将被移除。</span>
+              <a href="#evidence">证据</a>属性中的特定证据类型的超类。 <span
+                class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的超类实现，此超类将处于风险并将被移除。</span>
             </td>
           </tr>
           <tr id="bc-credential-schema">
@@ -5105,68 +5156,68 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
               作为放入
               <a href="#refreshing">credentialRefresh</a>属性中的特定刷新服务类型的超类。
               <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的超类实现，此超类将处于风险并将被移除。</span>
-            </tr>
-          </tbody>
-        </table>
-  
-        <p>
-          本规范为处理器和其他受益于此类定义的规范定义了以下属性：
-        </p>
-  
-        <table class="simple">
-          <thead>
-            <tr>
-              <th>属性</th>
-              <th>目的</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr id="ap-credential-evidence">
-              <td>
-                <a href="#evidence">evidence</a>
-              </td>
-              <td>
-                用于表示与[=可验证凭证=]关联的证据。这些证据可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]。
-              </td>
-            </tr>
-            <tr id="ap-credential-schema">
-              <td>
-                <a href="#data-schemas">credentialSchema</a>
-              </td>
-              <td>
-                用于表示[=可验证凭证=]的结构和语义。这些模式可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的结构和语义。
-              </td>
-            </tr>
-            <tr id="ap-credential-status">
-              <td>
-                <a href="#status">credentialStatus</a>
-              </td>
-              <td>
-                用于表示[=可验证凭证=]的状态。这些状态可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的状态。
-              </td>
-            </tr>
-            <tr id="ap-confidence-method">
-              <td>
-                `confidenceMethod`
-              </td>
-              <td>
-                用于表示[=可验证凭证=]的信心方法。这些方法可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的信心方法。
-                <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的属性实现，此属性将处于风险并将被移除。</span>
-              </td>
-            </tr>
-            <tr id="ap-refresh-service">
-              <td>
-                <a href="#refreshing">credentialRefresh</a>
-              </td>
-              <td>
-                用于表示[=可验证凭证=]的刷新服务。这些服务可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的刷新服务。
-                <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的属性实现，此属性将处于风险并将被移除。</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        本规范为处理器和其他受益于此类定义的规范定义了以下属性：
+      </p>
+
+      <table class="simple">
+        <thead>
+          <tr>
+            <th>属性</th>
+            <th>目的</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="ap-credential-evidence">
+            <td>
+              <a href="#evidence">evidence</a>
+            </td>
+            <td>
+              用于表示与[=可验证凭证=]关联的证据。这些证据可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]。
+            </td>
+          </tr>
+          <tr id="ap-credential-schema">
+            <td>
+              <a href="#data-schemas">credentialSchema</a>
+            </td>
+            <td>
+              用于表示[=可验证凭证=]的结构和语义。这些模式可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的结构和语义。
+            </td>
+          </tr>
+          <tr id="ap-credential-status">
+            <td>
+              <a href="#status">credentialStatus</a>
+            </td>
+            <td>
+              用于表示[=可验证凭证=]的状态。这些状态可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的状态。
+            </td>
+          </tr>
+          <tr id="ap-confidence-method">
+            <td>
+              `confidenceMethod`
+            </td>
+            <td>
+              用于表示[=可验证凭证=]的信心方法。这些方法可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的信心方法。
+              <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的属性实现，此属性将处于风险并将被移除。</span>
+            </td>
+          </tr>
+          <tr id="ap-refresh-service">
+            <td>
+              <a href="#refreshing">credentialRefresh</a>
+            </td>
+            <td>
+              用于表示[=可验证凭证=]的刷新服务。这些服务可以用于帮助[=验证者=]确定他们是否信任[=可验证凭证=]的刷新服务。
+              <span class="issue atrisk">如果在候选推荐阶段结束时未能确定至少两个独立的属性实现，此属性将处于风险并将被移除。</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
+  </section>
 
   <section class="appendix informative">
     <h2>IANA注意事项</h2>
@@ -5314,17 +5365,19 @@ with value 'Example Presenter Public Key 11'; 'created' with value
 'proofValue' with value 'zpewJHoan87='. This graph is annotated with the
 parenthetical remark '(a named graph)'
             ">
-            <figcaption style="text-align: center;">
-              <a href="#info-graph-vp">？</a>的一个变体：与引用两个可验证凭证的[=可验证呈现=]相关联的信息[=图=]，使用基于[[[VC-DATA-INTEGRITY]]] [[?VC-DATA-INTEGRITY]]的[=嵌入式证明=]。
-            </figcaption>
-          </figure>
-      
-          <p>
-            下面的<a href="#info-graph-vp-jwt-mult-creds"></a>显示了与<a href="#info-graph-vp-mult-creds"></a>相同的[=可验证呈现=]，但使用基于[[?VC-JOSE-COSE]]的[=封装证明=]。
-            每个[=可验证凭证图=]包含一个单独的
-            <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a>实例，
-            通过`data:` URL [[RFC2397]]引用一个通过[=封装证明=]保护的可验证凭证。
-          </p>
+      <figcaption style="text-align: center;">
+        <a href="#info-graph-vp">？</a>的一个变体：与引用两个可验证凭证的[=可验证呈现=]相关联的信息[=图=]，使用基于[[[VC-DATA-INTEGRITY]]]
+        [[?VC-DATA-INTEGRITY]]的[=嵌入式证明=]。
+      </figcaption>
+    </figure>
+
+    <p>
+      下面的<a href="#info-graph-vp-jwt-mult-creds"></a>显示了与<a
+        href="#info-graph-vp-mult-creds"></a>相同的[=可验证呈现=]，但使用基于[[?VC-JOSE-COSE]]的[=封装证明=]。
+      每个[=可验证凭证图=]包含一个单独的
+      <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a>实例，
+      通过`data:` URL [[RFC2397]]引用一个通过[=封装证明=]保护的可验证凭证。
+    </p>
 
     <figure id="info-graph-vp-jwt-mult-creds">
       <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-jwt-mult-creds.svg" alt="
@@ -5352,9 +5405,9 @@ the 'Signature' label on the left side is connected, with an arrow, to a
 separate rectangle, containing a single text field:
 'cYjaSdfIoJH45NIqw3MYnasGIba...'.
         ">
-        <figcaption style="text-align: center;">
-          <a href="#info-graph-vp-jwt">？</a>的一个变体：与[=可验证呈现=]相关联的信息[=图=]，引用两个使用基于JOSE [[?VC-JOSE-COSE]]的[=封装证明=]的可验证凭证。
-        </figcaption>
+      <figcaption style="text-align: center;">
+        <a href="#info-graph-vp-jwt">？</a>的一个变体：与[=可验证呈现=]相关联的信息[=图=]，引用两个使用基于JOSE [[?VC-JOSE-COSE]]的[=封装证明=]的可验证凭证。
+      </figcaption>
     </figure>
 
 

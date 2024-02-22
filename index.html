@@ -166,7 +166,10 @@
           }
         ],
       xref: ["URL", "I18N-GLOSSARY", "INFRA"],
-      lint: { "informative-dfn": false },
+      lint: { 
+        "informative-dfn": false,
+        "privsec-section": false
+      },
       maxTocLevel: 3,
       inlineCSS: true
     };
@@ -5180,7 +5183,7 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
   </section>
 
   <section class="appendix informative">
-    <h2>IANA注意事项</h2>
+    <h2 id="iana-considerations">IANA注意事项</h2>
 
     <p>
       本节将提交给互联网工程指导组（IESG）进行审查、批准，并在IANA注册。

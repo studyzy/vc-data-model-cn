@@ -3254,20 +3254,20 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <p>
-        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=字节序列=]
-        |inputBytes|）或文档（[=映射=] |inputDocument|）和媒体类型（[=字符串=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
+        安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=byte sequence=]
+        |inputBytes|）或文档（[=map=] |inputDocument|）和媒体类型（[=string=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
       </p>
 
       <dl>
-        <dt>[=布尔值=] |status|</dt>
+        <dt>[=boolean=] |status|</dt>
         <dd>
           验证状态，如果验证成功，则值为`true`，如果验证失败，则值为`false`。
         </dd>
-        <dt>[=映射=] |document|</dt>
+        <dt>[=map=] |document|</dt>
         <dd>
           一个仅包含成功保护的信息的文档。
         </dd>
-        <dt>[=字符串=] |mediaType|</dt>
+        <dt>[=string=] |mediaType|</dt>
         <dd>
           一个在[[RFC6838]]中定义的媒体类型。
         </dd>
@@ -3661,7 +3661,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3 id="verification">验证</h3>
 
       <p>
-        本节包含一个算法，该算法是[=符合规范的验证器实现=]在验证[=可验证凭证=]或[=可验证展示=]时必须运行的。该算法接受一串字节（[=字节序列=] |inputBytes|）或一个文档（[=map=]
+        本节包含一个算法，该算法是[=符合规范的验证器实现=]在验证[=可验证凭证=]或[=可验证展示=]时必须运行的。该算法接受一串字节（[=byte sequence=] |inputBytes|）或一个文档（[=map=]
         |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
       </p>
 
@@ -4663,7 +4663,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         强烈建议数据发布者阅读<em>网络上的字符串：语言和方向元数据</em>文档[[STRING-META]]中的跨语法表达部分，以确保能够在多种表达语法中，如[[JSON-LD11]]，[[JSON]]和CBOR
-        [[?RFC7049]]，表达语言和<dfn data-cite="i18n-glossary">基础方向</dfn>信息。
+        [[?RFC7049]]，表达语言和<dfn data-cite="i18n-glossary">base direction</dfn>信息。
       </p>
 
       <p>

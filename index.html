@@ -1177,7 +1177,7 @@ arrow, to a separate rectangle, containing a single text field:
         [=可验证凭证=]和[=可验证展示=]必须具有
         `type` [=属性=]。也就是说，任何没有`type` [=属性=]的
         [=凭证=]或
-        [=展示=]<em>不是[=可验证的=]</em>，因此既不是[=可验证凭证=]
+        [=展示=]<em>不是可[=验证=]的</em>，因此既不是[=可验证凭证=]
         也不是[=可验证展示=]。
       </p>
 
@@ -1398,7 +1398,7 @@ arrow, to a separate rectangle, containing a single text field:
 
       <p>
         名称和描述还支持以不同的语言表达内容。
-        要表达带有语言和[=基础方向=]信息的字符串，
+        要表达带有语言和[=base direction=]信息的字符串，
         可以使用包含`@value`、`@language`和`@direction`属性的对象，
         分别表示文本值、语言标签和基础方向。
         有关详细信息，请参见
@@ -2275,7 +2275,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           一个[=持有者=]可能会<dfn class="export" data-lt="transfers">转移</dfn>其一个或多个[=可验证凭证=]给另一个[=持有者=]。
         </li>
         <li>
-          一个[=持有者=] <dfn class="export" data-lt="present">展示</dfn>其一个或
+          一个[=持有者=] <dfn class="export" data-lt="present">展示出</dfn>其一个或
           多个[=可验证凭证=]给一个[=验证者=]，可选地
           在一个[=可验证展示=]内部。
         </li>
@@ -2398,7 +2398,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           真实（即，非虚假）的[=凭证=]，并在适当时撤销它们。
         </li>
         <li>
-          [=持有者=]信任[=存储库=]安全存储[=凭证=]，
+          [=持有者=]信任[=仓库=]安全存储[=凭证=]，
           不向除[=持有者=]以外的任何人发布它们，并且在其保管期间不
           损坏或丢失它们。
         </li>
@@ -2411,7 +2411,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <ul>
         <li>
           [=发行者=]和[=验证者=]不需要信任
-          [=存储库=]
+          [=仓库=]
         </li>
         <li>
           [=发行者=]不需要了解或信任[=验证者=]。
@@ -3255,7 +3255,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
 
       <p>
         安全机制规范必须提供一种验证机制，该机制仅返回已经被保护的[=符合规范的文档=]中的信息，不包括任何安全机制信息，如`proof`或JOSE/COSE头参数和签名。规范可以提供额外的机制来传达其他可能有用的信息（例如，在验证过程中或用于调试目的），如安全机制数据。安全机制的验证算法必须提供一个接口，该接口接收字节序列（[=byte sequence=]
-        |inputBytes|）或文档（[=map=] |inputDocument|）和媒体类型（[=string=] |inputMediaType|）作为输入，并返回至少包含以下[=结构/项目=]的验证结果：
+        |inputBytes|）或文档（[=map=] |inputDocument|）和媒体类型（[=string=] |inputMediaType|）作为输入，并返回至少包含以下[=struct/items=]的验证结果：
       </p>
 
       <dl>

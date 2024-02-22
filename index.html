@@ -1739,11 +1739,11 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
       </p>
 
       <p>
-        一个<dfn class="export">封装式证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装式证明机制。
+        一个<dfn class="export" data-lt="enveloping-proof" >封装式证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装式证明机制。
       </p>
 
       <p>
-        一个<dfn class="export">嵌入式证明</dfn>是一种证明包含在数据模型序列化中的机制。[[[VC-DATA-INTEGRITY]]]
+        一个<dfn class="export" data-lt="embedded-proof">嵌入式证明</dfn>是一种证明包含在数据模型序列化中的机制。[[[VC-DATA-INTEGRITY]]]
         [[VC-DATA-INTEGRITY]]中定义了一种建议的嵌入式证明机制。
       </p>
 
@@ -2596,7 +2596,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     </section>
 
     <section>
-      <h2>相关资源的完整性</h2>
+      <h2 id="integrity-of-related-resources">相关资源的完整性</h2>
       <p>
         当在[=可验证凭证=]中包含指向外部资源的链接时，我们希望知道签名时指向的资源是否与验证时的资源相同。这适用于远程检索外部资源的情况，也适用于[=发行者=]和/或[=验证者=]可能拥有资源的本地缓存副本的情况。
       </p>
@@ -3807,7 +3807,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
   </section>
 
   <section class="informative">
-    <h2>隐私考虑</h2>
+    <h2 id="privacy-considerations">隐私考虑</h2>
 
     <p>
       本节详细介绍了将可验证凭证数据模型部署到生产环境中的一般隐私考虑和具体隐私影响。

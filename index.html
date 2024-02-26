@@ -166,7 +166,7 @@
           }
         ],
       xref: ["URL", "I18N-GLOSSARY", "INFRA"],
-      lint: { 
+      lint: {
         "informative-dfn": false,
         "privsec-section": false
       },
@@ -690,20 +690,9 @@
       </p>
 
       <figure id="info-graph-vc">
-        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vc-graph.svg" alt="Diagram with a collections of
-claims for a 'verifiable credential graph' on top
-connected via a proof property (or predicate) to a 'verifiable credential proof
-graph' on the bottom. The claims for a verifiable credential include 'Credential
-123' as a subject with 4 properties: 'type' of value ExampleAlumniCredential,
-'issuer' of Example University, 'validFrom' of 2010-01-01T19:23:24Z, and
-credentialSubject of Pat, who also has an alumniOf property with value of
-Example University.  The verifiable credential proof graph has an object
-'Signature 456' subject with 5 properties: 'type' of DataIntegrityProof,
-'verificationMethod' of Example University Public Key 7, 'created' of
-2017-06-18T21:19:10Z, a 'nonce' of 34dj239dsj328, and 'proofValue' of
-'zBavE110…3JT2pq'. The verifiable credential graph is also annotated with the
-parenthetical remark '(the default graph)', the verifiable credential proof
-graph is annotated with the parenthetical remark '(a named graph)'.">
+        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vc-graph.svg"
+          alt="一个包含多个声明的'可验证凭证图'位于顶部，通过证明属性（或谓词）与底部的'可验证凭证证明图'相连。可验证凭证的声明包括'Credential
+123'作为主题，具有4个属性：'type'值为ExampleAlumniCredential，'issuer'为Example University，'validFrom'为2010-01-01T19:23:24Z，以及credentialSubject为Pat，他还拥有一个alumniOf属性，值为Example University。可验证凭证证明图有一个对象'Signature 456'主题，具有5个属性：'type'为DataIntegrityProof，'verificationMethod'为Example University Public Key 7，'created'为2017-06-18T21:19:10Z，'nonce'为34dj239dsj328，以及'proofValue'为'zBavE110…3JT2pq'。可验证凭证图还带有括号注释'(默认图)'，可验证凭证证明图带有括号注释'(命名图)'。">
         <figcaption style="text-align: center;">
           使用基于[[[VC-DATA-INTEGRITY]]]的[=嵌入式证明=]的基本可验证凭证的相关信息图。
         </figcaption>
@@ -715,23 +704,7 @@ graph is annotated with the parenthetical remark '(a named graph)'.">
       </p>
 
       <figure id="info-graph-vc-jwt">
-        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vc-jwt.svg" alt="Diagram with, on the left, a box, labeled as
-'SD-JWT (Decoded)', and with three textual labels stacked vertically,
-namely 'Header', 'Payload', and 'Signature'. The 'Header' label is
-connected, with an arrow, to a separate rectangle on the right hand
-side containing six text fields: 'kid: aB8J-_Z', 'alg: ES384', and
-'cty: vc+ld+json', iss: https://example.com, iat: 1704690029, and typ:
-vc+ld+json+sd-jwt The 'Payload' label on the left side is connected,
-with an arrow, to a separate rectangle, containing a single graph. The
-rectangle has a label: 'verifiable credential graph (serialized in
-JSON)' The claims in the graph include 'Credential 123' as a subject
-with 4 properties: 'type' with value 'ExampleAlumniCredential',
-'issuer' with value 'Example University', 'validFrom' with value
-'2010-01-01T19:23:24Z', and 'credentialSubject' with value 'Pat', who
-also has an 'alumniOf' property with value 'Example University'.
-Finally, the 'Signature' label on the left side is connected, with an
-arrow, to a separate rectangle, containing a single text field:
-'DtEhU3ljbEg8L38VWAfUA...'.
+        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vc-jwt.svg" alt="图中左侧有一个标有'SD-JWT（解码）'的方框，里面垂直堆叠了三个文本标签，分别是'Header'、'Payload'和'Signature'。'Header'标签通过一个箭头连接到右侧的一个独立矩形，该矩形包含六个文本字段：'kid: aB8J-_Z'，'alg: ES384'，'cty: vc+ld+json'，iss: https://example.com，iat: 1704690029，以及typ: vc+ld+json+sd-jwt。左侧的'Payload'标签通过一个箭头连接到一个独立的矩形，该矩形包含一个图。矩形有一个标签：'可验证凭证图（以JSON序列化）'。图中的声明包括'Credential 123'作为主题，具有4个属性：'type'值为'ExampleAlumniCredential'，'issuer'值为'Example University'，'validFrom'值为'2010-01-01T19:23:24Z'，以及'credentialSubject'值为'Pat'，他还拥有一个'alumniOf'属性，值为'Example University'。最后，左侧的'Signature'标签通过一个箭头连接到一个独立的矩形，该矩形包含一个文本字段：'DtEhU3ljbEg8L38VWAfUA...'。
           ">
         <figcaption style="text-align: center;">
           使用基于[[[VC-JOSE-COSE]]] [[?VC-JOSE-COSE]]的[=封装式证明=]的基本可验证凭证相关的信息图。
@@ -739,10 +712,10 @@ arrow, to a separate rectangle, containing a single text field:
       </figure>
 
       <p class="note">
-        可以有一个[=凭证=]，例如婚姻凭证，其中包含关于不同[=主体=]的多个[=声明=]，这些主题不需要相关。
+        可以有一个[=凭证=]，例如结婚证凭证，其中包含关于不同[=主体=]的多个[=声明=]，这些主题不需要相关。
       </p>
       <p class="note">
-        可以有一个[=凭证=]，其中不包含关于发行[=凭证=]的[=实体=]的任何[=声明=]。例如，一个只包含关于特定狗的[=声明=]，但发给其所有者的[=凭证=]。
+        可以有一个[=凭证=]，其中不包含关于发行[=凭证=]的[=实体=]的任何[=声明=]。例如，一个只包含关于特定的某只狗的[=声明=]，但发给其主人的[=凭证=]。
       </p>
     </section>
 
@@ -805,55 +778,45 @@ arrow, to a separate rectangle, containing a single text field:
       </p>
 
       <figure id="info-graph-vp">
-        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-graph.svg" alt="Diagram with a
-'verifiable presentation graph' on top connected via a 'proof' to
-a 'verifiable presentation proof graph on the bottom.  The verifiable
-presentation graph has and object 'Presentation ABC' with 3 properties: 'type'
-of value VerifiablePresentation, 'termsOfUse' of value 'Do Not Archive'. The
-graph is annotated with the parenthetical remark '(the default graph)'. This
-graph is connected, through 'verifiableCredential', to the part of the figure
-which is identical to Figure 6, except that the verifiable credential graph is
-annotated to be a named graph instead of a default graph.
-The verifiable presentation proof graph has an object with 'Signature 8910'
-with 5 properties: 'type' with value 'DataIntegrityProof'; 'verificationMethod' with value 'Example
-Presenter Public Key 11'; 'created' with value '2018-01-15T12:43:56Z';
-'nonce' with value 'd28348djsj3239'; and 'proofValue' with value
-'zp2KaZ...8Fj3K='. This graph is annotated with the parenthetical remark '(a
-named graph)'">
+        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-graph.svg" alt="图示中有一个
+'可验证的演示图'连接到下方的
+'可验证的演示证明图'。可验证的演示图有一个对象 'Presentation ABC'，它有3个属性：'type'
+的值为VerifiablePresentation，'termsOfUse'的值为'Do Not Archive'。图示用括号标注的备注
+'(默认图)'进行注释。这个图通过'verifiableCredential'连接到与图6相同的图的部分，
+只是可验证的证书图被注释为命名图而不是默认图。
+可验证的演示证明图有一个对象'Signature 8910'，它有5个属性：'type'的值为'DataIntegrityProof'；
+'verificationMethod'的值为'Example Presenter Public Key 11'；'created'的值为'2018-01-15T12:43:56Z'；
+'nonce'的值为'd28348djsj3239'；以及'proofValue'的值为
+'zp2KaZ...8Fj3K='。这个图用括号标注的备注'(命名图)'进行注释。">
         <figcaption style="text-align: center;">
           与基本的[=可验证展示VP=]相关联的信息[=图=]，该展示使用基于[[[VC-DATA-INTEGRITY]]] [[?VC-DATA-INTEGRITY]]的[=嵌入式证明=]。
         </figcaption>
       </figure>
 
       <p>
-        <a href="#info-graph-vp-jwt"></a> 下面显示的是与 <a href="#info-graph-vp"></a> 相同的 [=可验证展示VP=]，但使用基于 [[?VC-JOSE-COSE]] 的
+        <a href="#info-graph-vp-jwt"></a> 下面显示的是与 <a href="#info-graph-vp"></a> 相同的 [=可验证展示VP=]，但使用基于 [[?VC-JOSE-COSE]]
+        的
         [=封装式证明=]。有效负载仅包含两个信息图：通过展示元数据表达 [=可验证展示VP=] 本身的 [=可验证展示图=]；以及相应的 [=可验证凭证图=]，由 `verifiableCredential`
         属性引用。[=可验证凭证图=] 包含单个 <a href="#defn-EnvelopedVerifiableCredential">`EnvelopedVerifiableCredential`</a> 实例，通过
         `data:` URL [[RFC2397]] 引用，指向通过 <a href="#info-graph-vc-jwt"></a> 上显示的 [=封装式证明=] 保护的可验证凭证。
       </p>
 
       <figure id="info-graph-vp-jwt">
-        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-jwt.svg" alt="Diagram with, on the left, a box, labeled as
-'JWT (Decoded)', and with three textual labels stacked vertically,
-namely 'Header', 'Payload', and 'Signature'. The 'Header' label is
-connected, with an arrow, to a separate rectangle on the right hand
-side containing six text fields: 'kid: aB8J-_Z', 'alg: ES384', and
-'cty: vc+ld+json', iss: https://example.com, iat: 1704690029, and typ:
-vp+ld+json+sd-jwt The 'Payload' label of the left side is connected,
-with an arrow, to a separate rectangle, consisting of two related
-graphs (stacked vertically) connected by a an arrow labeled
-'verifiableCredential'. The two graphs have each a label 'verifiable
-presentation graph (serialized in JSON)' and 'verifiable credential
-graph (serialized in JSON)', respectively. The top graph in the
-rectangle has and object 'Presentation ABC' with 3 properties: 'type'
-of value VerifiablePresentation, 'termsOfUse' of value 'Do Not
-Archive'. The bottom graph includes
-'data:application/vc+ld+json+sd-jwt;QzVjV...RMjU' as a subject with a
-single property: 'type' of value `EnvelopedVerifiableCredential`.
-Finally, the 'Signature' label on the left side is connected, with an
-arrow, to a separate rectangle, containing a single text field:
-'XaOOh4ljklxH7L99RTVSfOl...'.
-          ">
+        <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-jwt.svg" alt="图示中，左侧有一个盒子，标签为
+        'JWT (解码)'，并且垂直堆叠了三个文本标签，
+        分别是'Header'，'Payload'，和'Signature'。'Header'标签
+        通过一个箭头连接到右侧的一个独立矩形，该矩形包含六个文本字段：'kid: aB8J-_Z'，'alg: ES384'，和
+        'cty: vc+ld+json'，iss: https://example.com，iat: 1704690029，和 typ:
+        vp+ld+json+sd-jwt。左侧的'Payload'标签通过一个箭头连接到一个独立的矩形，该矩形由两个相关的
+        图表（垂直堆叠）组成，两者之间通过一个标签为'verifiableCredential'的箭头连接。这两个图表各自的标签分别为'verifiable
+        presentation graph (serialized in JSON)'和'verifiable credential
+        graph (serialized in JSON)'。矩形中的顶部图表有一个对象'Presentation ABC'，它有3个属性：'type'
+        的值为VerifiablePresentation，'termsOfUse'的值为'Do Not
+        Archive'。底部图表包含
+        'data:application/vc+ld+json+sd-jwt;QzVjV...RMjU'作为主题，有一个属性：'type'的值为`EnvelopedVerifiableCredential`。
+        最后，左侧的'Signature'标签通过一个箭头连接到一个独立的矩形，该矩形包含一个文本字段：
+        'XaOOh4ljklxH7L99RTVSfOl...'。
+                  ">
         <figcaption style="text-align: center;">
           与基本[=可验证展示VP=]相关的信息图，该展示使用基于JOSE [[?VC-JOSE-COSE]]的[=封装式证明=]。
           `data:` URL指向<a href="#info-graph-vc-jwt"></a>上显示的[=可验证凭证VC=]。
@@ -915,11 +878,11 @@ arrow, to a separate rectangle, containing a single text field:
   "issuer": "https://university.example/issuers/565049",
   <span class='comment'>// 凭证发行的时间</span>
   "validFrom": "2010-01-01T19:23:24Z",
-  <span class='comment'>// 关于凭证主题的声明</span>
+  <span class='comment'>// 关于凭证主体的声明</span>
   "credentialSubject": {
-    <span class='comment'>// 凭证唯一主题的标识符</span>
+    <span class='comment'>// 凭证唯一主体的标识符</span>
     "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
-    <span class='comment'>// 关于凭证唯一主题的断言</span>
+    <span class='comment'>// 关于凭证唯一主体的断言</span>
     "alumniOf": {
       <span class='comment'>// 大学的标识符</span>
       "id": "did:example:c276e12ec21ebfeb1f712ebc6f1",
@@ -935,7 +898,7 @@ arrow, to a separate rectangle, containing a single text field:
         University”的校友可以获得体育赛事季票的折扣。使用移动设备，Pat开始购买季票的过程。在这个过程中的一个步骤请求一个校友[=可验证凭证VC=]，这个请求被路由到Pat的数字钱包。数字钱包询问Pat是否愿意提供以前发行的[=可验证凭证VC=]。Pat选择了校友[=可验证凭证VC=]，然后将其组合成一个[=可验证展示VP=]。[=可验证展示VP=]被发送到[=验证者=]并进行[=验证=]。
       </p>
       <p>
-        一旦被[=验证=]为真实和当前的，季票的卖家然后验证[=可验证凭证VC=]的[=发行者=]是否被认可为校友状态的声明——它是，因为它是由Example
+        一旦被[=验证=]为真实和当前有效的，季票的卖家然后验证[=可验证凭证VC=]的[=发行者=]是否被认可为校友状态的声明——它是，因为它是由Example
         University发行的——并且今天的日期在由`validFrom`和`validUntil`属性定义的有效期内。由于期望[=持有者=]是[=可验证凭证VC=]的[=主体=]，[=验证者=]也确认校友声明的`id`与[=可验证展示VP=]的创建者的`id`匹配。
       </p>
       <p>
@@ -993,7 +956,7 @@ arrow, to a separate rectangle, containing a single text field:
       </p>
 
       <p>
-        预计开发者会将下面的`MyPrototypeCredential`更改为他们想要创建的凭证类型。由于[=可验证凭证VC=]涉及主题，因此`credentialSubject`对象中的每个属性值对表示凭证主题的特定属性。一旦开发者添加了若干这样的属性值组合，修改后的对象可以发送给[=可验证凭证VC=]发行者软件，为开发者创建一个[=可验证凭证VC=]。从原型设计的角度来看，这就是开发者需要做的所有事情。
+        预计开发者会将下面的`MyPrototypeCredential`更改为他们想要创建的凭证类型。由于[=可验证凭证VC=]涉及主体，因此`credentialSubject`对象中的每个属性值对表示凭证主体的特定属性。一旦开发者添加了若干这样的属性值组合，修改后的对象可以发送给[=可验证凭证VC=]发行者软件，为开发者创建一个[=可验证凭证VC=]。从原型设计的角度来看，这就是开发者需要做的所有事情。
       </p>
 
       <pre class="example nohighlight" title="创建原型可验证凭证的模板">
@@ -1336,9 +1299,7 @@ arrow, to a separate rectangle, containing a single text field:
       </p>
 
       <p class="note">
-        本规范中描述的数据模型中使用的类型系统允许
-        以多种方式将类型与数据关联。实现者和作者被敦促阅读可验证凭证
-        实施指南[[?VC-IMP-GUIDE]]中关于类型的部分。
+        本规范中描述的数据模型中使用的类型系统允许以多种方式将类型与数据关联。实现者和作者被敦促阅读可验证凭证实施指南[[?VC-IMP-GUIDE]]中关于类型的部分。
       </p>
 
     </section>
@@ -1372,7 +1333,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of the name and description property"
+      <pre class="example nohighlight vc" title="名称和描述属性的使用"
         data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
@@ -1408,7 +1369,7 @@ arrow, to a separate rectangle, containing a single text field:
         <a href="#language-and-base-direction"></a>。
       </p>
 
-      <pre class="example nohighlight" title="Usage of the name and description property">
+      <pre class="example nohighlight" title="名称和描述属性的使用">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1504,7 +1465,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of the credentialSubject property"
+      <pre class="example nohighlight vc" title="credentialSubject属性的使用"
         data-vc-vm="https://university.example/issuers/565049#key-1">
 {
   "@context": [
@@ -1529,7 +1490,7 @@ arrow, to a separate rectangle, containing a single text field:
         可以在可验证凭证中表达与多个主体相关的信息。下面的示例指定了两个配偶作为主体。请注意，使用数组表示法将多个主体与 `credentialSubject` 属性关联起来。
       </p>
 
-      <pre class="example nohighlight" title="Specifying multiple subjects in a verifiable credential">
+      <pre class="example nohighlight" title="在可验证凭证中指定多个主体">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1571,8 +1532,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of issuer property"
-        data-vc-vm="https://university.example/issuers/14#key-1">
+      <pre class="example nohighlight vc" title="issuer属性的使用" data-vc-vm="https://university.example/issuers/14#key-1">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1596,7 +1556,7 @@ arrow, to a separate rectangle, containing a single text field:
         还可以通过将一个对象与发行者属性关联起来来表达有关发行者的其他信息：
       </p>
 
-      <pre class="example nohighlight vc" title="Usage of issuer expanded property"
+      <pre class="example nohighlight vc" title="issuer扩展属性的使用"
         data-vc-vm="did:example:76e12ec712ebc6f1c221ebfeb1f#key-1">
 {
   "@context": [
@@ -1658,7 +1618,7 @@ arrow, to a separate rectangle, containing a single text field:
         </dd>
       </dl>
 
-      <pre class="example nohighlight vc" title="Usage of validFrom and validUntil property"
+      <pre class="example nohighlight vc" title="validFrom和validUntil属性的使用"
         data-vc-vm="https://university.example/issuers/14#key-1">
 {
   "@context": [
@@ -1723,8 +1683,7 @@ arrow, to a separate rectangle, containing a single text field:
           data-cite="XMLSCHEMA11-2#dateTimeStamp">XMLSCHEMA11-2</a>]规范中复制过来的，以方便使用。为避免疑虑，[[XMLSCHEMA11-2]]中的正则表达式是规范性定义。实现者应注意，并非所有通过下面正则表达式的`dateTimeStamp`值都是有效的时间点。例如，下面的正则表达式允许每个月有31天，这包括闰年和闰秒，以及那些不存在的地方的日子。话虽如此，现代系统库生成的`dateTimeStamp`值在生成有效的`dateTimeStamp`值时通常是无误的。下面显示的正则表达式（减去为了可读性而包含的空白），在处理现代系统上库生成的日期和时间时通常是足够的。
       </p>
 
-      <pre class="example nohighlight"
-        title="Regular expression to detect a valid XML Schema 1.1: Part 2 dateTimeStamp">
+      <pre class="example nohighlight" title="用于检测有效的 XML Schema 1.1：第 2 部分 dateTimeStamp 的正则表达式">
 -?([1-9][0-9]{3,}|0[0-9]{3})
 -(0[1-9]|1[0-2])
 -(0[1-9]|[12][0-9]|3[01])
@@ -1742,7 +1701,8 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
       </p>
 
       <p>
-        一个<dfn class="export" data-lt="enveloping-proof" >封装式证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]] [[VC-JOSE-COSE]]中定义了一种建议的封装式证明机制。
+        一个<dfn class="export" data-lt="enveloping-proof">封装式证明</dfn>是包裹了此数据模型序列化的证明。[[[VC-JOSE-COSE]]]
+        [[VC-JOSE-COSE]]中定义了一种建议的封装式证明机制。
       </p>
 
       <p>
@@ -1754,7 +1714,7 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
         这两类安全机制并非互斥。根据第<a href="#securing-mechanism-specifications"></a>节的规则，还可以定义其他安全机制规范。
       </p>
 
-      <pre class="example nohighlight" title="A verifiable credential utilizing an embedded proof">
+      <pre class="example nohighlight" title="使用嵌入式证明的可验证凭证VC">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1782,7 +1742,7 @@ T(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?|(24:00:00(\.0+)?))
 }
         </pre>
 
-      <pre class="example nohighlight" title="A verifiable credential that uses an enveloping proof in SD-JWT format">
+      <pre class="example nohighlight" title="使用SD-JWT格式的封装式证明的可验证凭证VC">
 eyJhbGciOiJFUzM4NCIsImtpZCI6IkdOV2FBTDJQVlVVMkpJVDg5bTZxMGM3U3ZjNDBTLWJ2UjFTT0
 Q3REZCb1UiLCJ0eXAiOiJ2YytsZCtqc29uK3NkLWp3dCIsImN0eSI6InZjK2xkK2pzb24ifQ
 .
@@ -1850,7 +1810,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         [=type=]定义决定，具体取决于诸如实现简单性和是否增强隐私等因素。预期该值将提供足够的信息来确定[=凭证=]的当前状态，并且可以从URL检索机器可读信息。例如，对象可以包含指向外部文档的链接，该文档注明[=凭证=]是否被暂停或撤销。
       </p>
 
-      <pre class="example nohighlight" title="Usage of the status property">
+      <pre class="example nohighlight" title="状态属性的使用">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1949,7 +1909,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         下面的示例显示了一个 [=可验证展示VP=]：
       </p>
 
-      <pre class="example nohighlight" title="Basic structure of a presentation">
+      <pre class="example nohighlight" title="一个'展示'的基本结构">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -1993,7 +1953,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           下面的例子展示了一个包含封装的[=可验证凭证VC=]的[=可验证展示VP=]：
         </p>
 
-        <pre class="example nohighlight" title="Basic structure of a presentation">
+        <pre class="example nohighlight" title="一个'展示'的基本结构">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2014,12 +1974,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         <h4>使用派生凭证的展示</h4>
 
         <p>
-          一些零知识密码学方案可能使[=持有者=]能够
-          间接证明他们持有来自[=可验证凭证VC=]的[=声明=]
-          而无需揭示该[=可验证凭证VC=]中的所有声明。在这些
-          方案中，[=可验证凭证VC=]可用于派生可展示的
-          数据，这些数据经过加密断言，使得[=验证者=]可以信任
-          该值（如果他们信任[=发行者=]）。
+          一些零知识密码学方案可能使[=持有者=]能够间接证明他们持有来自[=可验证凭证VC=]的[=声明=]而无需揭示该[=可验证凭证VC=]中的所有声明。在这些方案中，[=可验证凭证VC=]可用于派生可展示的数据，这些数据经过加密断言，使得[=验证者=]可以信任该值（如果他们信任[=发行者=]）。
         </p>
         <p>
           一些选择性披露方案可以共享从[=可验证凭证VC=]派生的[=声明=]子集。
@@ -2061,8 +2016,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           下面的示例显示了一个[=可验证展示VP=]，其中嵌入了使用与[=可验证展示VP=]相同的机制来保护的自我声明的[=可验证凭证VC=]。
         </p>
 
-        <pre class="example nohighlight"
-          title="A verifiable presentation, secured with an embedded Data Integrity proof, with a self-asserted verifiable credential">
+        <pre class="example nohighlight" title="一个带有嵌入式数据完整性证明的可验证展示，包含一个自声明的可验证凭证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2086,8 +2040,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           下面的示例显示了一个嵌入了自我声明的可验证凭证的可验证展示，该可验证凭证包含关于可验证展示的声明。它使用与可验证展示相同的机制进行保护。
         </p>
 
-        <pre class="example nohighlight"
-          title="A verifiable presentation, secured with an embedded Data Integrity proof, with a self-asserted verifiable credential about the verifiable presentation">
+        <pre class="example nohighlight" title="一个带有嵌入式数据完整性证明的可验证展示，包含一个关于可验证展示的自声明的可验证凭证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2155,7 +2108,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         [=属性=]还使得可以对[=凭证=]进行语法检查，并使用如JSON Schema [[?VC-JSON-SCHEMA]] 验证等[=验证=]机制。
       </p>
 
-      <pre class="example nohighlight" title="Usage of the credentialSchema property to perform JSON schema validation">
+      <pre class="example nohighlight" title="使用credentialSchema属性进行JSON模式验证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2199,8 +2152,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           href="#zero-knowledge-proofs"></a>节。
       </p>
 
-      <pre class="example nohighlight"
-        title="Usage of the credentialSchema property to perform zero-knowledge validation">
+      <pre class="example nohighlight" title="使用credentialSchema属性进行零知识验证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2474,8 +2426,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         让我们假设我们从下面显示的[=可验证凭证VC=]开始。
       </p>
 
-      <pre class="example nohighlight vc" title="A simple credential"
-        data-vc-vm="https://university.example/issuers/14#keys-1">
+      <pre class="example nohighlight vc" title="一个简单凭证" data-vc-vm="https://university.example/issuers/14#keys-1">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2504,7 +2455,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         首先要做的是创建一个包含两个新术语的JSON-LD上下文，如下所示。
       </p>
 
-      <pre class="example nohighlight" title="A JSON-LD context">
+      <pre class="example nohighlight" title="一个JSON-LD的上下文">
 {
   "@context": {
     "referenceNumber": "https://example.com/vocab#referenceNumber",
@@ -2519,7 +2470,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         我们可以通过包含上下文并添加新的[=属性=]和[=凭证=]的[=type=]来扩展这个示例。
       </p>
 
-      <pre class="example nohighlight" title="A verifiable credential with a custom extension">
+      <pre class="example nohighlight" title="带有自定义扩展的可验证凭证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2610,7 +2561,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         为了验证由[=可验证凭证VC=]引用的资源在验证时与发行时是否相同，实施者可以包含一个名为<code
           id="defn-relatedResource">relatedResource</code>的属性，该属性存储一个对象数组，描述每个由[=可验证凭证VC=]引用的资源的额外完整性元数据。如果存在`relatedResource`，则数组中必须有一个对象，用于在可验证凭证中使用的每个上下文的每个远程资源。
       </p>
-      <p class="issue" title="Mandatory listing of contexts in relatedResouce are under debate.">
+      <p class="issue" title="在relatedResouce中强制列出上下文正处于争议之中。">
         目前正在VCWG中讨论是否需要在`relatedResource`中列出上下文。这个要求可能会在规范的未来版本中被移除。
       </p>
       <p>
@@ -2618,7 +2569,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           href="https://www.w3.org/TR/SRI/#integrity-metadata">子资源完整性</a>中指定的方法构建的资源的<code
           id="defn-digestSRI">digestSRI</code>信息。
       </p>
-      <p class="issue" title="Unification of cryptographic hash expression formats are under discussion">
+      <p class="issue" title="统一加密哈希表达式格式正处于讨论中">
         工作组目前正在尝试确定是否可以在所有的VCWG核心规范中统一加密哈希表达格式。这种机制的候选者包括`digestSRI`和`digestMultibase`。工作组目前正在讨论统一的利弊。
       </p>
       <p>
@@ -2664,7 +2615,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         下面是一个引用JSON-LD上下文的相关资源完整性对象的示例。
       </p>
 
-      <pre class="example nohighlight" title="Usage of the relatedResource property">
+      <pre class="example nohighlight" title="relatedResource属性的使用">
 "relatedResource": [{
   "id": "https://www.w3.org/ns/credentials/v2",
   "digestSRI":
@@ -2680,7 +2631,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         `credentialSubject`中引用完整性保护图像的对象示例。
       </p>
 
-      <pre class="example nohighlight" title="An integrity-protected image that is associated with a credentialSubject">
+      <pre class="example nohighlight" title="与credentialSubject关联的具有完整性保护的图像">
 "credentialSubject": {
   "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
   "image": {
@@ -2726,7 +2677,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </dd>
       </dl>
 
-      <pre class="example nohighlight" title="Usage of the refreshService property by an issuer">
+      <pre class="example nohighlight" title="发行者使用refreshService属性的用法">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2791,7 +2742,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         </dd>
       </dl>
 
-      <pre class="example nohighlight" title="Usage of the termsOfUse property by an issuer">
+      <pre class="example nohighlight" title="发行者使用termsOfUse属性的用法">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2829,7 +2780,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
 
-      <pre class="example nohighlight" title="Usage of the termsOfUse property by a holder">
+      <pre class="example nohighlight" title="持有者使用termsOfUse属性的用法">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -2929,7 +2880,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         有关规范如何支持附件和对[=凭证=]和非凭证数据的引用的信息，请参阅可验证凭证实施指南[[VC-IMP-GUIDE]]文档。
       </p>
 
-      <pre class="example nohighlight" title="Usage of the evidence property">
+      <pre class="example nohighlight" title="evidence属性的用法">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -3011,34 +2962,30 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       </p>
 
       <figure>
-        <img style="margin: auto; display: block; width: 75%;" src="diagrams/zkp-cred-pres.svg" alt="Verifiable
-            Credential 1 and Verifiable Credential 2 on the left map
-            to Derived Credential 1 and Derived Credential 2 inside a
-            Presentation on the right.  Verifiable Credential 1
-            contains Context, Type, ID, Issuer, Issue Date, Expiration
-            Date, CredentialSubject, and Proof, where
-            CredentialSubject contains GivenName, FamilyName, and
-            Birthdate and Proof contains Signature, Proof of
-            Correctness, and Attributes.  Verifiable Credential 2
-            contains Context, Type, ID, Issuer, Issue Date, Expiration
-            Date, CredentialSubject, and Proof, where
-            CredentialSubject contains University, which contains
-            Department, which contains DegreeAwarded, and Proof contains Signature, Proof of
-            Correctness, and Attributes.  The Presentation diagram on
-            the right contains Context, Type, ID,
-            VerifiableCredential, and Proof, where
-            VerifiableCredential contains Derived Credential 1 and
-            Derived Credential 2 and Proof contains Common Link
-            Secret.  Derived Credential 1 contains Context, Type, ID,
-            Issuer, Issue Date, CredentialSubject, and Proof, where
-            CredentialSubject contains AgeOver18 and Proof contains
-            Knowledge of Signature.  Derived Credential 2 contains
-            Context, Type, ID, Issuer, Issue Date, CredentialSubject,
-            and Proof, where CredentialSubject contains Degree and
-            Proof contains Knowledge of Signature.  A line links
-            Birthdate in Verifiable Credential 1 to AgeOver18 in
-            Derived Credential 1.  A line links DegreeAwarded in
-            Verifiable Credential 2 to Degree in Derived Credential 2.">
+        <img style="margin: auto; display: block; width: 75%;" src="diagrams/zkp-cred-pres.svg" alt="可验证
+        凭证1和可验证凭证2在左侧映射
+        到右侧演示文稿中的衍生凭证1和衍生凭证2。可验证凭证1
+        包含上下文、类型、ID、颁发者、颁发日期、过期日期、
+        凭证主题和证明，其中
+        凭证主题包含名字、姓氏和
+        出生日期，证明包含签名、正确性证明和属性。可验证凭证2
+        包含上下文、类型、ID、颁发者、颁发日期、过期日期、
+        凭证主题和证明，其中
+        凭证主题包含大学，其中包含
+        系，其中包含授予的学位，证明包含签名、正确性证明和属性。右侧的演示文稿图
+        包含上下文、类型、ID、
+        可验证凭证和证明，其中
+        可验证凭证包含衍生凭证1和
+        衍生凭证2，证明包含共同链接
+        密钥。衍生凭证1包含上下文、类型、ID、
+        颁发者、颁发日期、凭证主题和证明，其中
+        凭证主题包含18岁以上，证明包含
+        签名知识。衍生凭证2包含
+        上下文、类型、ID、颁发者、颁发日期、凭证主题、
+        和证明，其中凭证主题包含学位和
+        证明包含签名知识。一条线连接
+        可验证凭证1中的出生日期到衍生凭证1中的18岁以上。一条线连接
+        可验证凭证2中的授予学位到衍生凭证2中的学位。">
         <figcaption style="text-align: center;">
           ZKP [=展示=] 中凭证和派生凭证之间关系的可视化示例。
         </figcaption>
@@ -3107,7 +3054,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             <td>`confidenceMethod`</td>
             <td>
               一个用于指定验证者可能使用的一种或多种方法的属性，以提高对可验证凭证或可验证展示中的属性值的准确性的信心，包括但不限于诸如`initialRecipient`（又名`issuee`）、`presenter`、`authorizedPresenter`、`holder`等属性。相关的词汇表URL必须是`https://www.w3.org/2018/credentials#confidenceMethod`。
-              <p class="issue" title="(AT RISK) Reservation depends on implementations">
+              <p class="issue" title="(风险) 预留取决于实现">
                 如果在候选推荐阶段结束前至少有一个规范和两个独立实现被证明，则此属性保留可能会被删除，以支持规范中现有的部分。如果没有发生这种情况，此保留将保留，但规范中现有的部分将被删除。
                 参见<a href="https://w3c-ccg.github.io/confidence-method-spec/">可验证凭证信心方法</a>。
               </p>
@@ -3117,7 +3064,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             <td>`evidence`</td>
             <td>
               用于指定发放凭证所需的证据的属性。关联的词汇表 URL 必须是 `https://www.w3.org/2018/credentials#evidence`。
-              <p class="issue" title="(AT RISK) Reservation depends on implementations">
+              <p class="issue" title="(风险) 预留取决于实现">
                 该属性的保留可能会被删除，以支持规范中的现有部分，如果在候选推荐阶段结束时至少有一个具有两个独立实现的规范得以证明。如果未能实现该目标，
                 该保留将保留，但规范中的现有部分将被移除。
               </p>
@@ -3128,7 +3075,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             <td>`refreshService`</td>
             <td>
               用于指定凭证如何进行刷新的属性。关联的词汇表 URL 必须是 `https://www.w3.org/2018/credentials#refreshService`。
-              <p class="issue" title="(AT RISK) Reservation depends on implementations">
+              <p class="issue" title="(风险) 预留取决于实现">
                 该属性的保留可能会被删除，以支持规范中的现有部分，如果在候选推荐阶段结束时至少有一个具有两个独立实现的规范得以证明。如果未能实现该目标，
                 该保留将保留，但规范中的现有部分将被移除。
               </p>
@@ -3139,7 +3086,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             <td>`renderMethod`</td>
             <td>
               用于指定一种或多种将凭证展示为视觉、听觉或触觉格式的方法的属性。关联的词汇表 URL 必须是 `https://www.w3.org/2018/credentials#renderMethod`。
-              <p class="issue" title="(AT RISK) Reservation depends on implementations">
+              <p class="issue" title="(风险) 预留取决于实现">
                 此保留属性存在风险，如果在候选推荐阶段结束时未能证明至少有一个具有两个独立实现的规范，将从规范中移除。
                 请参阅<a href="https://w3c-ccg.github.io/vc-render-method/">可验证凭证展示方法</a>。
               </p>
@@ -3150,7 +3097,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
             <td>`termsOfUse`</td>
             <td>
               用于指定凭证使用条款的属性。关联的词汇表 URL 必须是 `https://www.w3.org/2018/credentials#termsOfUse`。
-              <p class="issue" title="(AT RISK) Reservation depends on implementations">
+              <p class="issue" title="(风险) 预留取决于实现">
                 此保留属性存在风险，如果在候选推荐阶段结束时未能证明至少有一个具有两个独立实现的规范，将从规范中移除。
               </p>
             </td>
@@ -3248,8 +3195,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3 id="securing-mechanism-specifications">安全机制规范</h3>
 
       <p>
-        如第<a
-          href="#securing-mechanisms">节</a>所述，实现者在保护[=符合规范的文档=]时可以使用多种策略。为了最大化实用性和互操作性，希望建立新的保护[=符合规范的文档=]方法的规范作者可以参考本节的指南。
+        如<a
+          href="#securing-mechanisms"></a>所述，实现者在保护[=符合规范的文档=]时可以使用多种策略。为了最大化实用性和互操作性，希望建立新的保护[=符合规范的文档=]方法的规范作者可以参考本节的指南。
       </p>
 
       <p>
@@ -3472,7 +3419,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
           如果JSON结构或排序对您的应用程序很重要，
           我们建议您通过`@context`将这些元素标记为`@json`。
         </p>
-        <pre class="example" title="A @context file that defines a matrix as an embedded JSON data structure">
+        <pre class="example" title="一个定义矩阵为嵌入式JSON数据结构的@context文件">
 {
   "@context":
     {
@@ -3483,7 +3430,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
     }
 }
           </pre>
-        <pre class="example" title="A verifiable credential with an embedded JSON data structure">
+        <pre class="example" title="一个包含嵌入式JSON数据结构的可验证凭证">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -3665,7 +3612,8 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
       <h3 id="verification">验证</h3>
 
       <p>
-        本节包含一个算法，该算法是[=符合规范的验证器实现=]在验证[=可验证凭证VC=]或[=可验证展示VP=]时必须运行的。该算法接受一串字节（[=byte sequence=] |inputBytes|）或一个文档（[=map=]
+        本节包含一个算法，该算法是[=符合规范的验证器实现=]在验证[=可验证凭证VC=]或[=可验证展示VP=]时必须运行的。该算法接受一串字节（[=byte sequence=]
+        |inputBytes|）或一个文档（[=map=]
         |inputDocument|）和一个媒体类型（[=string=] |inputMediaType|）作为输入，并返回一个包含以下内容的[=map=]：
       </p>
 
@@ -4066,8 +4014,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         [=可验证凭证VC=]是一个[=持有者凭证=]：
       </p>
 
-      <pre class="example nohighlight vc" title="Usage of issuer properties"
-        data-vc-vm="https://university.example/issuers/14#keys-1">
+      <pre class="example nohighlight vc" title="issuer属性的使用" data-vc-vm="https://university.example/issuers/14#keys-1">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2",
@@ -4439,7 +4386,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         可能应该有：
       </p>
 
-      <pre class="example nohighlight" title="Non-content-integrity protected links">
+      <pre class="example nohighlight" title="非内容完整性保护链接">
 {
   "@context": [
     <span class="highlight">"https://www.w3.org/ns/credentials/v2"</span>,
@@ -4462,7 +4409,7 @@ WyJ1Ynd6bi1kS19tMzRSMGI0SG84QTBBIiwgInR5cGUiLCAiQmFjaGVsb3JEZWdyZWUiXQ
         尽管本规范没有推荐任何特定的内容完整性保护，但建议希望确保链接到内容具有完整性保护的文档作者使用强制内容完整性的URL方案。
       </p>
 
-      <pre class="example nohighlight" title="Content-integrity protection for links to external data">
+      <pre class="example nohighlight" title="对外部数据链接的内容完整性保护">
 {
   "@context": [
     "https://www.w3.org/ns/credentials/v2<span class="highlight">?hl=z3aq31uzgnZBuWNzUB</span>",
@@ -5309,24 +5256,7 @@ e4kvel2PFfd6jcofHBm9BjwEiGzVFGv4K+fFTKXRD2NA==`
 
     <figure id="info-graph-vp-mult-creds">
       <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-graph-mult-creds.svg" alt="
-Diagram with a 'verifiable presentation graph' on top, connected via a
-'proof' to a 'verifiable presentation proof graph' on the bottom. The
-verifiable presentation graph has an object, 'Presentation ABC', with 3
-properties: 'type' with value 'VerifiablePresentation'; 'termsOfUse' with
-value 'Do Not Archive'; and two instances of 'verifiableCredential',
-detailed below. This graph is annotated with a parenthetical remark, '(the
-default graph)'. This graph is connected, through 'verifiableCredential',
-to the part of the figure that consists two variants of Figure 6 (one is
-identical; the other has minor differences in the labels referring to
-validity dates, the name of the person, and the values for the nonce and
-the signature), except that these verifiable credential graphs are
-annotated to be named graphs instead of a default graph. The verifiable
-presentation proof graph has an object labeled 'Signature 8920' with 5
-properties: 'type' with value 'DataIntegrityProof'; 'verificationMethod'
-with value 'Example Presenter Public Key 11'; 'created' with value
-'2024-01-02T12:43:56Z'; 'nonce' with value 'hasdkyruod87j'; and
-'proofValue' with value 'zpewJHoan87='. This graph is annotated with the
-parenthetical remark '(a named graph)'
+图表顶部有一个'可验证的演示图'，通过'证明'与底部的'可验证的演示证明图'连接。可验证的演示图有一个对象，'Presentation ABC'，有3个属性：'type'的值为'VerifiablePresentation'；'termsOfUse'的值为'Do Not Archive'；以及两个实例的'verifiableCredential'，详细信息如下。这个图被标注为'(默认图)'。通过'verifiableCredential'，这个图与图中的两个Figure 6的变体部分（一个是相同的；另一个在引用有效日期、人名以及nonce和签名的值的标签上有轻微的差异）连接，除了这些可验证的凭证图被注解为命名图而不是默认图。可验证的演示证明图有一个被标记为'Signature 8920'的对象，有5个属性：'type'的值为'DataIntegrityProof'；'verificationMethod'的值为'Example Presenter Public Key 11'；'created'的值为'2024-01-02T12:43:56Z'；'nonce'的值为'hasdkyruod87j'；以及'proofValue'的值为'zpewJHoan87='。这个图被标注为'(一个命名图)'
             ">
       <figcaption style="text-align: center;">
         <a href="#info-graph-vp">？</a>的一个变体：与引用两个可验证凭证的[=可验证展示VP=]相关联的信息[=图=]，使用基于[[[VC-DATA-INTEGRITY]]]
@@ -5344,30 +5274,8 @@ parenthetical remark '(a named graph)'
 
     <figure id="info-graph-vp-jwt-mult-creds">
       <img style="margin: auto; display: block; width: 100%;" src="diagrams/vp-jwt-mult-creds.svg" alt="
-Diagram with, on the left, a box, labeled as 'JWT (Decoded)', and with
-three textual labels stacked vertically, namely 'Header', 'Payload', and
-'Signature'. The 'Header' label is connected, with an arrow, to a
-separate rectangle on the right hand side containing six text fields:
-'kid: aB8J-_Z', 'alg: ES384', and 'cty: vc+ld+json', iss:
-https://example.com, iat: 1704690029, and typ: vp+ld+json+sd-jwt The
-'Payload' label of the left side is connected, with an arrow, to a
-separate rectangle, consisting of three related graphs (stacked
-vertically) connected by two arrows labeled 'verifiableCredential'
-starting from the top graph and connecting it to the two other graphs,
-respectively. The top graph has a label 'verifiable presentation graph
-(serialized in JSON)'; the other two are both labeled by 'verifiable
-credential graph (serialized in JSON)'. The top graph in the rectangle
-has and object 'Presentation ABC' with 3 properties: 'type' of value
-VerifiablePresentation, 'termsOfUse' of value 'Do Not Archive'. One of
-the the bottom graphs includes
-'data:application/vc+ld+json+sd-jwt;QzVjV...RMjU' as a subject with a
-single property: 'type' of value `EnvelopedVerifiableCredential`. The
-last bottom graph is identical other, except for the subject which is
-labeled as 'data:application/vc+ld+json+sd-jwt;RkOyT...KjOl'. Finally,
-the 'Signature' label on the left side is connected, with an arrow, to a
-separate rectangle, containing a single text field:
-'cYjaSdfIoJH45NIqw3MYnasGIba...'.
-        ">
+      图中左侧有一个盒子，标签为'JWT (Decoded)'，并有三个垂直堆叠的文本标签，分别为'Header'、'Payload'和'Signature'。'Header'标签通过一个箭头连接到右侧的一个矩形，该矩形包含六个文本字段：'kid: aB8J-_Z'、'alg: ES384'、'cty: vc+ld+json'、iss: https://example.com、iat: 1704690029和typ: vp+ld+json+sd-jwt。左侧的'Payload'标签通过一个箭头连接到另一个矩形，该矩形由三个相关图形（垂直堆叠）组成，由两个标有'verifiableCredential'的箭头连接，分别从顶部图形连接到其他两个图形。顶部图形的标签为'可验证演示图（JSON序列化）'；另外两个图形都由'可验证凭证图（JSON序列化）'标记。矩形中的顶部图形有一个对象'Presentation ABC'，具有3个属性：'type'的值为VerifiablePresentation，'termsOfUse'的值为'Do Not Archive'。底部图形之一包括'data:application/vc+ld+json+sd-jwt;QzVjV...RMjU'作为具有单个属性的主题：'type'的值为`EnvelopedVerifiableCredential`。最后一个底部图形与另一个完全相同，只是主题标签为'data:application/vc+ld+json+sd-jwt;RkOyT...KjOl'。最后，左侧的'Signature'标签通过一个箭头连接到一个单独的矩形，该矩形包含一个文本字段：'cYjaSdfIoJH45NIqw3MYnasGIba...'。
+              ">
       <figcaption style="text-align: center;">
         <a href="#info-graph-vp-jwt">？</a>的一个变体：与[=可验证展示VP=]相关联的信息[=图=]，引用两个使用基于JOSE [[?VC-JOSE-COSE]]的[=封装式证明=]的可验证凭证。
       </figcaption>
